@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+
+<h1>$F_{15}^{(8)}$</h1>
+
+<p>
+The only <a href="../d/maximal-affine-family.html">maximal</a>
+<a href="../d/affine-family.html">affine</a> Hadamard families
+stemming from the Fourier matrix
+
+$$F_{15} = \left[\begin{array}{lllllllllllllll}
+1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1&amp;    1\\
+        1&amp;    w&amp;  w^2&amp;  w^3&amp;  w^4&amp;  w^5&amp;  w^6&amp;  w^7&amp;  w^8&amp;  w^9&amp; w^{10}&amp; w^{11}&amp; w^{12}&amp; w^{13}&amp; w^{14}\\
+        1&amp;  w^2&amp;  w^4&amp;  w^6&amp;  w^8&amp; w^{10}&amp; w^{12}&amp; w^{14}&amp;    w&amp;  w^3&amp;  w^5&amp;  w^7&amp;  w^9&amp; w^{11}&amp; w^{13}\\
+        1&amp;  w^3&amp;  w^6&amp;  w^9&amp; w^{12}&amp;    1&amp;  w^3&amp;  w^6&amp;  w^9&amp; w^{12}&amp;    1&amp;  w^3&amp;  w^6&amp;  w^9&amp; w^{12}\\
+        1&amp;  w^4&amp;  w^8&amp; w^{12}&amp;    w&amp;  w^5&amp;  w^9&amp; w^{13}&amp;  w^2&amp;  w^6&amp; w^{10}&amp; w^{14}&amp;  w^3&amp;  w^7&amp; w^{11}\\
+        1&amp;  w^5&amp; w^{10}&amp;    1&amp;  w^5&amp; w^{10}&amp;    1&amp;  w^5&amp; w^{10}&amp;    1&amp;  w^5&amp; w^{10}&amp;    1&amp;  w^5&amp; w^{10}\\
+        1&amp;  w^6&amp; w^{12}&amp;  w^3&amp;  w^9&amp;    1&amp;  w^6&amp; w^{12}&amp;  w^3&amp;  w^9&amp;    1&amp;  w^6&amp; w^{12}&amp;  w^3&amp;  w^9\\
+        1&amp;  w^7&amp; w^{14}&amp;  w^6&amp; w^{13}&amp;  w^5&amp; w^{12}&amp;  w^4&amp; w^{11}&amp;  w^3&amp; w^{10}&amp;  w^2&amp;  w^9&amp;    w&amp;  w^8\\
+        1&amp;  w^8&amp;    w&amp;  w^9&amp;  w^2&amp; w^{10}&amp;  w^3&amp; w^{11}&amp;  w^4&amp; w^{12}&amp;  w^5&amp; w^{13}&amp;  w^6&amp; w^{14}&amp;  w^7\\
+        1&amp;  w^9&amp;  w^3&amp; w^{12}&amp;  w^6&amp;    1&amp;  w^9&amp;  w^3&amp; w^{12}&amp;  w^6&amp;    1&amp;  w^9&amp;  w^3&amp; w^{12}&amp;  w^6\\
+        1&amp; w^{10}&amp;  w^5&amp;    1&amp; w^{10}&amp;  w^5&amp;    1&amp; w^{10}&amp;  w^5&amp;    1&amp; w^{10}&amp;  w^5&amp;    1&amp; w^{10}&amp;  w^5\\
+        1&amp; w^{11}&amp;  w^7&amp;  w^3&amp; w^{14}&amp; w^{10}&amp;  w^6&amp;  w^2&amp; w^{13}&amp;  w^9&amp;  w^5&amp;    w&amp; w^{12}&amp;  w^8&amp;  w^4\\
+        1&amp; w^{12}&amp;  w^9&amp;  w^6&amp;  w^3&amp;    1&amp; w^{12}&amp;  w^9&amp;  w^6&amp;  w^3&amp;    1&amp; w^{12}&amp;  w^9&amp;  w^6&amp;  w^3\\
+        1&amp; w^{13}&amp; w^{11}&amp;  w^9&amp;  w^7&amp;  w^5&amp;  w^3&amp;    w&amp; w^{14}&amp; w^{12}&amp; w^{10}&amp;  w^8&amp;  w^6&amp;  w^4&amp;  w^2\\
+        1&amp; w^{14}&amp; w^{13}&amp; w^{12}&amp; w^{11}&amp; w^{10}&amp;  w^9&amp;  w^8&amp;  w^7&amp;  w^6&amp;  w^5&amp;  w^4&amp;  w^3&amp;  w^2&amp;    w
+\end{array}\right] : \quad w=\exp(2\pi i/15)$$
+
+are
+
+$$\begin{aligned}
+      F_{15}^{(8)}(a,b,c,d,e,f,g,h) &amp; =
+F_{15}\circ{\rm EXP}\left(i       R_{F_{15}^{(8)}}(a,b,c,d,e,f,g,h)\right),\\
+\left(F_{15}^{(8)}(a,b,c,d,e,f,g,h)\right)^{\rm T} &amp; =
+F_{15}\circ{\rm EXP}\left(i \left(R_{F_{15}^{(8)}}(a,b,c,d,e,f,g,h)\right)^{\rm T}\right)
+\end{aligned}$$
+
+with
+
+$$\begin{aligned}
+R_{F_{15}^{(8)}}&amp; (a,b,c,d,e,f,g,h)=\\
+&amp; \left[\begin{array}{ccccccccccccccc}
+             \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet\\
+             \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d\\
+             \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h\\
+             \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet\\
+             \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d\\
+             \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h\\
+             \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet\\
+             \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d\\
+             \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h\\
+             \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet\\
+             \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d\\
+             \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h\\
+             \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet&amp; \bullet\\
+             \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d&amp; \bullet&amp; a&amp; b&amp; c&amp; d\\
+             \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h&amp; \bullet&amp; e&amp; f&amp; g&amp; h
+\end{array}\right].
+\end{aligned}$$
+
+The families $F_{15}^{(8)}$ and $\left(F_{15}^{(8)}\right)^{\rm T}$ are
+<a href="../d/cognate-families.html">cognate</a> families.</p>
+
+</div>
