@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$M_6^{(1)}$</h1>
+<hr>
+<p>A non-<a href="../d/affine-family.html">affine</a> family
+of <a href="../d/complex-hadamard-matrix.html">complex</a> Hadamard matrices found by
+M. Matolcsi and F. Sz&#246;ll&#337;si reads
+
+$$M_6^{(1)}(a)=\left[\begin{array}{rrrrrr}
+1 &amp;  1 &amp;  1 &amp;  1 &amp;  1 &amp;  1\\
+1 &amp; -1 &amp;  a &amp;  a &amp; -a &amp; -a\\
+1 &amp;  a &amp;  b &amp;  c &amp;  d &amp;  e\\
+1 &amp;  a &amp;  c &amp;  b &amp;  e &amp;  d\\
+1 &amp; -a &amp;  d &amp;  e &amp;  f &amp;  g\\
+1 &amp; -a &amp;  e &amp;  d &amp;  g &amp;  f
+\end{array}\right]:\quad a=\exp(it): t\in\left(\frac{\pi}{2},\pi\right]\cup\left(\pi\frac{3}{2},2\pi\right]$$,
+
+where
+
+$$\begin{aligned}
+b(a) &amp;= \frac{1}{4}\frac{1-6a^2+a^4-\sqrt{1+4a^2-58a^4+4a^6+a^8}}{a^2+2a-1},\\
+c(a) &amp;= \frac{1}{4}\frac{1-6a^2+a^4+\sqrt{1+4a^2-58a^4+4a^6+a^8}}{a^2+2a-1},\\
+d(a) &amp;= -\frac{1+a^2}{4}-i\frac{1}{4}\frac{1+a^2}{|1+a^2|}\sqrt{16-|1+a^2|^2},\\
+e(a) &amp;= -\frac{1+a^2}{4}+i\frac{1}{4}\frac{1+a^2}{|1+a^2|}\sqrt{16-|1+a^2|^2},\\
+f(a) &amp;= \frac{a^2+2a-1}{4}+i\frac{1}{4}\frac{a^2+2a-1}{|a^2+2a-1|}\sqrt{16-|a^2+2a-1|^2},\\
+g(a) &amp;= \frac{a^2+2a-1}{4}-i\frac{1}{4}\frac{a^2+2a-1}{|a^2+2a-1|}\sqrt{16-|a^2+2a-1|^2}.
+\end{aligned}$$
+
+</p>
+
+<p>Family $M_6^{(1)}$ connects <a href="0601.html">$F_6^{(2)}$</a> and
+<a href="0603.html">$D_6^{(1)}$</a> $:M_6^{(1)}\simeq F_6$. Moreover,
+taking a particular sequence, one recovers $\lim_{t\to\pi/2}M_6\left(e^{it}\right)\simeq D_6$ for $t\in\left(-\frac{\pi}{2},2\pi\right]$.
+This implies that the set of known (up to November
+of 2008) <a href="../d/complex-hadamard-matrix.html">complex</a> Hadamard matrices
+of order $6$ is connected,
+except from Tao's <a href="../d/isolated-matrix.html">isolated</a> matrix
+<a href="0604.html">$S_6^{(0)}$</a>.</p>
+
+</div>

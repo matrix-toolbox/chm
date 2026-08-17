@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$K_6^{(3)}$</h1>
+<hr>
+<p>Any <a href="../d/H2-reducible-matrix.html">$H_2$-reducible</a>
+(<a href="../d/complex-hadamard-matrix.html">complex</a>) Hadamard matrix is
+<a href="../d/equivalence-relation.html">equivalent</a> to a member of
+a three-parameter family of <a href="../d/dephased-matrix.html">dephased</a> matrices
+$H$ found by B. Karlsson [<a href="../literature.html?a=106">106</a>]
+
+$$K_6^{(3)}=\left[\begin{array}{rrr}
+F_2 &amp; Z_1 &amp; Z_2\\
+Z_3 &amp; \frac{1}{2}Z_3 A Z_1 &amp; \frac{1}{2} Z_3 B Z_2\\
+Z_4 &amp; \frac{1}{2}Z_4 B Z_1 &amp; \frac{1}{2} Z_4 A Z_2
+\end{array}\right]:\quad
+A=\left[\begin{array}{rr}
+      A_{11} &amp;        A_{12}\\
+\bar{A}_{12} &amp; -\bar{A}_{11}
+\end{array}\right],$$
+
+where
+$$
+A_{11} = -\frac{1}{2}+i\frac{\sqrt{3}}{2}\left(\cos\theta + e^{-i\varphi}\sin\theta\right),\qquad
+A_{12} = -\frac{1}{2}+i\frac{\sqrt{3}}{2}\left(-\cos\theta + e^{i\varphi}\sin\theta\right),\\
+$$
+
+for any $\theta,\varphi\in[0,\pi)$ and $B=-F_2-A$. In the matrices
+
+$$Z_k=\left[\begin{array}{rr}1&amp;1\\z_k&amp;-z_k\end{array}\right]$$
+
+for $k\in\{1,2\}$ and their transposed forms $(k\in\{3,4\})$, the elements
+$z_k$ are related through the M&ouml;bius transformation:
+
+$$\begin{aligned}
+z_3^2&amp;=\mathcal{M}_A\left(z_1^2\right),\qquad z_3^2=\mathcal{M}_B\left(z_2^2\right),\\
+z_4^2&amp;=\mathcal{M}_A\left(z_2^2\right),\qquad z_4^2=\mathcal{M}_B\left(z_1^2\right),
+\end{aligned}$$
+
+where $$\mathcal{M}(z)=\frac{\alpha z-\beta}{\beta^*z-\alpha^*}$$
+
+and parameters $\alpha$ and $\beta$ (and their complex conjugates denoted by $^*$) are functions of $A_{kj}$, see
+[<a href="../literature.html?a=106">106</a>].</p>
+
+<p>In general, one of the parameters $z_k$ can be chosen freely, say
+$z_1=\exp(i \psi)$ for $\psi\in[0,\pi)$. Then
+
+$$\begin{aligned}
+z_2^2 &amp;= \mathcal{M}_A^{-1}\left(\mathcal{M}_B\left(z_1^2\right)\right)=
+\mathcal{M}_B^{-1}\left(\mathcal{M}_A\left(z_1^2\right)\right),\\
+z_3^2 &amp;= \mathcal{M}_A^{-1}\left(z_1^2\right),\\
+z_4^2 &amp;= \mathcal{M}_B^{-1}\left(z_1^2\right).
+\end{aligned}$$
+
+Any sign combinations for $z_k$ lead to three-parameter families that are
+<a href="../d/equivalence-relation.html">equivalent</a> to each other.</p>
+
+</div>

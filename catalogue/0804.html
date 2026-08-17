@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$V_{8A}^{(0)}$, $V_{8B}^{(0)}$, $V_{8C}^{(0)}$, $V_{8D}^{(0)}$</h1>
+<hr>
+<p>A set of <a href="../d/isolated-matrix.html">isolated</a> <a href="../d/complex-hadamard-matrix.html">complex</a> Hadamard matrices
+found by V. Elser in 2011 (private communication).</p>
+
+<p>Let $a$, $b$ and $c$ be unimodular numbers and
+
+$$\begin{aligned}
+V_{8\Sigma}&=\left[\begin{array}{rrrrrrrr}
+-1 & -1 &  b &  b &  c &  c &  a &  a \\
+-1 &  b & -1 &  c &  b &  a &  c & -a \\
+ b & -1 &  c & -1 &  a &  b & -a &  c \\
+ b &  c & -1 &  a & -1 & -a &  b & -c \\
+ c &  b &  a & -1 & -a & -1 & -c &  b \\
+ c &  a &  b & -a & -1 & -c & -1 & -b \\
+ a &  c & -a &  b & -c & -1 & -b & -1 \\
+ a & -a &  c & -c &  b & -b & -1 &  1 \\
+\end{array}\right]\\
+&\simeq
+\left[\begin{array}{rrrrrrrr}
+ 1 &        1 &                1 &               1 &                1 &               1 &              1 &                1 \\
+ 1 &       -b &         -\bar{b} &        c\bar{b} &         b\bar{c} &        a\bar{c} &       c\bar{a} &               -1 \\
+ 1 & -\bar{b} &      -c\bar{b}^2 &       \bar{b}^2 & -a\bar{b}\bar{c} &        -\bar{c} &        \bar{b} & -c\bar{a}\bar{b} \\
+ 1 & c\bar{b} &        \bar{b}^2 &     -a\bar{b}^2 &   \bar{b}\bar{c} & a\bar{b}\bar{c} &       -\bar{a} &  c\bar{a}\bar{b} \\
+ 1 & b\bar{c} & -a\bar{b}\bar{c} &  \bar{b}\bar{c} &       a\bar{c}^2 &       \bar{c}^2 &        \bar{a} & -b\bar{a}\bar{c} \\
+ 1 & a\bar{c} &         -\bar{c} & a\bar{b}\bar{c} &        \bar{c}^2 &         \bar{c} & \bar{a}\bar{c} &  b\bar{a}\bar{c} \\
+ 1 & c\bar{a} &          \bar{b} &        -\bar{a} &          \bar{a} &  \bar{a}\bar{c} &     b\bar{a}^2 &        \bar{a}^2 \\
+ 1 &       -1 & -c\bar{a}\bar{b} & c\bar{a}\bar{b} & -b\bar{a}\bar{c} & b\bar{a}\bar{c} &      \bar{a}^2 &       -\bar{a}^2 \\
+\end{array}\right].
+\end{aligned}$$
+</p>
+
+<p>Unitarity conditions for $V_{8\Sigma}$ form a system of non-linear equations
+
+
+$$
+\left\{\begin{aligned}
+-\frac{1}{b} - b + \frac{b}{c} + \frac{c}{b} + \frac{c}{a} + \frac{a}{c} & = 0 \\
+-\frac{1}{b} - \frac{1}{c} - b + \frac{b}{a} - c - \frac{c}{a} + \frac{a}{b} - \frac{a}{c} & = 0 \\
+ \frac{1}{c} + \frac{1}{a} + \frac{b}{a} + c + a + \frac{a}{b} & = 0
+\end{aligned}\right.
+$$
+
+the solution of which reads:
+
+$$
+\begin{array}{r|r|r|r|}
+\Sigma &amp; a &amp; b &amp; c \\
+\hline
+ A &amp; -0.65089101 \pm  0.75917118i &amp; -0.77995684 \mp  0.62583330i &amp;  0.61833872 \pm  0.78591171i \\
+ B &amp;  0.97412724 \pm  0.22600024i &amp; -0.61833872 \mp  0.78591171i &amp; -0.19417040 \pm  0.98096781i \\
+ C &amp; -0.97412724 \mp  0.22600024i &amp;  0.03255228 \mp  0.99947003i &amp;  0.77995684 \mp  0.62583330i \\
+ D &amp;  0.65089101 \pm  0.75917118i &amp;  0.19417040 \mp  0.98096781i &amp; -0.03255228 \mp  0.99947003i \\
+\end{array}.
+$$
+Matrix elements can be calculated analytically, see [<a href="../literature.html?a=175">175</a>].
+</p>
+
+<hr>
+
+<p>There are also four <a href="../d/butson-class.html">Butson</a>-type solutions $(a,b,c)=(\pm i, \mp\sqrt{i}, ab)$
+with non-zero <a href="../d/defect.html">defect</a> value, $d\Big(V_8(a,b,c)\Big)=5$.</p> 
+
+</div>

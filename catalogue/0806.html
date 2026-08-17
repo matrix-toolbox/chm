@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$T_8^{(1)}$</h1>
+<hr>
+<p>Let
+$\zeta_1=-i\left(10-2\sqrt{5}\right)^{1/2}$,
+$\zeta_2=i\left(10-2\sqrt{5}\right)^{1/2}$,
+$\zeta_3=-i\left(10+2\sqrt{5}\right)^{1/2}$,
+$\zeta_4=i\left(10+2\sqrt{5}\right)^{1/2}$
+
+
+be the solution set of the polynomial equation $\zeta^4+20\zeta^2+80=0$
+and $[\varepsilon]\equiv \exp(i\pi\varepsilon)$.</p>
+
+<p>A $1$-parametric, non-affine <a href="../d/complex-hadamard-matrix.html">complex</a> Hadamard matrix found by W. Bruzda in
+January 2018 [<a href="../literature.html?a=165">165</a>] reads:
+
+$$\begin{aligned}
+T_8^{(1)}(x)&={\rm EXP} \left(\frac{i \pi}{10}
+\left[\begin{array}{rrrrrrrr}
+ \bullet &amp; \bullet &amp; \bullet &amp;   \bullet &amp;   \bullet &amp;  \bullet &amp;  \bullet &amp;  \bullet\\
+ \bullet &amp; \bullet &amp; \bullet &amp;   \bullet &amp;   \bullet &amp;  3 &amp; 15 &amp; 18\\
+ \bullet &amp; 8 &amp; 8 &amp;   8 &amp;   8 &amp; 13 &amp; 15 &amp;  8\\
+ \bullet &amp; 2 &amp; 2 &amp;   2 &amp;   2 &amp; 17 &amp;  5 &amp;  2\\
+ \bullet &amp; \bullet &amp; \bullet &amp;   \bullet &amp;   \bullet &amp;  7 &amp;  5 &amp; 12\\
+ \bullet &amp; \bullet &amp; \bullet &amp;   \bullet &amp;   \bullet &amp;  \bullet &amp; 10 &amp; 10\\
+ \bullet &amp; \bullet &amp; \bullet &amp;   \bullet &amp;   \bullet &amp; 10 &amp;  \bullet &amp; 10\\
+ \bullet &amp; \bullet &amp; \bullet &amp;   \bullet &amp;   \bullet &amp; 10 &amp; 10 &amp;  \bullet\\
+ \end{array}\right]\right)\circ
+\left[\begin{array}{rrrrrrrr}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1\\
+1 &amp; x &amp; y &amp; z &amp; -\frac{y z}{x} &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; -\frac{u}{y} &amp; \frac{u}{x} &amp; -\frac{u z}{x y} &amp; -\frac{u z}{x^2} &amp; 1 &amp; 1 &amp; 1\\ 
+1 &amp; y &amp; x &amp; -\frac{y z}{x} &amp; z &amp; 1 &amp; 1 &amp; 1\\ 
+1 &amp; \frac{u}{x} &amp; -\frac{u}{y} &amp; -\frac{u z}{x^2} &amp; -\frac{u z}{ x y} &amp; 1 &amp; 1 &amp; 1\\ 
+1 &amp; -i\frac{x}{z} &amp; i\frac{x}{z} &amp; -i\frac{z}{x} &amp; i\frac{z}{x} &amp; 1 &amp; 1 &amp; 1\\ 
+1 &amp; u &amp; -u &amp; -\frac{u z^2}{x^2} &amp; \frac{u z^2}{x^2} &amp; 1 &amp; 1 &amp; 1\\ 
+1 &amp; i\frac{u z}{x} &amp; i\frac{u z}{x} &amp; -i\frac{u z}{x} &amp; -i\frac{u z}{x} &amp; 1 &amp; 1 &amp; 1 \\ 
+\end{array}\right]\end{aligned},$$
+
+
+<p>where $\circ$ is the entrywise matrix product and</p>
+
+$$\begin{aligned}
+\chi_1&=5-3\sqrt{5}+4\sqrt{5-2\sqrt{5}}+(1+i)\frac{1}{x}+\zeta_2,\\
+\chi_2&=45-9i-(17-7i)\sqrt{5}-2\sqrt{620-500i-(285-234i)\sqrt{5}}-(i+1)\frac{\chi_1}{x},\\
+\chi_3&=10i-10+(6-2i)\sqrt{5}+4\sqrt{10-10i-(5-4i)\sqrt{5}}+(1+i)\frac{\chi_2}{x},\\
+\chi_4&=\sqrt{5}-1+i\sqrt{2}\sqrt{5+\sqrt{5}}+(1+i)\frac{\chi_3}{x},\\
+\chi_5&=(1+i)\sqrt{1-\sqrt{5}+\zeta_4}-(1-i)\left(2x^2+\overline{\sqrt{\chi_4}}\right)-x\left(1-4i+\sqrt{5}+\zeta_1\right),\\
+\chi_6&=\sqrt{5}-1-i-\sqrt{5-2\sqrt{5}}+(1-i)x,
+\end{aligned}$$
+
+<p>(bar over the square root of $\chi_4$ denotes its complex conjugate)</p>
+
+$$
+y=\frac{1}{4}\frac{\chi_5}{\chi_6},
+$$
+
+$$
+z=\frac{x}{x-y}\left((1+i)\left[\frac{4}{5}\right]-x-y-1+i\right),
+$$
+
+<!--\begin{equation}
+Q=2\left[\frac{1}{5}\right]+2\left[\frac{7}{10}\right]+\left(1+\sqrt{5}+4i+\zeta_2\right)\left(\frac{1}{x}+\frac{1}{y}\right)+
+(1+i)\left(2\left(\frac{1}{x}+\frac{1}{y}\right)^2-\left[\frac{9}{10}\right]+i\right),
+\end{equation}
+
+\begin{equation}
+q=\frac{1}{2}\left(\left[\frac{1}{5}\right]+\left[\frac{7}{10}\right]-1+i\right)\left(\frac{1}{x}-\frac{1}{y}\right)^{-1}
++\frac{1}{2}\left(\frac{1}{x}-\frac{1}{y}\right)^{-2}\sqrt{\left(\frac{1}{x}-\frac{1}{y}\right)^{2}(i-1)\,Q}
+\end{equation}-->
+
+<p>and eventually</p>
+
+$$
+u=\frac{i}{z}\frac{x^2-zx+xy+yz}{1+i-\left[\frac{3}{10}\right]-\left[\frac{4}{5}\right]}.
+$$
+
+<p>Unimodular number $x=[\gamma]$ is a free non-affine parameter for $\gamma\in\left(2/5, 4/5\right)\cup\left(1, 7/5\right)$.
+
+<hr>
+
+<p>Generic <a href="../d/defect.html">defect</a> is $d\Big(T_8^{(1)}\Big) =3$.</p>
+<hr>
+<p>For $\gamma\in\{1/2,1,13/10\}$ one recovers a <a href="../d/butson-class.html">Butson</a> type
+matrix <a href="0820B.html">$B_{8A}$</a> $\in BH(8,20)$ with defect $7$, while for $\gamma=4/5$ one recovers another <a href="../d/butson-class.html">Butson</a> type
+matrix <a href="0820_2B.html">$B_{8B}$</a> $\in BH(8,20)$ with defect $11$.</p>
+
+</div>

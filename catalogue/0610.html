@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$G_6^{(4)}$</h1>
+<hr>
+<p>A non-<a href="../d/affine-family.html">affine</a>
+four-parameter family of complex Hadamard matrices found
+by F. Sz&#246;ll&#337;si.</p>
+
+<p>We start with a submatrix
+
+$$E(a,b,c,d)=\left[\begin{array}{ccc}
+1 &amp; 1 &amp; 1\\
+1 &amp; a &amp; b\\
+1 &amp; c &amp; d
+\end{array}\right]$$
+
+and embed it into a <a href="../d/complex-hadamard-matrix.html">complex</a> Hadamard matrix of order $6$
+
+$$G_6^{(4)}(a,b,c,d)=\left[\begin{array}{llllll}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1\\
+1 &amp; a &amp; b &amp; e &amp; s_1 &amp; s_2\\
+1 &amp; c &amp; d &amp; f &amp; s_3 &amp; s_4\\
+%\hline
+1 &amp; g   &amp; h   &amp; \star &amp; \star &amp; \star\\
+1 &amp; t_1 &amp; t_2 &amp; \star &amp; \star &amp; \star\\
+1 &amp; t_2 &amp; t_4 &amp; \star &amp; \star &amp; \star
+\end{array}\right]\equiv\left[\begin{array}{cc}E&amp; B\\C&amp;D\end{array}\right]$$
+
+with $3\times 3$ blocks $E$, $B$, $C$ and $D$ in two steps:</p>
+
+<ol>
+<li>construct the submatrices $B$ and $C$ featuring
+    unimodular entries to obtain three orthogonal rows and
+    columns of $G_6$,</li>
+
+<li>find the unique lower right submatrix $D$ to get a unitary matrix
+    $$D=-CE^{\ast}\left(B^{-1}\right)^{\ast}$$</li>
+</ol>
+
+<p>
+The elements: $e$, $f$, $g$, $h$, $s_k$ and $t_k$
+depend on $a$, $b$, $c$ and $d$, although
+the construction is non-trivial. See [<a href="../literature.html?a=107">107</a>].
+</p>
+
+<p>We provide the <a href="../scripts.html">script</a> in <code>Mathematica</code> by FS that is able to
+construct &quot;random&quot; generic matrices according to the high level
+perspective outlined in Section 3 of [<a href="../literature.html?a=107">107</a>].</p>
+
+<hr>
+
+<p class="conjecture">
+<b>Conjecture:</b> The set of complex Hadamard matrices
+of order $6$ consists of:
+the <a href="../d/isolated-matrix.html">isolated</a> matrix
+<a href="0604.html">$S_6^{(0)}$</a>
+and the four-parameter generic family $G_6^{(4)}$.
+</p>
+
+</div>

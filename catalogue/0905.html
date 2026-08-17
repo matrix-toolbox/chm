@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$K_9^{(2)}$ <span class="faded">$\left(BC_9^{(2)}\right)$</span></h1>
+<hr>
+<p>Let $H_9\big((x,y),(u,w)\big)$ be a $9\times 9$ <a href="../d/complex-hadamard-matrix.html">complex</a> Hadamard matrix
+of the following symmetric and <b>block circulant, with circulant blocks</b> ($BCCB$) form</p> 
+
+$$H_9\big((x,y),(u,w)\big)=\left[\begin{array}{lll|lll|lll}
+       1&amp;  x&amp;  x&amp;  y&amp;  u&amp;  w&amp;  y&amp;   w&amp;  u\\
+       x&amp;  1&amp;  x&amp;  w&amp;  y&amp;  u&amp;  u&amp;   y&amp;  w\\ 
+       x&amp;  x&amp;  1&amp;  u&amp;  w&amp;  y&amp;  w&amp;   u&amp;  y\\
+       \hline
+       y&amp;  w&amp;  u&amp;  1&amp;  x&amp;  x&amp;  y&amp;   u&amp;  w\\
+       u&amp;  y&amp;  w&amp;  x&amp;  1&amp;  x&amp;  w&amp;   y&amp;  u\\
+       w&amp;  u&amp;  y&amp;  x&amp;  x&amp;  1&amp;  u&amp;   w&amp;  y\\
+       \hline
+       y&amp;  u&amp;  w&amp;  y&amp;  w&amp;  u&amp;  1&amp;   x&amp;  x\\
+       w&amp;  y&amp;  u&amp;  u&amp;  y&amp;  w&amp;  x&amp;   1&amp;  x\\
+       u&amp;  w&amp;  y&amp;  w&amp;  u&amp;  y&amp;  x&amp;   x&amp;  1
+\end{array}\right].$$
+
+<p>A two-parameter, non-<a href="../d/affine-family.html">affine</a> family of <a href="../d/complex-hadamard-matrix.html">complex</a>
+Hadamard matrices found by B. Karlsson [<a href="../literature.html?a=161">161</a>] stemming
+from $H_9\big((x,y),(u,w)\big)$ is denoted by $K_9^{(2)}(\zeta)$, where</p>
+ 
+$$\zeta \in \big\{z\in\mathbb{C} : |1-z|\leqslant 4\big\}\cap\big\{z\in\mathbb{C} : |1+z| \leqslant 4\big\}\setminus\{\mp 1\}$$
+
+<p>with</p>
+
+$$
+\left.\begin{array}{cc}x\\y\end{array}\right\} = \frac{1}{4}(1+\zeta)\left(1\pm i\sqrt{\frac{16}{|1+\zeta|^2}-1}\right)
+$$
+and
+$$
+\left.\begin{array}{cc}u\\w\end{array}\right\} = \frac{1}{4}(1-\zeta)\left(1\pm i\sqrt{\frac{16}{|1-\zeta|^2}-1}\right).
+$$
+
+<p>In particular, the property of being a <a href="../d/complex-hadamard-matrix.html">complex</a> Hadamard matrix
+is invariant under the operation of
+swapping of $x \leftrightarrow y$ and/or $u \leftrightarrow w$.</p>
+
+<hr>
+
+<p>The <a href="../d/defect.html">defect</a> of a generic element of $K_9^{(2)}$ is $2$, so
+it is not contained in any other orbit, however it contains two <a href="../d/affine-family.html">affine</a> $1$-parameter
+sub-orbits [<a href="../literature.html?a=161">161</a>].</p> 
+
+</div>

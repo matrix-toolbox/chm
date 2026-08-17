@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$D_6^{(1)}$</h1>
+<hr>
+<p>There are precisely five <a href="../d/permutation-equivalent-families.html">permutation equivalent</a>
+$1$-parameter <a href="../d/maximal-affine-family.html">maximal</a>
+<a href="../d/affine-family.html">affine</a>
+Hadamard families stemming from the symmetric matrix
+
+<a href="0604B.html">
+$$D_6=\left[\begin{array}{rrrrrr}
+        1&amp;  1&amp;  1&amp;  1&amp;  1&amp;  1\\
+        1&amp; -1&amp;  i&amp; -i&amp; -i&amp;  i\\
+        1&amp;  i&amp; -1&amp;  i&amp; -i&amp; -i\\
+        1&amp; -i&amp;  i&amp; -1&amp;  i&amp; -i\\
+        1&amp; -i&amp; -i&amp;  i&amp; -1&amp;  i\\
+        1&amp;  i&amp; -i&amp; -i&amp;  i&amp; -1\\
+        \end{array}\right]$$</a>
+
+namely $D_6^{(1)}(c)=D_6\circ{\rm EXP}\left(i R_{D_6^{(1)}}(c)\right)$ with
+
+$$R_{D_6^{(1)}}(c)=\left[\begin{array}{rrrrrr}
+\bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet\\
+\bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet\\
+\bullet &amp; \bullet &amp; \bullet &amp;       c &amp;       c &amp; \bullet\\
+\bullet &amp; \bullet &amp;      -c &amp; \bullet &amp; \bullet &amp;      -c\\
+\bullet &amp; \bullet &amp;      -c &amp; \bullet &amp; \bullet &amp;      -c\\
+\bullet &amp; \bullet &amp; \bullet &amp;       c &amp;       c &amp; \bullet
+\end{array}\right]$$
+
+and
+
+$$\begin{aligned}
+P_1\cdot D_6^{(1)}(c)\cdot P_1^{\rm T} &amp;= D_6\circ{\rm EXP}\left(i P_1\cdot R_{D_6^{(1)}}(c)\cdot P_1^{\rm T}\right)\quad:\quad P_1=\left[e_1,e_3,e_2,e_6,e_5,e_4\right],\\
+P_2\cdot D_6^{(1)}(c)\cdot P_2^{\rm T} &amp;= D_6\circ{\rm EXP}\left(i P_2\cdot R_{D_6^{(1)}}(c)\cdot P_2^{\rm T}\right)\quad:\quad P_2=\left[e_1,e_4,e_3,e_2,e_6,e_5\right],\\
+P_3\cdot D_6^{(1)}(c)\cdot P_3^{\rm T} &amp;= D_6\circ{\rm EXP}\left(i P_3\cdot R_{D_6^{(1)}}(c)\cdot P_3^{\rm T}\right)\quad:\quad P_3=\left[e_1,e_6,e_2,e_3,e_4,e_5\right],\\
+P_4\cdot D_6^{(1)}(c)\cdot P_4^{\rm T} &amp;= D_6\circ{\rm EXP}\left(i P_4\cdot R_{D_6^{(1)}}(c)\cdot P_4^{\rm T}\right)\quad:\quad P_4=\left[e_1,e_5,e_4,e_3,e_2,e_6\right],
+\end{aligned}$$
+
+where $e_i$ denotes the $i^{\rm th}$ standard basis column vector.</p>
+
+<p>Numerical results show that <a href="../d/defect.html">defect</a>
+$d\left(D_6^{(1)}(c)\right)=4$ for a generic value of the parameter $c$.</p>
+
+<hr>
+
+<p>There are <a href="../d/equivalence-relation.html">equivalence</a> relations within the
+family: $D(c) \simeq D(c + 1/2) \simeq D(1/4 - c)$ which allow
+to take the paremeter $c \in [-1/8, 1/8]$. Moreover $\Big(D(c)\Big)^{\rm T} \simeq D(-c)$.</p>
+
+</div>

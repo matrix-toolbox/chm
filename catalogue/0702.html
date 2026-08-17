@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$P_7^{(1)}$</h1>
+
+<p>There are precisely three <a href="../d/permutation-equivalent-families.html">permutation equivalent</a>
+$1$-parameter <a href="../d/maximal-affine-family.html">maximal</a>
+<a href="../d/affine-family.html">affine</a>
+Hadamard families stemming from symmetric matrix being a permuted &quot;starting point&quot; for
+a $1$-parameter orbit found by M. Petrescu [<a href="../literature.html?a=82">82</a>];
+
+$$P_7=\left[\begin{array}{lllllll}
+       1&amp;   1&amp;   1&amp;   1&amp;   1&amp;   1&amp;   1\\
+       1&amp;   w&amp; w^4&amp; w^5&amp; w^3&amp; w^3&amp;   w\\
+       1&amp; w^4&amp;   w&amp; w^3&amp; w^5&amp; w^3&amp;   w\\
+       1&amp; w^5&amp; w^3&amp;   w&amp; w^4&amp;   w&amp; w^3\\
+       1&amp; w^3&amp; w^5&amp; w^4&amp;   w&amp;   w&amp; w^3\\
+       1&amp; w^3&amp; w^3&amp;   w&amp;   w&amp; w^4&amp; w^5\\
+       1&amp;   w&amp;   w&amp; w^3&amp; w^3&amp; w^5&amp; w^4\end{array}\right]:\quad w=\exp(2\pi i/6).$$
+
+They are $$P_7^{(1)}(a)=P_7\circ{\rm EXP}\left(i R_{P_7^{(1)}}(a)\right),$$
+
+where
+
+$$R_{P_7^{(1)}}(a)=
+\left[\begin{array}{rrrrrrr}
+            \bullet&amp; \bullet&amp; \bullet&amp;  \bullet&amp;  \bullet&amp; \bullet&amp; \bullet\\
+            \bullet&amp;       a&amp;       a&amp;  \bullet&amp;  \bullet&amp; \bullet&amp; \bullet\\
+            \bullet&amp;       a&amp;       a&amp;  \bullet&amp;  \bullet&amp; \bullet&amp; \bullet\\
+            \bullet&amp; \bullet&amp; \bullet&amp;       -a&amp;       -a&amp; \bullet&amp; \bullet\\
+            \bullet&amp; \bullet&amp; \bullet&amp;       -a&amp;       -a&amp; \bullet&amp; \bullet\\
+            \bullet&amp; \bullet&amp; \bullet&amp;  \bullet&amp;  \bullet&amp; \bullet&amp; \bullet\\
+            \bullet&amp; \bullet&amp; \bullet&amp;  \bullet&amp;  \bullet&amp; \bullet&amp; \bullet\end{array}\right]$$
+
+and
+
+$$\begin{aligned}
+P_1\cdot P_7^{(1)}(a)\cdot P_2^{\rm T} &amp;= P_7\circ{\rm EXP}\left(i P_1\cdot R_{P_7^{(1)}(a)}\cdot P_2^{\rm T}\right)\quad:\quad P_1 = \left[e_1, e_7, e_3, e_4, e_6, e_5, e_2\right],\\
+P_2\cdot P_7^{(1)}(a)\cdot P_1^{\rm T} &amp;= P_7\circ{\rm EXP}\left(i P_2\cdot R_{P_7^{(1)}(a)}\cdot P_1^{\rm T}\right)\quad:\quad P_2 = \left[e_1, e_2, e_7, e_6, e_5, e_4, e_3\right],
+\end{aligned}$$
+
+and $e_k$ denotes the $k^{\rm th}$ standard basis column vector.</p>
+
+<hr>
+
+<p>Matrix $P_7\in BH(7,6)$ was first introduced by B. W. Brock in 1988 [<a href="../literature?a=177">177</a>].</p>
+</div>

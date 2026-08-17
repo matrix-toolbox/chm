@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$K_6^{(2)}$</h1>
+<hr>
+<p>A non-<a href="../d/affine-family.html">affine</a> two-parameter
+family of <a href="../d/complex-hadamard-matrix.html">complex</a> Hadamard matrices found by
+B. Karlsson [<a href="../literature.html?a=105">105</a>] reads
+
+$$K_6^{(2)}(x_1,x_2)=\left[\begin{array}{rrrrrr}
+1 &amp;    1 &amp;             1 &amp;    1             &amp;    1          &amp;    1\\
+1 &amp;   -1 &amp;           z_1 &amp; -z_1             &amp;  z_1          &amp; -z_1\\
+1 &amp;  z_2 &amp;          -f_1 &amp; -z_2f_2          &amp; -\bar{f_3}    &amp; -z_2\bar{f_4}\\
+1 &amp; -z_2 &amp; -z_1\bar{f_2} &amp;  z_1z_2\bar{f_1} &amp; -z_1f_4       &amp;  z_1z_2f_3\\
+1 &amp;  z_2 &amp; -\bar{f_3}    &amp; -z_2\bar{f_4}    &amp; -f_1          &amp; -z_2f_2\\
+1 &amp; -z_2 &amp; -z_1f_4       &amp;  z_1z_2f_3       &amp; -z_1\bar{f_2} &amp;  z_1z_2\bar{f_1}
+\end{array}\right]$$
+
+with parameters: $z_k=\exp(ix_k): -\pi/2&lt;x_k\leqslant\pi/2$.
+The elements are given in terms of four factors:
+$f_1 = f( x_1, x_2)$, $f_2 = f( x_1,-x_2)$, $f_3 = f(-x_1,-x_2)$, $f_4 = f(-x_1, x_2)$,
+
+where
+
+$$f(x_1,x_2)=\exp\left(i\frac{1}{2}(x_1+x_2)\right)
+\left(\cos\frac{x_1-x_2}{2}-i\sin\frac{x_1+x_2}{2}\right)
+\left(\frac{1}{2}+i\sqrt{\frac{1}{1+\sin x_1\sin x_2}-\frac{1}{4}}\right).$$
+</p>
+<hr>
+<p>
+This family contains a subfamily $K_6(x, 0)$ in common with the <a href="0601.html">Fourier</a> family,
+another subfamily $K(0, x)$ in common with
+the <a href="0601.html">Fourier-transposed</a> family, a symmetric subfamily $K(x, x)$ that coincides
+with <a href="0606.html">$M_6^{(1)}$</a>, and it also contains the Di&#355;&#259;'s
+family <a href="0603.html">$D_6^{(1)}$</a> at the points $x_1=\pm\pi/2$ and
+$x_2=\pm\pi/2$.</p>
+
+</div>

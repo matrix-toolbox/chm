@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>$F_6^{(2)}$</h1>
+<hr>
+<p>The only <a href="../d/maximal-affine-family.html">maximal</a>
+<a href="../d/affine-family.html">affine</a>
+Hadmard families stemming from
+the <a href="../d/fourier-matrix.html">Fourier</a> matrix $F_6$ are:
+
+$F_6^{(2)}(a,b)=F_6\circ{\rm EXP}\left(iR_{F_6^{(2)}}(a,b)\right)$ and 
+$\left(F_6^{(2)}(a,b)\right)^{\rm T}=F_6\circ{\rm EXP}\left(i\left(R_{F_6^{(2)}}(a,b)\right)^{\rm T}\right)$,
+
+where
+
+$$F_6=\left[\begin{array}{llllll}
+1&amp; 1  &amp; 1  &amp; 1  &amp; 1  &amp; 1\\
+1&amp; w  &amp; w^2&amp; w^3&amp; w^4&amp; w^5\\
+1&amp; w^2&amp; w^4&amp; 1  &amp; w^2&amp; w^4\\
+1&amp; w^3&amp; 1  &amp; w^3&amp; 1  &amp; w^3\\
+1&amp; w^4&amp; w^2&amp; 1  &amp; w^4&amp; w^2\\
+1&amp; w^5&amp; w^4&amp; w^3&amp; w^2&amp; w
+\end{array}\right]:\quad w=\exp(2\pi i/6)$$
+
+and 
+
+$$R_{F_6^{(2)}}(a,b)=\left[\begin{array}{cccccc}
+\bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet\\
+\bullet &amp;       a &amp;       b &amp; \bullet &amp;       a &amp;       b\\
+\bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet\\
+\bullet &amp;       a &amp;       b &amp; \bullet &amp;       a &amp;       b\\
+\bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet &amp; \bullet\\
+\bullet &amp;       a &amp;       b &amp; \bullet &amp;       a &amp;       b
+\end{array}\right]$$
+
+</p>
+
+<hr>
+
+<p><a href="../d/equivalence-relation.html">Equivalence</a> relations connecting
+different matrices within this family form a discrete group:</p>
+
+<ul>
+
+<li>cyclic translations groups of order $6$
+
+<p>$F(a, b) \simeq F(a + 2/6, b + 1/6) \simeq F(a + 4/6, b + 2/6) \simeq F(a, - b)$</p>
+
+<p>$F(a, b) \simeq F(a + 1/6, b + 2/6) \simeq F(a + 2/6, b + 4/6) \simeq F(- a, b)$</p>
+
+</li>
+
+<li>transformations of order $2$
+
+<p>$F(a, b) \simeq F(b, a)$</p>
+
+<p>$F(a, b) \simeq F(- a, - b)$</p>
+
+</li>
+
+<li>transformations of order $3$
+
+<p>$F(a, b) \simeq F(b - a, - a) \simeq F(- b, a - b)$</p>
+
+</li>
+
+</ul>
+
+<p>Thus the parameter space taken as a square in the $(a, b)$ plane is divided into $144$ equivalent
+triangles of equal area; the lattice in the background are the $6^{\rm th}$ roots. A convenient choice
+of fundamental region of <a href="../d/equivalence-relation.html">inequivalent</a> Hadamard
+matrices is a triangle
+of corners $[0, 0],$ $[1/6, 0]$ and $[1/6, 1/12]$ (red one below).
+More information in [<a href="../literature.html?a=43">43</a>].</p>
+
+<p><img src="0601.png" alt="triangle of phases" title="triangle of phases"></p>
+
+</div>
