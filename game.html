@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<script src="chm.js"> </script>
+
+<!-- 20161209 - first version for complex N = 6
+     20161230 - complex board for N = 3, 4, 5, 6 and fine tuning by arrow-keys
+     -->
+
+     <h1>game</h1>
+     <hr>
+<h3>optimize determinant of a <span id='matrix_domain'>...</span> matrix H of size <span id='chm_size'>...</span></h3>
+<hr>
+<!--table><tr><td style='padding:15px; border: none;'-->
+
+<!--/td-->
+
+<!--td style='vertical-align: top; border: none; border-left: 1px solid #000000; padding: 15px;'-->
+<p>Change size <!--and domain-->:
+
+<!--a href='?q=game&size=3&domain=R'>R</a--> <a href='?size=3'>3</a> &bull;
+<!--a href='?q=game&size=4&domain=R'>R</a--> <a href='?size=4'>4</a> &bull;
+<!--a href='?q=game&size=5&domain=R'>R</a--> <a href='?size=5'>5</a> &bull;
+<!--a href='?q=game&size=6&domain=R'>R</a--> <a href='?size=6'>6</a></p>
+
+
+<p id='game_description' style='text-align: justify;'>...</p>
+
+
+<p>Current value of determinant | H | =  <span id='determinant_value'>...</span>;</p>
+<hr>
+<canvas tabindex='0' id='matrix'>This browser does not support the HTML5 canvas tag!</canvas>
+<hr>
+
+<!--/td></tr></table-->
+
+<script>
+var canvas_context;
+var cell_size = 74;
+var x_phase_dot = 36;
+var y_phase_dot = 36;
+var cell_border = 3;
+var cell_with_border = cell_size + cell_border;
+var matrix_phase = [];
+var N = parseInt(getParameterByName("size")) || 6; // default matrix size is 6 and complex domain
+
+if (N < 3) { // only four dimensions: 3, 4, 5 and 6
+   N = 3;
+} else if (N > 6) {
+   N = 6;
+}
+
+var d = [1, 0]; // complex unity
+var last_x;
+var last_y;
+
+var PI_11 = Math.PI;
+var PI_21 = 2.0 * PI_11;
+var PI_12 = PI_11 * 0.5;
+var PI_32 = 3.0 * PI_12;
+
+// set description
+document.getElementById('chm_size').innerHTML = N;
+
+domain = getParameterByName("domain") || 'C';
+document.getElementById('matrix_domain').innerHTML = (domain == 'C') ? 'complex' : 'real';
+
+// if (domain == 'C') {
+    document.getElementById('game_description').innerHTML =
+    "Phase value 0 &le; &phi; &le; 1 of each entry " +
+    "in the <span id='matrix_size'>...</span> complex unimodular matrix may " +
+    "be adjusted independently " + // - use &uarr; and &darr; keys for fine tuning " +
+    // "by 0.0001 (activates after clicking a cell and works in FireFox only!). " +
+    "After a few steps one should get a complex Hadamard matrix H " +
+    "for which " +
+    "<br>"+
+    "<br>"+
+    "&nbsp;&nbsp;&nbsp;&nbsp;| H | = <span id='determinant_hadamard'>...</span>. " +
+    "<br>"+
+    "<br>"+
+    "Phase-rings turn continuously from red (small -) to green (large determinant value). " +
+    //"<br><br>" +
+    "<a href='game_hint.png'>Hint</a> for dimension six...";
+
+    // document.getElementById('determinant_hadamard').innerHTML = N + '<sup>' + N + '/2' + '</sup> = ' + Math.pow(N, N/2).toFixed(4);
+    document.getElementById('determinant_hadamard').innerHTML = ' exp(ln(' + N + ') &times; ' + N + ' / 2) = ' + Math.pow(N, N/2).toFixed(4);
+    document.getElementById('matrix_size').innerHTML = N + ' &times; ' + N;
+// } else {
+//     document.getElementById('game_description').innerHTML = "set proper domain!"; // ABANDONED - only C-domain for CHM!
+// }
+
+function initialise() {    
+    var canvas = document.getElementById('matrix');
+    canvas.addEventListener("keypress", keyPress, true);
+    canvas.addEventListener('mousedown', mouseDown, false);
+    canvas_context = canvas.getContext('2d');
+    t = N;
+    row_phase = [];
+    while (t--) {
+        row_phase.push(0);
+    }
+    t = N;
+    while (t--) {
+        matrix_phase.push(row_phase.slice());
+    }
+    for (tx = 0; tx < N; tx++)
+    for (ty = 0; ty < N; ty++)
+        matrix_phase[tx][ty] = Math.random(); // random phases at start
+
+    canvas.width  = N * cell_size + cell_border * (N + 1) + 1;
+    canvas.height = N * cell_size + cell_border * (N + 1) + 1;
+    // prepare grid
+    canvas_context.lineWidth = '2';
+    canvas_context.strokeStyle = '#eeeeee';
+    for (var t = 1; t <= N - 1; t++) {
+        canvas_context.beginPath();
+        canvas_context.moveTo(1, 2 + t * cell_with_border);
+        canvas_context.lineTo(canvas.width - 1, 2 + t * cell_with_border);
+        canvas_context.stroke();
+    }
+    for (var t = 1; t <= N - 1; t++) {
+        canvas_context.beginPath();
+        canvas_context.moveTo(2 + t * cell_with_border, 1);
+        canvas_context.lineTo(2 + t * cell_with_border, canvas.height - 1);
+        canvas_context.stroke();
+    }
+    
+    for (tx = 0; tx < N; tx++)
+    for (ty = 0; ty < N; ty++)
+        refreshMatrixElementAt(tx, ty);
+
+    getDeterminant();
+}
+
+function refreshMatrixElementAt(tx, ty) {
+
+    canvas_context.strokeStyle = '#000000';
+    canvas_context.fillStyle = '#ffffff'; // clear cell
+    canvas_context.fillRect(4 + tx * cell_with_border,
+                            4 + ty * cell_with_border, cell_size - 1, cell_size - 1);
+
+    canvas_context.beginPath();
+    canvas_context.arc(40 + tx * cell_with_border,
+                       40 + ty * cell_with_border, 30, 0, 2 * Math.PI, false);
+    // canvas_context.fillStyle = '#eeeeff';
+    // canvas_context.fill();
+    canvas_context.lineWidth = 1;
+    
+    // determinant d: [0, d_maximum]
+    // blue: [0, 255]
+    // thus b = 255 * d / d_maximum: [0, 255]
+    var b = Math.round(moduleComplex(d) * 255.0 / Math.pow(N, N * 0.5));
+    
+    c = 'rgb(' + (255 - b) + ', ' + b + ', ' + 0 + ')'; // phase ring colour
+    canvas_context.strokeStyle = c; // phase ring
+    canvas_context.stroke();
+
+    phase = matrix_phase[tx][ty];
+    canvas_context.font = '11px Arial'; // phase value
+    canvas_context.fillStyle = '#000000';
+    canvas_context.fillText(phase.toFixed(4), 23 + tx * cell_with_border,
+                                              44 + ty * cell_with_border);
+    var bx = Math.cos(-2 * Math.PI * phase);
+    var by = Math.sin(-2 * Math.PI * phase);
+    xc = x_phase_dot + tx * cell_with_border;
+    yc = x_phase_dot + ty * cell_with_border;
+
+    canvas_context.beginPath(); // dot on the ring
+    canvas_context.arc(4 + xc + bx * 30, 4 + yc + by * 30, 3, 0, 2 * Math.PI, false);
+    canvas_context.fillStyle = c;
+    canvas_context.fill();
+    //    canvas_context.lineWidth = 1;
+    //    canvas_context.strokeStyle = '#000000';
+    canvas_context.stroke();
+}
+
+function keyPress(event) {
+    var xx = 0 + Math.floor(x / cell_with_border);
+    var yy = 0 + Math.floor(y / cell_with_border);
+
+    var k = parseInt(event.which || event.keyCode);
+
+    p = matrix_phase[last_x][last_y];
+
+    if (k == 38) { // arrow UP
+        p = p + 0.0001;
+        if (p > 1.0) {
+            p = 1.0;
+        }
+    }
+    if (k == 40) { // arrow DOWN
+        p = p - 0.0001;
+        if (p < 0.0) {
+            p = 0.0;
+        }
+    }
+    
+    matrix_phase[last_x][last_y] = Math.abs(p); // "abs" here to prevent "-0.0"
+    getDeterminant();
+    refreshMatrixElementAt(last_x, last_y);
+}
+
+function mouseDown(event) {
+    x = event.offsetX;
+    y = event.offsetY;
+    var xx = 0 + Math.floor(x / (cell_size + 3));
+    var yy = 0 + Math.floor(y / (cell_size + 3));
+    //canvas_context.lineWidth = '2';
+    //canvas_context.strokeStyle = '#000000';
+    //canvas_context.fillStyle = '#ffffff'; // clear previous phase value
+    //canvas_context.fillRect(20 + xx * cell_with_border,
+    //                        34 + yy * cell_with_border, 38, 12);
+    xc = 36 + xx * cell_with_border;
+    yc = 36 + yy * cell_with_border;
+
+    var phase; // normalized to [0, 1] interval
+    if (y < yc && x > xc)
+        phase = Math.atan(Math.abs((y - yc) / (x - xc)));
+    if (y < yc && x < xc)
+        phase = PI_12 - Math.atan(Math.abs((y - yc) / (x - xc))) + PI_12;
+    if (y > yc && x < xc)
+        phase = Math.atan(Math.abs((y - yc) / (x - xc))) + PI_11;
+    if (y > yc && x > xc)
+        phase = PI_12 - Math.atan(Math.abs((y - yc) / (x - xc))) + PI_32;
+    if (y == yc && x < xc)
+        phase = PI_11;
+    if ((y == yc && x > xc) || (y == yc && x == xc))
+        phase = 0;
+    if (y < yc && x == xc)
+        phase = PI_12;
+    if (y > yc && x == xc)
+        phase = PI_32;
+
+    matrix_phase[xx][yy] = phase / PI_21;
+
+    last_x = xx;
+    last_y = yy;
+    
+    getDeterminant();
+
+    for (tx = 0; tx < N; tx++)
+    for (ty = 0; ty < N; ty++)
+        refreshMatrixElementAt(tx, ty);
+    
+}
+
+function aComplex(z1, z2) {
+    return [ z1[0] + z2[0], z1[1] + z2[1] ];
+}
+
+function sComplex(z1, z2) {
+    return [ z1[0] - z2[0], z1[1] - z2[1] ];
+}
+
+function mComplex(z1, z2) {
+    return [ z1[0] * z2[0] - z1[1] * z2[1], z1[0] * z2[1] + z1[1] * z2[0] ];
+}
+
+function dComplex(z1, z2) {
+    m = moduleComplex(z2);
+    m = m * m;
+    return [ (z1[0] * z2[0] + z1[1] * z2[1]) / m,
+             (z1[1] * z2[0] - z1[0] * z2[1]) / m ];
+}
+
+function moduleComplex(z) {
+    return Math.sqrt(z[0] * z[0] + z[1] * z[1]);
+}
+
+function getDeterminant() {
+    var U = [
+        [[], [], [], [], [], []],
+        [[], [], [], [], [], []],
+        [[], [], [], [], [], []],
+        [[], [], [], [], [], []],
+        [[], [], [], [], [], []],
+        [[], [], [], [], [], []]];
+
+    for (tx = 0; tx < N; tx++) {
+        for (ty = 0; ty < N; ty++) {
+            U[ty][tx] = [
+                Math.cos(PI_21 * matrix_phase[tx][ty]),
+                Math.sin(PI_21 * matrix_phase[tx][ty])
+            ];
+        }
+    }
+
+    var L = [
+        [[1,0], [0,0], [0,0], [0,0], [0,0], [0,0]],
+        [[0,0], [1,0], [0,0], [0,0], [0,0], [0,0]],
+        [[0,0], [0,0], [1,0], [0,0], [0,0], [0,0]],
+        [[0,0], [0,0], [0,0], [1,0], [0,0], [0,0]],
+        [[0,0], [0,0], [0,0], [0,0], [1,0], [0,0]],
+        [[0,0], [0,0], [0,0], [0,0], [0,0], [1,0]]];
+
+    t_row = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+
+    // LU - decomposition
+    for (var c = 0; c < N; c++) {        
+        // move the biggest number on diagonal - Doolittle-Crout modification
+        var m = -1;
+        var i = -1; // index to be exchanged
+        for (r = c; r < N; r++) {
+            v = moduleComplex(U[r][c]);
+            if (v > m) {
+                m = v;
+                i = r;
+            }
+        }
+
+        if (Math.abs(m) < 0.000000001) {
+            d = [0, 0]; // WTF - ?
+        } else if (i != c) {
+            // exchange i-th and c-th row - FIX - check console for "particular" values!
+            // do not care about the sign change in determinant...
+            for (k = 0; k < N; k++) {
+                t_row[k] = U[c][k];
+                U[c][k] = U[i][k];
+                U[i][k] = t_row[k];
+            }
+        }
+        T = U[c][c]; // 'rugownik' != 0 
+        
+        for (r = c + 1; r < N; r++) {
+            beta = dComplex(U[r][c], T);
+            // GAUSS OPERATIONS on U and L are done simultaneously
+            for (var t = 0; t < N; t++) {
+                U[r][t] = sComplex(U[r][t], mComplex(U[c][t], beta));
+                L[r][t] = sComplex(L[r][t], mComplex(L[c][t], beta));
+            }
+        }
+    }
+
+    // var A = '';
+    // for (txx = 0; txx < N; txx++) { A += '\n';
+    // for (tyy = 0; tyy < N; tyy++)
+    // A += '(' + U[txx][tyy][0].toFixed(2) + ' '
+    //   + U[txx][tyy][1].toFixed(2) + '),';}
+    // console.log(A);*/
+
+    d = [1, 0]; // get determinant as a product of diagonals from L and U
+    for (var t = 0; t < N; d = mComplex(mComplex(d, L[t][t]),  U[t][t]), t++);
+
+    document.getElementById('determinant_value').innerHTML = moduleComplex(d).toFixed(4);
+}
+
+document.getElementsByTagName('body')[0].onload = initialise;
+
+</script>
+
+
+   <!--script src="footer.js"> </script-->
+
+
+</div>
