@@ -44,15 +44,15 @@ details{cursor:pointer;}
 <hr>
 
 <p>Sinkhorn's algorithm finds plenty of matrices Y with different characteristics described by triplets (N, d, #L), where
-N = size(Y), d = <b>d</b>(Y) = <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a>(Y),
-#L &equiv; #&Lambda;(Y) = cardinality of <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">Haagerup invariants</a> of Y, and both <b>d</b> and #&Lambda; should be understood as generic values.
+N = size(Y), d = <b>d</b>(Y) = <a href="../d/defect.html">defect</a>(Y),
+#L &equiv; #&Lambda;(Y) = cardinality of <a href="../d/haagerup-set.html">Haagerup invariants</a> of Y, and both <b>d</b> and #&Lambda; should be understood as generic values.
 Some of them can be recognized as completely new examples of (complex) Hadamard matrices,
 some of them can even be expressed analytically &ndash; both families and isolated cases.
 But still there is a lot of objects in a raw form, for which it is unknown whether they are new or not or it is difficult to find strict and compact expressions for them.
 In this (yet another) informal <b><a href="../CHM_CATALOG_appendix.html">appendix</a></b> to
-<b><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/">Catalog</a></b> of CHM we present many such finding
+<b><a href="../">Catalog</a></b> of CHM we present many such finding
 in hope that sometime in a future we will have a tool to fully describe all of them.
-As usual, if somebody can help/improve or have any idea how to simplify this mess, please <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/contact.html">contact us</a>.
+As usual, if somebody can help/improve or have any idea how to simplify this mess, please <a href="../contact.html">contact us</a>.
 It is loosely based on
 <a href="https://doi.org/10.1063/5.0144667" target="_blank">J. Math. Phys. <b>64</b>, 052201 (2023)</a>
 (<a href="https://arxiv.org/abs/2204.11727" target="_blank"><code>arXiv:2204.11727</code></a>),
@@ -70,9 +70,9 @@ We follow the convention that the generic output from the Sinkhorn procedure is 
 <p>where (N, d, L) was already mentioned at the beginning.
 Some special matrices might admit individual names reflecting their properties:</p>
 <pre>
-    <b>BH</b>_N_d_L  =  <b>BH</b><sub>N,d,L</sub>  =  BH(N, q) = <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">Butson</a>-type CHM (&quot;q&quot; denotes the degree of root of unity)
-    <b>RH</b>_N_d_L  =  <b>RH</b><sub>N,d,L</sub>              = subset of BH; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/real-hadamard-matrix.html">real</a> Hadamard matrix (the classic one)
-    <b>FH</b>_N_d_L  =  <b>FH</b><sub>N,d,L</sub>              = subset of BH; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/fourier-matrix.html">Fourier</a> CHM
+    <b>BH</b>_N_d_L  =  <b>BH</b><sub>N,d,L</sub>  =  BH(N, q) = <a href="../d/butson-class.html">Butson</a>-type CHM (&quot;q&quot; denotes the degree of root of unity)
+    <b>RH</b>_N_d_L  =  <b>RH</b><sub>N,d,L</sub>              = subset of BH; <a href="../d/real-hadamard-matrix.html">real</a> Hadamard matrix (the classic one)
+    <b>FH</b>_N_d_L  =  <b>FH</b><sub>N,d,L</sub>              = subset of BH; <a href="../d/fourier-matrix.html">Fourier</a> CHM
     <b>SH</b>_N_d_L  =  <b>SH</b><sub>N,d,L</sub>              = <a href="../CHM_SH/index.html">symmetric</a> CHM
     <b>HH</b>_N_d_L  =  <b>HH</b><sub>N,d,L</sub>              = <a href="../CHM_SH/index.html">Hermitian</a> CHM
 </pre>
@@ -80,7 +80,7 @@ Some special matrices might admit individual names reflecting their properties:<
 more frequently in <b><a href="../CHM_SH/index.html">Appendix C</a></b>.</p>
 
 <p>Every matrix (an array of complex numbers) which is an output from the Sinkhorn algorithm is
-<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/dephased-matrix.html">dephased</a> and checked for <i>simple</i> dependencies between its entries.
+<a href="../d/dephased-matrix.html">dephased</a> and checked for <i>simple</i> dependencies between its entries.
 By <i>simple</i> we mean something of the form: a = bc/d, i.e. just a ratio of several entries, without looking for
 more complicated algebra which shall be recovered by different methods &ndash; mostly unitarity constraints.
 If such a relation is found, appropriate entries are marked by letters and the formula is attached to the matrix.
@@ -140,7 +140,7 @@ but yet their characteristic is unique enough to justify their examination.</p>
 <h1 id="N6">N = 6</h1>
 <hr>
 <p>There are matrices Y such that #&Lambda;(Y) = 3
-(it is <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0604.html">S<sub>6</sub></a>)
+(it is <a href="../catalogue/0604.html">S<sub>6</sub></a>)
 or #&Lambda;(Y) = 451. Both with <b>d</b> = 4.</p>
 <hr>
 <h1 id="N7">N = 7</h1>
@@ -153,10 +153,10 @@ For more details, refer to the case of <a href="#N11">N = 11</a>.</p>
 <h1 id="N8">N = 8</h1>
 <hr>
 <h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_8_0_10.m">T<sub>8,0,10</sub></a></h2>
-<p>This is most likely <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0805.html">A<sub>8</sub></a>.
+<p>This is most likely <a href="../catalogue/0805.html">A<sub>8</sub></a>.
 <hr>
 <h2>&bull; T<sub>8,0,70</sub></h2>
-<p>This is <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0804.html">V<sub>8&Sigma;</sub></a>.
+<p>This is <a href="../catalogue/0804.html">V<sub>8&Sigma;</sub></a>.
 <hr>
 <h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/T_8_1_10.m">T<sub>8,1,10</sub></a>(p<sub>1</sub>) = SH<sub>8,1,10</sub>(p<sub>1</sub>)</h2>
 <hr>
@@ -256,7 +256,7 @@ For more details, refer to the case of <a href="#N11">N = 11</a>.</p>
 <hr>
 <h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_8_5_82.m">T<sub>8,5,82</sub></a></h2>
 <hr>
-<p>&bull; There are some other 8-dimensional matrices with <b>d</b> = 5 and #&Lambda; > 200. They are possibly sub-orbits of <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0801.html">F<sub>8</sub></a>.</p>
+<p>&bull; There are some other 8-dimensional matrices with <b>d</b> = 5 and #&Lambda; > 200. They are possibly sub-orbits of <a href="../catalogue/0801.html">F<sub>8</sub></a>.</p>
 <hr>
 <h1 id="N9">N = 9</h1>
 <hr>
@@ -422,7 +422,7 @@ Y<sub>9,0,625F</sub>
 </pre>
 <hr>
 <h2>&bull; Y<sub>9,2,89</sub></h2>
-<p>Similar characteristics are observed in <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0905.html">K<sub>9</sub>(&zeta;)</a>.</p>
+<p>Similar characteristics are observed in <a href="../catalogue/0905.html">K<sub>9</sub>(&zeta;)</a>.</p>
 <hr>
 <p>&bull; There are also other 9-dimensional matrices Y with <b>d</b>(Y) = 2 and #L &gt; 1000.</p>
 <hr>
@@ -431,7 +431,7 @@ Y<sub>9,0,625F</sub>
 <h2 id="Y_10_0_6">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_6.m">Y<sub>10,0,6</sub></a> = SH<sub>10,0,6</sub> &in; BH(10, 6)</h2>
 <hr>
 <h2 id="Y_10_0_9">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_9A.m">Y<sub>10,0,9A</sub></a> and <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_9B.m">Y<sub>10,0,9B</sub></a></h2>
-<p>Two matrices which are the most likely equivalent to <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0902.html">N<sub>9</sub></a>.</p>
+<p>Two matrices which are the most likely equivalent to <a href="../catalogue/0902.html">N<sub>9</sub></a>.</p>
 <hr>
 <h2 id="Y_10_0_99">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_99.m">Y<sub>10,0,99</sub></a> = SH<sub>10,0,99</sub> and its alternative form: <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_99A.m">Y<sub>10,0,99A</sub></a></h2>
 <p>Matrix Y<sub>10,0,99</sub> is obtained by the Sinkhorn algorithm, then its structure is recovered
@@ -588,7 +588,7 @@ Y<sub>10,1,1422C</sub> =
 <hr>
 <p>&bull; There are matrices Y of order N = 10 with <b>d</b>(Y) = 2 and #&Lambda;(Y) &approx; 1097.
 Currently, not much is known about their structure. They might
-be sub-orbits of <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1001.html">F<sub>10</sub></a>
+be sub-orbits of <a href="../catalogue/1001.html">F<sub>10</sub></a>
 or other known families.</p>
 <hr>
 <h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_3_278.m">Y<sub>10,3,278</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>)</h2>
@@ -660,7 +660,7 @@ is a valid CHM. Parameter <code>c</code> can be chosen independently and admits
 full range of phases: <code>c</code> = exp(i * &pi; * p<sub>3</sub>) for p<sub>3</sub> in [0, 1).
 Even though the picture is symmetric, it won't be easy to provide strict formulas for arg(a) = 2*&pi;*p<sub>1</sub> and arg(b) = 2*&pi;*p<sub>2</sub>...
 Only <a href="argument_rs_500000_rectangle.png">rough approximation</a> is possible, like in the case of
-<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0806.html" target="_blank">T<sub>8</sub></a>.
+<a href="../catalogue/0806.html" target="_blank">T<sub>8</sub></a>.
 </figcaption>
 </figure>
 <li>It is not a Butson type matrix and it seems, it does not contain any such examples.</li>
@@ -718,7 +718,7 @@ regardless of <code>c</code>, the defect of Y is <b>d</b> = 6.</li>
 <p>&bull; There are many other matrices Y of order N = 10 with <b>d</b>(Y) = 4 and #&Lambda;(Y) &in;
 { 354, 358, &approx;922, &approx;982, &approx;1100, &approx;1251, &approx;2000, &approx;2251, &approx;4051, ... }.
 They might
-be sub-orbits of <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1001.html">F<sub>10</sub></a>
+be sub-orbits of <a href="../catalogue/1001.html">F<sub>10</sub></a>
 or other known families.</p>
 <hr>
 <h1 id="N11">N = 11</h1>
