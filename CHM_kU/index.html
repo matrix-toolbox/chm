@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="author" content="Wojciech Bruzda, IFT">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHM Catalog &bull; Multiunitary CHM</title>
+
+<style>
+*{font-variant-ligatures: none;}
+#content{max-width:1024px;margin:0 auto;}
+a{color:#00f;text-decoration: none;}
+a:hover{color:#00f;border-bottom:2px solid #00f;}
+.comment{color:#999;}
+.alert{color:#f00;}
+.last-update{font-family:monospace;}
+pre{margin-left:8px;background-color:#eee;padding:4px;}
+.xi-alert{color:#f00;font-weight:bold;}
+th,td{padding:4px;border:1px solid #000;}
+th{text-align:left;}
+summary{cursor:pointer;}
+.go-top{float:right;}
+.go-top a{text-decoration:none;}
+</style>
+
+<div id="content">
+
+<h1>Catalog of CHM</h1>
+<h2><a href="../CHM_CATALOG_appendix.html">Appendix</a> D: Multiunitary (complex) Hadamard Matrices</h2>
+<p class="last-update">created: 2023-05-04</p>
+<p class="last-update">updated: 2024-06-07 by <a href="https://chaos.if.uj.edu.pl/~wojtek">W. Bruzda</a></p>
+<hr>
+
+<p>Collection of (complex) Hadamard matrices with additional symmetries based on <a href="https://arxiv.org/abs/2306.00999" target="_blank">Open Syst. Inf. Dyn. 31(2), 2250001 (2024)</a>.
+We distinguish here three subclasses in the set of complex Hadamard matrices <b>H</b>(N) of squared dimension N = d<sup>2</sup> for d &ge; 2</p>
+<ul>
+<li>self R-dual: H = H<sup>R</sup> &in; <b>H</b>(N),</li>
+<li>self &Gamma;-dual: H = H<sup>&Gamma;</sup> &in; <b>H</b>(N),</li>
+<li>2-unitary matrices: H and H<sup>R</sup> and H<sup>&Gamma;</sup> are CHM,</li>
+</ul>
+<p>where operations of reshuffling (R) and partial transpose (&Gamma;) are defined by the following relations:
+&langle;ab|H<sup>R</sup>|cd&rangle; := &langle;ac|H|bd&rangle;
+and 
+&langle;ab|H<sup>&Gamma;</sup>|cd&rangle; := &langle;ad|H|cb&rangle;,
+where abcd is four-index of H of dimension d &times; d.
+</p>
+<p>Fourh case, that is</p>
+<ul>
+<li>strong 2-unitary: H = H<sup>R</sup> = H<sup>&Gamma;</sup> &in; <b>H</b>(N)</li>
+</ul>
+<p>does not occur in Nature (theorem).</p>
+
+<h3>Filename scheme:</h3>
+<table>
+<thead>
+<tr><th>realignment type</th><th>duality</th><th>self (strong) duality</th></tr>
+<tbody>
+<tr><td>R</td><td>RD<sub>N,d,#&Lambda;</sub></td><td>SR<sub>N,d,#&Lambda;</sub></td></tr>
+<tr><td>&Gamma;</td><td>GD<sub>N,d,#&Lambda;</sub></td><td>SG<sub>N,d,#&Lambda;</sub></td></tr>
+<tr><td>2-unitarity: both R and &Gamma;</td><td>TU<sub>N,d,#&Lambda;</sub></td><td>&emptyset;</td></tr>
+</table>
+<h3>Contents:</h3>
+<ul>
+<li><a href="#RD">self R-dual</a> CHM</li>
+<li><a href="#GD">self &Gamma;-dual</a> CHM</li>
+<li><a href="#TU">2-unitary</a> CHM</li>
+<li><a href="#BC">classification</a> of Butson matrices (unfinished)</li>
+</ul>
+<hr>
+
+<h1 id="RD">Self R-Dual CHM; H = H<sup>R</sup><span class="go-top"><a href="#top">&uarr;</a></span></h1>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/SR_9_16_3A.m">SR<sub>9,16,3A</sub></a></h2>
+<pre>
+= exp(2j*pi*[
+    0  0  0  0  0  0  0  0  0 ;
+    0  0  0  1  1  1  2  2  2 ;
+    0  0  0  2  2  2  1  1  1 ;
+    0  1  2  0  1  2  0  1  2 ;
+    0  1  2  1  2  0  2  0  1 ;
+    0  1  2  2  0  1  1  2  0 ;    
+    0  2  1  0  2  1  0  2  1 ;
+    0  2  1  1  0  2  2  1  0 ;
+    0  2  1  2  1  0  1  0  2 ;
+]/3;
+</pre>
+<p>It is a self R-dual symmetric Butson-type matrix BH(9, 3) with S = (1, 1, 0).</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/SR_9_16_3B.m">SR<sub>9,16,3B</sub></a></h2>
+<pre>
+= exp(2j*pi*[
+    0  0  0  0  0  0  0  0  0 ;
+    0  0  0  2  2  2  1  1  1 ;
+    0  0  0  1  1  1  2  2  2 ;
+    0  2  1  0  2  1  0  2  1 ;
+    0  2  1  2  1  0  1  0  2 ;
+    0  2  1  1  0  2  2  1  0 ;
+    0  1  2  0  1  2  0  1  2 ;
+    0  1  2  2  0  1  1  2  0 ;
+    0  1  2  1  2  0  2  0  1 ;
+]/3;
+</pre>
+<p>Almost like in SR<sub>9,16,3A</sub> with swapped 1s and 2s; it is derived from the Karlsson's orbit <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0905.html">K<sub>9</sub><sup>(2)</sup></a>(&zeta;=3).</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/SR_9_4_57.m">SR<sub>9,4,57</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, p<sub>4</sub>)</h2>
+<p>Matrix SR<sub>9,4,57</sub> stems form the four-parameter Fourier
+matrix <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0901.html">F<sub>9</sub></a>
+transformed by appropriate diagonal unitary matrices.
+Its entropies read S = (1, 1, f) where f = f(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, p<sub>4</sub>) &in; [0, 1) is a certain function of
+free parameters (one can recover its analytic form if it has any significance...).
+Family SR<sub>9,4,57</sub> is self R-dual for any parameters p<sub>j</sub> &in; [0, 1) with generic values of defect&nbsp;=&nbsp;4 and
+#&Lambda;&nbsp;=&nbsp;57.</p>
+
+<hr>
+
+<h1 id="GD">Self &Gamma;-Dual CHM; H = H<sup>&Gamma;</sup><span class="go-top"><a href="#top">&uarr;</a></span></h1>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/SG_9_0_6.m">SG<sub>9,0,6</sub></a></h2>
+<pre>
+= exp(1j*pi*[
+    0  0  0  0  2  0  0  2  4 ;
+    0  5  3  2  1  3  2  3  3 ;
+    0  3  3  0  3  5  4  3  1 ;
+    0  2  0  2  2  2  4  0  2 ;
+    2  1  3  2  1  5  0  1  1 ;
+    0  3  5  2  5  5  2  1  5 ;
+    0  0  2  4  4  0  2  0  2 ;
+    0  3  3  4  1  1  0  5  5 ;
+    2  3  1  0  1  5  2  5  3 ;
+]/3;
+</pre>
+<p>This is an <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/isolated-matrix.html">isolated</a> self &Gamma;-dual Butson matrix BH(9, 6) with S = (1, 20/27, 1), where 20/27 = 0.(740).</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/SG_9_0_18.m">SG<sub>9,0,18</sub></a> := D<sub>L</sub> &middot; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0902.html">N<sub>9</sub><sup>(0)</sup></a> &middot; D<sub>R</sub></h2>
+<p>This is an <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/isolated-matrix.html">isolated</a> matrix, where D<sub>L</sub> = diag[1, 1, 1, 1, -y<sup>4</sup>, -y<sup>3</sup>, 1, y, 1] and
+D<sub>R</sub> = diag[1, 1, 1, 1, -1, -y, -y<sup>3</sup>, <span class="xi-alert">&xi;</span>, <span class="xi-alert">&xi;</span> y] with y&nbsp;=&nbsp;-1/4&nbsp;+&nbsp;sqrt(-15)/4 and
+<span class="xi-alert">&xi;</span>&nbsp;=&nbsp;7/128&nbsp;+&nbsp;33*sqrt(-15)/128. Number <span class="xi-alert">&xi;</span> is very nice.
+As much as S = (1, 22259/31104, 1). :)</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/SG_9_16_3A.m">SG<sub>9,16,3A</sub></a>(p<sub>1</sub>) := diag[1, 1, e<sup>2 i &pi; p<sub>1</sub></sup>] &otimes; I<sub>3</sub> &middot; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0301.html">F<sub>3</sub></a> &otimes; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0301.html">F<sub>3</sub></a></h2>
+<p>This is a one-parametric family of self &Gamma;-dual matrices with S = (1, 0, 1), stemming 
+(for p<sub>1</sub> = 0) from a symmetric Butson matrix BH(9,&nbsp;3). I<sub>3</sub> is the identity matrix of size 3.</p> 
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/SG_9_16_3B.m">SG<sub>9,16,3B</sub></a> := D &middot; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0905.html">K<sub>9</sub><sup>(2)</sup></a>(3) &middot; D</h2>
+<p><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/log-form.html">Log-form</a> of this symmetric matrix with S = (1, 3/4, 1) roughly looks like</p>
+<pre>
+&simeq; [
+    0  0  0  0  1  2  1  0  2 ;
+    0  0  0  1  2  0  0  2  1 ;
+    0  0  0  2  0  1  2  1  0 ;
+    0  1  2  0  2  1  1  1  1 ;
+    1  2  0  2  1  0  1  1  1 ;
+    2  0  1  1  0  2  1  1  1 ;
+    1  0  2  1  1  1  2  0  1 ;
+    0  2  1  1  1  1  0  1  2 ;
+    2  1  0  1  1  1  1  2  0 ;
+  ]
+</pre>
+<p>where diagonal matrix D = diag[1, 1, 1, 1, &omega;<sup>2</sup>, &omega;, &omega;, &omega;<sup>2</sup>, 1] with &omega; = exp(i &pi;/3).
+Note that there is conjugate on the right-hand side in matrix D.
+It seems that this matrix might be hidden in the previous family as a special case for some p<sub>1</sub>, but there is a little discrepancy in
+the form they are presented: this one is obviously undephased whereas the the previous one is only &quot;partially&quot; dephased.
+Moreover, their entropies are different.</p>
+
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/SG_16_49_18.m">SG<sub>16,49,18</sub></a>(p<sub>1</sub>, p<sub>2</sub>) := <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0401.html">F<sub>4</sub></a>(p<sub>1</sub>) &otimes; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0401.html">F<sub>4</sub></a>(p<sub>2</sub>)</h2>
+<p>This is a two-parametric family of self &Gamma;-dual matrices with S = (1,&nbsp;0,&nbsp;1), stemming 
+(for p<sub>1</sub> = p<sub>2</sub> = 0) from a symmetric Butson matrix BH(16,&nbsp;4). No additional diagonal matrices is required.
+</p> 
+
+<hr>
+
+<h1 id="TU">2-Unitary CHM; all three: H, H<sup>R</sup> and H<sup>&Gamma;</sup> are CHM<span class="go-top"><a href="#top">&uarr;</a></span></h1>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_9_2_89.m">TU<sub>9,2,89</sub></a> := <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0905.html">K<sub>9</sub><sup>(2)</sup></a>(&zeta;) &middot; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/P9.m">P<sub>9</sub></a></h2>
+<p>Matrix TU<sub>9,2,89</sub> is a 2-unitary matrix with S = (1, 1, 1) for any valid value of &zeta; &subset; <a href="https://chaos.if.uj.edu.pl/~wojtek/CHM_dL/K9_D.png"><b>D</b></a> &subset; <b>C</b>,
+where P<sub>9</sub> is a permutation matrix representation of AME(4,&nbsp;3) state.</p>
+
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_9_4_57A.m">TU<sub>9,4,57A</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, p<sub>4</sub>) := D<sub>L</sub> &middot; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0901.html">F<sub>9</sub><sup>(4)</sup></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, p<sub>4</sub>) &middot; D<sub>R</sub></h2>
+<p>Matrix TU<sub>9,4,57A</sub>
+is a 2-unitary matrix stemming from a matrix &simeq; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0909B.html">BH(9, 9)</a> with S = (1, 1, 1),
+where</p>
+<pre>
+D<sub>L</sub> = diag(exp(2j*&pi;*[0, 1, 1, 1, 1, 0, 0, 2, 0]/3));
+
+D<sub>R</sub> = diag(exp(2j*&pi;*[0, 1, 1, 1, 0, 1, 2, 2, 1]/3));
+</pre>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_9_4_57B.m">TU<sub>9,4,57B</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, p<sub>4</sub>)</h2>
+<p>This family requires attention...</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_9_10_21.m">TU<sub>9,10,21</sub></a>(p<sub>1</sub>, p<sub>2</sub>)</h2>
+<p>This family requires attention...</p>
+
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_9_16_3A.m">TU<sub>9,16,3A</sub></a> := D<sub>L</sub> &middot; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0301.html">F<sub>3</sub></a> &otimes; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0301.html">F<sub>3</sub></a> &middot; D<sub>R</sub></h2>
+<p>Matrix TU<sub>9,16,3A</sub>
+is a 2-unitary Butson matrix BH(9, 3)</p>
+<pre>
+&simeq; [
+    0  1  1  1  0  1  2  2  1 
+    1  0  1  2  2  1  0  1  1 
+    1  1  0  2  0  0  0  2  0 
+    1  2  2  0  2  0  2  2  1 
+    1  0  1  0  0  2  2  3  3 
+    0  0  2  2  0  0  1  3  1 
+    0  1  1  0  2  0  3  3  2 
+    2  1  2  2  2  1  2  3  3 
+    0  0  2  0  1  1  3  2  3 
+  ]
+</pre>
+<p>with S = (1, 1, 1), where two diagonal unitary matrices are defined above for SG<sub>9,4,57</sub>.</p>
+
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_9_16_3B.m">TU<sub>9,16,3B</sub></a> := D &middot; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/BH_9_16_3.m">BH<sub>9,16,3</sub></a> &middot; D<sup>&dagger;</sup></h2>
+<p>Matrix TU<sub>9,16,3B</sub>
+is a 2-unitary Butson matrix BH(9, 3) with S = (1, 1, 1), where D = diag(exp(2j*&pi;*[0, 0, 0, 0, 4, 2, 0, 2, 4]/3)).</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_10_48.m">TU<sub>16,10,48</sub></a>(p<sub>1</sub>, p<sub>2</sub>)</h2>
+<p>This family requires attention...</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_12_90.m">TU<sub>16,12,90</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>)</h2>
+<p>This family requires attention...</p>
+
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_17_20.m">TU<sub>16,17,20</sub></a>(p<sub>1</sub>)</h2>
+<p>Matrix TU<sub>16,17,20</sub> is a one-parametric affine family of 2-unitary matrices with S = (1, 1, 1).<!--, stemming (for p<sub>1</sub>) = 0)
+from Butson matrix <a href="">BH(16, 12)</a>.--></p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_17_146A.m">TU<sub>16,17,146A</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, p<sub>4</sub>)</h2>
+<p>This family requires attention...</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_17_146B.m">TU<sub>16,17,146B</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>, p<sub>4</sub>)</h2>
+<p>This family requires attention...</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_19_26.m">TU<sub>16,19,26</sub></a>(p<sub>1</sub>, p<sub>2</sub>)</h2>
+<p>This family requires attention...</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_23_26.m">TU<sub>16,23,26</sub></a>(p<sub>1</sub>, p<sub>2</sub>)</h2>
+<p>This family requires attention...</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_31_20.m">TU<sub>16,31,20</sub></a>(p<sub>1</sub>)</h2>
+<p>This family requires attention...</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_81_4.m">TU<sub>16,81,4</sub></a>(p<sub>1</sub>, p<sub>2</sub>) := D<sub>L</sub>(p<sub>1</sub>) &middot; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/BH_16_81_4.m">BH<sub>16,81,4</sub></a> &middot; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/P16.m">P<sub>16</sub></a> &middot; D<sub>R</sub>(p<sub>2</sub>)</h2>
+<p>Matrix TU<sub>16,81,4</sub> is a 2-unitary matrix with S = (1, 1, 1),
+where P<sub>16</sub> is a permutation matrix representation of AME(4,&nbsp;4) state and two diagonal unitary matrices read:</p>
+<pre>
+D<sub>L</sub>(p<sub>1</sub>) = diag([1, 1, 1, 1, 1, 1, exp(2j*&pi;*p<sub>1</sub>), exp(2j*&pi;*p<sub>1</sub>), &omega;, &omega;, -1, -1, -1, 1, -1, 1]);
+
+D<sub>R</sub>(p<sub>2</sub>) = diag([1, 1, 1, 1, 1, i, 1, i, exp(2j*&pi;*p<sub>2</sub>), exp(2j*&pi;*p<sub>2</sub>), exp(2j*&pi;*p<sub>2</sub>), exp(2j*&pi;*p<sub>2</sub>), 1, i, 1, i]);
+</pre>
+with &omega; = exp(2j*&pi;/3).</p>
+
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/TU_16_105_2.m">TU<sub>16,105,2</sub></a> := <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/BH_16_105_2.m">BH<sub>16,105,2</sub></a> &middot; <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_kU/P16.m">P<sub>16</sub></a></h2>
+<p>Matrix TU<sub>16,105,2</sub> is a 2-unitary Butson matrix BH(16, 2) with S = (1, 1, 1),
+where P<sub>16</sub> is a permutation matrix representation of AME(4,&nbsp;4) state.</p>
+
+
+
+<hr>
+<h1 id="BC">Butson Classification... (unfinished)<span class="go-top"><a href="#top">&uarr;</a></span></h1>
+<!--pre>
+\section{\texorpdfstring{Partial classification of $2$-unitary Butson CHM for $N=9$}{}}\label{BH_charateristic}
+
+In this appendix, we present a brief characterization of all known Butson matrices of order $N=9$ (up to monomial equivalence)
+taken from the Ref.~\cite{LOS19}. We preserve the enumeration of matrices from the original files.
+In all cases B1) -- B6) described below, it is assumed that given $q$, every matrix $\BH{9}{q}$
+can be brought to the element from $\TUCHM{9}$ via two exemplary unitary diagonal matrices,
+$D_LBD_R\in\TUCHM{9}$ -- these matrices might be possibly generalized to much bigger manifold, with possible parameterizations.
+Each table has the same structure with the first column ($\#$) containing offsets of $B$ taken exactly as they are stored in the encoded form in Butson Home~\cite{BHAalto}.
+For completeness each matrix $B$ is listed with the associated defect value, ${\bf d(B)}$, and the cardinality of its Haagerup invariants, $\#\Lambda(B)$.
+
+\medskip
+
+
+B1) There are $3$ Butson matrices in the class $\BH{9}{3}$.
+All matrices with offsets marked with $^{[1]}$ can be brought to $\TUCHM{9}$ with
+$D_L = {\rm diag}\big\{\exp\frac{i\pi}{3}(0, 0, 0, 0, 4, 2, 0, 2, 4)\big\}$ and  $D_R = D_L^{\dagger}$.
+%\begin{table}[ht!]
+%\centering
+%\begin{tabular}{||l|c|c||}
+%$\#$ & ${\bf d}$ & $\#\Lambda$\\
+%\hline
+%$1^{[1]}$ &      16  &    3\\
+%$2^{[1]}$ &      4   &    3\\
+%$3^{[1]}$ &      4   &    3\\
+%\end{tabular}
+%\caption{Characteristics of ${\rm B}\mathbb{H}(9,3)$.}
+%\label{table:BH9_3}
+%\end{table}
+
+B2) There are $17$ Butson matrices in the class $\BH{9}{6}$ -- see Tab.~\ref{table:BH9_6}. Matrices
+with offsets marked with $^{[1]}$ can be brought to $\TUCHM{9}$ with https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0905.html
+$D_L = {\rm diag}\big\{\exp\frac{i\pi}{3}(0, 0, 0, 0, 4, 2, 0, 2, 4)\big\}$ and $D_R = D_L^{\dagger}$.
+Two matrices are explicitly isolated (marked with $^{[0]}$). They failed to be presented in a $2$-unitary form for any enphasing {\color{blue}G: takie słowo chyba nie istnieje} diagonal matrices, which supports Conjecture~\ref{isolated-conjecture}. Problem with $2$-unitary
+classification of the other six matrices remains open.
+\begin{table}[ht!]
+\centering
+{\color{lightblue}\begin{tabular}{||l|c|c||l|c|c||l|c|c||}
+$\#$ & ${\bf d}$ & $\#\Lambda$ & $\#$ & ${\bf d}$ & $\#\Lambda$ & $\#$ & ${\bf d}$ & $\#\Lambda$\\
+\hline
+1           &    10    &   6& $7^{[0]}$   &    0     &   6&  $13^{[1]}$  &    4     &   3\\
+2           &    4     &   6& $8^{[0]}$   &    0     &   6&  $14^{[1]}$  &    4     &   6\\
+3           &    4     &   6& $9^{[1]}$   &    16    &   3&  $15^{[1]}$  &    4     &   6\\
+4           &    4     &   6& $10^{[1]}$  &    4     &   6&  $16^{[1]}$  &    12    &   6\\
+5           &    10    &   6& $11^{[1]}$  &    4     &   3&  $17^{[1]}$  &    4     &   6\\
+6           &    4     &   6& $12^{[1]}$  &    8     &   6&              &          &    \\
+\end{tabular}
+\caption{Characteristics of $\BH{9}{6}$.}
+}
+\label{table:BH9_6}
+\end{table}
+
+B3) There are $23$ Butson matrices in the class $\BH{9}{9}$ -- see Tab.~\ref{table:BH9_9}. All matrices with offsets marked with $^{[1]}$ can be brought to $\TUCHM{9}$ with $D_L = {\rm diag}\big\{\exp\frac{i\pi}{3}(0, 0, 0, 0, 4, 2, 0, 2, 4)\big\}$ and $D_R = D_L^{\dagger}$. 
+\begin{table}[ht!]
+\centering
+{\color{lightblue}
+\begin{tabular}{||l|c|c||l|c|c||l|c|c||}
+$\#$ & ${\bf d}$ & $\#\Lambda$ & $\#$ & ${\bf d}$ & $\#\Lambda$ & $\#$ & ${\bf d}$ & $\#\Lambda$\\
+\hline
+$1^{[1]}$    &   16   &   3    &   $9^{[1]}$    &   4    &   9    &  $17^{[1]}$   &   4    &   9   \\
+$2^{[1]}$    &   4    &   9    &   $10^{[1]}$   &   8    &   9    &  $18^{[1]}$   &   4    &   9   \\
+$3^{[1]}$    &   4    &   9    &   $11^{[1]}$   &   8    &   9    &  $19^{[1]}$   &   6    &   9   \\
+$4^{[1]}$    &   4    &   3    &   $12^{[1]}$   &   4    &   9    &  $20^{[1]}$   &   4    &   9   \\
+$5^{[1]}$    &   4    &   9    &   $13^{[1]}$   &   12   &   9    &  $21^{[1]}$   &   10   &   9   \\
+$6^{[1]}$    &   4    &   9    &   $14^{[1]}$   &   4    &   9    &  $22^{[1]}$   &   4    &   9   \\
+$7^{[1]}$    &   4    &   3    &   $15^{[1]}$   &   4    &   9    &  $23^{[1]}$   &   10   &   9   \\
+$8^{[1]}$    &   4    &   9    &   $16^{[1]}$   &   6    &   9    &               &        &       \\
+\end{tabular}
+\caption{Characteristics of $\BH{9}{9}$.}
+}
+\label{table:BH9_9}
+\end{table}
+
+B4) There is only $1$ Butson matrix $B\in\BH{9}{10}$.
+It cannot be brought to $\TUCHM{9}$ via $D_LBD_R$ for any $D_L$ and $D_R$. 
+This matrix is an exceptional case
+in the set of CHM being an isolated object with a non-vanishing defect, ${\rm d}(B)=2$.
+The impossibility of converting it into a $2$-unitary representative, again, supports
+Conjecture~\ref{isolated-conjecture}.
+
+
+B5) There are $65$ Butson matrices in the class $\BH{9}{12}$ -- see Tab.~\ref{table:BH9_12}. Matrices with offsets marked with $^{[1]}$ can be brought to $\TUCHM{9}$ with
+$D_L = {\rm diag}\big\{\exp\frac{i\pi}{3}(0, 0, 0, 0, 4, 2, 0, 2, 4)\big\}$ and $D_R = D_L^{\dagger}$. Two of them are explicitly isolated (marked with $^{[0]}$) and due to Conjecture~\ref{isolated-conjecture}, they possibly cannot be members of the set $\TUCHM{9}$.
+Other matrices have not been recognized.
+
+\begin{table}[ht!]
+\centering
+{\color{lightblue}
+\begin{tabular}{||l|c|c||l|c|c||l|c|c||l|c|c||}
+$\#$ & ${\bf d}$ & $\#\Lambda$ & $\#$ & ${\bf d}$ & $\#\Lambda$ & $\#$ & ${\bf d}$ & $\#\Lambda$ & $\#$ & ${\bf d}$ & $\#\Lambda$\\
+\hline
+1            &    10   &    6   &   $18^{[1]}$   &    4    &    9    & $35^{[1]}$   &   4    &   12   & $52^{[1]}$   &   4    &   12 \\
+2            &    4    &    6   &   $19^{[1]}$   &    4    &    3    & $36^{[1]}$   &   4    &   12   & $53^{[1]}$   &   12   &   6  \\
+3            &    4    &    12  &   $20^{[1]}$   &    4    &    9    & $37^{[1]}$   &   6    &   12   & $54^{[1]}$   &   4    &   12 \\
+4            &    4    &    12  &   $21^{[1]}$   &    8    &    6    & $38^{[1]}$   &   4    &   9    & $55^{[1]}$   &   4    &   6  \\
+5            &    4    &    6   &   $22^{[1]}$   &    4    &    6    & $39^{[1]}$   &   4    &   12   & $56^{[1]}$   &   4    &   12 \\
+6            &    4    &    6   &   $23^{[1]}$   &    4    &    9    & $40^{[1]}$   &   6    &   12   & $57^{[1]}$   &   10   &   12 \\
+7            &    4    &    12  &   $24^{[1]}$   &    4    &    9    & $41^{[1]}$   &   8    &   12   & $58^{[1]}$   &   4    &   12 \\
+8            &    4    &    12  &   $25^{[1]}$   &    4    &    3    & $42^{[1]}$   &   4    &   12   & $59^{[1]}$   &   4    &   12 \\
+9            &    10   &    6   &   $26^{[1]}$   &    4    &    9    & $43^{[1]}$   &   4    &   12   & $60^{[1]}$   &   4    &   12 \\
+10           &    4    &    6   &   $27^{[1]}$   &    8    &    12   & $44^{[1]}$   &   4    &   9    & $61^{[1]}$   &   4    &   12 \\
+11           &    4    &    12  &   $28^{[1]}$   &    4    &    12   & $45^{[1]}$   &   6    &   12   & $62^{[1]}$   &   10   &   12 \\
+12           &    4    &    12  &   $29^{[1]}$   &    4    &    12   & $46^{[1]}$   &   4    &   12   & 63           &   2    &   12 \\
+$13^{[0]}$   &    0    &    6   &   $30^{[1]}$   &    8    &    12   & $47^{[1]}$   &   4    &   12   & 64           &   2    &   12 \\
+$14^{[0]}$   &    0    &    6   &   $31^{[1]}$   &    4    &    12   & $48^{[1]}$   &   6    &   12   & 65           &   2    &   12 \\
+$15^{[1]}$   &    16   &    3   &   $32^{[1]}$   &    4    &    12   & $49^{[1]}$   &   4    &   12   &              &        &      \\
+$16^{[1]}$   &    4    &    9   &   $33^{[1]}$   &    4    &    12   & $50^{[1]}$   &   4    &   12   &              &        &      \\
+$17^{[1]}$   &    4    &    6   &   $34^{[1]}$   &    12   &    9    & $51^{[1]}$   &   4    &   6    &              &        &      \\
+\end{tabular}
+\caption{Characteristics of $\BH{9}{12}$.}
+}
+\label{table:BH9_12}
+\end{table}
+
+B6) There are $93$ Butson matrices in the class $\BH{9}{15}$ -- see Tab.~\ref{table:BH9_15}. Matrices with offsets marked with $^{[1]}$ can be brought to $\TUCHM{9}$ with
+$D_L = {\rm diag}\big\{\exp\frac{i\pi}{3}(0, 0, 0, 0, 4, 2, 0, {\bf 4}, {\bf 2})\big\}$ and $D_R = D_L$. Note no conjugation in $D_R$ and different entries $D_L$ in comparison with earlier examples. Problem with $2$-unitary
+classification of the other six matrices remains open.
+\begin{table}[ht!]
+\centering
+{\color{lightblue}
+\begin{tabular}{||l|c|c||l|c|c||l|c|c||l|c|c||}
+$\#$ & ${\bf d}$ & $\#\Lambda$  & $\#$ & ${\bf d}$ & $\#\Lambda$  & $\#$ & ${\bf d}$ & $\#\Lambda$ & $\#$ & ${\bf d}$ & $\#\Lambda$\\
+\hline
+ 1           &   4   &    3    &  $25^{[1]}$   &   4   &    15 & 49           &   4   &   15  & 73            &   10   &   15  \\
+ $2^{[1]}$   &   4   &    9    &  26           &   4   &    9  & $50^{[1]}$   &   12  &   9   & $74^{[1]}$    &   4    &   15  \\
+ $3^{[1]}$   &   4   &    9    &  $27^{[1]}$   &   4   &    15 & $51^{[1]}$   &   4   &   15  & 75            &   4    &   15  \\
+ $4^{[1]}$   &   4   &    15   &  28           &   4   &    9  & $52^{[1]}$   &   6   &   15  & $76^{[1]}$    &   4    &   15  \\
+ $5^{[1]}$   &   4   &    15   &  $29^{[1]}$   &   4   &    15 & 53           &   4   &   15  & $77^{[1]}$    &   6    &   15  \\
+ 6           &   4   &    9    &  $30^{[1]}$   &   8   &    15 & $54^{[1]}$   &   4   &   15  & 78            &   4    &   15  \\
+ $7^{[1]}$   &   4   &    15   &  $31^{[1]}$   &   4   &    15 & $55^{[1]}$   &   10  &   15  & $79^{[1]}$    &   6    &   15  \\
+ 8           &   4   &    9    &  $32^{[1]}$   &   4   &    15 & 56           &   4   &   15  & $80^{[1]}$    &   4    &   15  \\
+ $9^{[1]}$   &   8   &    15   &  $33^{[1]}$   &   6   &    15 & $57^{[1]}$   &   4   &   9   & 81            &   4    &   15  \\
+$10^{[1]}$   &   4   &    15   &  34           &   4   &    15 & $58^{[1]}$   &   6   &   15  & $82^{[1]}$    &   10   &   15  \\
+$11^{[1]}$   &   4   &    15   &  $35^{[1]}$   &   4   &    15 & $59^{[1]}$   &   4   &   15  & 83            &   4    &   15  \\
+12           &   16  &    3    &  $36^{[1]}$   &   4   &    15 & 60           &   4   &   15  & $84^{[1]}$    &   4    &   15  \\
+$13^{[1]}$   &   4   &    9    &  $37^{[1]}$   &   12  &    9  & $61^{[1]}$   &   4   &   9   & 85            &   4    &   15  \\
+$14^{[1]}$   &   4   &    9    &  $38^{[1]}$   &   4   &    15 & $62^{[1]}$   &   4   &   15  & $86^{[1]}$    &   8    &   15  \\
+$15^{[1]}$   &   8   &    15   &  39           &   4   &    15 & $63^{[1]}$   &   4   &   15  & 87            &   4    &   15  \\
+$16^{[1]}$   &   4   &    15   &  $40^{[1]}$   &   6   &    15 & 64           &   10  &   15  & 88            &   4    &   15  \\
+17           &   4   &    3    &  $41^{[1]}$   &   4   &    15 & $65^{[1]}$   &   4   &   15  & $89^{[1]}$    &   4    &   15  \\
+$18^{[1]}$   &   4   &    9    &  $42^{[1]}$   &   4   &    9  & $66^{[1]}$   &   4   &   15  & 90            &   4    &   15  \\
+$19^{[1]}$   &   4   &    9    &  43           &   4   &    15 & 67           &   4   &   15  & $91^{[1]}$    &   4    &   15  \\
+$20^{[1]}$   &   4   &    15   &  $44^{[1]}$   &   4   &    15 & $68^{[1]}$   &   4   &   15  & 92            &   4    &   15  \\
+$21^{[1]}$   &   8   &    15   &  $45^{[1]}$   &   6   &    15 & $69^{[1]}$   &   4   &   15  & 93            &   4    &   15  \\
+22           &   4   &    9    &  $46^{[1]}$   &   4   &    9  & 70           &   4   &   15  & & & \\
+$23^{[1]}$   &   8   &    15   &  $47^{[1]}$   &   4   &    15 & $71^{[1]}$   &   4   &   15  & & & \\
+24           &   4   &    9    &  $48^{[1]}$   &   6   &    15 & $72^{[1]}$   &   4   &   15  & & & \\
+\end{tabular}
+\caption{Characteristics of $\BH{9}{15}$.}
+}
+\label{table:BH9_15}
+\end{table}
+</pre-->
+<details>
+<summary>show tables</summary>
+<pre>
+contents:
+
+        BH(9, 3)
+        BH(9, 6)
+        BH(9, 9)
+        BH(9, 10)
+        BH(9, 12)
+        BH(9, 15)
+
+********************************************************************************
+
+There are 3 Butson matrices in the class BH(9, 3)
+
+#       d(B)    #L(B)   class   D
+--------------------------------------------------------------------------------
+01      16      3       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+02      4       3       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+03      4       3       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+
+********************************************************************************
+
+There are 17 Butson matrices in the class BH(9, 6)
+
+#       d(B)    #L(B)   class   D
+--------------------------------------------------------------------------------
+01      10      6       ..      ..
+02      4       6       ..      ..
+03      4       6       ..      ..
+04      4       6       ..      ..
+05      10      6       ..      ..
+06      4       6       ..      ..
+07      0       6       CONJECTURE
+08      0       6       CONJECTURE
+09      16      3       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+10      4       6       1       :
+11      4       3       1       :
+12      8       6       1       :
+13      4       3       1       :
+14      4       6       1       :
+15      4       6       1       :
+16      12      6       1       :
+17      4       6       1       :
+
+********************************************************************************
+
+There are 23 Butson matrices in the class BH(9, 9)
+
+#       d(B)    #L(B)   class   D
+--------------------------------------------------------------------------------
+01      16      3       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+02      4       9       1       :
+03      4       9       1
+04      4       3       1
+05      4       9       1
+06      4       9       1
+07      4       3       1
+08      4       9       1
+09      4       9       1
+10      8       9       1
+11      8       9       1
+12      4       9       1
+13      12      9       1
+14      4       9       1
+15      4       9       1
+16      6       9       1
+17      4       9       1
+18      4       9       1
+19      6       9       1
+20      4       9       1
+21      10      9       1
+22      4       9       1
+23      10      9       1
+
+********************************************************************************
+
+There is 1 Butson matrix in the class BH(9, 10)
+
+#       d(B)    #L(B)   class   D
+--------------------------------------------------------------------------------
+01      2       10      ..      ..
+
+********************************************************************************
+
+There are 65 Butson matrices in the class BH(9, 12)
+
+#       d(B)    #L(B)   class
+--------------------------------------------------------------------------------
+01      10      6       ..
+02      4       6       ..
+03      4       12      ..
+04      4       12      ..
+05      4       6       ..
+06      4       6       ..
+07      4       12      ..
+08      4       12      ..
+09      10      6       ..
+10      4       6       ..
+11      4       12      ..
+12      4       12      ..
+13      0       6       CONJECTURE
+14      0       6       CONJECTURE
+15      16      3       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+16      4       9       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+17      4       6       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+18      4       9       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+19      4       3       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+20      4       9       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+21      8       6       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+22      4       6       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+23      4       9       1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+24      4       9       1       :
+25      4       3       1
+26      4       9       1
+27      8       12      1
+28      4       12      1
+29      4       12      1
+30      8       12      1
+31      4       12      1
+32      4       12      1
+33      4       12      1
+34      12      9       1
+35      4       12      1
+36      4       12      1
+37      6       12      1         
+38      4       9       1
+39      4       12      1
+40      6       12      1
+41      8       12      1
+42      4       12      1
+43      4       12      1
+44      4       9       1
+45      6       12      1
+46      4       12      1
+47      4       12      1
+48      6       12      1
+49      4       12      1
+50      4       12      1
+51      4       6       1
+52      4       12      1
+53      12      6       1
+54      4       12      1
+55      4       6       1
+56      4       12      1
+57      10      12      1
+58      4       12      1
+59      4       12      1
+60      4       12      1
+61      4       12      1       :
+62      10      12      1       DL = exp(1j*pi*[0 0 0 0 4 2 0 2 4]/3), DR = DL'
+63      2       12      ..
+64      2       12      ..
+65      2       12      ..
+
+********************************************************************************
+
+There are 93 Butson matrices in the class BH(9, 15)
+
+#       d(B)    #L(B)   class   D       q
+--------------------------------------------------------------------------------
+01      4       3       ..      ..      3
+02      4       9       1       ..      15      DL = exp(1j*pi*[0 0 0 0 2 4 0 4 2]/3), DR = DL (no conjugate!)
+03      4       9       1       ..      15
+04      4       15      1       ..      15
+05      4       15      1       ..      15
+06      4       9       ..      ..      15
+07      4       15      1       ..      15
+08      4       9       ..      ..      15
+09      8       15      1       ..      15
+10      4       15      1       ..      15
+11      4       15      1       ..      15
+12      16      3       ..      ..      3
+13      4       9       1       ..      15
+14      4       9       1       ..      15
+15      8       15      1       ..      15
+16      4       15      1       ..      15
+17      4       3       ..      ..      3
+18      4       9       1       ..      15
+19      4       9       1       ..      15
+20      4       15      1       ..      15
+21      8       15      1       ..      15      
+22      4       9       ..      ..      15
+23      8       15      1       ..      15
+24      4       9       ..      ..      15
+25      4       15      1       ..      15
+26      4       9       ..      ..      15
+27      4       15      1       ..      15
+28      4       9       ..      ..      15
+29      4       15      1       ..      15
+30      8       15      1       ..      15
+31      4       15      1       ..      15
+32      4       15      1       ..      15
+33      6       15      1       ..      15
+34      4       15      ..      ..      15
+35      4       15      1       ..      15
+36      4       15      1       ..      15
+37      12      9       1       ..      15
+38      4       15      1       ..      15
+39      4       15      ..      ..      15
+40      6       15      1       ..      15
+41      4       15      1       ..      15
+42      4       9       1       ..      15
+43      4       15      ..      ..      15
+44      4       15      1       ..      15
+45      6       15      1       ..      15
+46      4       9       1       ..      15
+47      4       15      1       ..      15
+48      6       15      1       ..      15
+49      4       15      ..      ..      15
+50      12      9       1       ..      15
+51      4       15      1       ..      15
+52      6       15      1       ..      15
+53      4       15      ..      ..      15
+54      4       15      1       ..      15
+55      10      15      1       ..      15
+56      4       15      ..      ..      15
+57      4       9       1       ..      15
+58      6       15      1       ..      15
+59      4       15      1       ..      15
+60      4       15      ..      ..      15
+61      4       9       1       ..      15
+62      4       15      1       ..      15
+63      4       15      1       ..      15
+64      10      15      ..      ..      15
+65      4       15      1       ..      15
+66      4       15      1       ..      15
+67      4       15      ..      ..      15
+68      4       15      1       ..      15
+69      4       15      1       ..      15
+70      4       15      ..      ..      15
+71      4       15      1       ..      15
+72      4       15      1       ..      15
+73      10      15      ..      ..      15
+74      4       15      1       ..      15
+75      4       15      ..      ..      15
+76      4       15      1       ..      15
+77      6       15      1       ..      15
+78      4       15      ..      ..      15
+79      6       15      1       ..      15
+80      4       15      1       ..      15
+81      4       15      ..      ..      15
+82      10      15      1       ..      15
+83      4       15      ..      ..      15
+84      4       15      1       ..      15
+85      4       15      ..      ..      15
+86      8       15      1       ..      15
+87      4       15      ..      ..      15
+88      4       15      ..      ..      15
+89      4       15      1       ..      15
+90      4       15      ..      ..      15
+91      4       15      1       ..      15
+92      4       15      ..      ..      15
+93      4       15      ..      ..      15
+
+********************************************************************************
+</pre>
+</details>
+
+<hr>
+
+
+</div>
+

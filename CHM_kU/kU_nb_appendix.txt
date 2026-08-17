@@ -1,0 +1,253 @@
+(* ------------------------------------------------------------------------- *)
+
+(* nb-appendix to Multiunitary CHM *)
+
+(* ------------------------------------------------------------------------- *)
+
+    (* CAT MAP *)
+
+    d = 3;
+    NN = d^2;
+    {a, b, c} = {1, -1, 2};
+
+    (*Clear[a,b,c];*)
+
+    CM = Table[
+       Exp[I Pi (a j^2 + b k^2 + c j k)/NN], {j, 1, NN}, {k, 1, NN}];
+
+
+    K = CM;
+    L = RF@CM;
+    M = T2@CM;
+    SL /@ {K, L, M} // N // Chop
+    K.ConjugateTranspose[K] // MatrixForm // N // Chop
+    L.ConjugateTranspose[L] // MatrixForm // N // Chop
+    M.ConjugateTranspose[M] // MatrixForm // N // Chop
+
+    K // MatrixForm
+    SingularValueDecomposition[K]
+
+(* ------------------------------------------------------------------------- *)
+
+
+    (* family of 2-unitary CHM T9(2) *)
+
+    a = Exp[2 Pi I RandomReal[]];
+    b = Exp[2 Pi I RandomReal[]];
+    w = Exp[2 I Pi/3];
+    Z = {
+       {1, 1, 1, 1, 1, 1, 1, 1, 1},
+       {1, w, 1/w, a/w, a, a/w/w, b, b*w, b/w},
+       {1, 1/w, w, b, b/w, b*w, b*w/a, b/a, b*w*w/a},
+       {1, w, 1/w, a, a/w/w, a/w, b/w, b, b*w},
+       {1, 1/w, w, b*w, b, b/w, b/a, b*w*w/a, b*w/a},
+       {1, 1, 1, w, w, w, 1/w, 1/w, 1/w},
+       {1, w, 1/w, a/w/w, a/w, a, b*w, b/w, b},
+       {1, 1/w, w, b/w, b*w, b, b*w*w/a, b*w/a, b/a},
+       {1, 1, 1, 1/w, 1/w, 1/w, w, w, w}
+       };
+    Z.ConjugateTranspose[Z] // MatrixForm // Simplify // Chop;
+    DL = DiagonalMatrix[{1, 1, 1, 1, a w, b w, w/b, w a/b, 1}];
+    DR = DiagonalMatrix[{1, w, w, w, 1, w, w, w, 1}];
+    Y = DL.Z.DR;
+    K = Y;
+    L = RF[Y];
+    M = T2[Y];
+    {a, b}
+    K.ConjugateTranspose[K] // MatrixForm // Simplify // Chop (* = 9 * I_9 *)
+    L.ConjugateTranspose[L] // MatrixForm // Simplify // Chop
+    M.ConjugateTranspose[M] // MatrixForm // Simplify // Chop
+
+(* ------------------------------------------------------------------------- *)
+
+(* family of 2-unitary CHM T16D(1)
+
+    Y[a_] := {
+       {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+       {1, -1, -I a, a, -a, I a, 1, -1, 1, -1, -a, I a, 1, -1, a, -I a},
+       {1, I, a, -a, a, -a, -I, -1, -I, -1, a, -a, I, 1, a, -a},
+       {1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, -1},
+       {1, -1, 1, -1, -1, 1, -1, 1, 1/a, I/a, -I a, a, -1/a, -I/a, I a, -a},
+       {1, 1, I a, a, -a, -I a, -1, -1, -I, I, -I a, -a, -I, I, I a, a},
+       {1, -I, -a, -a, a, a, I, -1, -1, I, I a, -I a, 1, -I, I a, -I a},
+       {1, -1, -1, 1, 1, -1, -1, 1, -1/a, -I/a, -I a, a, 1/a, I/a, I a, -a},
+       {1, -I, -I a^2, -a^2, I a, -I a, I a, -I a, I, -1, a^2, I a^2, -I a, I a, -I a, I a},
+       {1, -1, I a, -a, -I a, a, -I, -I, -1, 1, -a, I a, I, I, -I a, a},
+       {1, I, -a, a, I a, I a, -1, -I, I, 1, a, -a, -1, -I, -I a, -I a},
+       {1, -I, I a^2, a^2, I a, -I a, -I a, I a, I, -1, -a^2, -I a^2, I a, -I a, -I a, I a},
+       {1, 1, 1, 1, -I a, -a, 1/a, -I/a, -1/a, I/a, I a, a, -1, -1, -1, -1},
+       {1, -1, -I a, a, -I a, a, I, I, -I, -I, I a, -a, -1, 1, -a, I a},
+       {1, I, a, -a, I a, I a, 1, I, -1, -I, -I a, -I a, -I, -1, -a, a},
+       {1, 1, -1, -1, -I a, -a, -1/a, I/a, 1/a, -I/a, I a, a, -1, -1, 1, 1}
+       };
+
+    a = Exp[2 I Pi RandomReal[]];
+
+    DL[a_] := 
+      DiagonalMatrix[{1, 1, 1, 1, 1, 1, -1, 1, 1, a, -a, -1, 1, -1, -1, 1}];
+
+    DR[a_] := 
+      DiagonalMatrix[{1, 1, 1, 1, 1, -I, -I a^2, -a^2, Exp[2 I Pi 1/12], 
+        Exp[2 I Pi 4/12], Exp[2 I Pi 7/12], Exp[2 I Pi 10/12], -I, -1, I, 1}];
+
+    U = DL[a].Y[a].DR[a];
+
+    U.ConjugateTranspose[U] // MatrixForm // Chop
+
+    SL /@ {U, RF@U, T2@U}
+
+(* ------------------------------------------------------------------------- *)
+
+    (* K9_sGN9: Karlsson's matrix modification *)
+
+
+    \[Zeta] = RandomReal[] + I*RandomReal[];
+    x = 1/4 (1 + \[Zeta]) (1 + I Sqrt[16/Abs[1 + \[Zeta]]^2 - 1]);
+    y = 1/4 (1 + \[Zeta]) (1 - I Sqrt[16/Abs[1 + \[Zeta]]^2 - 1]);
+    u = 1/4 (1 - \[Zeta]) (1 + I Sqrt[16/Abs[1 - \[Zeta]]^2 - 1]);
+    w = 1/4 (1 - \[Zeta]) (1 - I Sqrt[16/Abs[1 - \[Zeta]]^2 - 1]);
+    Abs[x]
+    Abs[y]
+    Abs[u]
+    Abs[w]
+    x =.;
+    y =.;
+    u =.;
+    w =.;
+    K = {
+       {1, x, x, y, u, w, y, w, u},
+       {x, 1, x, w, y, u, u, y, w},
+       {x, x, 1, u, w, y, w, u, y},
+       {y, w, u, 1, x, x, y, u, w},
+       {u, y, w, x, 1, x, w, y, u},
+       {w, u, y, x, x, 1, u, w, y},
+       {y, u, w, y, w, u, 1, x, x},
+       {w, y, u, u, y, w, x, 1, x},
+       {u, w, y, w, u, y, x, x, 1}
+       };
+    K.ConjugateTranspose[K] // MatrixForm // Chop
+
+    P9 = {
+       {1, 0, 0, 0, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 1, 0, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 1},
+       {0, 0, 0, 0, 0, 0, 0, 1, 0},
+       {0, 0, 1, 0, 0, 0, 0, 0, 0},
+       {0, 0, 0, 1, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 0, 1, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 1, 0, 0},
+       {0, 1, 0, 0, 0, 0, 0, 0, 0}};
+
+    Y = K.P9;
+
+    P = {
+       {1, 0, 0, 0, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 1, 0, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 0, 1},
+       {0, 0, 0, 1, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 0, 1, 0},
+       {0, 0, 1, 0, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 0, 0, 1, 0, 0},
+       {0, 1, 0, 0, 0, 0, 0, 0, 0},
+       {0, 0, 0, 0, 0, 1, 0, 0, 0}};
+
+    (* Y^R is equivalent to Y *)
+    P.{
+        {1, u, u, x, w, y, x, y, w},
+        {w, x, y, u, 1, u, y, x, w},
+        {w, y, x, y, w, x, u, u, 1},
+        {y, w, x, u, u, 1, w, y, x},
+        {x, w, y, x, y, w, 1, u, u},
+        {u, 1, u, y, x, w, w, x, y},
+        {y, x, w, w, x, y, u, 1, u},
+        {u, u, 1, w, y, x, y, w, x},
+        {x, y, w, 1, u, u, x, w, y}
+        }.{
+        {1, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 1},
+        {0, 0, 0, 0, 0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 1, 0},
+        {0, 0, 0, 0, 1, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 1, 0, 0, 0, 0, 0}
+        } - {
+       {1, u, u, w, x, y, w, y, x},
+       {x, w, y, u, 1, u, y, w, x},
+       {x, y, w, y, x, w, u, u, 1},
+       {y, w, x, x, w, y, u, 1, u},
+       {u, u, 1, x, y, w, y, x, w},
+       {w, y, x, 1, u, u, w, x, y},
+       {y, x, w, u, u, 1, x, y, w},
+       {w, x, y, w, y, x, 1, u, u},
+       {u, 1, u, y, w, x, x, w, y}
+       } // MatrixForm
+
+
+    (* Y^T is equivalent to Y too => this is 2-Unitary CHM *)
+    Inverse[P].{
+        {1, x, x, w, u, y, w, y, u},
+        {u, w, y, x, 1, x, y, w, u},
+        {u, y, w, y, u, w, x, x, 1},
+        {y, u, w, x, x, 1, u, y, w},
+        {w, u, y, w, y, u, 1, x, x},
+        {x, 1, x, y, w, u, u, w, y},
+        {y, w, u, u, w, y, x, 1, x},
+        {x, x, 1, u, y, w, y, u, w},
+        {w, y, u, 1, x, x, w, u, y}
+        }.{
+        {1, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 1},
+        {0, 0, 0, 0, 1, 0, 0, 0, 0},
+        {0, 0, 0, 1, 0, 0, 0, 0, 0},
+        {0, 0, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 1, 0},
+        {0, 0, 0, 0, 0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0, 1, 0, 0, 0},
+        {0, 1, 0, 0, 0, 0, 0, 0, 0}
+        } - {
+       {1, u, u, w, x, y, w, y, x},
+       {x, w, y, u, 1, u, y, w, x},
+       {x, y, w, y, x, w, u, u, 1},
+       {y, w, x, x, w, y, u, 1, u},
+       {u, u, 1, x, y, w, y, x, w},
+       {w, y, x, 1, u, u, w, x, y},
+       {y, x, w, u, u, 1, x, y, w},
+       {w, x, y, w, y, x, 1, u, u},
+       {u, 1, u, y, w, x, x, w, y}
+       } // MatrixForm
+
+(* ------------------------------------------------------------------------- *)
+
+    (* Nicoara's matrix modification *)
+
+    y = -1/4 + I Sqrt[15]/4;
+    N0 = {
+       {1, 1, 1, 1, 1, 1, 1, 1, 1},
+       {1, y, y^2, -1, -y, y, y^3, y^3, y},
+       {1, y^2, y^4, -y, y^2, -y^3, y^4, y^2, 1},
+       {1, -y^4, -y^3, y^3, -y^3, -y^2, -y^4, -y^2, -1},
+       {1, -1, y^2, -1/y, 1, 1, y, y^2, 1/y},
+       {1, y^3, -y, -1, y^2, y^3, y, y, y},
+       {1, y, 1, -1/y, y^2, y^2, -1, 1, 1/y},
+       {1, y^4, y^2, -y, y^4, y^2, y^2, -y^3, 1},
+       {1, y^3, y^4, -y^3, y^4, y^2, y^3, y^2, -1}
+       };
+    N0.ConjugateTranspose[N0] // MatrixForm // Simplify
+
+    z = 7/128 + I Sqrt[(128^2 - 49)/128^2]
+    DL = DiagonalMatrix[{1, 1, 1, 1, -y^4, -y^3, 1, y, 1}];
+    DR = DiagonalMatrix[{1, 1, 1, 1, -1, -y, -y^3, z, z y}];
+
+
+    Y = DL.N0.DR;
+
+
+    Y // MatrixForm // FullSimplify
+
+    SL[Y] // FullSimplify
+    SL[RF@Y] // FullSimplify (* 22259/31104 *)
+    SL[T2@Y] // FullSimplify
+
+(* ------------------------------------------------------------------------- *)
