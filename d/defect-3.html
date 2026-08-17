@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+<h1>defect</h1>
+<hr>
+<h3>defect as the dimension of an eigenspace of a unitary operator</h3>
+<hr>
+
+<p>The undephased <a href="defect.html">defect</a> $D(H)$ is the dimension of the complex eigenspace</p>
+
+<p>$$\mathbb{V}_1^{{\small \frac{1}{\sqrt{N}}}H},$$</p>
+    
+<p>associated with eigenvalue $1$, of the operator</p>
+
+<p>$$\mathcal{J}_{{\small \frac{1}{\sqrt{N}}}H}
+= \mathcal{C}^{-1}_{{\small \frac{1}{\sqrt{N}}}H}\mathcal{D}_{{\small \frac{1}{\sqrt{N}}}H}$$</p>
+    
+<p>on the space of all $N\times N$ complex matrices, where</p>
+
+<ul>
+    <li>$H$ is an $N\times N$ <a href="complex-hadamard-matrix.html">complex</a>
+        Hadamard matrix, hence ${\small \frac{1}{\sqrt{N}}}H$ is unitary</li>
+    
+    <li>for an $N\times N$ unitary $U$ and any $N\times N$ complex matrix $F$
+    
+	$$\mathcal{C}_U(F) = \left(F\circ U\right)U^{\ast}, \qquad \mathcal{D}_U(F) = U\left(\bar{F}\circ U\right)^{\ast},$$
+	
+        where $\circ$ is the entrywise (Hadamard) product and $\ast$ is the Hermitian transposition</li>
+    
+    <li>$\mathcal{C}_U$ and $\mathcal{D}_U$ are isomorphisms on $\mathbb{C}^{N\times N}$, and
+    $\mathcal{J}_U = \mathcal{C}^{-1}_U\mathcal{ D}_U$ is unitary with respect to the weighted inner product
+    
+        $$\langle F, G\rangle_U=\sum_{i,j=1,...,N} |U_{i,j}|^2F_{i,j}\bar{G}_{i,j} \ .$$</li>
+</ul>
+    
+<p>The real $D(H)$ dimensional space of imaginary eigenvectors</p>
+
+<p>$$\left(\mathbb{V}_1^{{\small \frac{1}{\sqrt{N}}}H}\right)^{Im}
+= \Big\{X\in\mathbb{V}_1^{{\small \frac{1}{\sqrt{N}}}H} : \bar{X} = -X\Big\}$$</p>
+    
+<p>parametrizes the <a href="defect-2.html">feasible space $\mathbb{D}_H$</a>:</p>
+    
+<p>$$\mathbb{D}_H = \left(\mathbb{V}_1^{{\small \frac{1}{\sqrt{N}}}H}\right)^{Im}\circ H.$$</p>
+
+<p>$\mathbb{V}_1^{{\small \frac{1}{\sqrt{N}}}H}$ (even $\mathbb{V}_1^{U}$ for any unitary $U$)
+   always contains the $2N-1$ dimensional complex space
+   $$\Big\{[a_i+b_j]_{i,j=1,...,N}:a_x,b_x\in\mathbb{C}\Big\},$$ therefore
+   $D(H)\geqslant 2N-1$ and $d(H)\geqslant 0$. For more details
+   see sec. 2 and 5 in [<a href="../literature.html?a=143">143</a>]
+   and sec. 3 in [<a href="../literature.html?a=140">140</a>].</p>
+
+</div>

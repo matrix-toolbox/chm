@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+<h1>defect</h1>
+<hr>
+<h3>defect of a Kronecker product of Fourier matrices</h3>
+<hr>
+
+<p>Let $F=F_{N_1}\otimes...\otimes F_{N_r}$ be a Kronecker product of
+<a href="fourier-matrix.html">Fourier</a>
+matrices (KpFm) of the total size
+$N=N_1\cdot...\cdot N_r$, where
+$$F_N=\left[\exp\frac{i2\pi\cdot jk}{N}\right]_{j,k=0,...,N-1}.$$
+Then
+<a href="defect.html">$D$</a>$(F)$
+is equal to the number of $1$'s sitting in $F$
+and
+<a href="defect.html">$d$</a>$(F)$
+is the number of $1$'s in
+the <a href="core.html">core</a> of $F$.
+It follows from the fact that $F_{j,k}$'s are the eigenvalues of
+<a href="defect-3.html">$\mathcal{J}_{{\small \frac{1}{\sqrt{N}}}F}$</a>.</p>
+
+<p>For example, for</p>
+
+<p>$$F_2\otimes F_2 = \left[\begin{array}{rr}1&amp;1\\1&amp;-1\end{array}\right]\otimes
+\left[\begin{array}{rr}1&amp;1\\1&amp;-1\end{array}\right]=
+\left[\begin{array}{rrrr}
+1&amp; 1&amp; 1&amp; 1\\
+1&amp;-1&amp; 1&amp;-1\\
+1&amp; 1&amp;-1&amp;-1\\
+1&amp;-1&amp;-1&amp;1
+\end{array}\right]$$</p>
+
+<p>we have
+<a href="defect.html">$D$</a>$(F_2\otimes F_2)=10$ &nbsp;
+$1$'s in $F_2\otimes F_2$
+and
+<a href="defect.html">$d$</a>$(F_2\otimes F_2)=3$ &nbsp;
+$1$'s in its core.</p>
+
+<p>If $F_1$ and $F_2$ are KpFm's such that their sizes
+are relatively prime, then
+<a href="defect.html">$D$</a>$(F_1\otimes F_2)=$ <a href="defect.html">$D$</a>$(F_1)$
+<a href="defect.html">$D$</a>$(F_2)$.</p>
+
+<p><a href="defect.html">$D$</a>$(F)$ for $F=F_{N_1}\otimes...\otimes F_{N_r}$ of the
+total size $N=N_1\cdot...\cdot N_r$ can be calculated as:</p>
+
+<p>$$D(F)=\sum_{i\in I_F}\frac{N}{{\rm ord}_{I_F}(i)},$$</p>
+
+<p>where $I_F=\mathbb{Z}_{N_1}\times...\times\mathbb{Z}_{N_r}$
+is the associated group and ${\rm ord}_{I_F}(i)$ denotes
+the order of $i$ in $I_F$.</p>
+
+<p>If $F$ is of size $a^k$ for $a$ prime,
+then <a href="defect.html">$D$</a>$(F)$ is divided by $a^{k-1}$ and
+<a href="defect.html">$d$</a>$(F)$ is divided
+by $(a-1)^2$. Besides <a href="defect.html">$D$</a>$(F_a)=2a-1$ and
+<a href="defect.html">$d$</a>$(F_a)=0$.
+
+<p>For more details see
+sec. 4 in [<a href="../literature.html?a=143">143</a>],
+sec. 5 in [<a href="../literature.html?a=125">125</a>] and
+sec. 5 in [<a href="../literature.html?a=140">140</a>].</p>
+
+</div>

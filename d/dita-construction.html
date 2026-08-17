@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>Di&#355;&#259;'s construction</h1>
+<hr>
+<p>For any two (<a href="complex-hadamard-matrix.html">complex</a>) Hadamard matrices $A\in\mathcal{H}_K$
+and $B\in\mathcal{H}_M$ their tensor product $A\otimes B\in\mathcal{H}_{KM}$.
+A more general construction by <b>Di&#355;&#259;</b>
+[<a href="../literature.html?a=56">56</a>] allows to use
+apart of a given Hadamard matrix $A$ of size $K$ an
+entire set of $K$ (possibly different) Hadamard
+matrices $\{B_1, ... , B_K\}$ of size $M$. Then the matrix
+
+$$H=\left[\begin{array}{cccc}
+A_{11}B_1 &amp; A_{12}E_2B_2 &amp; ... &amp; A_{1K}E_KB_K\\
+\vdots    &amp; \vdots       &amp;     &amp; \vdots\\
+A_{K1}B_1 &amp; A_{K2}E_2B_2 &amp; ... &amp; A_{KK}E_KB_K
+\end{array}\right]$$
+
+of size $N = K M$ is Hadamard. We may introduce additional free
+phases by using $m=(K - 1)$ diagonal <a href="unitary-matrix.html">unitary</a>
+matrices $E_k$. The total number $f$ of free phases reads
+$f=(M - 1)(K - 1) + a + b_1 + ... + b_K$ where
+$a$ and $b_i$ denote the numbers of free phases used in the definitions
+of $A$ and $B_i$ respectively.</p>
+
+<hr>
+
+<p>Other <a href="../theory.html#construction">constructions</a>.</p>
+
+</div>

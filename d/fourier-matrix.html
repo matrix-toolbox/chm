@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>Fourier matrix</h1>
+<hr>
+<p>The <b>Fourier matrix</b> of size $N$ reads
+
+$$\left[F^{'}_N\right]_{j,k}=\frac{1}{\sqrt{N}}\exp\left(2\pi i(j-1)(k-1)\frac{1}{N}\right):j,k=1,2,...,N$$
+
+and is <a href="unitary-matrix.html">unitary</a>. Hence the matrix
+$F_N=\sqrt{N}F^{'}_N$ 
+is a <a href="complex-hadamard-matrix.html">complex</a> Hadamard matrix
+in a <a href="dephased-matrix.html">dephased</a> form.</p>
+
+<hr>
+
+<p><a href="equivalence-relation.html">Equivalence</a> between Kronecker
+(tensor) products of Fourier matrices.</p>
+
+<p>A Kronecker product of Fourier matrices
+
+$k_1=F_{m(1)}\otimes \cdots \otimes F_{m(p)}$
+
+is <a href="equivalence-relation.html">equivalent</a> (even <a href="permutation-equivalent-families.html">
+permutation equivalent</a>) to any other such product of the same total size
+
+$k_2=F_{n(1)}\otimes \cdots \otimes F_{n(r)}$
+
+if and only if $k_2$
+can be obtained from $k_1$ by a combination
+of an arbitrary number of operations from the set:</p>
+
+<ul>
+<li> changing the order of Kronecker product factors,</li>
+<li> replacing a subproduct $F_{m(k)} \otimes F_{m(k+1)}$
+     by the factor $F_{m(k) \cdot m(k+1)}$ only if $m(k)$ and $m(k+1)$
+     are relatively prime,</li>
+<li> replacing a factor $F_{ab}$ by the subproduct $F_a \otimes F_b$
+     only if $a$ and $b$ are relatively
+     prime [<a href="../literature.html?a=28">28</a>].</li>
+</ul>
+
+<hr>
+
+<p>Example 1</p>
+
+<ul>
+<li>$F_2\otimes F_3\simeq F_6$</li>
+<li>$F_2\otimes F_2\otimes F_{15}\simeq F_2\otimes F_{30}$</li>
+<li>$F_4\otimes F_6\not\simeq F_{24}$</li>
+<li>$F_8\otimes F_8\not\simeq F_{64}$</li>
+<li>$F_8\otimes F_4\not\simeq F_8\otimes F_2\otimes F_2$ the same types of elements on both sides!</li>
+<li>$F_8\otimes F_6\otimes F_4\not\simeq F_{48}\otimes F_4$</li>
+</ul>
+
+<hr>
+
+<p>Example 2</p>
+
+<p><a href="equivalence-relation.html">Equivalence</a> classes of Kronecker products
+of Fourier matrices, of the total
+size $N = 72 = 3 \cdot 3 \cdot 2 \cdot 2 \cdot 2$. The elements in
+each class $[ x ]$, represented by $x$, are
+listed up to the order of Kronecker product factors:</p>
+
+<ul>
+<li>$\left[F_9\otimes F_8\right]=\{F_9\otimes F_8, F_{72}\};$ reorderings</li>
+<li>$\left[F_9\otimes F_4\otimes F_2\right]=
+          \{F_9\otimes F_4\otimes F_2, F_{18}\otimes F_4, F_{36}\otimes F_2\};$ reorderings</li>
+<li>$\left[F_9\otimes F_2\otimes F_2\otimes F_2\right]=
+          \{F_9\otimes F_2\otimes F_2\otimes F_2, F_{18}\otimes F_2\otimes F_2\}; $ reorderings</li>
+<li>$\left[F_3\otimes F_3\otimes F_8\right]=
+          \{F_3\otimes F_3\otimes F_8, F_{24}\otimes F_3\}; $ reorderings</li>
+<li>$\left[F_3\otimes F_3\otimes F_4\otimes F_2\right]=
+          \{F_3\otimes F_3\otimes F_4\otimes F_2, F_6\otimes F_3\otimes F_4,
+            F_{12}\otimes F_3\otimes F_2, F_{12}\otimes F_6\}; $ reorderings</li>
+<li>$\left[F_3\otimes F_3\otimes F_2\otimes F_2\otimes F_2\right]=
+          \{F_3\otimes F_3\otimes F_2\otimes F_2\otimes F_2,
+            F_6\otimes F_3\otimes F_2\otimes F_2,
+            F_6\otimes F_6\otimes F_2\}; $ reorderings</li>
+</ul>
+
+<hr>
+
+<p>See also the <a href="defect.html#fourier-defects">table</a> of Fourier defects.</p>
+
+</div>

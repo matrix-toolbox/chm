@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>defect</h1>
+<hr>
+<p>The <d>undephased defect</d>
+$D(H)$ of an $N\times N$ <a href="complex-hadamard-matrix.html">complex</a>
+Hadamard matrix $H$ is the dimension of the (real) solution space of the linear
+system with respect to the matrix variable $R\in\mathbb{R}^{N\times N}$</p>
+
+<p>$$\sum_{k=1}^N H_{i,k}\bar{H}_{j,k}\left(R_{i,k}-R_{j,k}\right) = 0\quad :\quad 1\leqslant i &lt; j \leqslant N.$$</p>
+
+<p>The <b>dephased defect</b> $d(H)$ of $H$ reads</p>
+
+<p>$$d(H) = D(H) - (2N-1).$$</p>
+
+<p>The above values safisty $D(H) \geqslant 2N-1$ and
+$d(H) \geqslant 0$. See sec. 2 in [<a href="../literature.html?a=88">88</a>],
+subsec. 3.1 in [<a href="../literature.html?a=38">38</a>]
+and sec. 1, 2 in [<a href="../literature.html?a=140">140</a>].</p>
+<hr>
+<ul>
+<li><a href="defect-2.html">defect as the dimension of the intersection of tangent spaces</a></li>
+<li><a href="defect-3.html">defect as the dimension of an eigenspace of a unitary operator</a></li>
+<li><a href="defect-4.html">defect of a Kronecker product of Fourier matrices</a></li>
+</ul>
+
+<hr>
+
+<p>$D(H)$ is an upper bound on the dimension of a smooth family $\mathcal{F}$
+of <a href="complex-hadamard-matrix.html">complex</a> Hadamard matrices stemming from a
+complex Hadamard matrix $H$. If $H$ and all
+the other members of $\mathcal{F}$ are <a href="dephased-matrix.html">dephased</a>,
+the dimension of $\mathcal{F}$ is bounded by the smaller value $d(H)$.</p>
+
+<p>A <a href="dephased-matrix.html">dephased</a> complex Hadamard matrix $H$
+satisfying $d(H)=0$ is <a href="isolated-matrix.html">isolated</a>.
+See subsec. 4.1 in [<a href="../literature.html?a=88">88</a>],
+sec. 3 in [<a href="../literature.html?a=38">38</a>] and
+sec. 2 in [<a href="../literature.html?a=140">140</a>].</p>
+
+<p>If $H_1$ and $H_2$ are <a href="equivalence-relation.html">equivalent</a>,
+then $D(H_1)=D(H_2)$ and $d(H_1)=d(H_2)$. Thus
+$H$ and the <a href="dephased-matrix.html">dephased</a> version of it have equal defects.
+See also sec. 3 in [<a href="../literature.html?a=88">88</a>]
+and subsec. 3.2 in [<a href="../literature.html?a=140">140</a>].</p>
+
+<hr>
+
+<p>Examples:</p>
+
+<table>
+    <tr><th>$H$</th>
+        <th>$D(H)$</th>
+        <th>$d(H)$</th>
+        <th>remarks</th></tr>
+
+    <tr><td><a href="../catalogue/0603.html">$D_6^{(1)}(c)$</a></td>
+        <td>$15$</td>
+        <td>$4$</td>
+        <td>for typical $c$, although this family has dimension $1$</td></tr>
+
+    <tr><td><a href="../catalogue/0602.html">$C_6^{(0)}$</a></td>
+        <td>$15$</td>
+        <td>$4$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue.html/0604.html">$S_6^{(0)}$</a></td>
+        <td>$11$</td>
+        <td>$0$</td>
+        <td>so this is <a href="isolated-matrix.html">isolated</a></td></tr>
+
+    <tr><td><a href="../catalogue/0605.html">$B_6^{(1)}$</a>$(y = 0)$</td>
+        <td>$15$</td>
+        <td>$4$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0702">$P_7^{(1)}$</a>$(a)$</td>
+        <td>$15$</td>
+        <td>$2$</td>
+        <td>for generic values of $a$ (compare below with specific values)</td></tr>
+
+    <tr><td><a href="../catalogue/0702">$P_7^{(1)}$</a>$(a)$</td>
+        <td>$16$</td>
+        <td>$3$</td>
+        <td>for $a \in \{ 0, \pi/3, 2\pi/3, \pi\}$</td></tr>
+
+    <tr><td><a href="../catalogue/0903">$B_9^{(0)}$</a></td>
+        <td>$19$</td>
+        <td>$2$</td>
+        <td>it might be a part of some family</td></tr>
+
+    <tr><td><a href="../catalogue/1002">$D_{10}^{(3)}$</a>$(a,b,c)$</td>
+        <td>$35$</td>
+        <td>$16$</td>
+        <td>for generic values of $a$, $b$ and $c$</td></tr>
+
+</table>
+
+<hr>
+
+<p id="fourier-defects">Fourier examples
+- a list of the dephased defects of all inequivalent Fourier matrices of size $N=2, ..., 51$
+can be found <a href="fourier_defect.txt">here</a>.
+See also [<a href="../literature.html?a=28">28</a>].</p>
+
+<hr>
+
+<p>A <a href="defect_10k.pdf">table (pdf file)</a> of
+the defects of all <a href="equivalence-relation.html">inequivalent</a> Fourier
+matrices of size up to $10000$, obtained using the formulas
+in sec. 5 of [<a href="../literature.html?a=140">140</a>].</p>
+
+<hr>
+
+<p>Further examples with Fourier matrices:</p>
+
+<table>
+    <tr><th>$H$</th>
+        <th>$D(H)$</th>
+        <th>$d(H)$</th>
+        <th>remarks</th></tr>
+
+    <tr><td><a href="fourier-matrix.html">$F$</a>$_p$</td>
+        <td>$2p-1$</td>
+        <td>$0$</td>
+        <td>for $p$ prime</td></tr>
+
+    <tr><td><a href="fourier-matrix.html">$F$</a>$_p\otimes$<a href="fourier-matrix.html">$F$</a>$_p$</td>
+        <td>$p(p^2+p-1)$</td>
+        <td>$(p-1)^2(p+1)$</td>
+        <td>for $p$ prime</td></tr>
+
+    <tr><td><a href="fourier-matrix.html">$F$</a>$_{p{^2}}\otimes$
+                       <a href="fourier-matrix.html">$F$</a>$_p$</td>
+        <td>$p^2(2p^2-1)$</td>
+        <td>$(p-1)^2(2p^2+2p+1)$</td>
+        <td>for $p$ prime</td></tr>
+
+    <tr><td><a href="fourier-matrix.html">$F$</a>$_{p{^2}}\otimes$
+                       <a href="fourier-matrix.html">$F$</a>$_{p{^2}}$</td>
+        <td>$p^3(p^3+p^2-1)$</td>
+        <td>$(p-1)^2(p+1)(p^3+2p^2+p+1)$</td>
+        <td>for $p$ prime, for other examples of this type see Table 1 in sec. 5 in
+                       [<a href="../literature.html?a=140">140</a>]</td></tr>
+
+    <tr><td><a href="../catalogue/0401.html">$F_4$</a></td>
+        <td>$8$</td>
+        <td>$1$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0201.html">$F_2$</a> $\otimes$ <a href="../catalogue/0201.html">$F_2$</a></td>
+        <td>$10$</td>
+        <td>$3$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0601.html">$F_6$</a></td>
+        <td>$15$</td>
+        <td>$4$</td>
+        <td>although <a href="../catalogue/0601.html">$F_6^{(2)}$</a> and
+                            <a href="../catalogue/0601.html">$\left(F_6^{(2)}\right)^{\rm T}$</a>
+                            are $2$-dim.</td></tr>
+
+    <tr><td><a href="../catalogue/0801.html">$F_8$</a></td>
+        <td>$20$</td>
+        <td>$5$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0401.html">$F_4$</a> $\otimes$
+                             <a href="../catalogue/0201.html">$F_2$</a></td>
+        <td>$28$</td>
+        <td>$13$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0201.html">$F_2$</a></td>
+        <td>$36$</td>
+        <td>$21$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0901.html">$F_9$</a></td>
+        <td>$21$</td>
+        <td>$4$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0301.html">$F_3$</a> $\otimes$
+                             <a href="../catalogue/0301.html">$F_3$</a></td>
+        <td>$33$</td>
+        <td>$16$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/1001.html">$F_{10}$</a> $\simeq$
+                             <a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0501.html">$F_5$</a></td>
+        <td>$27$</td>
+        <td>$8$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/1201.html">$F_{12}$</a> $\simeq$
+                             <a href="../catalogue/0301.html">$F_3$</a> $\otimes$
+                             <a href="../catalogue/0401.html">$F_4$</a></td>
+        <td>$40$</td>
+        <td>$17$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0601.html">$F_6$</a> $\simeq$
+                             <a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0301.html">$F_3$</a></td>
+        <td>$50$</td>
+        <td>$27$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/1401.html">$F_{14}$</a> $\simeq$
+                             <a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0701.html">$F_7$</a></td>
+        <td>$39$</td>
+        <td>$12$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/1501.html">$F_{15}$</a> $\simeq$
+                             <a href="../catalogue/0301.html">$F_3$</a> $\otimes$
+                             <a href="../catalogue/0501.html">$F_5$</a></td>
+        <td>$45$</td>
+        <td>$16$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/1601.html">$F_{16}$</a></td>
+        <td>$48$</td>
+        <td>$17$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0801.html">$F_8$</a></td>
+        <td>$72$</td>
+        <td>$41$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0401.html">$F_4$</a> $\otimes$
+                             <a href="../catalogue/0401.html">$F_4$</a></td>
+        <td>$88$</td>
+        <td>$57$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0401.html">$F_4$</a></td>
+        <td>$104$</td>
+        <td>$73$</td>
+        <td>-</td></tr>
+
+    <tr><td><a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0201.html">$F_2$</a> $\otimes$
+                             <a href="../catalogue/0201.html">$F_2$</a></td>
+        <td>$136$</td>
+        <td>$105$</td>
+        <td>-</td></tr>
+
+</table>
+
+</div>

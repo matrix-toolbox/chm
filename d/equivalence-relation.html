@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1>equivalence relation</h1>
+<hr>
+<p>Two (<a href="complex-hadamard-matrix.html">complex</a>) Hadamard
+matrices are called <b>equivalent</b>, written
+$H_1\simeq H_2$, if there
+exist diagonal <a href="unitary-matrix.html">unitary</a> matrices
+$D_1$, $D_2$ and permutation matrices
+$P_1$, $P_2$ such that:
+$$H_1 = D_1 P_1 H_2 P_2 D_2.$$
+
+Equivalence relation can be also defined with help of two <b>monomial</b> 
+(having exaclty one non-zero element in each column and each row)
+[<a href="../literature.html?a=32">32</a>]
+<a href="unitary-matrix.html">unitary</a>
+matrices $$H_1= M_1 H_2 M_2.$$
+</p>
+
+<hr>
+
+<p>Examples:</p>
+
+<ul>
+
+<li>All $2\times 2$ <a href="complex-hadamard-matrix.html">complex</a> Hadamard matrices, the set of which reads
+
+$$\Bigg\{
+\left[\begin{array}{ll}e^{i\alpha_1}&amp;0\\0&amp;e^{i\alpha_2}\end{array}\right]
+\cdot
+\left[\begin{array}{rr}1&amp;1\\1&amp;-1\end{array}\right]
+\cdot
+\left[\begin{array}{ll}1&amp;0\\0&amp;e^{i\beta_2}\end{array}\right]\Bigg\}:\alpha_{1,2},\beta_2\in[0,2\pi)
+$$
+
+are equivalent to the <a href="fourier-matrix.html">Fourier</a>
+matrix <a href="../catalogue/0201.html">$F_2$</a>.</li>
+
+<li>All $3\times 3$ <a href="complex-hadamard-matrix.html">complex</a> Hadamard matrices, the set of
+which reads
+
+$$\begin{aligned}
+&amp;\Bigg\{
+\left[\begin{array}{lll}
+e^{i\alpha_1}&amp;0&amp;0\\
+0&amp;e^{i\alpha_2}&amp;0\\
+0&amp;0&amp;e^{i\alpha_3}
+\end{array}\right]
+\cdot
+\left[\begin{array}{lll}
+1&amp;1&amp;1\\
+1&amp;w&amp;w^2\\
+1&amp;w^2&amp;w
+\end{array}\right]
+\cdot
+\left[\begin{array}{lll}
+1&amp;0&amp;0\\
+0&amp;e^{i\beta_2}&amp;0\\
+0&amp;0&amp;e^{1\beta_3}
+\end{array}\right]
+\Bigg\}\\
+\bigcup \ &amp;\Bigg\{
+\left[\begin{array}{lll}
+e^{i\alpha_1}&amp;0&amp;0\\
+0&amp;e^{i\alpha_2}&amp;0\\
+0&amp;0&amp;e^{i\alpha_3}
+\end{array}\right]
+\cdot
+\left[\begin{array}{lll}
+1&amp;1&amp;1\\
+1&amp;w^2&amp;w\\
+1&amp;w&amp;w^2
+\end{array}\right]
+\cdot
+\left[\begin{array}{lll}
+1&amp;0&amp;0\\
+0&amp;e^{i\beta_2}&amp;0\\
+0&amp;0&amp;e^{i\beta_3}
+\end{array}\right]
+\Bigg\}\\
+&:\alpha_{1,2,3},\beta_{2,3}\in[0,2\pi), w=\exp(2\pi i/3)
+\end{aligned}$$
+
+
+are equivalent to the <a href="fourier-matrix.html">Fourier</a>
+matrix <a href="../catalogue/0301.html">$F_3$</a>.</li>
+</ul>
+<hr>
+<p>See also: <a href="haagerup-set.html">Haagerup-set</a>, matrix <a href="matrix-fingerprint.html">fingerprint</a> and
+rectangular <a href="rectangular-rank-profile.html">rank profile</a>.</p>
+
+</div>
