@@ -1,0 +1,7 @@
+
+gnuplot> set xrange [0.85:1.01]
+gnuplot> set yrange [0.2:1.01]
+gnuplot> set xlabel "S_L(B^R)"
+gnuplot> set ylabel "S_L(B^T)"
+gnuplot> set size ratio 1
+gnuplot> plot "SL_BH_16_4" with dots

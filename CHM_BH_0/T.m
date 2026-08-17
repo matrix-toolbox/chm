@@ -1,0 +1,3 @@
+function Y=T(X)
+% shortcut...
+Y=T2(X);
