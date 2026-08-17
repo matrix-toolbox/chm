@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+
+<h1>theory</h1>
+<hr>
+<ul>
+<li><a href="#definition">definition</a></li>
+<li><a href="#notation">notation</a></li>
+<li><a href="#construction">constructions</a> known</li>
+<li><a href="#applications">applications</a> in Quantum Information Theory</li>
+<li><a href="#open_problems">open problems</a></li>
+</ul>
+
+<hr>
+
+<h2 id="definition" class="content_anchor"><a href="definitions.html">definition</a></h2>
+
+<p>A <b><a href="d/complex-hadamard-matrix.html">complex</a> Hadamard</b> matrix is any complex $N\times N$
+matrix $H$ which is unimodular $|H_{jk}|=1$ and unitary $HH^{\dagger}=N\mathbb{1}_N$ up to a constant factor.</p>
+
+<h2 id="notation" class="content_anchor">notation</h2>
+
+<p>To save space we do not describe construction of Hadamard matrices but present a short characterization of each case.</p>
+
+<ul>
+
+<li>$\mathcal{H}_N$ denotes the set of <a href="d/complex-hadamard-matrix.html">complex</a> Hadamard matrices of size $N$.</li>
+
+<li>The symbol $\simeq$ denotes
+<a href="d/equivalence-relation.html">equivalence</a> relation
+between <a href="d/complex-hadamard-matrix.html">complex</a> Hadamard matrices.</li>
+
+<li>Each entry $H$ in the <a href="index.html">catalogue</a> (possibly a member of a continuous family) represents 
+its <a href="d/equivalence-relation.html">equivalence</a> class, consisting of <a href="d/complex-hadamard-matrix.html">complex</a>
+Hadamard matrices that can be obtained from $H$ by left and right multiplication
+of $H$ by <a href="d/unitary-matrix.html">unitary</a> diagonal and permutation matrices.</li>
+
+<li>For a given size $N$ we enumerate families by capital letters associated with a given
+construction. The superscript in brackets denotes the dimension of an orbit. For
+instance <a href="catalogue/0401">$F_4^{(1)}$</a> represents the one-parameter
+family of $N =$ <a href="index.html">$4$</a> <a href="d/complex-hadamard-matrix.html">complex</a> Hadamard matrices
+stemming from the <a href="d/fourier-matrix.html">Fourier</a> matrix $F_4$.</li>
+
+<li>Displaying continuous families of Hadamard matrices we shall use
+the symbol $\bullet$ (thick dot) to denote zeros in phase variation matrices.</li>
+
+<li>The symbol $\circ$ denotes a Hadamard product of two matrices,
+
+$$\left[H_1\circ H_2\right]_{j,k}=\left[H_1\right]_{j,k}\cdot\left[H_2\right]_{j,k},$$
+
+while ${\rm EXP}$ denotes the entrywise $\exp$ operation on a matrix $M$,
+
+$$\big[{\rm EXP}(M)\big]_{j,k}=\exp\left(\left[M\right]_{j,k}\right)$$
+and ${\rm LOG}$ denotes the entrywise logarithm of matrix elements.</li>
+
+<li>And finally, the symbol $\mathbb{1}_N$ shall be reserved for the unit matrix of dimension $N$.</li>
+
+</ul>
+
+<h2 id="construction" class="content_anchor">constructions known <a href="#top" title="top" class="no-underline">&uarr;</a></h2>
+
+<ul>
+<li><b>Reordering of entries and conjugation</b>
+
+<p>If $H$ is a <a href="d/dephased-matrix.html">dephased</a> Hadamard matrix, so
+are: the transposed matrix $H^{\rm T}$, the conjugated matrix $\bar{H}$
+and the Hermitian transpose $H^{\dagger}$.</p></li>
+
+<li><b>Linear variations of phases</b>
+<p>
+Starting from a given Hadamard matrix $H$ in
+the <a href="d/dephased-matrix.html">dephased</a> form one may investigate, whether
+it is possible to perform infinitesimal changes of some of  $f=(N-1)^2$
+phases of the <a href="d/core.html">core</a> of $H$ to preserve 
+<a href="d/unitary-matrix.html">unitarity</a>. Assuming that all
+these phases vary linearly with
+free parameters one can find analytical form of such orbits, i.e. 
+<a href="d/affine-family.html">affine</a> Hadamard families, stemming
+from e.g. <a href="d/fourier-matrix.html">Fourier</a> matrices
+of composite dimensions. See [<a href="literature.html?a=38">38</a>].</p></li>
+
+<li><b>Duplication of the matrix size</b>
+<p>
+If $A$ and $B$ are <a href="d/complex-hadamard-matrix.html">complex</a> Hadamard matrices of dimension $N$ then
+
+$$H=\left[\begin{array}{rr}A&amp;B\\A&amp;-B\end{array}\right]\in\mathcal{H}_{2N}.$$
+
+Furthermore, if $A$ and $B$ are taken to be in
+the <a href="d/dephased-matrix.html">dephased</a> form, so is $H$. This
+method, originally due to Hadamard, can be generalized by
+realizing that $B$ can
+be multiplied at left by an arbitrary
+diagonal <a href="d/unitary-matrix.html">unitary</a> matrix
+
+$$E={\rm diag}\Big(1,e^{id_1},\dots,e^{id_{N-1}}\Big).$$
+
+If $A$ and $B$ depend on $a$ and $b$ free parameters, respectively, then
+
+$$H'=\left[\begin{array}{rr}A&amp;EB\\A&amp;-EB\end{array}\right]$$
+
+represents an $(a + b + N - 1)$ - parameter family of Hadamard matrices of size $2N$
+in the <a href="d/dephased-matrix.html">dephased</a> form.</p></li>
+
+<li><b>Quadruplication of the matrix size</b>
+<p>
+In analogy to previous method one may quadruple the matrix size in a construction similar to
+that derived by Williamson [<a href="literature.html?a=93">93</a>] from 
+quaternions. If $A$, $B$, $C$ and $D$ are 
+<a href="d/complex-hadamard-matrix.html">complex</a> Hadamard matrices of
+dimension $N$ in the <a href="d/dephased-matrix.html">dephased</a> form then
+
+$$\left[\begin{array}{rrrr}
+A&  B&  C&  D\\
+A& -B&  C& -D\\
+A&  B& -C& -D\\
+A& -B& -C&  D
+\end{array}\right]\in\mathcal{H}_{4N}$$
+
+and it has the <a href="d/dephased-matrix.html">dephased</a> form too.
+This form is preserved, if the
+blocks $B$, $C$ and $D$ are
+multiplied by diagonal <a href="d/unitary-matrix.html">unitary</a> matrices $E_1$,
+$E_2$ and $E_3$ respectively, each containing
+unity and $f=N - 1$ free phases. Therefore
+we have an $\left(a + b + c + d + 3(N - 1)\right)$&ndash;dimensional family of Hadamard
+matrices where $a$, $b$, $c$ and $d$ denote the number of
+free parameters contained in $A$, $B$, $C$ and $D$ respectively.</p></li>
+
+<li><b>Generalized method related to tensor
+product (<a href="d/dita-construction.html">Di&#355;&#259;'s construction</a>)</b>
+
+    <p>For any two Hadamard matrices, $A\in\mathcal{H}_K$ and $B\in\mathcal{H}_M$,
+    their tensor product $A\otimes B\in\mathcal{H}_{KM}$.
+A more general
+construction by Di&#355;&#259; [<a href="literature.html?a=56">56</a>] allows to use
+apart of a given Hadamard matrix $A$ of size $K$ an
+entire set of $K$ (possibly different) Hadamard
+matrices $\{B_1, \dots B_K\}$ of size $M$. Then the matrix
+
+$$\left[\begin{array}{cccc}
+A_{11}B_1&amp;A_{12}E_2B_2&amp;\cdots&amp;A_{1K}E_KB_K\\
+A_{21}B_1&amp;A_{22}E_2B_2&amp;\cdots&amp;A_{2K}E_KB_K\\
+   \vdots&amp;      \vdots&amp;      &amp;\vdots\\
+A_{K1}B_1&amp;A_{K2}E_2B_2&amp;\cdots&amp;A_{KK}E_KB_K
+\end{array}\right]$$
+
+of size $N=KM$ is Hadamard. We may introduce additional free
+phases by using $m=K - 1$ diagonal <a href="d/unitary-matrix.html">unitary</a> matrices $E_k$.
+The total number of free phases reads $f=(M - 1)(K - 1) + a + b_1 + ... + b_K$ where
+$a$ and $b_i$ denote the numbers of free phases used in the definitions of $A_i$ and $B_i$
+respectively.</p></li>
+
+<li><b>Doubling the size of inverse complex conference matrices</b>
+<p>
+Details are described in the paper
+of Petre Di&#355;&#259; [<a href="literature.html?a=103">103</a>].
+</p></li>
+
+<li><b>Construction of complex Hadamard matrices via tiling abelian groups</b>
+<p>
+Details of the construction are included in the work by M. Matolcsi,
+J. R&eacute;ffy and F. Sz&#246;ll&#337;si, see [<a href="literature.html?a=34">34</a>].</p></li>
+
+<li id="weave"><b>Construction by <u>weaving</u> several (complex) Hadamard matrices (by Robert Craigen)</b>
+    <p>Consider $\{A_1, A_2, ..., A_n\}$ a set of CHM, each of order $m\geqslant 2$, and $\{B_1, B_2, ...,B_m\}$ - each of order $n\geqslant 2$.
+    Matrix $M$ of order $mn\times mn$ is defined as $M=[u_{jk} v_{jk}]$, where $u_{jk}$ is $k^{\rm th}$ column of $A_j$  and $v_{jk}$ is $j^{\rm th}$ row of $B_k$.
+    Matrix $M$ consists of $m\times n$ rank-one blocks generated by &quot;weaving&quot; appropriate rows and columns from $A_j$ and $B_k$.</p>
+    <p>Suppose each $A_j$ has affine dimension $a_j$ and each $B_k$ has affine dimension $b_k$ (both after dephasing).
+    Then, matrix $M$ generated by weaving $A_j$ and $B_k$ yields (again, after dephasing)
+    $$f=\sum_j a_j + \sum_k b_k +(m-1)(n-1)$$
+    free parameters.</p>
+    <p>Matlab script to generate <b>weaving</b> Hadamard matrices is available on <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM/weave.m">GitHub</a>.</p>
+</li>
+   
+<li id="star-ring"><b>Construction of generalized Hadamard matrices over *-rings</b>
+    <p>Details are provided in the Master Thesis by Marteen Havinga [<a href="literature.html?a=176">176</a>].</p></li>
+
+<li id="QHM"><b>Construction of quaternionic Hadamard matrices</b>
+    <p>Details are provided in the paper of Santiago Barrera Acevedo, Heiko Dietrich and Corey Lionis [<a href="literature.html?a=179">179</a>].</p></li>
+
+</ul>
+
+<h2 id="applications">applications in Quantum Information Theory <a href="#top" title="top" class="no-underline">&uarr;</a></h2>
+
+<p><a href="d/complex-hadamard-matrix.html">Complex</a> Hadamard matrices play a crucial role in the theory
+of <b>quantum information</b> as it is shown in a seminal
+paper of Werner [<a href="literature.html?a=92">92</a>]. They are used
+in solving the Mean King Problem [<a href="literature.html?a=16">16</a>],
+[<a href="literature.html?a=59">59</a>] to
+construct &quot;nice error basis&quot; [<a href="literature.html?a=75">75</a>],
+[<a href="literature.html?a=17">17</a>]
+or &quot;quantum designs&quot; [<a href="literature.html?a=65">65</a>],
+[<a href="literature.html?a=97">97</a>]. Furthermore, they allow one to construct:</p>
+
+<ul>
+
+<li><b>Bases of unitary operators</b>, i.e. the set of
+mutually orthogonal <a href="d/unitary-matrix.html">unitary</a> operators, 
+$\{U_j\}_{j=1,...,N^2}$ such that $U_j\in$
+<a href="d/unitary-matrix.html">$\mathbb{U}(N)$</a> and 
+$${\rm tr} \left(U_j^{\dagger}U_k\right) = N\delta_{jk} : j,k=1,...,N^2.$$</li>
+
+<li><b>Bases of maximally entangled states</b>, i.e. the
+set $\{|\Psi_j\rangle\}_{j=1,...,N^2}$ such that
+$|\Psi_j\rangle$ belongs to a composed Hilbert space with tha partial trace
+
+$${\rm tr}_N\left(|\Psi_j\rangle\langle\Psi_j|\right)=\mathbb{1}_N/N$$
+
+and they are mutually orthogonal $\langle\Psi_j|\Psi_k\rangle=\delta_{jk}$.</li>
+
+<li><b>Unitary depolarisers</b>, i.e. the set
+$\{U_k\}_{k=1,...,N^2}$ such that for any bounded linear operator $A$ the property
+
+$$\sum_{k=1}^{N^2}U_k^{\dagger}A U_k=N{\rm tr}\left(A\right)\mathbb{1}_N$$
+
+holds. Here and previously $\mathbb{1}_N$ denotes a square matrix of size $N$.</li>
+
+</ul>
+
+<p>These problems are equivalent in the sense that given
+a solution to one problem one can find a solution to the
+other one, as well as a corresponding scheme of teleportation or dense coding.</p>
+
+<p>Another application of Hadamard matrices is related to
+<b>quantum tomography</b>: to determine all $m=N^2 - 1$
+parameters characterizing a density matrix of size $N$ one needs to perform $k > N$ orthogonal measurements. Each
+measurement can be specified by an orthogonal basis
+$\Phi_u=\{|\varphi_i^{(u)}\rangle\}$ set for $u=1,2,...,k$.
+Precision of such a measurement scheme is optimal if the bases are
+<b>mutually unbiased</b>, i.e. they are such that
+
+$$|\langle\varphi_i^{(u)}|\varphi_j^{(s)}\rangle|^2=\delta_{us}\delta_{ij}+(1-\delta_{us})/N.$$
+
+The task of finding $(k + 1)$ MUBs is equivalent to finding
+a collection of $k$ mutually unbiased Hadamards (MUHs)
+
+$$\{H_i\in\mathcal{H}_N\}_{i=1,2,...,k}:\frac{1}{\sqrt{N}}H_i^{\dagger}H_j\in\mathcal{H}_N \quad(i>j=1,2,...,k-1),$$
+
+since the set $\{\mathbb{1}_N,\frac{1}{\sqrt{N}}H_1,...,\frac{1}{\sqrt{N}}H_N\}$
+forms a set of MUBs.</p>
+
+<p>If $N$ is a prime or a power of prime there exist a complete set of $m=N + 1$ MUBs which provide an optimal
+scheme of quantum tomography [<a href="literature.html?a=68">68</a>],
+[<a href="literature.html?a=95">95</a>].
+If $N$ is not a power of prime
+the problem of specifying the maximal number of MUBs remains open
+[<a href="literature.html?a=12">12</a>], [<a href="literature.html?a=75">75</a>],
+[<a href="literature.html?a=29">29</a>], [<a href="literature.html?a=7">7</a>],
+[<a href="literature.html?a=99">99</a>], [<a href="literature.html?a=40">40</a>],
+[<a href="literature.html?a=43">43</a>].</p>
+
+<h2 id="open_problems">open problems <a href="#top" title="top" class="no-underline">&uarr;</a></h2>
+
+<p>Note that the presented list of <a href="d/equivalence-relation.html">equivalence</a> classes
+is complete only for $N =$ <a href="catalogue/0201.html">$2$</a>,
+                             <a href="catalogue/0301.html">$3$</a>,
+                             <a href="catalogue/0401.html">$4$</a> and
+                             <a href="catalogue/0501.html">$5$</a> while
+for $N &gt; 5$ the full set of solutions remains
+unknown. The list of open questions could be rather long, but let
+us mention here some most relevant:</p>
+
+<ol>
+<li> Check if there exist other non <a href="d/equivalence-relation.html">equivalent</a>
+     <a href="d/complex-hadamard-matrix.html">complex</a> Hadamard matrices
+     of size $N=6$.</li>
+
+<li> Find the ranges of parameters of
+     the existing $N=6$ families
+     such that all cases included are not <a href="d/equivalence-relation.html">equivalent</a>.</li>
+
+<li> Check whether there exists a continuous family of <a href="d/complex-hadamard-matrix.html">complex</a> Hadamard
+     matrices for $N=11$.</li>
+
+<li> Investigate, if all <a href="d/equivalence-relation.html">inequivalent</a>
+     <a href="d/real-hadamard-matrix.html">real</a> Hadamard matrices of size
+     $N=16$ and $20$
+     belong to continuous families or if some of
+     them are <a href="d/isolated-matrix.html">isolated</a>.
+
+     <p>&rarr; Sz&#246;ll&#337;si showed a general
+     construction [<a href="literature.html?a=25">25</a>] that for
+     $N\geqslant$ $12$,
+     <a href="d/real-hadamard-matrix.html">real</a> Hadamard matrices
+     belong to continuous families.</p></li>
+
+<li> Find for which $N$ there exist continuous families of
+     <a href="d/complex-hadamard-matrix.html">complex</a> Hadamard matrices which are not
+     <a href="d/affine-family.html">affine</a> (as in the case
+     for <a href="catalogue/1303.html">$N=13$</a>), and
+     which are not contained in <a href="d/affine-family.html">affine</a> Hadamard
+     families of a larger dimension.
+
+     <p>&rarr; A partial answer was given in May 2006 by Beauchamp
+     and Nicoar&#259; [<a href="literature.html?a=3">3</a>], who found
+     a non <a href="d/affine-family.html">affine</a>
+     family for <a href="catalogue/0605.html">$N=6$</a>.</p></li>
+
+<li> Find the dimensionalities of continuous orbits
+     of <a href="d/equivalence-relation.html">inequivalent</a>
+     Hadamard matrices stemming from $F_N$ if $N$ is not a power of prime.</li>
+</ol>
+<p>
+      Problems analogous to 1, 2, 3 and 4 are obviously open for higher dimensions.
+      Thus a lot of work is still required to get a full understanding of the properties
+      of the set of <a href="d/complex-hadamard-matrix.html">complex</a> Hadamard matrices, even for one-digit dimensions.
+</p>
+
+<p>
+      Interestingly, the dimension $N=6$,
+      the smallest product of two different primes, is the first case for which not all
+      <a href="d/complex-hadamard-matrix.html">complex</a> Hadamard matrices are known, as well as the
+      simplest case for which the <a href="#applications">MUB</a> problem
+      remains open [<a href="literature.html?a=12">12</a>],
+      [<a href="literature.html?a=29">29</a>],
+      [<a href="literature.html?a=99">99</a>],
+      [<a href="literature.html?a=40">40</a>],
+      [<a href="literature.html?a=43">43</a>].
+
+</p>
+
+</div>

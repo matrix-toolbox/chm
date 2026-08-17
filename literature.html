@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2023 Wojciech Bruzda IF(T) UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalogue of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<script src="cdn.js"> </script>
+<div class="container">
+<p id="menu"><a href="index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<script src="chm.js"> </script>
+
+<h1>literature</h1>
+<hr>
+
+<p id="ref-header">sort by :
+first author <a href="?sort=aa">&uarr;</a> <a href="?sort=ad">&darr;</a> &bull; 
+title <a href="?sort=ta">&uarr;</a> <a href="?sort=td">&darr;</a> &bull;
+year <a href="?sort=ya">&uarr;</a> <a href="?sort=yd">&darr;</a></p>
+
+<hr>
+
+<ul id="ref-table"></ul>
+
+<script src="literature.js"></script> <!-- load litrature.json -->
+
+<script>
+  function getRow(i) {
+    var t="";
+    t+="<li><b>";
+
+     if (literature[i].anchor == 153)  // "hacks" for anchor = 130 and 153 be sorted properly...
+         t += "&#211; Cath&#225;in P., Wanless I. M.";
+     else if (literature[i].anchor == 130)
+         t += "&#272;okovi&#263; D. &#381;., Golubitsky O., Kotsireas I. S.";
+     else
+         t += literature[i].authors;
+//    t += "<li><b>"+literature[i].authors+"</b><br><cite>" +literature[i].title+"</cite><br>"+t;
+     t+="</b></br><cite>"+literature[i].title+"</cite><br>";
+
+    if (literature[i].arxiv)
+        t+="<a href=\""+literature[i].arxiv+"\" target=\"_blank\">arXiv</a>, ";
+    if (literature[i].journal)
+        t+= literature[i].journal+"";
+    if (literature[i].pdf)
+        t += " [<a href=\""+literature[i].pdf+"\" target=\"_blank\">link</a>]";
+    t += " ("+literature[i].year+")</li>";
+    return t;
+  }
+
+  var anchor = getParameterByName("a");
+  if (anchor) {
+    var val=false; 
+    for (var i=0; i < literature.length; i++) {
+      if (literature[i].anchor == anchor) {
+          document.getElementById("ref-table").innerHTML += getRow(i);
+          document.getElementById("ref-header").innerHTML = "<p>show <a href='literature.html'>all</a></p>";
+          val=true;
+          break;
+      }
+    }
+    if (val == false) {
+        document.getElementById("ref-header").innerHTML = "<p>show <a href='literature.html'>all</a></p>";
+        document.getElementById("ref-table").innerHTML = "<p>invalid reference numer!</p>";
+    }
+  } else {
+    var sortBy = getParameterByName("sort") || "ya"; // sort by year ascending by default
+    switch(sortBy) {
+    case "aa": literature.sort(sort_by('authors', true, function(a){return a.toUpperCase()}));
+      break;
+    case "ad": literature.sort(sort_by('authors', false, function(a){return a.toUpperCase()}));
+      break;
+    case "ta": literature.sort(sort_by('title', true, function(a){return a.toUpperCase()}));
+      break;
+    case "td": literature.sort(sort_by('title', false, function(a){return a.toUpperCase()}));
+      break;
+    case "ya": literature.sort(sort_by('year', true, parseInt));
+      break;
+    case "yd": literature.sort(sort_by('year', false, parseInt));
+      break;
+    }
+  
+    for (var i=0; i<literature.length; i++) {
+      var t = getRow(i);
+      document.getElementById("ref-table").innerHTML += t;
+    }
+  }
+</script>
+
+
+
+<!--
+// Problem with anchors [EXPLAINED]
+// Suppose a preprint was released in 2006 [REF06] but printed in 2013 with different authors; [FUCK13].
+// Solved by switching to numerics; % s/[FUCK13]/[421]
+-->
+
+
+</div>
