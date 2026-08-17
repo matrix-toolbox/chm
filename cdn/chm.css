@@ -1,0 +1,21 @@
+body{overflow-y:scroll;}
+.container{margin-bottom:32px;}
+a{text-decoration:underline !important;color:#00a;}
+.no-underline{text-decoration:none !important;}
+ul{list-style-type:square;}
+li{margin-bottom:8px !important;}
+code{padding:6px;}
+.no-bullet{list-style-type:none;}
+div.catalogue > p > span:last-child{float:right;} /* KaTeX uses <span> selectors for \(...\), hence we must use :last-child */
+th{padding:10px;border:1px solid #000;background:#eef;font-weight:bold;border-radius:3px;}
+td{vertical-align:top;padding:10px;border:1px solid #444;border-radius:3px;}
+.H2020 a{1color:#6af !important;}
+#footer a{color:#aaa !important;}
+.conjecture{background-color:#eaeaff;border:1px solid #b1b1ff;padding:5px;}
+.faded{color:#ccc;}
+.game{color:#1a1;}
+#version{float:right;color:#aaa;}
+code{all:unset;font-family:monospace;background-color:#f1f1f1;padding:4px;}
+#menu-separator{border:2px solid #aaf;}
+#menu{padding-top:4px;-font-size:20px;margin-top:8px;}
+#Hadamard-2025{font-size:25px;text-align: center;border:4px #aaf solid;padding:8px;background-color:#ffa;}
