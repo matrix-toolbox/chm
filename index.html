@@ -45,6 +45,25 @@ in the <code><a href="https://wiki.aalto.fi/display/Butson/Butson+Home" target="
 <li><a href="CHM_CATALOG_appendix.html"><b>Appendix</b></a> with additional information.</li>
 </ul>
 
+<hr>
+
+<p>When citing the Catalog, please use the following BibTeX entry:</p>
+<pre>
+@misc{CHM_Catalogue,
+  author       = {Bruzda, Wojciech and Tadej, Wojciech and \.{Z}yczkowski, Karol},
+  title        = {Catalog of Complex Hadamard Matrices},
+  howpublished = {\url{https://matrix-toolbox.github.io/chm}},
+  year         = {<span id="year"></span>},
+  note         = {Accessed: <span id="access-date"></span>}
+}</pre>
+
+<script>
+  const now = new Date();
+  document.getElementById("year").textContent = now.getFullYear(); // year
+  const date = now.toISOString().split("T")[0];                    // date as YYYY-MM-DD
+  document.getElementById("access-date").textContent = date;
+</script>
+  
 <!--div id="Hadamard-2025">
     <a href="https://gestioneventos.us.es/hadamard2025" target="_blank">Hadamard 2025</a>, Sevilla, 26 &ndash; 30 May, 2025
 </div-->
