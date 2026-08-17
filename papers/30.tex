@@ -1,0 +1,901 @@
+% 2006-09-07
+% name [at] uj.edu.pl : name = w.bruzda
+
+% prepared between 2005-11-01 and 2006-09-07 at 0134...
+% defended at 2006-09-18 on the 4i^{th} floor of the IFUJ at Reymonta 4 :)
+
+% $ pdflatex
+% $ rm 30.log 30.aux
+
+% last revision: 2021-11-22
+
+\documentclass[a4paper,12pt,twoside]{article}
+\usepackage [centertags]{amsmath}
+\usepackage {amsfonts}
+\usepackage {amssymb}
+\usepackage {amsthm}
+\usepackage {newlfont}
+\usepackage {color}
+%\usepackage {psfig}
+\usepackage {appendix}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{pst-node}
+\usepackage{array}
+\usepackage{bigdelim}
+\usepackage{graphics}
+\usepackage{subfigure}
+\usepackage{setspace}
+\usepackage{verbatim}
+\usepackage{geometry}
+\usepackage{soul}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\geometry{verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=2cm}
+\pagestyle{plain}
+
+%\renewcommand\bibname{Bibliografia}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\HADAMARDS}[1]{{\cal H}_{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\noindent {\bf Zespolone macierze Hadamarda\\
+a zbi\'{o}r baz optymalnych pomiar\'{o}w kwantowych\footnote{Wersja skr\'{o}cona prezentuj\k{a}ca wy{\l}\k{a}cznie wyniki.}}
+
+Praca magisterska napisana pod kierunkiem prof. Karola \.{Z}yczkowskiego.
+
+IF UJ ZOA
+
+Wojciech Bruzda, Krak\'{o}w, 2006/09/07.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.2]{uj.jpg}
+\end{figure}
+
+Abstract: In this work we present numerical and analytical results on the
+set $\mathcal{H}_6$ of complex Hadamard matrices of size $6$ and
+Mutually Unbiased Bases (MUB), which determine an optimal quantum
+measurement of an unknown state in six dimensional Hilbert space.
+We describe a new family $B_6(t)$, which generalizes two of known
+classes in $\mathcal{H}_6$. Moreover, two new constructions of mutually
+unbiased Hadamard matrices
+satisfying $\frac{1}{\sqrt{6}} H_1^{\dagger} H_2 \in \mathcal{H}_6$, are
+presented. First construction is based on numerical results and the
+second one uses eigendecomposition of a cyclic matrix.
+%\st{A list of all known Butson type complex Hadamard matrices of dimension $N=2,...,16$ is provided in the appendix.}
+
+
+\section*{Wst\k{e}p}
+
+Historia macierzy Hadamarda ma sw\'{o}j pocz\k{a}tek w~roku 1867, kiedy
+Sylvester postawi{\l} w~swojej pracy~\cite{Sy67} problem parkieta\.{z}y. Rozwa\.{z}a{\l}
+on macierze posiadaj\k{a}ce wzajemnie ortogonalne wiersze i~kolumny. Dwadzie\'{s}cia
+sze\'{s}\'{c} lat p\'{o}\'{z}niej Hadamard rozwi\k{a}za{\l} problem
+m\'{o}wi\k{a}cy o~tym, \.{z}e dla dowolnej macierzy zespolonej $H$ wymiaru
+$N$ o~elementach spe{\l}niaj\k{a}cych warunek $|[H]_{j,k}|\leqslant 1$ zachodzi
+$|\det H| \leqslant \exp(\ln N N/2)$, przy czym nier\'{o}wno\'{s}\'{c}
+wysyca si\k{e} dla macierzy Vandermonde'a sk{\l}adaj\k{a}cej si\k{e}
+z~pierwiastk\'{o}w $N$-tego stopnia z~jedno\'{s}ci~\cite{Ha93}. Okazuje si\k{e},
+\.{z}e macierze posiadaj\k{a}ce maksymalny w~sensie warto\'{s}ci bezwzgl\k{e}dnej
+wyznacznik, kt\'{o}rych elementy nale\.{z}\k{a} do zbioru $\{\mp 1\}$ zawieraj\k{a}
+si\k{e} tak\.{z}e w~klasie macierzy opisywanych przez Sylvestera.
+Historycznie nosz\k{a} one nazw\k{e} macierzy Hadamarda.
+
+W~momencie intensywnego rozwoju mechaniki kwantowej okaza{\l}o si\k{e}, \.{z}e macierze
+Hadamarda odgrywaj\k{a} w~niej wa\.{z}n\k{a} rol\k{e}. Przeskalowane przez
+$1/\sqrt{N}$ w~celu uzyskania unitarno\'{s}ci wykorzystywane s\k{a} optyce
+kwantowej jako symetryczne multiporty, a~tak\.{z}e przy tworzeniu modeli spinowych.
+Stanowi\k{a} podstaw\k{e} do konstrukcji baz wzajemnie nie\-ob\-ci\k{a}\-\.{z}o\-nych
+w~przestrzeni Hilberta, w~kt\'{o}rych pomiar kwantowy jest obarczony
+naj\-mniej\-sz\k{a} niepewno\'{s}ci\k{a}. W~teorii kwantowej kryptografii u\.{z}ywane
+s\k{a} w~protoko{\l}ach dystrybucji klucza publicznego.
+
+Zespolone macierze Hadamarda s\k{a} ponadto zwi\k{a}zane z~wieloma zagadnieniami
+czystej matematyki. S\k{a} baz\k{a} do konstrukcji *-subalgebr w~sko\'{n}czonych
+algebrach von Neumanna. S{\l}u\.{z}\k{a} do analizowania bi-unimodularnych
+ci\k{a}g\'{o}w lub wyznaczania tzw. "cyclic-N-roots"~\cite{BF91, Ha96}
+oraz zbior\'{o}w ekwiangularnych linii, czyli prostych, z kt\'{o}rych ka\.{z}da
+para przecina si\k{e} pod jednakowym k\k{a}tem. Z macierzy tych konstruuje si\k{e}
+tak\.{z}e tablice korekcji b{\l}\k{e}d\'{o}w u\.{z}ywane w~teorii
+informacji~\cite{HC98, Kn96}.
+
+Celem niniejszej pracy jest pr\'{o}ba znalezienia zar\'{o}wno zespolonych macierzy
+Ha\-da\-mar\-da, nieznanych w obecnej literaturze przedmiotu, jak r\'{o}wnie\.{z}
+poszukiwanie nowych par macierzy wzajemnie nieobci\k{a}\.{z}onych.
+
+Pierwszy rozdzia{\l} pracy stanowi wprowadzenie do notacji u\.{z}ywanej w~dalszej
+cz\k{e}\'{s}ci oraz zawiera wszystkie g{\l}\'{o}wne definicje i~twierdzenia
+niezb\k{e}dne do zrozumienia tytu{\l}owego problemu. Rozdzia{\l} drugi stara si\k{e}
+przybli\.{z}y\'{c} sens zajmowania si\k{e} tematyk\k{a} macierzy Hadamarda we
+wsp\'{o}{\l}czesnej fizyce - w~szczeg\'{o}lno\'{s}ci w~mechanice kwantowej. Czytelnik
+zauwa\.{z}y zapewne, i\.{z} cz\k{e}\'{s}\'{c} ze wspomnianych temat\'{o}w stanowi\'{c}
+b\k{e}d\k{a} problemy otwarte, co \'{s}wiadczy o trudno\'{s}ci zagadnienia mimo bardzo
+prostego j\k{e}zyka w jakim s\k{a} sformu{\l}owane. W~rozdziale trzecim przedstawiony
+zosta{\l} szczeg\'{o}{\l}owo zbi\'{o}r macierzy Hadamarda o~wy\-mia\-rze $N=6$, w~stanie
+jakim by{\l} znany do maja 2006 roku.\footnote{Przeniesiony do Katalogu...} Kolejne dwa rozdzia{\l}y to cz\k{e}\'{s}\'{c}
+g{\l}\'{o}wna pracy, czyli opis wynik\'{o}w numerycznych i~analitycznych.
+I~ostatni - sz\'{o}sty - rozdzia{\l} jest podsumowaniem i~komentarzem do ca{\l}o\'{s}ci.
+
+Praca ta stanowi przyczynek do wi\k{e}kszego projektu jakim jest Katalog
+Zespolonych Macierzy Hadamarda~\cite{TZ06}, kt\'{o}rego jestem wsp\'{o}{\l}autorem:
+\begin{center}
+\verb"http://chaos.if.uj.edu.pl/~karol/hadamard",
+\end{center}
+i w~sk{\l}ad kt\'{o}rego wchodzi tak\.{z}e katalog macierzy typu Butsona~\cite{Bu62, Bu63}.
+
+Kompletuj\k{a}c materia{\l}y korzysta{\l}em z~uprzejmo\'{s}ci Ingemara Bengtssona oraz
+Remusa Nicoary, kt\'{o}rzy udost\k{e}pnili mi swoje nieopublikowane jeszcze preprinty.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Macierze Hadamarda}
+
+Macierz kwadratow\k{a} $H$ wymiaru $N$, kt\'{o}rej wszystkie elementy s\k{a} unimodularne
+$|[H]_{j,k}|^2=1$ nazywamy \textbf{macierz\k{a} Hadamarda}, gdy spe{\l}niony jest warunek
+$H H^{\dagger}=N\mathbb{I}_N$.
+Symbolem $\HADAMARDS{N}$ oznaczany b\k{e}dzie zbi\'{o}r wszystkich macierzy Hadamarda o wymiarze $N$.
+
+Klasycznym przyk{\l}adem macierzy Hadamarda jest macierz Fouriera postaci
+
+\begin{equation}
+F_6 =\left[
+\begin{array}{rrrrrr}
+1 &   1 &   1 &   1 &   1 &   1\\
+1 & w^1 & w^2 &  -1 & w^4 & w^5\\
+1 & w^2 & w^4 &   1 & w^2 & w^4\\
+1 &  -1 &   1 &  -1 &   1 &  -1\\
+1 & w^4 & w^2 &   1 & w^4 & w^2\\
+1 & w^5 & w^4 &  -1 & w^2 & w^1
+\end{array}
+\right]:w = \exp\left(\frac{1}{3} \pi i\right).
+\end{equation}
+
+Dwie macierze Hadamarda $H_1$ and $H_2$ nazywamy \textbf{r\'{o}wnowa\.{z}nymi},
+pisz\k{a}c $H_1 \simeq H_2$, je\'{s}li istniej\k{a}
+unitarne macierze diagonalne $D_1$, $D_2$ oraz macierze permutacji $P_1$, $P_2$ takie, \.{z}e
+$H_1 = D_1 P_1 H_2 P_2 D_2$.
+Nie istnieje proste kryterium, kt\'{o}re pozwala{\l}oby orzec, czy dane dwie macierze
+s\k{a} sobie r\'{o}wnowa\.{z}ne.
+
+Macierz Hadamarda jest w postaci \textbf{odfazowanej}, gdy
+jej pierwszy wiersz i pierwsza kolumna sk{\l}adaj\k{a} si\k{e} tylko z jedynek, tj.
+$[H]_{1,j} = [H]_{j,1} = 1$ dla $j = 1, ..., N$.
+Ka\.{z}d\k{a} macierz mo\.{z}na doprowadzi\'{c} do postaci odfazowanej
+mno\.{z}\k{a}c j\k{a} z lewej i/lub z~prawej strony
+przez odpowiednio dobrane macierze diagonalne.
+Dwie macierze Hadamarda, kt\'{o}re maj\k{a} tak\k{a} sam\k{a} posta\'{c}
+odfazowan\k{a} s\k{a} r\'{o}wnowa\.{z}ne. Zatem ca{\l}kowit\k{a} informacj\k{e}
+o postaci macierzy mo\.{z}na uzyska\'{c} jedynie z element\'{o}w
+ma\-cie\-rzy $(N-1)$-wymiarowej le\.{z}\k{a}cych poza pierwszym wierszem
+i pierwsz\k{a} kolumn\k{a} - w~tak zwanym \textbf{rdzeniu}.
+W dalszej cz\k{e}\'{s}ci, poza jednym wyj\k{a}tkiem, u\.{z}ywane b\k{e}d\k{a}
+wy{\l}\k{a}cznie macierze w~postaci odfazowanej.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{MUH}
+
+Dwie macierze Hadamarda $H_1$ oraz $H_2$ wymiaru $N$ nazywamy
+\textbf{macierzami wzajemnie nieobci\k{a}\.{z}onymi} (Mutually Unbiased
+Hadamards) wtedy i tylko wtedy, gdy prawdziwy jest warunek
+$H_1^\dagger H_2/\sqrt{N} \in \HADAMARDS{N}$.
+Definicj\k{e} t\k{e} mo\.{z}na ug\'{o}lni\'{c} na dowolny sko\'{n}czony zbi\'{o}r
+macierzy. Rozwa\.{z}aj\k{a}c MUH rozr\'{o}\.{z}nia si\k{e} dwa ich typy:
+para macierzy $H_1$ oraz $H_2$ jest homogeniczna (jednorodna), gdy obie macierze
+s\k{a} r\'{o}wnowa\.{z}ne, w~przeciwnym razie m\'{o}wimy o macierzach heterogenicznych (niejednorodnych).
+
+Klasyczna konstrukcja MUH opiera si\k{e} na macierzach Fouriera.
+Dla $j,k\in\{1,2,...,N\}$ zdefiniujmy macierz diagonaln\k{a}
+\begin{equation}
+[D_N]_{j,k} = \delta_{j,k} \exp\left(\frac{2}{N}(j-1)^2\pi i \right),
+\end{equation}
+a nast\k{e}pnie ci\k{a}g macierzy
+$\left(H_j\right)_{j=1,2,...,N} : H_j = D_N^{j-1} H_1$,
+przy czym $H_1 = F_N$ jest macierz\k{a} Fouriera.
+Dla $j \neq k$ prawdziwa jest nast\k{e}puj\k{a}ca to\.{z}samo\'{s}\'{c}:
+\begin{equation}
+\frac{1}{N} H_j^{\dagger} H_k \in \HADAMARDS{N} \Longleftrightarrow \text{N jest liczb\k{a} pierwsz\k{a}.}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{MUB}
+
+W dalszym ci\k{a}gu b\k{e}dziemy rozwa\.{z}ali sko\'{n}czenie wymiarow\k{a} przestrze\'{n}
+Hilberta $\mathbb{C}^N$ ze standardowym iloczynem skalarnym,
+a~wektory tej przestrzeni b\k{e}dziemy oznacza\'{c} przy u\.{z}yciu notacji Diraca.
+
+Dwie ortogonalne bazy $\mathcal{B}_1$ oraz $\mathcal{B}_2$ przestrzeni
+Hilberta $\mathbb{C}^N$ nazywamy \textbf{bazami wzajemnie nieobci\k{a}\.{z}onymi}
+(Mutually Unbiased Bases), wtedy i tylko wtedy, gdy
+$|\langle\phi |\psi\rangle|^2=1/N$
+dla ka\.{z}dego wektora $|\phi\rangle\in\mathcal{B}_1$ oraz $|\psi\rangle\in\mathcal{B}_2$.
+
+Maj\k{a}c zbi\'{o}r $k$ macierzy Hadamarda $\{H_1,...,H_k\}$
+o wymiarze $N$ b\k{e}d\k{a}cych w~relacji MUH mo\.{z}na
+utworzy\'{c} z~nich zbi\'{o}r $(k+1)$ MUB w nast\k{e}puj\k{a}cy spos\'{o}b
+\begin{equation}
+\Big\{ \mathbb{I}_N, \frac{1}{\sqrt{N}}H_1, ..., \frac{1}{\sqrt{N}}H_k \Big\},
+\end{equation}
+gdzie kolejne kolumny macierzy stanowi\k{a} elementy bazy przestrzeni $\mathbb{C}^N$.
+
+Maksymalna ilo\'{s}\'{c} MUB w~przestrzeni o~wymiarze $N \geqslant 1$ wynosi $(N+1)$.
+Konstrukcja tych baz jest zwi\k{a}zana z matematyczn\k{a} teori\k{a} liczb. Opiera si\k{e}
+ona na fakcie istnienia cia{\l} sko\'{n}czonych o~$N$~elementach, kt\'{o}ry ma
+miejsce tylko w przypadku, gdy $N$~jest pot\k{e}g\k{a} liczby pierwszej. Dla
+przestrzeni o~takim w{\l}a\'{s}nie wymiarze mo\.{z}liwe jest skonstruowanie
+maksymalnego zestawu MUB. Problem ten nie jest dotychczas rozwi\k{a}zany dla
+wymiar\'{o}w b\k{e}d\k{a}cych liczb\k{a} z{\l}o\.{z}on\k{a}. Mo\.{z}na jedynie
+oszacowa\'{c}~\cite{BBRV02}, \.{z}e dla przestrzeni, kt\'{o}rej wymiar jest
+iloczynem $N=n_1 n_2$, maksymalna liczba $M(N)$ MUB spe{\l}nia warunek
+\begin{equation}
+M(N) \geqslant \min \big\{M(n_1), M(n_2)\big\}.
+\end{equation}
+
+W~szczeg\'{o}lno\'{s}ci wymiar $N=6$ jest najmniejszym wymiarem, dla kt\'{o}rego problem
+ten pozostaje wci\k{a}\.{z} otwarty.
+
+Klasyczn\k{a} konstrukcj\k{e} MUB dla przestrzeni, kt\'{o}rej wymiar jest
+liczb\k{a} pierwsz\k{a} przedstawi{\l} w~swojej pracy Ivanovi\'{c}~\cite{Iv81}.
+Podobne konstrukcje dla wymiar\'{o}w b\k{e}d\k{a}cych kwad\-ra\-tem liczby pierwszej
+mo\.{z}na znale\'{z}\'{c} w~literaturze~\cite{KR04, WF81}.
+W pozosta{\l}ych przypadkach istniej\k{a} jedynie cz\k{a}stkowe wyniki.
+
+Jako przyk{\l}ad przedstawiona zostanie taka konstrukcja dla przestrzeni
+o~wymiarze b\k{e}d\k{a}cym kwadratem dowolnej - niekoniecznie pierwszej - liczby.
+Za{\l}\'{o}\.{z}my, \.{z}e mamy pewn\k{a} macierz Hadamarda $H$ wymiaru $N=n^2$ dla
+$n>1$, kt\'{o}rej kolejne kolumny oznaczone s\k{a} symbolem $\textbf{h}\in
+\mathbb{C}^n$. Ponadto niech $\textbf{m} \in \{0, 1\}^N$ b\k{e}dzie
+wektorem incydencji \'{s}ci\'{s}le powi\k{a}zanym ze zbiorem kwadrat\'{o}w {\l}aci\'{n}skich dla
+danego wymiaru, kt\'{o}rego ilo\'{s}\'{c} element\'{o}w niezerowych (support) jest
+r\'{o}wna $n$. Zdefiniujmy operacj\k{e}~\cite{WB04}
+\begin{equation}
+\textbf{h} \uparrow \textbf{m} \equiv \sum_{k=1}^N h[k] |s_k\rangle,
+\end{equation}
+gdzie $\textbf{h}[k]$ oznacza $k$-ty element wektora $\textbf{h}$, natomiast posortowane rosn\k{a}co
+elementy $|s_k\rangle$ wskazuj\k{a}ce support wektora $\textbf{m}$ stanowi\k{a} standardow\k{a} baz\k{e} $\mathbb{C}^N$.
+Mniej formalnie, $\uparrow$~oznacza przemno\.{z}enie kolejnych jedynek wektora $\textbf{m}$ przez kolejne
+elementy wektora $\textbf{h}$.
+
+Maj\k{a}c odpowiedni zbi\'{o}r $M$ takich wektor\'{o}w $\textbf{m}$ konstruuje si\k{e} $M$ zbior\'{o}w
+ wzajemnie ortogonalnych baz w przestrzeni $\mathbb{C}^N$
+\begin{equation}
+\mathcal{B}_b \equiv \Big\{\frac{1}{\sqrt{N}}(\textbf{h}_l \uparrow \textbf{m}_{b_i}) : l = 1,...,N,i=1,...,N \Big\} : b\in\{1,...,M\},
+\end{equation}
+kt\'{o}re dla $b\neq b'$ implikuj\k{a} warunek MUB.
+
+Nale\.{z}y zaznaczy\'{c}, \.{z}e jest to tylko szczeg\'{o}lna, przyk{\l}adowa konstrukcja nie spraw\-dza\-j\k{a}\-ca
+si\k{e} w~przestrzeniach o~dowolnym wymiarze.
+
+\subsection*{MUB oraz macierze Hadamarda w mechanice kwantowej}
+
+Podstaw\k{a} fizyki jest pomiar. Ka\.{z}da teoria fizyczna powinna by\'{c}
+powtarzalna w~serii nie\-za\-le\.{z}\-nych do\'{s}wiadcze\'{n}. W~mechanice
+kwantowej istot\k{a} pomiaru rz\k{a}dzi zasada nieoznaczono\'{s}ci
+Heisenberga m\'{o}wi\k{a}ca o~tym, \.{z}e dla ka\.{z}dego stanu kwantowego
+$|\psi\rangle$ zachodzi nier\'{o}wno\'{s}\'{c}
+\begin{equation}
+\langle(\delta\hat{A})^2\rangle \langle(\delta \hat{B})^2\rangle\geqslant-\frac{1}{4}\langle\left[ \hat{A},\hat{B}\right]\rangle^2,
+\end{equation}
+gdzie warto\'{s}ci \'{s}rednie obliczone s\k{a} w~stanie $|\psi\rangle$, natomiast $\delta$ jest odchyleniem od
+warto\'{s}ci \'{s}redniej
+dla danego operatora hermitowskiego. Oznacza to, \.{z}e dwie wielko\'{s}ci kwantowe s\k{a} jednocze\'{s}nie mierzalne, gdy
+odpowiadaj\k{a}ce im operatory komutuj\k{a}. W~przeciwnym razie niepewno\'{s}ci pomiarowe powoduj\k{a}, \.{z}e wyniki do\'{s}wiadczenia
+trac\k{a} sens. Na przyk{\l}ad nie jest mo\.{z}liwym pomiar trzech sk{\l}adowych spinu elektronu, gdy\.{z}
+komutator wszystkich par operator\'{o}w spinu (macierzy $\sigma_k$ Pauliego) jest wielko\'{s}ci\k{a} niezerow\k{a}.
+
+Okazuje si\k{e} jednak, \.{z}e przyk{\l}adowo w~kwestii wspomnianych wcze\'{s}niej spin\'{o}w, (a~tak\.{z}e w~innych przypadkach,
+gdzie mamy do czynienia z~brakiem komutacji operator\'{o}w), jest mo\.{z}liwe do\'{s}\'{c} dok{\l}adne przewidzenie rezultatu
+pomiaru wszystkich sk{\l}adowych danej wielko\'{s}ci. Problem ten znany w~literaturze
+pod nazw\k{a} \emph{Mean King's Problem} zosta{\l} postawiony i~rozwi\k{a}zany w~\cite{VAA87}. W~przypadku cz\k{a}stki
+o~spinie $1/2$ do pomiaru wykorzystuje si\k{e} jedn\k{a} z~trzech baz z{\l}o\.{z}onych ze stan\'{o}w w{\l}asnych operator\'{o}w
+spinu $\sigma_k$. W~wy\.{z}szym wymiarze $N$ naturalnym rozszerzeniem tej konstrukcji jest zbi\'{o}r $(N+1)$ MUB~\cite{EA01}.
+
+MUB odgrywaj\k{a} kluczow\k{a} rol\k{e} w~opisie stan\'{o}w kwantowych. Dany stan $|\psi\rangle$ pewnego
+$N-$wymiarowego zespo{\l}u kwantowego charakteryzuje $(N^2-1)$ element\'{o}w jego macierzy g\k{e}sto\'{s}ci.
+Chc\k{a}c pozna\'{c} te parametry nale\.{z}y dokona\'{c} serii co najmniej $(N + 1)$ or\-to\-go\-nal\-nych pomiar\'{o}w, z~kt\'{o}rych
+otrzymuje si\k{e} $(N-1)$ rzeczywistych parametr\'{o}w. Oczywi\'{s}cie ka\.{z}dy pomiar powinien nie\'{s}\'{c} ze sob\k{a}
+niezale\.{z}n\k{a} informacj\k{e}. Ten ostatni warunek jest zagwarantowany wtedy, gdy ka\.{z}dy z~kolejnych
+pomiar\'{o}w dokonuje si\k{e} wzgl\k{e}dem innej bazy wybranej z~MUB~\cite{WF81}.
+
+MUB jeszcze inne zastosowanie znajduj\k{a} w~kwantowej kryptografii. W~szczeg\'{o}lno\'{s}ci
+w~algorytmie \emph{BB84}~\cite{BB84} opisuj\k{a}cym protok\'{o}{\l} Kwantowej Dystrybucji Klucza (QKD).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Zbi\'{o}r macierzy Hadamarda o~wymiarze~N~=~6}
+
+W pracy uwaga zosta{\l}a skoncentrowana na macierzach o~wymiarze $N=6$, gdy\.{z}
+jest to najmniejszy wymiar, dla kt\'{o}rego problem istnienia MUB pozostaje otwarty.
+Rozdzia{\l} ten jest po\'{s}wi\k{e}cony opisowi wszystkich klas macierzy
+Hadamarda $\HADAMARDS{6}$ znanych do maja 2006 r. Nowo znaleziona klasa, kt\'{o}ra
+uog\'{o}lnia dwie z~poni\.{z}szych, zostanie szczeg\'{o}{\l}owo przedstawiona
+w nast\k{e}pnym rozdziale.
+
+[...]
+
+W trakcie przygotowywania tej pracy og{\l}oszono wiadomo\'{s}\'{c}, \.{z}e Terence
+Tao otrzyma{\l} w~roku 2006 medal Fieldsa. Omawiaj\k{a}c jego r\'{o}\.{z}norakie
+osi\k{a}gni\k{e}cia w~matematyce nie wymieniono jednak odkrycia macierzy
+$S_6$~\cite{Ta04}, kt\'{o}ra jest prawdopodobnie jedynym punktem izolowanym w~przestrzeni $\HADAMARDS{6}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Wyniki numeryczne}
+
+Do niedawna wydawa{\l}o si\k{e}, \.{z}e poszczeg\'{o}lne klasy macierzy o wymiarze $N=6$
+stanowi\k{a} odr\k{e}bne obiekty w przestrzni $\HADAMARDS{6}$. W szczeg\'{o}lno\'{s}ci
+oznacza{\l}o to, \.{z}e \.{z}adnego reprezentanta danej klasy nie da si\k{e}
+przedstawi\'{c} - stosuj\k{a}c operacje permutacji wierszy i kolumn oraz dofazowania
+macierzami diagonalnymi - jako macierzy z klasy innej.
+
+Jakkolwiek pewne by{\l}o to, \.{z}e jedynie macierz $S_6$ stanowi punkt
+izolowany, tak dla ca{\l}ej reszty istnia{\l}o silne przypuszczenie, i\.{z}
+ka\.{z}da z nich by\'{c} mo\.{z}e nale\.{z}y do jakiej\'{s} og\'{o}lnej
+wielowymiarowej orbity. Potwierdza{\l}y te przypuszczenia numerycznie
+wyliczone warto\'{s}ci defektu, kt\'{o}ry dla
+$F_6(a, b)$, $D_6(c)$ oraz $C_6$ ma warto\'{s}\'{c} $4$.
+Posta\'{c} macierzy sugerowa{\l}a, \.{z}e hipotetyczna rodzina wielo- (co najwy\.{z}ej 4-)
+wymiarowa b\k{e}dzie rodzin\k{a} nieafiniczn\k{a}. W~stosunku do macierzy $C_6$ udowodniono nawet,
+\.{z}e nie mo\.{z}e by\'{c} ona generatorem \.{z}adnej afinicznej orbity~\cite{TZ07}.
+
+Poszukiwanie nowych macierzy Hadamarda odbywa{\l}o si\k{e} numerycznie metod\k{a}
+wie\-lo\-wy\-mia\-ro\-we\-go b{\l}\k{a}dzenia losowego po $25-$wymiarowej przestrzeni rzeczywistej
+od\-po\-wia\-da\-j\k{a}\-cej fazom rdzenia poszukiwanej macierzy $H$. Zasada dzia{\l}ania
+algorytmu polega{\l}a na minimalizowaniu funkcji celu $Z(H)$ jak\k{a} by{\l}
+funkcjona{\l} normy Frobeniusa
+$Z(H) \equiv ||M||_F = \sqrt{\textsf{Tr} \;M M^{\dagger}}$, gdzie $M = HH^{\dagger} - 6\mathbb{I}_6$.
+
+Identyfikowanie nowych znalezionych numerycznie macierzy Hadamarda jest
+utrudnione przez wspomnian\k{a} wcze\'{s}niej relacj\k{e} r\'{o}wnowa\.{z}no\'{s}ci.
+Sedno problemu le\.{z}y w~tym, i\.{z} dla hipotetycznie nowej macierzy jest bardzo
+trudno odnale\'{z}\'{c} zestaw macierzy permutacji oraz macierzy diagonalnych,
+kt\'{o}re przetransformowa{\l}yby j\k{a} do jednej ze znanych postaci. Z~drugiej
+strony jeszcze wi\k{e}kszej trudno\'{s}ci nastr\k{e}cza dow\'{o}d, \.{z}e jest
+to ca{\l}kiem nowa klasa. Nie istnieje \.{z}adna uniwersalna metoda, kt\'{o}ra
+pozwoli{\l}aby rozwi\k{a}zywa\'{c} ten problem w~kr\'{o}tkim czasie dla dowolnej
+macierzy. Ka\.{z}dy przypadek nale\.{z}y traktowa\'{c} indywidualnie. Przyk{\l}adowo
+dwie poni\.{z}sze macierze nale\.{z}\k{a} do tej samej $1$-wymiarowej orbity
+afinicznej, co na pierwszy rzut oka jest trudne do stwierdzenia ze wzgl\k{e}du na
+pozornie r\'{o}\.{z}n\k{a} ilo\'{s}\'{c} wolnych parametr\'{o}w $p=\exp(2 \pi i \phi)$ dla $\phi\in[0,1)$
+\begin{equation}
+\left[
+\begin{array}{rrrrrr}
+1 & 1 & 1 & 1 & 1 & 1\\
+1 & -1 & i & -i & -i & i \\
+1 & i & -1 & i p & -i p & -i \\
+1 & -i & i \overline{p} & -1 & i & -i \overline{p} \\
+1 & -i & -i \overline{p} & i & -1 & i \overline{p} \\
+1 & i & -i & -i p & i p & -1
+\end{array}
+\right] \simeq
+\left[
+\begin{array}{rrrrrr}
+1 &   1 &   1 &   1 &   1 &   1\\
+1 &   1 &  -1 &  -i &   i &  -1\\
+1 &  -1 &   p & -i p &  -p &  i p\\
+1 &   i &  i p &  -1 &  -i & -i p\\
+1 &  -i &  -p &   i &  -1 &   p\\
+1 &  -1 & -i p &  i p &   p &  -p
+\end{array}
+\right].
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Nowa klasa macierzy $B_6(t)$}
+
+Wyniki numeryczne pozwoli{\l}y odgadn\k{a}\'{c} posta\'{c}
+analityczn\k{a} element\'{o}w pewnych macierzy, a~dalsze obliczenia
+analityczne pokaza{\l}y, \.{z}e jest to nowa rodzina, kt\'{o}ra uog\'{o}lnia
+do\-tych\-czas znane $C_6$ oraz $D_6(c)$ czyni\k{a}c je dwoma przypadkami
+szczeg\'{o}lnymi jednej nie\-a\-fi\-nicz\-nej orbity $1$-wymiarowej.
+
+Rozwa\.{z}my nast\k{e}puj\k{a}c\k{a} rodzin\k{e}\footnote{Symbol B u\.{z}yty w
+tytule stanie si\k{e} jasny w dalszej cz\k{e}\'{s}ci rozdzia{\l}u.} macierzy
+zale\.{z}n\k{a} od parametru $t$
+\begin{equation}
+W_6\big(t=t(\phi)\big) =
+\left[
+\begin{array}{rrrrrr}
+1 &    1 &       1 &  1 &    1 &    1\\
+1 &   -1 & -\alpha & -t &    t &  \alpha\\
+1 &   -x &       1/y &  t &  1 & -1/z\\
+1 & -\beta &     \beta & -1 & -1/z &  1/z\\
+1 &  \beta &       1/y & -\gamma &    1/y & -\alpha\\
+1 &        x &      -\gamma &  \gamma &   -x &   -1\\
+\end{array}
+\right],
+\end{equation}
+przy czym:
+\begin{equation}
+x(t) = \frac{1+2\;t+t^2-\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}}{1+2\;t-t^2},
+\end{equation}
+
+\begin{equation}
+y(t) = \frac{1+2\;t-t^2}{t(-1+2\;t+t^2)},
+\end{equation}
+
+\begin{equation}
+z(t) = \frac{1+2\;t+t^2-\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}}{-1+2\;t+t^2},
+\end{equation}
+
+\begin{equation}
+\alpha(t) = \frac{t\left(1 - t + 3\;t^2 + t^3 +
+    t^2 \overline{\left(2\; t - \sqrt{2}\; \sqrt{1 + 2\;t + 2\; t^3 + t^4} \right)}
+\right)}{1+t^2+t^3+t\left(3-\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}\right)},
+\end{equation}
+
+\begin{equation}
+\beta(t) = \frac{\beta_1\beta_2-\beta_3}{\beta_4-\beta_5},
+\end{equation}
+
+gdzie:
+
+\begin{equation}
+\beta_1(t) = \frac{\left(3+2\;t+t^2-\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}+\overline{\left(\frac{t^2-1}{t}\right)}\right)}
+{(-1+2\;t+t^2)\left(1+t+3\;t^2+t^3-\sqrt{2}\;t^2\;\overline{\sqrt{1+2\;t+2\;t^3+t^4}}\right)},
+\end{equation}
+
+\begin{equation}
+\beta_2(t) = 1+t^2+t^2\;\overline{\left(2\;t-\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}\right)}
+\end{equation}
+
+\begin{equation}
+\beta_3(t) = \frac{-3+t^2+t\;\overline{\left(2\;t-\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}\right)}}{1-2\;t+t^2},
+\end{equation}
+
+\begin{equation}
+\beta_4(t) = \frac{-2-t+2\;t^2+t^3+\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}-\overline{\left(\frac{t^2-1}{t}\right)}}
+{1+t+3\;t^2+t^3-\sqrt{2}\;t^2\;\overline{\sqrt{1+2\;t+2\;t^3+t^4}}},
+\end{equation}
+
+\begin{equation}
+\beta_5(t) = \frac{\sqrt{2}\;t^2\;\overline{\sqrt{1+2\;t+2\;t^3+t^4}}}
+{1+t+3\;t^2+t^3-\sqrt{2}\;t^2\;\overline{\sqrt{1+2\;t+2\;t^3+t^4}}},
+\end{equation}
+
+oraz
+
+\begin{equation}
+\gamma(t) = \frac{2\;t(1-t^2)\left(1+2\;t+t^2-\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}\right)}{\left(-1-2\;t+t^2 \right)^2\left(1-6\;t^2+t^4\right)},
+\end{equation}
+
+natomiast parametr $t$ jest funkcj\k{a} fazy
+$t(\phi) = \exp(2 \pi i \phi)$, kt\'{o}rej dziedzin\k{a} - aby zachowa\'{c} warunek unitarno\'{s}ci - jest
+\begin{equation}
+\frac{ \arccos\big((\sqrt{3}-1)/2\big) } {2 \pi} < \phi < 1 -
+\frac{ \arccos\big((\sqrt{3}-1)/2\big) } {2 \pi}.
+\end{equation}
+Nie jest to wi\k{e}c "pe{\l}na" orbita, tak jak w~przypadku pozosta{\l}ych klas,
+gdy\.{z} fazy nie przebiegaj\k{a} ca{\l}ego zakresu $[0, 2\pi)$.
+
+Rodzina $W_6(t)$ zosta{\l}a odnaleziona numerycznie w~postaci kilkunastu macierzy
+rep\-re\-zen\-tan\-t\'{o}w. Nast\k{e}pnie korzystaj\k{a}c z~wzajemnej ortogonalno\'{s}ci
+wierszy i~kolumn, a~tak\.{z}e dzi\k{e}ki temu, \.{z}e uda{\l}o si\k{e}
+zauwa\.{z}y\'{c} pewne zale\.{z}no\'{s}ci funkcyjne mi\k{e}dzy liczbami,
+zosta{\l}y wyliczone wzory analityczne na jej poszczeg\'{o}lne elementy $(x, y, z, \alpha, \beta, \gamma)$.
+
+Mniej wi\k{e}cej w tym samym czasie niezale\.{z}nych oblicze\'{n} dokona{\l}
+Remus Nicoar\unichar{259} oraz jego student Kyle Beauchamp~\cite{BN06}.
+Ich celem by{\l}o tak\.{z}e odnalezienie hipotetycznej orbity wychodz\k{a}cej
+z~macierzy $C_6$. Rodzina $B_6(t)$, kt\'{o}r\k{a} zaprezentowali
+jest r\'{o}wnowa\.{z}na rodzinie $W_6(t)$ z t\k{a} r\'{o}\.{z}nic\k{a},
+\.{z}e wzory, kt\'{o}re przedstawili maj\k{a} prostsz\k{a} posta\'{c}. Mianowicie
+\begin{equation}
+B_6\big(t=t(\phi)\big) =
+\left[
+\begin{array}{rrrrrr}
+1 &             1 &             1 &  1 &             1 &             1\\
+1 &            -1 & -1/x & -t &             t &  1/x\\
+1 &            -x &             1 &  t & 1/y & -1/z\\
+1 & -1/t &  1/t & -1 & -1/z &  1/z\\
+1 &  1/t &             y & -z &             1 & -1/x\\
+1 &             x &            -z &  z &            -x &            -1\\
+\end{array}
+\right],
+\end{equation}
+gdzie:
+\begin{equation}
+x(t) = \frac{1+2\;t+t^2-\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}}{1+2\;t-t^2},
+\end{equation}
+
+\begin{equation}
+y(t) = \frac{1+2\;t-t^2}{t(-1+2\;t+t^2)},
+\end{equation}
+
+\begin{equation}
+z(t) = \frac{1+2\;t+t^2-\sqrt{2}\;\sqrt{1+2\;t+2\;t^3+t^4}}{-1+2\;t+t^2}.
+\end{equation}
+
+Dziedzina parametru $t(\phi)$ nie zmienia si\k{e}.
+W szczeg\'{o}lno\'{s}ci oznacza to, \.{z}e parametry $\alpha, \beta$ oraz $\gamma$ u\.{z}yte do opisu rodziny $W_6(t)$ s\k{a}
+skomplikowanymi funkcjami parametr\'{o}w $x$, $y$ oraz $z$.
+Relacja r\'{o}wnowa\.{z}no\'{s}ci, kt\'{o}ra pokazuje r\'{o}wno\'{s}\'{c} tych dw\'{o}ch rodzin jest nast\k{e}puj\k{a}ca:
+\begin{equation}
+\left[
+\begin{array}{cccccc}
+\bullet & \bullet &       1 & \bullet & \bullet & \bullet\\
+\bullet &       1 & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet &       1 & \bullet\\
+\bullet & \bullet & \bullet &       1 & \bullet & \bullet\\
+      1 & \bullet & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet & \bullet & 1\\
+\end{array}
+\right]
+W_6(t) D(x,y,z,t)
+\left[
+\begin{array}{cccccc}
+1 & \bullet & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet &       1 & \bullet & \bullet &       1\\
+\bullet &       1 & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet &       1 & \bullet\\
+\bullet & \bullet & \bullet &       1 & \bullet & \bullet\\
+\end{array}
+\right]\equiv B_6(t),
+\end{equation}
+gdzie
+\begin{equation}
+D(x,y,z,t)=
+\left[
+\begin{array}{cccccc}
+1 & \bullet & \bullet & \bullet & \bullet & \bullet\\
+\bullet & -1/x & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet & y & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet & 1/t & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet & 1 & \bullet\\
+\bullet & \bullet & \bullet & \bullet & \bullet & -z\\
+\end{array}
+\right].
+\end{equation}
+Ze wzgl\k{e}du na prostszy zapis rodziny $B_6(t)$, to ona b\k{e}dzie dalej wymieniana w~tek\'{s}cie.
+Rodzina $B_6(t)$ stanowi bezpo\'{s}rednie uog\'{o}lnienie rodziny $C_6$, gdy\.{z} przy doborze pa\-ra\-met\-ru
+$t=d^2$, gdzie $d$ jest liczb\k{a} zdefiniowan\k{a} dla macierzy $C_6$, zachodzi
+$B_6(t) \equiv C_6$. Ponadto dla parametru $t(\phi)=-1$, czyli dla $\phi=1/2$ otrzymuje si\k{e} reprezentanta rodziny $D_6(c)$.
+M\'{o}wi\k{a}c inaczej powy\.{z}szy dob\'{o}r fazy stanowi projekcj\k{e} rodziny $B_6(t)$ na orbit\k{e} afiniczn\k{a} $D_6(c)$,
+przy czym, aby zachowa\'{c} zgodno\'{s}\'{c} z~notacj\k{a} z~poprzedniego rozdzia{\l}u nale\.{z}y dofazowa\'{c} oraz spermutowa\'{c}
+macierz $B_6(t)$ w~nast\k{e}puj\k{a}cy spos\'{o}b
+\begin{equation}
+B'_6(t) =
+\left[
+\begin{array}{cccccc}
+      1 & \bullet & \bullet & \bullet & \bullet & \bullet\\
+\bullet &       i & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet &      -1 & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet &      -i & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet &       i & \bullet\\
+\bullet & \bullet & \bullet & \bullet & \bullet &      -i\\
+\end{array}
+\right]\cdot \dots
+\end{equation}
+
+\begin{equation}
+\dots
+\left[
+\begin{array}{cccccc}
+      1 & \bullet & \bullet & \bullet & \bullet & \bullet\\
+\bullet &       1 & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet & \bullet &       1\\
+\bullet & \bullet &       1 & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet &       1 & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet &       1 & \bullet\\
+\end{array}
+\right]
+B_6(t)
+\left[
+\begin{array}{cccccc}
+\bullet & \bullet &       1 & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet &       1 & \bullet & \bullet\\
+\bullet &       1 & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet & \bullet &       1\\
+\bullet & \bullet & \bullet & \bullet &       1 & \bullet\\
+      1 & \bullet & \bullet & \bullet & \bullet & \bullet\\
+\end{array}
+\right],
+\end{equation}
+otrzymuj\k{a}c ostatecznie
+\begin{equation}
+B'_6(t=-1)\longrightarrow B'_6 \circ \verb"EXP"
+\left[
+\begin{array}{rrrrrr}
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet &     i c &     i c & \bullet \\
+  \bullet & \bullet & -i c & \bullet & \bullet & -i c \\
+  \bullet & \bullet & -i c & \bullet & \bullet & -i c \\
+  \bullet & \bullet & \bullet &  i c &  i c & \bullet \\
+\end{array}
+\right] \equiv D_6(c).
+\end{equation}
+
+Jest to dow\'{o}d wprost na to, \.{z}e zbi\'{o}r $\HADAMARDS{6}$ zosta{\l} powi\k{e}kszony o~kolejny obiekt.
+
+\subsection*{Nowa para MUH}
+
+Para MUH zosta{\l}a tak\.{z}e znaleziona numerycznie metod\k{a} b{\l}\k{a}dzenia losowego.
+Dos\-t\k{e}p\-na przestrze\'{n} by{\l}a $9-$wymiarowa: $6$ parametr\'{o}w dla
+macierzy diagonalnej $D_F$, kt\'{o}ra dofazowywa{\l}a jedn\k{a} z~macierzy
+wchodz\k{a}cych w~sk{\l}ad iloczynu, oraz $3$ parametry
+od\-po\-wia\-da\-j\k{a}\-ce fazom dla macierzy $D_6(c)$ oraz $F_6(a,b)$, gdy\.{z} za{\l}o\.{z}ono,
+\.{z}e w{\l}a\'{s}nie ta para b\k{e}dzie badana. Minimalizowana funkcja celu mia{\l}a
+posta\'{c} $Z(M_1, M_2)\equiv ||M_1^{\dagger}M_2/\sqrt{6} - E||^2_F$, gdzie $M_1 = D_6(c)$,
+$M_2 = D_F(\alpha_1,...,\alpha_6) P_L F_6(a,b) P_R$, natomiast $E$, to macierz sk{\l}adaj\k{a}ca si\k{e} z~samych jedynek.
+Po ka\.{z}dym przebiegu zadanej ilo\'{s}ci iteracji dla b{\l}\k{a}dzenia losowego w~przypadku
+nieodnalezienia kandydat\'{o}w na MUH brano ko\-lej\-ne warto\'{s}ci
+macierzy permutacji $P_L$ oraz $P_R$. Stopie\'{n} dok{\l}adno\'{s}ci oblicze\'{n} by{\l} na tyle wysoki, \.{z}e pozwoli{\l}o to
+na odgadni\k{e}cie postaci analitycznej macierzy $D_F$ oraz warto\'{s}ci
+parametr\'{o}w $b$~i~$c$. Parametr $a$ zosta{\l} wyliczony
+przy za{\l}o\.{z}eniu unimodularno\'{s}ci wynikowej macierzy.
+
+Wyliczone fazy s\k{a} postaci:
+\begin{equation}
+ %   a=- \cot^{-1} \left(\frac{1}{2}\right)-\frac{5}{4}\pi,\qquad b=0,\qquad c=-\frac{\pi}{2}, % DIFFERENT NORMALIZATION!!!
+    a= \arctan \left(-2\right)\frac{1}{2\pi}-\frac{1}{8},\qquad b=0,\qquad c=-\frac{\pi}{2},
+\end{equation}
+natomiast macierz diagonalna dofazowuj\k{a}ca macierz Fouriera z lewej strony jest postaci
+\begin{equation}
+    D_F = \textrm{diagonal}\,\verb"EXP" \left(\frac{1}{12}\pi i\big[0, 22, 8, 3, 7, 11\big]\right).
+\end{equation}
+Wtedy przy u\.{z}yciu macierzy permutacji:
+\begin{equation}
+P_L =
+\left[
+\begin{array}{cccccc}
+      1 & \bullet & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet &       1 & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet &       1 & \bullet\\
+\bullet & \bullet & \bullet &       1 & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet & \bullet &       1\\
+\bullet &       1 & \bullet & \bullet & \bullet & \bullet\\
+\end{array}
+\right],\qquad
+P_R =
+\left[
+\begin{array}{cccccc}
+      1 & \bullet & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet &       1 & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet &       1 & \bullet\\
+\bullet &       1 & \bullet & \bullet & \bullet & \bullet\\
+\bullet & \bullet & \bullet &       1 & \bullet & \bullet\\
+\bullet & \bullet & \bullet & \bullet & \bullet &       1\\
+\end{array}
+\right],
+\end{equation}
+otrzymuje si\k{e} heterogeniczn\k{a} par\k{e} MUH: $\{D_6(c), F'\}$, gdzie
+$F'= D_F P_L F_6(a, b) P_R$.
+
+Aby udowodni\'{c} t\k{e} w{\l}asno\'{s}\'{c} nale\.{z}y policzy\'{c} iloczyn
+\begin{equation}
+\frac{1}{\sqrt{6}} \left(D_6(c)\right)^{\dagger} D_F P_L F_6(a, b) P_R = M
+\end{equation}
+i pokaza\'{c}, \.{z}e M jest macierz\k{a} unimodularn\k{a}.
+Wzory na t\k{e} par\k{e} macierzy MUH wyra\.{z}one explicite s\k{a} nast\k{e}puj\k{a}cej postaci:
+\begin{equation}
+D_6(c=-\pi/2) =
+\left[
+\begin{array}{rrrrrr}
+1 &    1 &    1 &    1 &    1 &    1\\
+1 &   -1 &    i & -  i & -  i &    i\\
+1 &    i &   -1 &    1 &   -1 & -  i\\
+1 & -  i &   -1 &   -1 &    i &    1\\
+1 & -  i &    1 &    i &   -1 &   -1\\
+1 &    i &  - i &   -1 &    1 &   -1\\
+\end{array}
+\right],\qquad
+F' = \verb"EXP"\left(i F_R(a) \right),
+\end{equation}
+gdzie
+\begin{equation}
+F_R(a)=\left[
+\begin{array}{rrrrrr}
+\bullet &    \bullet &         \bullet &        \bullet &         \bullet &         \bullet\\
+\bullet &    \bullet &       2\pi/3&      2\pi/3 &   -2\pi/3 &   -2\pi/3\\
+\bullet &    \bullet &    -2\pi/3 &   -2\pi/3 &       2\pi/3 & 2\pi/3\\
+\bullet &        \pi &  a+\pi         &    a     &         \bullet &        \pi\\
+\bullet &        \pi &       a-\pi/3    &    a+2\pi/3      &    -2\pi/3 &       \pi/3\\
+\bullet &        \pi &       a+\pi/3    &    a-2\pi/3      &     2\pi/3 &    -\pi/3\\
+\end{array}
+\right].
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Wyniki analityczne}
+
+Twierdzenie o~dekompozycji spektralnej m\'{o}wi o~tym, \.{z}e dowoln\k{a} macierz
+normaln\k{a}\footnote{Macierz normalna spe{\l}nia warunek: $MM^{\dagger} = M^{\dagger}M$.} $M$ mo\.{z}na zapisa\'{c} w postaci
+$M=S J S^{-1}$. Oznacza to, \.{z}e macierze $M$ i $J$ s\k{a} macierzami \emph{podobnymi} natomiast $S$
+jest macierz\k{a} \emph{przej\'{s}cia} do takiej bazy, w~kt\'{o}rej $M$ przyjmuje posta\'{c} diagonaln\k{a} $J$.
+Innymi s{\l}owy macierz $M$ mo\.{z}na zapisa\'{c} jako iloczyn macierzy $S$ sk{\l}adaj\k{a}cej si\k{e} z~wektor\'{o}w w{\l}asnych macierzy $M$,
+jej odwrotno\'{s}ci $S^{-1}$ oraz diagonalnej macierzy warto\'{s}ci w{\l}asnych $M$.
+Twierdzenie to mo\.{z}na zastosowa\'{c} do odnalezienia kolejnych par MUH.
+
+\subsection*{Dekompozycja spektralna macierzy cyklicznej}
+
+Niech $c\in\mathbb{C}^N$ b\k{e}dzie wektorem o $N$ sk{\l}adowych
+$c = [c_1, c_2, ..., c_{N}]$. Rozwa\.{z}my macierz $L$
+$L = [e_N, e_1, ..., e_{N-1}]$
+sk{\l}adaj\k{a}c\k{a} si\k{e} z wektor\'{o}w $e_k$ bazy kanonicznej $\mathbb{R}^N$ i~za jej
+pomoc\k{a} skonstruujmy kolejn\k{a} macierz
+\begin{equation}
+    C = [c, c\;L, c\;L^2, ..., c\;L^{N-1}]^\textrm{T} = \left[
+\begin{array}{lllll}
+      c_1 &  c_{2} &  c_{3} & \hdots & c_N     \\
+      c_N &    c_1 &  c_{2} & \hdots & c_{N-1} \\
+  c_{N-1} &    c_N &    c_1 & \hdots & c_{N-2} \\
+   \vdots & \vdots & \vdots &        & \vdots  \\
+    c_{2} &  c_{3} &  c_{4} & \hdots & c_1
+\end{array}
+\right].
+\end{equation}
+Przy powy\.{z}szych oznaczeniach, je\.{z}eli C jest macierz\k{a} cykliczn\k{a}, to jej rozk{\l}ad spektralny
+jest postaci $C = F J F^{-1}$,
+gdzie $J = \textrm{diagonal}\big[F c^\textrm{T}\big]$, natomiast $F$ jest macierz\k{a} Fouriera.
+
+Dow\'{o}d:
+
+Niech $D=\textrm{diagonal}\big[1,w,...,w^{N-1}\big]$, gdzie $w=\exp\left(2 \pi i /N\right)$.
+Zauwa\.{z}my, \.{z}e:
+\begin{align*}
+%\left[L F\right]_{m,n}&= e_{[(m+1)mod\;N]}^{\rm T} \left[1, w^{1(n-1)},w^{2(n-1)},...,w^{N(n-1)}\right]^{\rm T}
+\left[L F\right]_{m,n}&= e_{(m+1)}^\textrm{T}\left[1, w^{1(n-1)},w^{2(n-1)},...,w^{N(n-1)}\right]^\textrm{T}\\
+&= w^{m(n-1)}\\
+&= w^{(n-1)} w^{(m-1)(n-1)}\\
+&= w^{(n-1)} \left[1,w^{1(m-1)},w^{2(m-1)},...,w^{N(m-1)}\right] e_n\\
+&=\left[F D\right]_{m,n}.
+\end{align*}
+Zatem $L = F D F^{-1}$, czyli $F^{-1} L F$
+jest macierz\k{a} diagonaln\k{a}. Zauwa\.{z}my ponadto, \.{z}e
+\begin{equation}
+J = F^{-1} C F = F^{-1}\left(\sum_{k=1}^N c_k\,L^{k-1} \right) F
+=\sum_{k=1}^N c_k\,F^{-1} L^{k-1} F
+=\sum_{k=1}^N c_k\left(F^{-1} L F\right)^{k-1}.
+\end{equation}
+Na tej podstawie wnioskujemy, \.{z}e
+$J$ tak\.{z}e jest macierz\k{a} diagonaln\k{a}. Pozostaje zatem
+wykaza\'{c}, \.{z}e $J = \textrm{diagonal}\big[F c^\textrm{T}\big]$.
+W tym celu policzmy:
+\begin{equation}
+\left[F c^\textrm{T}\right]_m=\sum_{k=1}^N c_k w^{(k-1)(m-1)}
+=\left[\sum_{k=1}^N c_k D^{k-1}\right]_{m,m}
+=\left[F^{-1} C F\right]_{m,m},
+\end{equation}
+co ko\'{n}czy dow\'{o}d twierdzenia.
+
+Rozwa\.{z}my macierz $C_6$ w~postaci nieodfazowanej. Na mocy twierdzenia zachodzi dla niej
+nast\k{e}puj\k{a}cy rozk{\l}ad:
+\begin{equation}
+C_6 = F_6 \sqrt{6} J_6\left(F_6\right)^{-1},
+\end{equation}
+gdzie widmo macierzy cyklicznej
+\begin{equation}
+    J_6 = \textrm{diagonal}\big[\lambda_1, \lambda_2, \lambda_3, \lambda_4, \lambda_5, \lambda_6\big]
+\end{equation}
+dane jest przez:
+\begin{align*}
+\lambda_1&=\overline{\lambda_4}=+\exp\left(- i \frac{1}{4}\pi\right),\\
+\lambda_2&=\overline{\lambda_5}=+\exp\left(+i\arctan\left(\frac{\sqrt{2 \sqrt{27}}-3\sqrt{2\sqrt{3}}+6}
+{\sqrt{2\sqrt{27}}-3\sqrt{2\;\sqrt{3}}-6}\right)\right),\\
+\lambda_3&=\overline{\lambda_6}=-\exp\left(- i \arctan\left(\frac{\sqrt{2\sqrt{27}}-3\sqrt{2\sqrt{3}}-6}
+{\sqrt{2\sqrt{27}}-3\sqrt{2 \sqrt{3}}+6}\right)\right).
+\end{align*}
+Zauwa\.{z}my, \.{z}e:
+\begin{align*}
+C_6 = F_6 \sqrt{6} J_6\left(F_6\right)^{-1}&\Longleftrightarrow
+\left(F_6\right)^\dagger C_6 = \left(F_6\right)^\dagger F_6 \sqrt{6} J_6\left(F_6\right)^{-1}\\
+&\Longleftrightarrow\frac{1}{\sqrt{6}}\left(F_6\right)^\dagger C_6 = 6 J_6\left(F_6\right)^{-1}\in\HADAMARDS{6},
+\end{align*}
+co pozwala uzna\'{c} par\k{e} macierzy Hadamarda $\{C_6, F_6(0, 0)\}$ za par\k{e} MUH.
+
+Twierdzenie o~dekompozycji spektralnej macierzy pozwala wi\k{e}c uzyskiwa\'{c}
+nowe pary MUH dla dowolnego wymiaru~$N$ pod warunkiem, \.{z}e
+w~zbiorze $\HADAMARDS{N}$ istniej\k{a} macierze cykliczne. Jest to kolejny przyk{\l}ad MUH, kt\'{o}re s\k{a} heterogeniczne.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Podsumowanie - nowa klasa $B_6(t)$ oraz heterogeniczne pary MUH}
+
+Cel tej pracy, jakim by{\l}a pr\'{o}ba rozszerzenia zbioru macierzy $\HADAMARDS{6}$
+o~nowe, nieznane wcze\'{s}niej elementy, zosta{\l} osi\k{a}gni\k{e}ty. Uda{\l}o si\k{e}
+pokaza\'{c}, \.{z}e istnieje og\'{o}lna $1-$parametrowa nie\-a\-fi\-nicz\-na rodzina
+macierzy $B_6(t)$, kt\'{o}ra zawiera w~sobie jako przypadek szczeg\'{o}lny macierz
+cykliczn\k{a} $C_6$. Natomiast przyj\k{e}cie parametru $t=-1$ stanowi
+projekcj\k{e} nowej rodziny $B_6(t)$ na rodzin\k{e}
+afiniczn\k{a} $D_6(c)$. Jest to wi\k{e}c pewien og\'{o}lniejszy tw\'{o}r od wszystkich znanych do\-tych\-czas.
+
+Nowa rodzina mo\.{z}e automatycznie pos{\l}u\.{z}y\'{c} do konstrukcji
+baz maksymalnie spl\k{a}\-ta\-nych, a~tak\.{z}e by\'{c} u\.{z}yta do nowych
+algorytm\'{o}w kwantowej teleportacji lub g\k{e}stego kodowania~\cite{We01}.
+Inn\k{a} zalet\k{a} wynikaj\k{a}c\k{a} z~powi\k{e}kszenia zbioru
+$\HADAMARDS{6}$ jest rozszerzenie domeny poszukiwa\'{n} kolejnych
+potencjalnych par, lub tr\'{o}jek MUH. Ka\.{z}da nowa klasa mo\.{z}e teoretycznie
+zawiera\'{c} w~sobie nieznanego przedstawiciela niezb\k{e}dnego do takiej konstrukcji.
+
+Innym celem - zwi\k{a}zanym w{\l}a\'{s}nie z~MUH - jaki uda{\l}o si\k{e}
+osi\k{a}gn\k{a}\'{c}, by{\l}o pokazanie, \.{z}e istnieje nowa
+heterogeniczna para takich macierzy, a~ponadto zaproponowano u\-ni\-wer\-sal\-n\k{a}
+metod\k{e} konstrukcji takich par bazuj\k{a}c\k{a} na twierdzeniu o~dekompozycji
+spektralnej macierzy normalnej, przy za{\l}o\.{z}eniu
+istnienia dla danego wymiaru macierzy cyklicznych. Znalezione pary, to:
+%\left(C_6, F_6(0, 0)\right), \qquad \left(D_6(-\frac{\pi}{2}), F'_6(-\arc \cot\left(\frac{1}{2}\right)-\frac{5}{4}\pi, 0)\right),
+$\{C_6, F_6(0, 0)\}$ oraz $\{D_6(c), F'_6(a, 0)\}$,
+gdzie macierz $F'_6$ oznacza dofazowan\k{a} i spermutowan\k{a} macierz Fouriera $F_6$ natomiast
+parametry $a$ i $c$ okre\'{s}lono w tek\'{s}cie.
+
+Nowa para MUH daje nowy spos\'{o}b przygotowania optymalnego pomiaru
+sk{\l}adaj\k{a}cego si\k{e} z~trzech ortogonalnych pomiar\'{o}w von Neumanna dla uk{\l}adu
+o~wymiarze $N=6$~\cite{VAA87}.
+
+\begin{flushright}
+$\blacksquare$
+\end{flushright}
+
+[...]
+
+Wyniki tej pracy zosta{\l}y opublikowane w~\cite{Be06}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{9}
+\bibitem{Sy67} J.J. Sylvester, \emph{Thoughts on inverse orthogonal matrices, simultaneous sign-successions, and tessellated pavements in two or more colors, with applications to Newton s rule, ornamental tile-work, and the theory of numbers}, Philosophical Magazine xxxiv, {\bf 34}, 461--475 (1867).
+\bibitem{Ha93} J.S. Hadamard, \emph{R\'{e}solution d'une question relative aux d\'{e}terminants}, Bulletin des Sciences Math\'{e}matiques {\bf 17}, 240--246 (1893).
+\bibitem{BF91} G. Bj{\"o}rk, R. Fr{\"o}berg, \emph{A faster way to count the solutions of inhomogeneous systems of algebraic equations, with applications to cyclic--$n$--roots}, Journal of Symbolic Computation {\bf 12}, 329--336 (1991).
+\bibitem{Ha96} U. Haagerup, \emph{Orthogonal maximal abelian $*$-subalgebras of the $n \times n$ matrices and cyclic--$n$--roots}, Cambridge, MA: International Press, 296--322 (1996).
+\bibitem{HC98} I. Heng, C.H. Cooke, \emph{Error correcting codes associated with complex Hadamard matrices}, Applied Mathematics Letters {\bf 11}, 77--80 (1998).
+\bibitem{Kn96} E. Knill, \emph{Group representations, error bases and quantum codes}, LANL report LAUR-96-2807, (1996).
+\bibitem{TZ06} W. Tadej, K. \.{Z}yczkowski, \emph{A concise guide to complex Hadamard matrices}, Open Systems and Information Dynamics {\bf 13}, 133--177 (2006).
+\bibitem{Bu62} A.T. Butson, \emph{Generalized Hadamard matrices}, Proceedings of the AMS {\bf 13}, 894--898 (1962).
+\bibitem{Bu63} A.T. Butson, \emph{Relations among generalized Hadamard matrices, relative difference sets, and maximal length linear recurring sequences}, Canadian Journal of Mathematics {\bf 15}, 42--48 (1963).
+\bibitem{BBRV02} S. Bandyopadhyay, P.O. Boykin, V. Roychowdhury, F. Vatan, \emph{A new proof for the existence of mutually unbiased bases}, Algorithmica {\bf 34}, 512--528 (2002).
+\bibitem{Iv81} I.D. Ivanovi\'{c}, \emph{Geometrical description of quantal state determination}, Journal of Physics A {\bf 14}, 3241--3245 (1981).
+\bibitem{KR04} A. Klappenecker, M. R\"{o}tteler, \emph{Constructions of mutually unbiased bases}, Lecture Notes in Computer Science {\bf 2948}, 137--144 (2004).
+\bibitem{WF81} W.K. Wootters, B.D. Fields., \emph{Optimal state-determination by mutually unbiased measurements}, Annals of Physics {\bf 191}, 363--381 (1981).
+\bibitem{WB04} P. Wocjan, T. Beth, \emph{New Construction of MUBs in Square Dimensions}, IAKS, quant-ph/0407081 (2004).
+\bibitem{VAA87} L. Vaidman, Y. Aharonov, D.Z. Albert, \emph{How to ascertain the values of $\sigma_x, \sigma_y$ and $ \sigma_z$}, Physical Review Letters {\bf 58}, 1385--1387 (1987).
+\bibitem{EA01} B.-G. Englert, Y. Aharonov, \emph{The mean king's problem: Prime degrees of freedom}, Physical Letters A {\bf 284}, 1--5 (2001).
+\bibitem{BB84} C.H. Bennet, G. Brassard, \emph{Quantum cryptography: Public key distribution and coin tossing}, IEEE, NY (1984).
+\bibitem{Ta04} T. Tao, \emph{Fuglede's conjecture is false in $5$ and higher dimensions}, Mathematical Research Letters {\bf 11}, 251--258 (2004).
+\bibitem{TZ07} W. Tadej, K. \.{Z}yczkowski, \emph{The defect of a unitary Fourier matrix}, preprint (2007).
+\bibitem{BN06} K. Beauchamp, R. Nicoar\unichar{259}, \emph{Orthogonal maximal abelian $*$-subalgebras of the $6 \times 6$ matrices}, preprint math.OA/0609076 (2006).
+
+%\bibitem{r20} J.H. Beder, \emph{Conjectures about Hadamard matrices}, Journal of Statistical Planning and Inference {\bf 72}, 7--14 (1998).
+%\bibitem{r24} P. Di{\c t}{\v a}, \emph{Some results on the parametrization of complex Hadamard matrices}, Journal of Physics A: Mathematical and General {\bf 37}, 5355--5374 (2004).
+%\bibitem{r25} A. Klappenecker, M. R{\"o}tteler, \emph{Beyond Stabilizer Codes I: Nice Error Bases}, IEEE Transactions on Information Theory, {\bf 48}, 2392--2395 (2002).
+%\bibitem{r26} M. Petrescu., \emph{Existence of continuous families of complex Hadamard matrices of certain prime dimensions}, Ph. D. thesis, UCLA (1997).
+%\bibitem{r27} W. Tadej, \emph{Permutation equivalence classes of Kronecker Products of unitary Fourier matrices}, Linear Algebra and its Applications {\bf 418}, 719--736 (2005).
+%\bibitem{r28} A. W{\'o}jcik, A. Grudka, R. Chhajlany, \emph{Generation of inequivalent generalized Bell bases}, Quantum Information Processing {\bf 2}, 201--206 (2003).
+\bibitem{We01} R.F. Werner, \emph{All teleportation and dense coding schemes}, Journal of Physics A: Mathematical and General {\bf 34}, 7081--7094 (2001).
+\bibitem{Be06} I. Bengtsson, et al., \emph{MUBs and Hadamards of order six}, preprint (2007).
+\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+Praca opisuje wyniki numeryczne oraz analityczne,
+kt\'{o}re uda{\l}o si\{e} osi\k{a}gn\k{a}\'{c}
+badaj\k{a}c zbi\'{o}r zespolonych macierzy Hadamarda
+$\mathcal{H}_6$ oraz ich zwi\k{a}zki z bazami wzajemnie
+nieobci\k{a}\.{z}onymi (MUB), kt\'{o}re wyznaczaj\k{a}
+optymalny pomiar kwantowy. Przedstawiono
+nowo znalezion\k{a} rodzin\k{e} $B_6(t)$, kt\'{o}ra
+uog\'{o}lnia dwie ze znanych dotychczas klas
+zbioru $\mathcal{H}_6.$ Ponadto pokazano dwa nowe
+sposoby konstrukcji macierzy wzajemnie nieobci\k{a}\.{z}onych,
+takich dla kt\'{o}rych iloczyn $\frac{1}{\sqrt{6}} H_1^{\dagger} H_2 \in 
+\mathcal{H}_6$. Jeden sposób bazuj\k{a}cy na wyniku
+numerycznym, drugi - na twierdzeniu o~dekompozycji spektralnej
+macierzy cyklicznej. W~dodatku do pracy do{\l}\k{a}czono
+list\k{e} znanych macierzy Hadamarda typu Butsona o~wymiarze $N=2,...,16$.
+
