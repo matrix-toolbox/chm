@@ -1,0 +1,11 @@
+
+
+Data extraction example from *.dat files
+========================================
+
+These files contain only phases, normalized to [0, 1) interval.
+To recover a CHM one must execute the following instructions:
+
+> load Y_10_1_1422_20220815T162229.dat
+> Y = exp(2j*pi*A);
+> summary(Y, 1e-8);

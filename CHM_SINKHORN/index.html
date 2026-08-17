@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="author" content="Wojciech Bruzda, IFT">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHM Catalog &bull; Sinkhorn Case</title>
+<style>
+#content{max-width:1024px;margin:0 auto;}
+pre{margin-left:8px;background-color:#eee;padding:4px;}
+.inner-group{border:2px solid #aaa;}
+.outer-group{border:2px solid #00f;}
+.hr-thick{border:8px solid #999;}
+.go-top{float:right;}
+.go-top a{text-decoration:none;}
+.last-update{font-family:monospace;}
+.pending{color:#f00;font-weight:bold;}
+td,th{padding:4px;text-align:left;background-color:#ccc;}
+th{border-bottom:1px solid #000;}
+.highlight td{background-color:#eee;}
+a{color:#00f;text-decoration: none;}
+a:hover{color:#00f;border-bottom:2px solid #00f;}
+.alert{color:#f00;}
+
+.comment{color:#999;}
+.y{background-color:#ff0;}
+.v{background-color:#0f0;}
+.v1{background-color:#0f0;}
+.v2{background-color:#ff0;}
+.v3{background-color:#fa0;}
+.v4{background-color:#0ff;}
+img{max-width:100%;}
+.alert{color:#f00;}
+.rd6{font-weight:bold;color:#f00;}
+.H-solution{background-color:#ff0;}
+details{cursor:pointer;}
+</style>
+
+<div id="content">
+
+<h1>Catalog of CHM</h1>
+<h2><a href="../CHM_CATALOG_appendix.html">Appendix</a> B: Matrices Found by the Sinkhorn Algorithm</h2>
+<p class="last-update">created: 2022-08-05</p>
+<p class="last-update">updated: 2023-02-21 by <a href="https://chaos.if.uj.edu.pl/~wojtek">W. Bruzda</a></p>
+<hr>
+
+<p>Sinkhorn's algorithm finds plenty of matrices Y with different characteristics described by triplets (N, d, #L), where
+N = size(Y), d = <b>d</b>(Y) = <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a>(Y),
+#L &equiv; #&Lambda;(Y) = cardinality of <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">Haagerup invariants</a> of Y, and both <b>d</b> and #&Lambda; should be understood as generic values.
+Some of them can be recognized as completely new examples of (complex) Hadamard matrices,
+some of them can even be expressed analytically &ndash; both families and isolated cases.
+But still there is a lot of objects in a raw form, for which it is unknown whether they are new or not or it is difficult to find strict and compact expressions for them.
+In this (yet another) informal <b><a href="../CHM_CATALOG_appendix.html">appendix</a></b> to
+<b><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/">Catalog</a></b> of CHM we present many such finding
+in hope that sometime in a future we will have a tool to fully describe all of them.
+As usual, if somebody can help/improve or have any idea how to simplify this mess, please <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/contact.html">contact us</a>.
+It is loosely based on
+<a href="https://doi.org/10.1063/5.0144667" target="_blank">J. Math. Phys. <b>64</b>, 052201 (2023)</a>
+(<a href="https://arxiv.org/abs/2204.11727" target="_blank"><code>arXiv:2204.11727</code></a>),
+or rather the paper is loosely based on these notes... ;)</p>
+
+<p>Ever since the Sinkhorn algorithm was adapted to search for new CHM,
+the set of possibly new matrices has been enlarged significantly.
+This quickly made the shortage of the Latin alphabet to enumerate consecutive findings.
+Hence, we propose a new system of names.
+We follow the convention that the generic output from the Sinkhorn procedure is denoted by either by
+<pre>
+    Y_N_d_L   or   Y<sub>N,d,L</sub>
+    T_N_d_L   or   T<sub>N,d,L</sub>
+</pre>
+<p>where (N, d, L) was already mentioned at the beginning.
+Some special matrices might admit individual names reflecting their properties:</p>
+<pre>
+    <b>BH</b>_N_d_L  =  <b>BH</b><sub>N,d,L</sub>  =  BH(N, q) = <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">Butson</a>-type CHM (&quot;q&quot; denotes the degree of root of unity)
+    <b>RH</b>_N_d_L  =  <b>RH</b><sub>N,d,L</sub>              = subset of BH; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/real-hadamard-matrix.html">real</a> Hadamard matrix (the classic one)
+    <b>FH</b>_N_d_L  =  <b>FH</b><sub>N,d,L</sub>              = subset of BH; <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/fourier-matrix.html">Fourier</a> CHM
+    <b>SH</b>_N_d_L  =  <b>SH</b><sub>N,d,L</sub>              = <a href="../CHM_SH/index.html">symmetric</a> CHM
+    <b>HH</b>_N_d_L  =  <b>HH</b><sub>N,d,L</sub>              = <a href="../CHM_SH/index.html">Hermitian</a> CHM
+</pre>
+<p>However, we do not insist it should be accepted permanently, but at least such a notation will be occasionally used throughout this page and
+more frequently in <b><a href="../CHM_SH/index.html">Appendix C</a></b>.</p>
+
+<p>Every matrix (an array of complex numbers) which is an output from the Sinkhorn algorithm is
+<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/dephased-matrix.html">dephased</a> and checked for <i>simple</i> dependencies between its entries.
+By <i>simple</i> we mean something of the form: a = bc/d, i.e. just a ratio of several entries, without looking for
+more complicated algebra which shall be recovered by different methods &ndash; mostly unitarity constraints.
+If such a relation is found, appropriate entries are marked by letters and the formula is attached to the matrix.
+In case of no relations, a dot (<code>.</code>) is drawn. For example, let us consider the following pattern for a 9-dimensional (and <a href="../CHM_SH/index.html">symmetric</a>) matrix:</p>
+<pre>
+Y<sub>9,0,201</sub> = [
+    1      1      1      1      1      1       1      1      1     ;
+    1      .      a      b      c      f/n     e      f      g     ;
+    1      a      h^2    h      h^2/m  h^2/n   m      n      o     ;
+    1      b      h      .      p      q       r      f/b    t     ;
+    1      c      h^2/m  p      .      u       v      w      x     ;
+    1      f/n    h^2/n  q      u      .       y      f/c    f*x/c ;
+    1      e      m      r      v      y       .      f/g    v/u   ;
+    1      f      n      f/b    w      f/c     f/g    .      f/a   ;
+    1      g      o      t      x      f*x/c   v/u    f/a    .     ;
+];
+</pre>
+where several entries are simple functions of the others.
+Seven diagonal entries (denoted by <code>.</code>) can be further calculated straightforwardly as
+<pre>
+    Y(2, 2) = - (1 + a + b + c + f/n + e + f + g);
+    Y(4, 4) = - (1 + b + h + p + q + r + f/b + t);
+    Y(5, 5) = - (1 + c + h^2/m + p + u + v + w + x);
+    Y(6, 6) = - (1 + f/n + h^2/n + q + u + y + f/c + f*x/c);
+    Y(7, 7) = - (1 + e + m + r + v + y + f/g + v/u);
+    Y(8, 8) = - (1 + f + n + f/b + w + f/c + f/g + f/a);
+    Y(9, 9) = - (1 + g + o + t + x + f*x/c + v/u + f/a);
+</pre>
+<p>however, it is still possible that they can be further simplified. Watch out, this looks like a &quot;parametrization&quot; of Y but it is not!
+In this representation, letters <code>a</code>, <code>b</code>, ... denote only constants, nevertheless, it might also happen that some family is hidden inside &ndash; such cases will be
+marked explicitly.</p>
+<p>For matrices up to N = 13, modern Latin alphabet (including small and capital characters, without <code>i</code> and <code>I</code> to avoid confusion with imaginary unit) is enough to describe the most general representatives.
+For more complex examples beyond N = 13 we shall use <a href="https://en.wikipedia.org/wiki/Bigram" target="_blank">digrams</a>; <code>aa</code>, <code>ab</code>... which should be enough to handle many high-dimensional cases, but 
+for a moment we stopped at N = 13, which is complicated enough. In many matrices relations between entries have been added by hand in the post-processing phase,
+they are denoted by <code>Y<sub>jk</sub></code> or <code>T<sub>jk</sub></code>.</p>
+
+<p>Each pattern presented below is a one particular matrix described by a given
+triplet (N, d, #L), chosen arbitrarily among other possibilities having permuted rows/columns.
+The collection contains representatives as much disjoint as possible, however, in many cases
+one structure might be included in another one or there is a non-trivial overlap. We attached also problematic patterns
+for which there is no consensus over their status or classification, or they are just to vague (or even incomplete) to be recognized,
+but yet their characteristic is unique enough to justify their examination.</p>
+
+<p>All <b>M-scripts</b> are also available on <b><a href="https://github.com/matrix-toolbox/CHM_CATALOG" target="_blank">GitHub</a></b> as a single package: <code><a href="https://doi.org/10.5281/zenodo.7589985" target="_blank">https://doi.org/10.5281/zenodo.7589985</a></code>.</p>
+
+<p>Go to dimension:
+<a href="#N6">N = 6</a>,
+<a href="#N7">N = 7</a>,
+<a href="#N8">N = 8</a>,
+<a href="#N9">N = 9</a>,
+<a href="#N10">N = 10</a>,
+<a href="#N11">N = 11</a>,
+<a href="#N12">N = 12</a>,
+<a href="#N13">N = 13</a>.</p>
+
+<hr>
+<h1 id="N6">N = 6</h1>
+<hr>
+<p>There are matrices Y such that #&Lambda;(Y) = 3
+(it is <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0604.html">S<sub>6</sub></a>)
+or #&Lambda;(Y) = 451. Both with <b>d</b> = 4.</p>
+<hr>
+<h1 id="N7">N = 7</h1>
+<hr>
+<p>&bull; All CHM of order N = 7 can be recovered by the Sinkhorn algoritm and <b>no</b>
+new matrix can be found using this method.
+All such matrices are <b>symmetrizable</b> i.e. they can be brought to the symmetric form via monomial operations.
+For more details, refer to the case of <a href="#N11">N = 11</a>.</p>
+<hr>
+<h1 id="N8">N = 8</h1>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_8_0_10.m">T<sub>8,0,10</sub></a></h2>
+<p>This is most likely <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0805.html">A<sub>8</sub></a>.
+<hr>
+<h2>&bull; T<sub>8,0,70</sub></h2>
+<p>This is <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0804.html">V<sub>8&Sigma;</sub></a>.
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/T_8_1_10.m">T<sub>8,1,10</sub></a>(p<sub>1</sub>) = SH<sub>8,1,10</sub>(p<sub>1</sub>)</h2>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/T_8_3_74.m">T<sub>8,3,74</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>)</h2>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/T_8_3_130.m">T<sub>8,3,130</sub></a> and <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/T_8_3_130A.m">T<sub>8,3,130A</sub></a></h2>
+<p>Parameters are &quot;hidden&quot; in the matrix &ndash; see the scripts.</p>
+<hr>
+<h2>&bull; T<sub>8,3,170</sub></h2>
+<pre>
+    T = 
+        1      1      1      1      1      1      1      1 ;
+        1      1      b      b     -b     -b     -1     -1 ;
+        1      c      .      .      .      .      d      e ;
+        1      c'     .      .      .      .      f     -e ;
+        1     -c'     .      .      .      .     -f     -e ;
+        1     -c      .      .      .      .     -d      e ;
+        1     -1      g     -g      h     -h      j     -j ;
+        1     -1      k     -k      m     -m     -j      j ;
+    ];
+
+    d/e = -c
+    e/f =  c
+</pre>
+<hr>
+<h2>&bull; T<sub>8,3,178</sub></h2>
+<pre>
+    T = [
+        1      1      1      1      1      1      1      1 ;
+        1      a      b      c      .      .      .      . ;
+        1      d      e     -1      g     -d     -e     -g ;
+        1      h     -b      j      T45    .      .      . ;
+        1     -h      k     -c      .      .      .      . ;
+        1     -d     -1      m      d      n     -m     -n ;
+        1     -a     -k     -j      g/T45  .      .      . ; 
+        1     -1     -e     -m      e      m      o     -o ;
+    ];
+
+    d/h =  a
+    e/b = -k
+    g/d =  e
+</pre>
+<hr>
+<h2>&bull; T<sub>8,3,242</sub></h2>
+<pre>
+    T = [
+        1      1      1      1      1      1      1      1 ;
+        1      T22    T23    T24    T25    T26    a      b ;
+        1      T32    T33    T34    T35    T36    c      d ;
+        1      T42    T43    T44    T45    T46    e      f ;
+        1      a      g      h     -h     -g     -a     -1 ;
+        1      b      k      m     -k     -m     -1     -b ;
+        1      T72    T73    T74    T75    T76   -c     -f ;
+        1      T82    T83    T84    T85    T86   -e     -d ;
+    ];
+
+    T22 / T23 = T24
+    T22 / T25 = T26
+    T22 / T32 = T42
+    T22 / T72 = T82
+    T23 / T33 = T43
+    T23 / T73 = T83
+    T24 / T34 = T44
+    T24 / T74 = T84
+    T25 / T35 = T45
+    T25 / T75 = T85
+    T26 / T36 = T46
+    T26 / T76 = T86
+    T32 / T33 = T34
+    T32 / T35 = T36
+    T42 / T43 = T44
+    T42 / T45 = T46
+    T72 / T73 = T74
+    T72 / T75 = T76
+    T82 / T83 = T84
+    T82 / T85 = T86
+
+    T22 / a = b
+    T23 / g = k
+    T24 / h = m
+    T25 / h = k
+    T26 / g = m
+    T32 / c = d
+    T42 / e = f
+    T72 / c = f
+    T82 / e = d
+
+    a/c =  e
+    a/g =  h
+    b/d =  f
+    b/k =  m
+</pre>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_8_5_42.m">T<sub>8,5,42</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>)</h2>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_8_5_74.m">T<sub>8,5,74</sub></a></h2>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_8_5_82.m">T<sub>8,5,82</sub></a></h2>
+<hr>
+<p>&bull; There are some other 8-dimensional matrices with <b>d</b> = 5 and #&Lambda; > 200. They are possibly sub-orbits of <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0801.html">F<sub>8</sub></a>.</p>
+<hr>
+<h1 id="N9">N = 9</h1>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/BH_9_0_6.m">BH(9, 6)</a> = BH<sub>9,0,6</sub></h2>
+<hr>
+<h2 id="Y_9_0_76">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_9_0_76.m">Y<sub>9,0,76</sub></a> = SH<sub>9,0,76</sub></h2>
+<hr>
+<h2 id="Y_9_0_89">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_9_0_89.m">Y<sub>9,0,89</sub></a> = SH<sub>9,0,89</sub></h2>
+<hr>
+<h2 id="Y_9_0_105">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_9_0_105.m">Y<sub>9,0,105</sub></a> = SH<sub>9,0,105</sub></h2>
+<hr>
+<h2 id="Y_9_0_201">&bull; Y<sub>9,0,201</sub></h2>
+<pre>
+    Y = [
+        1      1      1      1      1      1      1      1      1  ;
+        1      a      b      c      d      e      .      f      g  ;
+        1      h      j      k      m      n      .      g'     o  ;
+        1      p      q      r      j'     a'     .      s      t  ;
+        1      n'     d'     u      q'     v      .      w      x  ;
+        1      e'     y      r'     z      A      .      o'     w' ;
+        1      v'     z'     k'     b'     B      .      C      s' ;
+        1      B'     D      u'     y'     h'     .      t'     f' ;
+        1      A'     m'     c'     D'     p'     .      x'     C' ;
+    ];
+
+    Y(2,7)/f = Y(8,7)
+    Y(2,7)/g = Y(3,7)
+    Y(3,7)/o = Y(6,7)
+    Y(4,7)/s = Y(7,7)
+    Y(4,7)/t = Y(8,7)
+    Y(5,7)/w = Y(6,7)
+    Y(5,7)/x = Y(9,7)
+    Y(7,7)/C = Y(9,7)
+
+    a/b = 1/s
+    a/c = 1/p
+    a/d = 1/q
+    a/e = 1/r
+    a/f = 1/t
+    a/g = j
+    b/c = 1/C
+    b/d = v
+    b/e = z
+    b/f = 1/B
+    b/g = k
+    c/d = x
+    c/e = A
+    c/f = D
+    c/g = m
+    d/e = 1/w
+    d/f = 1/u
+    d/g = n
+    e/f = 1/y
+    e/g = o
+    f/g = h
+    h/j = t
+    h/k = B
+    h/m = 1/D
+    h/n = u
+    h/o = y
+    j/k = 1/s
+    j/m = 1/p
+    j/n = 1/q
+    j/o = 1/r
+    k/m = 1/C
+    k/n = v
+    k/o = z
+    m/n = x
+    m/o = A
+    n/o = 1/w
+    p/q = x
+    p/r = A
+    p/s = C
+    p/t = D
+    q/r = 1/w
+    q/s = 1/v
+    q/t = 1/u
+    r/s = 1/z
+    r/t = 1/y
+    s/t = 1/B
+    u/v = B
+    u/w = y
+    u/x = 1/D
+    v/w = z
+    v/x = 1/C
+    w/x = 1/A
+    y/z = B
+    y/A = 1/D
+    z/A = 1/C
+    B/C = 1/D
+</pre>
+<hr>
+<h2 id="Y_9_0_625">&bull; Y<sub>9,0,625</sub></h2>
+<p>There are several patterns characterized by <b>d</b> = 0 and #&Lambda; = 625. No analytic formulas were found...</p>
+<pre>
+--------------------------------------------------------------------------------
+Y<sub>9,0,625A</sub> =
+    1        1        1        1        1        1        1        1        1
+    1        .        .        .        .        .        .        a        .
+    1        .        .        .        .        .        .        .        .
+    1        .        .        .        .        .        .        .        .
+    1        .        .        .        .        .        .        a        .
+    1        .        .        .        .        .        .        a        .
+    1        .        .        .        a        .        a        Y78      a
+    1        .        .        Y84      .        .        .        Y88      .
+    1        .        .        Y84/Y88  .        .        .        Y78/Y88  .
+--------------------------------------------------------------------------------
+Y<sub>9,0,625B</sub> =
+    1        1        1        1        1        1        1        1        1
+    1        .        .        .        .        .        a        .        .
+    1        .        .        .        .        .        a        .        .
+    1        .        .        .        .        Y46      Y47      .        Y49
+    1        .        .        .        .        .        .        .        .
+    1        .        .        Y64      Y65      Y66      .        .        .       &lt;- Y66=Y46/Y47
+    1        .        .        .        .        Y46/Y49  .        .        .
+    1        a        .        Y64/Y66  a        .        a^2      a        .       &lt;- Y66=Y46/Y47
+    1        .        .        Y64/Y65  .        .        a        .        .
+--------------------------------------------------------------------------------
+Y<sub>9,0,625C</sub> =
+    1        1        1        1        1        1        1        1        1
+    1        1        .        b        b        c        c        .        .
+    1        1        .        d        d        e        e        .        .
+    1        f        .        Y45/g    Y45      Y47*h    Y47      .        .
+    1        1/f      .        Y55*g    Y55      Y57/h    Y57      .        .
+    1        g        .        .        .        .        .        .        .
+    1        1/g      .        .        .        .        .        .        .
+    1        h        .        .        .        .        .        .        .
+    1        1/h      .        .        .        .        .        .        .
+--------------------------------------------------------------------------------
+Y<sub>9,0,625D</sub> =
+    1        1        1        1        1        1        1        1        1
+    1        a        b        c        .        d        e        f        g
+    1        h        .        j        b        k        m        n        o
+    1        p        k        q        d        .        r        s        t
+    1        u        o        c        g        t        v        w        .
+    1        x        m        c        e        r        .        y        v
+    1        z        j        c^2      c        q        c        c^2/z    c
+    1        B        n        c^2/z    f        s        y        .        w
+    1        .        h        z        a        p        x        B        u
+--------------------------------------------------------------------------------
+Y<sub>9,0,625E</sub> =
+    1        1        1        1        1        1        1        1        1
+    1        a        b        c        d        e        f        g        h
+    1        j        k        m        n        o        p        q        r
+    1        s        t        u        v        w        x        y        z
+    1        A        .        B        C        B        C        A        .
+    1        y        t        w        x        u        v        s        z
+    1        g        b        e        f        c        d        a        h
+    1        D        F*k      E        F        E        F        D        .
+    1        q        k        o        p        m        n        j        r
+--------------------------------------------------------------------------------
+Y<sub>9,0,625F</sub>
+    1        1        1        1        1        1        1        1        1
+    1        a        b        c        d        e        f        g        h
+    1        a        g        d        c        h        f        b        e
+    1        j        k        f        f        m        .        k        m
+    1        n        o        b        g        p        k        q        r
+    1        n        q        g        b        r        k        o        p
+    1        s        r        h        e        t        m        p        u
+    1        s        p        e        h        u        m        r        t
+    1        .        n        a        a        s        j        n        s
+--------------------------------------------------------------------------------
+</pre>
+<hr>
+<h2>&bull; Y<sub>9,2,89</sub></h2>
+<p>Similar characteristics are observed in <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0905.html">K<sub>9</sub>(&zeta;)</a>.</p>
+<hr>
+<p>&bull; There are also other 9-dimensional matrices Y with <b>d</b>(Y) = 2 and #L &gt; 1000.</p>
+<hr>
+<h1 id="N10">N = 10</h1>
+<hr>
+<h2 id="Y_10_0_6">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_6.m">Y<sub>10,0,6</sub></a> = SH<sub>10,0,6</sub> &in; BH(10, 6)</h2>
+<hr>
+<h2 id="Y_10_0_9">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_9A.m">Y<sub>10,0,9A</sub></a> and <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_9B.m">Y<sub>10,0,9B</sub></a></h2>
+<p>Two matrices which are the most likely equivalent to <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0902.html">N<sub>9</sub></a>.</p>
+<hr>
+<h2 id="Y_10_0_99">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_99.m">Y<sub>10,0,99</sub></a> = SH<sub>10,0,99</sub> and its alternative form: <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_99A.m">Y<sub>10,0,99A</sub></a></h2>
+<p>Matrix Y<sub>10,0,99</sub> is obtained by the Sinkhorn algorithm, then its structure is recovered
+and the very same form can be calculated by solving unitarity constraints: <a href="Y_10_0_99A.m">Y<sub>10,0,99A</sub></a>.</p>
+<hr>
+<h2 id="Y_10_0_143">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_0_143.m">Y<sub>10,0,143</sub></a></h2>
+<p>General pattern for this matrix reads:</p>
+<pre>
+Y<sub>10,0,143</sub> = [
+    1   1      1      1    1    1        1    1    1      1     ;
+    1   1      1      1    a/g  g/a      a    a    1/a    1/a   ;
+    1   b/a^2  c/a^2  d/a  1/a  g/a      b/a  c/a  e/a    f/a   ;
+    1   b/a^2  c/a^2  d/a  1    g/a^2    e    f    b/a^2  c/a^2 ;
+    1   g/a^2  g/a^2  g/a  g/a  g^2/a^2  g    g    g/a    g/a   ;
+    1   e      f      d    a    g        b    c    b/a    c/a   ;
+    1   f      e      d    a    g        c    b    c/a    b/a   ;
+    1   d/a    d/a    h    1    g/a      d    d    d/a    d/a   ;
+    1   c/a^2  b/a^2  d/a  1    g/a^2    f    e    c/a^2  b/a^2 ;
+    1   c/a^2  b/a^2  d/a  1/a  g/a      c/a  b/a  f/a    e/a   ;
+];
+</pre>
+<p>It contains solutions with (<b>d</b>, #&Lambda;) &in; { (16, 4), (11, 4), (0, 9), <b>(0, 143)</b> }.</p>
+<hr>
+
+<p>&bull; There are many other isolated matrices Y of order N = 10 with <b>d</b>(Y) = 0 and #&Lambda;(Y) &in;
+{ 143, 283, 349, &approx;500, &approx;1000, &approx;2000, ... }. So far they are analytically intractable. </p>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_1_472.m">Y<sub>10,1,472</sub></a>(p<sub>1</sub>)</h2>
+<details>
+<summary>toggle details</summary>
+<pre>
+    I = 1j;
+
+    <span class="v">a</span> = exp(2j * pi * p<sub>1</sub>;); <span class="alert">% for p<sub>1</sub>; &in; [0, 0.25) &cup; [0.369, 0.5) &cup; (0.5, 0.63] &cup; [0.76, 1]; the scope of &alpha; requires more attention!</span>
+    c = -I - (2* a)/(1 + a* ((1 + I) + a));
+    zeta1 = sqrt(3 + 4* a + 6* a^2 + 4 *a^3 + 3 *a^4);
+    zeta2 =  1 - 2*a^2 - 4*a^3 - 5*a^4 - 4*a^5 - 2*a^6 - I *zeta1 - 2*I*a*zeta1 - I*a^2 *zeta1;
+    zeta3 =   a + 4*a^2 + 4*a^3 + 3*a^4 + a^5 + a^6 + I*a*zeta1 - I*a^3*zeta1 - I*a^4*zeta1;
+    zeta4 = -2 - 3*a - 3*a^2 + a^4 + a^5 + I*a*zeta1+ I*a^2*zeta1 +  I*a^3*zeta1;
+    e = (zeta2 - sqrt(zeta2^2-4*zeta4*zeta3))/2/zeta3;
+    b = -(((1 + a* ((1 - I) + a))*(1 + e*((1 - I) + e)))/((1 + a* ((1 + I) + a))*(1 + e*((1 + I) + e))));
+    f = -((1 + 2*a + a^2 + I*zeta1)/(2*(1 + a + a^2)));
+    d = -((I*(1+a*((1+I)+a))*e*(-I+a*f))/(1+a*((1+I)+a+I*(1+a*((1-I)+a))*e)+e*(-I+a*(e+a*(I+(1+I)*e+a*((1+I)+e))))*f));
+
+    Y<sub>10,1,472</sub> =
+        [
+        1     1        1         1            1           1        1         1              1           1;
+        1    -1        I         I           -I          -I       -I*<span class="v">a</span>*f     I*a*f         -I/<span class="v">a</span>/f       I/<span class="v">a</span>/f;
+        1     I        b        -b            c           I*c      <span class="v">a</span>*c       I*<span class="v">a</span>            c/<span class="v">a</span>         I/<span class="v">a</span>;
+        1     I       -b         b           -I*c        -c       -c*f       I*f           -c/f         I/f;
+        1    -I        b/c      -I*b/c        I*b        -I*b      1/e      -I*b/c/e        e          -I*b*e/c;
+        1    -I        I*b/c    -b/c         -I*b         I*b      <span class="v">a</span>*e*f     I*<span class="v">a</span>*b*e*f/c    1/<span class="v">a</span>/e/f     I*b/<span class="v">a</span>/c/e/f;
+        1    -I*<span class="v">a</span>*f    b/c/e    -<span class="v">a</span>*b*e*f/c    <span class="v">a</span>           f        I*<span class="v">a</span>*f    -I*<span class="v">a</span>*d*f        I           d;
+        1     I*<span class="v">a</span>*f    I/e       I*<span class="v">a</span>*e*f     -I*<span class="v">a</span>*c       I*c*f   -<span class="v">a</span>*f/d    -<span class="v">a</span>*f            I/d        -1;
+        1    -I/<span class="v">a</span>/f    b*e/c    -b/<span class="v">a</span>/c/e/f    1/<span class="v">a</span>         1/f      I        -d              I/<span class="v">a</span>/f       I*d/<span class="v">a</span>/f;
+        1     I/<span class="v">a</span>/f    I*e       I/<span class="v">a</span>/e/f     -I*c/<span class="v">a</span>       I*c/f   -I/d      -1              1/<span class="v">a</span>/d/f    -1/<span class="v">a</span>/f;
+    ];
+</pre>
+
+<p>Looks like there is no Butson hidden in this family... (?)</p>
+</details>
+<hr>
+<p>&bull; There are matrices Y of order N = 10 with <b>d</b>(Y) = 1 and #&Lambda;(Y) &approx; 1422.
+Currently, not much is known about their structure. For example:
+<pre>
+--------------------------------------------------------------------------------
+Y<sub>10,1,1422A</sub> =
+    [
+    1      1      1      1      1      1      1      1      1      1   ;
+    1      1      .     -1j    -1j     1j     Y27    .      Y29   -1   ;
+    1      c      .      Y34    Y35    .      .      .      .      .   ;
+    1      d      .      Y44    Y45    .      .      .      .      .   ;
+    1      e      .     -e      1j     f      Y57    .      f/Y57 -1j  ;
+    1     -e'     .     -f'    -1     -1j     .      .      .      f'  ;
+    1     -d'     .      Y74    Y75    .      .      .      .      .   ;
+    1     -c'     .      Y84    Y85    .      .      .      .      .   ;
+    1     -1      g     -1      1      e      h     -g'    -h'    -e'  ;
+    1     -1      Y10,3  1j    -1j    -e      Y10,7  Y10,8  Y10,9 -f'  ;
+    ];
+
+    e/1j = f
+
+   -1j/Y(2,7) = Y(2,9)
+    1j/Y(3,4) = Y(8,4)
+   -1j/Y(3,5) = Y(8,5)
+    1j/Y(4,4) = Y(7,4)
+   -1j/Y(4,5) = Y(7,5)
+    1j/Y(10,3) = Y(10,8)
+    1j/Y(10,7) = Y(10,9)
+--------------------------------------------------------------------------------
+Y<sub>10,1,1422B</sub> =
+    [
+    1      1       1       1      1      1      1      1      1       1        ;
+    1      a       b       c      .      .      Y27    Y28    .       .        ;
+    1      .       .       .      d     -d      .      .      e      -e        ;
+    1      f       c/Y28   f*g    .      .      g      .      .       .        ;
+    1      c/Y27   h       h*j    .      .      .      j      .       .        ;
+    1      .       .       Y64    Y65    Y66   -g*o    j*k    Y64/Y66 Y64/Y65  ;
+    1     -f      -b       Y74    .      .     -g      k      .       .        ;
+    1      .       .       .      m      n      .      .     -m      -n        ;
+    1     -Y74/g   .      -c      .      .      o     -k      .       .        ;
+    1     -a      -h       .      .      .     -o     -j      .       .        ;
+    ];
+
+    c/f =  o
+    c/g = -a
+    c/h = -k
+    c/j = -b
+--------------------------------------------------------------------------------
+Y<sub>10,1,1422C</sub> =
+    [
+    1       1       1       1       1       1       1       1       1       1  ;
+    1       .       .       .       a      -a       .       .       .      -1  ;
+    1       .       .       .      -1       c       .       .       .      -c  ;
+    1       .       .       .       .       .       .       .       .       .  ;
+    1       .       .       .       .       .       .       .       .       .  ;
+    1       .       .       .      -a       Y66     .       .       .       c  ;
+    1       .       .       .       .       Y76     .       .       .       .  ;
+    1       .       .       .       .       Y66/Y76 .       .       .       .  ;
+    1       .       .       .       .       .       .       .       .       .  ;
+    1       .       .       .       .       .       .       .       .       .  ;
+    ]
+--------------------------------------------------------------------------------
+</pre>
+<hr>
+<h2 id="Y_10_2_76">&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_2_76.m">Y<sub>10,2,76</sub></a>(p<sub>1</sub>, p<sub>2</sub>)</h2>
+<details>
+<summary>toggle details</summary>
+<pre>
+    &alpha; = p<sub>1</sub>
+    &beta; = p<sub>1</sub>
+    
+    <span class="v">a</span> = exp(2j * pi * &alpha;);
+    <span class="y">b</span> = exp(2j * pi * &beta;);
+
+    w = exp(2j * pi / 12);
+    Y<sub>10,2,76</sub> = 
+        [
+        1   1   1     1      1      1      1       1       1       1;
+        1   1  -i     i      i     -i      w^4     w^4     w^8     w^8;
+        1   1   i    -1     -1      i      w^11    w^11    w^7     w^7;
+        1   i   w^8   w^10   w^7    w^11   <span class="v">a</span>      -<span class="v">a</span>       w^4     w^4;
+        1  -i   w^8   w^4    w^7    w^5    <span class="v">a</span>*i    -<span class="v">a</span>*i     w       w;
+        1   i   w^4   w^2    w^11   w^7    w^8     w^8     <span class="y">b</span>      -<span class="y">b</span>;
+        1  -i   w^4   w^8    w^11   w      w^5     w^5     <span class="y">b</span>*i    -<span class="y">b</span>*i;
+        1  -1   1    -1      1     -1      <span class="v">a</span>*w^11 -<span class="v">a</span>*w^11  <span class="y">b</span>*w^7  -<span class="y">b</span>*w^7;
+        1  -1  -i    -i      i      i      <span class="v">a</span>*w^7  -<span class="v">a</span>*w^7   <span class="y">b</span>*w^11 -<span class="y">b</span>*w^11;
+        1  -1   i     1     -1     -i     -<span class="v">a</span>       <span class="v">a</span>      -<span class="y">b</span>       <span class="y">b</span>;
+    ];
+</pre>
+<p>Parameters &alpha; and &beta; are arbitrary phases in [0, 1) and w = exp(2j * pi / 12).</p>
+<p>For (&alpha;, &beta;) = (1/12, 1/12) one recovers BH(10, 12).</p>
+</details>
+<hr>
+<p>&bull; There are matrices Y of order N = 10 with <b>d</b>(Y) = 2 and #&Lambda;(Y) &approx; 1097.
+Currently, not much is known about their structure. They might
+be sub-orbits of <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1001.html">F<sub>10</sub></a>
+or other known families.</p>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_3_278.m">Y<sub>10,3,278</sub></a>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>)</h2>
+<details>
+<summary>toggle details</summary>
+<pre>
+ raw data:
+
+ 1  1               1               1               1               1               1               1               1               1
+ 1  1               0.9949-0.1000i  0.9627+0.2702i  0.9627+0.2702i -0.9627-0.2702i -0.9627-0.2702i -0.9949+0.1000i -1              -1
+ 1  1              -1              -0.4242+0.9055i -0.5891-0.8080i -0.4885+0.8725i -0.4930-0.8700i  0.9949-0.1000i -<span class="y">0.6806+0.7325i</span>  <span class="y">0.6806-0.7325i</span>
+ 1  1              -1              -0.5891-0.8080i -0.4242+0.9055i -0.4930-0.8700i -0.4885+0.8725i  0.9949-0.1000i  <span class="y">0.6806-0.7325i</span> -<span class="y">0.6806+0.7325i</span>
+ 1 -0.4817-0.8763i  0.7855-0.6187i -0.7855+0.6187i -0.7855+0.6187i  0.9880+0.1543i -0.9880-0.1543i -0.5053+0.8629i -0.1509-0.9885i  0.9236+0.3832i
+ 1 -0.4817+0.8763i  0.1637+0.9865i -0.1637-0.9865i -0.1637-0.9865i  0.6112-0.7914i -0.6112+0.7914i -0.5127-0.8585i -0.7807+0.6248i  0.9390+0.3438i
+ 1 -0.5182-0.8552i -<span class="v">0.7098+0.7044i</span> -0.9991-0.0405i  0.9991+0.0405i  <span class="v">0.7098-0.7044i</span>  <span class="v">0.7098-0.7044i</span> -0.4035+0.9149i  0.1509+0.9885i -0.9390-0.3438i
+ 1 -0.5182+0.8552i -<span class="v3">0.2345-0.9721i</span> -0.5525+0.8335i  0.5525-0.8335i  <span class="v3">0.2345+0.9721i</span>  <span class="v3">0.2345+0.9721i</span> -0.5733-0.8193i  0.7807-0.6248i -0.9236-0.3832i
+ 1 -1              -<span class="y">0.6806-0.7325i</span>  0.9991+0.0405i -0.5525+0.8335i -0.9880-0.1543i  0.6112-0.7914i -0.7505-0.6608i  <span class="y">0.6806+0.7325i</span>  <span class="y">0.6806+0.7325i</span>
+ 1 -1               <span class="y">0.6806+0.7325i</span>  0.5525-0.8335i -0.9991-0.0405i -0.6112+0.7914i  0.9880+0.1543i  0.7505+0.6608i -<span class="y">0.6806-0.7325i</span> -<span class="y">0.6806-0.7325i</span>
+</pre>
+<p>Many entries in Y repeat or there are dozens of functional dependences among them, e.g. Y(5, 6) = Y(5, 3) * Y(10, 3). One can quickly recover the following form of Y:</p>
+<pre>
+    <span class="comment">% constants:</span>
+    u =  0.994983179803451 - 0.100042350573214*i;
+    <span class="v">a</span> = -0.709807619513891 + 0.704395587209362*i;
+    <span class="v3">b</span> = -0.234540912758702 - 0.972106249461609*i;
+
+    <span class="comment">% free parameter: (full angle)</span>
+    <span class="y">c</span> = exp(2j * pi * rand);
+
+    <span class="comment">% functions:</span>
+    p = - 2 - a/b - b/a;
+    q = (p/2 - sqrt(p^2 - 4)/2 + 1) / (1 - 1/u - 1/a - 1/b); % here hides another branch of root!
+    r = q - 1 - q/u - q/a - q/b;
+    s = (q + q * r - r) / (1 + r - q);
+    t = - r * u * (a + b) / (r * u + r + s + r * s) / b;
+
+
+    Y<sub>10,3,278</sub>
+    = [
+        1   1     1     1       1       1         1         1       1         1;
+        1   1     u    -s*q/r  -s*q/r   s*q/r     s*q/r    -u      -1        -1;
+        1   1    -1     s       s/r    -s*q/<span class="v3">b</span>/r  -s*q/<span class="v">a</span>/r   u      -1/<span class="y">c</span>       1/<span class="y">c</span>;
+        1   1    -1     s/r     s      -s*q/<span class="v">a</span>/r  -s*q/<span class="v3">b</span>/r   u       1/<span class="y">c</span>      -1/<span class="y">c</span>;
+        1   r     q    -q      -q       q*<span class="y">c</span>      -q*<span class="y">c</span>       r*u/s   r*<span class="v">a</span>/s     r*<span class="v3">b</span>/s;
+        1   1/r   q/r  -q/r    -q/r    -q*<span class="y">c</span>/r     q*<span class="y">c</span>/r     u/s     <span class="v3">b</span>/s       <span class="v">a</span>/s;
+        1   <span class="v">a</span>/<span class="v3">b</span>   <span class="v">a</span>     <span class="v">a</span>*<span class="y">c</span>    -<span class="v">a</span>*<span class="y">c</span>    -<span class="v">a</span>        -<span class="v">a</span>         t      -r*<span class="v">a</span>/s    -<span class="v">a</span>/s;
+        1   <span class="v3">b</span>/<span class="v">a</span>   <span class="v3">b</span>    -<span class="v3">b</span>*<span class="y">c</span>     <span class="v3">b</span>*<span class="y">c</span>    -<span class="v3">b</span>        -<span class="v3">b</span>         t*<span class="v3">b</span>/<span class="v">a</span>  -<span class="v3">b</span>/s      -r*<span class="v3">b</span>/s;
+        1  -1    -<span class="y">c</span>    -<span class="v">a</span>*<span class="y">c</span>    -<span class="v3">b</span>*<span class="y">c</span>    -q*<span class="y">c</span>      -q*<span class="y">c</span>/r    -u*<span class="y">c</span>     <span class="y">c</span>         <span class="y">c</span>;
+        1  -1     <span class="y">c</span>     <span class="v3">b</span>*<span class="y">c</span>     <span class="v">a</span>*<span class="y">c</span>     q*<span class="y">c</span>/r     q*<span class="y">c</span>       u*<span class="y">c</span>    -<span class="y">c</span>        -<span class="y">c</span>;
+    ];
+</pre>
+<p>Numerical evidence suggests that there is further dependence between <code>q</code>, <code>r</code> and <code>s</code>. With help of Mathematica one can calculate that</p>
+<pre>
+u = u(a, b) = 
+    (-a + 2* a^2 - b + 4*a*b - a^2*b + 2*b^2 - a*b^2
+    - sqrt(-4*(-a - b + a*b)*(a*b - a^2*b - a*b^2)
+    + (a - 2*a^2 + b - 4* a* b + a^2* b - 2* b^2 + a* b^2)^2)) / (2*(-a - b + a *b));
+</pre>
+<p>hence, this is a <b>maximal</b> three-paramater Y<sub>10,3,278</sub> = Y<sub>10,3,278</sub>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>) nonaffine family.
+Parameters p<sub>1</sub>, p<sub>2</sub> and p<sub>3</sub> correspond to (normalized) phases of <code>a</code>, <code>b</code> and <code>c</code>, respectively.</p>
+<p>Observations:</p>
+<ol>
+<li>Not <b>all</b> values of a and b are allowed;
+<figure>
+<img src="argument_rs_500000.png" alt="">
+<figcaption>Fig. 1. Allowed arguments (normalized to unity) for parameters <code>a</code> and <code>b</code>.
+Picture contains 500'000 samples drawn randomly so that they form parameters for which matrix
+is a valid CHM. Parameter <code>c</code> can be chosen independently and admits
+full range of phases: <code>c</code> = exp(i * &pi; * p<sub>3</sub>) for p<sub>3</sub> in [0, 1).
+Even though the picture is symmetric, it won't be easy to provide strict formulas for arg(a) = 2*&pi;*p<sub>1</sub> and arg(b) = 2*&pi;*p<sub>2</sub>...
+Only <a href="argument_rs_500000_rectangle.png">rough approximation</a> is possible, like in the case of
+<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0806.html" target="_blank">T<sub>8</sub></a>.
+</figcaption>
+</figure>
+<li>It is not a Butson type matrix and it seems, it does not contain any such examples.</li>
+<li>Cardinality of Haagerup invariants: #{&Lambda;(Y<sub>10,3,278</sub>(p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>))} = 278.</li>
+</ol>
+
+<p>Special cases:</p>
+<ol>
+<li>If <code>u</code> = 1, then <code>a</code> can be any unimodular number; <code>a</code> = exp(i * &pi; * rand),
+and <code>b</code> = <code>a</code> / exp(i * &pi; / 3). In such a case
+    we have a reduced 2-parametric nonaffine family with parameters: <code>a</code> and <code>c</code>. Defect <b>d</b> = 3.</li>
+<li>If we additionally put <code>c</code> = 1, then we have one-parametric family with defect <b>d</b> = 12. For <code>c</code> = &mp;i &rarr; <b>d</b> = 6.</li>
+<li>If phase of arg(a) = 2*&pi; - arg(b) (<span class="rd6">red diagonal</span> in Fig. 1) then,
+regardless of <code>c</code>, the defect of Y is <b>d</b> = 6.</li>
+</ol>
+
+</details>
+<hr>
+<h2>&bull; <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SINKHORN/Y_10_4_114.m">Y<sub>10,4,114</sub></a></h2>
+<p>Parameters are &quot;hidden&quot; in the matrix.</p>
+<details>
+<summary>toggle details</summary>
+<pre>
+    <span class="v1">a</span> = exp(2j * pi * p<sub>1</sub>);
+    <span class="v2">b</span> = exp(2j * pi * p<sub>2</sub>);
+    <span class="v3">c</span> = exp(2j * pi * p<sub>3</sub>);
+    <span class="v4">d</span> = exp(2j * pi * p<sub>4</sub>);
+
+    w = exp(2j * pi / 6);
+
+    Y<sub>10,4,114</sub> =
+        [
+        1           1            1           1           1            1            1             1             1           1         ;
+        1           1            <span class="v1">a</span>          -<span class="v1">a</span>           w/<span class="v1">a</span>         -w/<span class="v1">a</span>          w^2           w^2          -w          -w         ;
+        1           <span class="v2">b</span>           -<span class="v1">a</span>*<span class="v2">b</span>         <span class="v1">a</span>          -1           -<span class="v2">b</span>            <span class="v1">a</span>*<span class="v2">b</span>*<span class="v3">c</span>*w^2    -<span class="v1">a</span>*<span class="v2">b</span>*<span class="v3">c</span>*w^2     <span class="v1">a</span>*b        -<span class="v1">a</span>         ;
+        1          -<span class="v2">b</span>            <span class="v2">b</span>          -1          -w/<span class="v1">a</span>         -w*<span class="v2">b</span>/<span class="v1">a</span>        w*<span class="v2">b</span>*<span class="v3">c</span>        -w*<span class="v2">b</span>*<span class="v3">c</span>         w*<span class="v2">b</span>/<span class="v1">a</span>       w/<span class="v1">a</span>       ;
+        1           w/<span class="v2">b</span>         -1          -w/<span class="v2">b</span>        -w^2/<span class="v1">a</span>/<span class="v2">b</span>      w/<span class="v1">a</span>          <span class="v3">c</span>            -<span class="v3">c</span>             w^2/<span class="v1">a</span>/<span class="v2">b</span>    -w/<span class="v1">a</span>       ;
+        1          -w/<span class="v2">b</span>         -<span class="v1">a</span>          -w*<span class="v1">a</span>/<span class="v2">b</span>       w/<span class="v2">b</span>         -1           -w*<span class="v1">a</span>*<span class="v3">c</span>         w*<span class="v1">a</span>*<span class="v3">c</span>         w*<span class="v1">a</span>/<span class="v2">b</span>       <span class="v1">a</span>         ;
+        1           w^2         -<span class="v1">a</span>*<span class="v2">b</span>*<span class="v4">d</span>*w^2  -w*<span class="v1">a</span>*<span class="v4">d</span>      -<span class="v4">d</span>            w*<span class="v2">b</span>*<span class="v4">d</span>        w^5           w^5          -w           w^2       ;
+        1           w^2          <span class="v1">a</span>*<span class="v2">b</span>*<span class="v4">d</span>*w^2   w*<span class="v1">a</span>*<span class="v4">d</span>       <span class="v4">d</span>           -w*<span class="v2">b</span>*<span class="v4">d</span>        w^5           w^2          -w           w^2       ;
+        1          -w            <span class="v1">a</span>*<span class="v2">b</span>         w*<span class="v1">a</span>/<span class="v2">b</span>       w^2/<span class="v1">a</span>/<span class="v2">b</span>      w*b/<span class="v1">a</span>       -w            -w             w^2        -w         ;
+        1          -w           -<span class="v2">b</span>           w/<span class="v2">b</span>        -w/<span class="v2">b</span>          <span class="v2">b</span>            w^2           w^2          -w           1         ;
+    ];
+</pre>
+
+<p>Special cases:</p>
+<ul>
+    <li>for <code>a</code> = &mp;1 or <code>a</code> = exp{2 &pi; i / 6} one has Y<sub>10,4,114</sub> &in; BH(10, 16) and <b>d</b> = 16</li>
+    <li>for <code>a</code> = &mp; i there is no solution</li>
+    <li>for <code>a</code> = exp{ 2 &pi; i / 12} or exp{ 2 &pi; i / 20 } one can restrict to the three-parameter (<code>b</code>, <code>c</code>, <code>d</code>) family.</li>
+</ul>
+</details>
+<hr>
+
+<p>&bull; There are many other matrices Y of order N = 10 with <b>d</b>(Y) = 4 and #&Lambda;(Y) &in;
+{ 354, 358, &approx;922, &approx;982, &approx;1100, &approx;1251, &approx;2000, &approx;2251, &approx;4051, ... }.
+They might
+be sub-orbits of <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1001.html">F<sub>10</sub></a>
+or other known families.</p>
+<hr>
+<h1 id="N11">N = 11</h1>
+<hr>
+<p>&bull; All known matrices of order N = 11 are <b>symmetric</b>.
+Moreover, all matrices found numerically (not only by the Sinkhorn algorithm) can be brought to the symmetric form via monomial operations.
+See also the case of <a href="#N7">N = 7</a>.</p>
+<p>Symmetric matrices are presented in the
+<b>Catalog of CHM; <a href="../CHM_SH/index.html">Appendix C</a></b>.</p>
+<hr>
+<h1 id="N12">N = 12</h1>
+<hr>
+<p>&bull; There are several isolated matrices of order N = 12 with #&Lambda; &in; { 58, 78, 189, 230 }.
+They are the members of V<sub>N</sub> family &ndash; see <a href="https://arxiv.org/abs/2204.11727"><code>arXiv:2204.11727</code></a>,
+some of them can also be recovered by the Sinkhorn algorithm.</p>
+<hr>
+<h1 id="N13">N = 13</h1>
+<hr>
+<p>&bull; There are several isolated matrices of order N = 13 with #&Lambda; &in; { 49, 95, 265, <span class="comment">301</span>, 547 }.
+They are the members of V<sub>N</sub> family (probably except the one with #&Lambda; = 301) &ndash; see <a href="https://arxiv.org/abs/2204.11727"><code>arXiv:2204.11727</code></a>,
+some of them can also be recovered by the Sinkhorn algorithm.</p>
+<hr>
+<h2>...</h2>
+<hr>
+
+</div>

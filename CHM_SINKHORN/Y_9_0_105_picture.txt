@@ -1,0 +1,36 @@
+(* 2022-04-25 *)
+(* two monic palindromic polynomials are obtained from a symbolic solution *)
+(* their zeros belong to unit circle *)
+
+ComplexPlot[
+ 1 + 6 z + 15 z^2 + 26 z^3 + 3 z^4 - 24 z^5 - 27 z^6 - 24 z^7 + 3 z^8 + 26 z^9 + 15 z^10 + 6 z^11 + z^12, {z, -1.2 - 1.2 I, 1.2 + 1.2 I},
+ BaseStyle -> {FontFamily -> "Latin", FontSize -> 22},
+ TicksStyle -> {{FontFamily -> "Times New Roman", 
+    FontSize -> 20}, {FontFamily -> "Times New Roman", 
+    FontSize -> 20}},
+ AxesLabel -> {MaTeX["Re(z)", FontSize -> 24], MaTeX["Im(z)", FontSize -> 24]},
+ PlotTheme -> "Default", FrameStyle -> Opacity[1], 
+ FrameTicksStyle -> Directive[Black, 22], ImageSize -> 512,
+ ColorFunction -> "MaxAbs",
+ Epilog -> {
+   {Black, Circle[{0, 0}, 1, {0, 2 Pi}]},
+   {Black, Disk[{-0.03648457547380327, +0.9993342162422422}, {0.02, 0.02}]},
+   {Black, Disk[{-0.9635154245261968, +0.26765280999851826}, {0.02, 0.02}]},
+   Style[Text[Style[MaTeX["c", FontSize -> 42]], {-0.05, 1.1}], Black, 16],
+   Style[Text[Style[MaTeX["b", FontSize -> 42]], {-1.05, .3}], Black, 16]
+   }
+ ]
+
+ComplexPlot[
+ 1 - 3 z + 9 z^2 - 16 z^3 - 12 z^4 + 6 z^5 + 3 z^6 + 6 z^7 - 12 z^8 - 16 z^9 + 9 z^10 - 3 z^11 + z^12, {z, -1.2 - 1.2 I, 1.2 + 1.2 I},
+ PlotTheme -> "Default", FrameStyle -> Opacity[1], 
+ FrameTicksStyle -> Directive[Black, 22], ImageSize -> 512,
+ ColorFunction -> "MaxAbs",
+ Epilog -> {
+   {Black, Circle[{0, 0}, 1, {0, 2 Pi}]},
+   {Black, Disk[{-0.3396214473934099, +0.9405622108454099}, {0.02, 0.02}]},
+   {Black, Disk[{0.8396214473934099, +0.5431720032153677}, {0.02, 0.02}]},
+   Style[Text[Style[MaTeX["a", FontSize -> 42]], {-0.37, 1.04}], Black, 16],
+   Style[Text[Style[MaTeX["d", FontSize -> 42]], {.91, .61}], Black, 16]
+   }
+ ]
