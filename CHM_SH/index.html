@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="author" content="Wojciech Bruzda, IFT">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHM Catalog &bull; Symmetric and Hermitian CHM</title>
+<style>
+#content{max-width:1024px;margin:0 auto;}
+td,th{border:1px solid #000;padding:10px;text-align:left;}
+.strong-td{background-color:#ddf;}
+.h1{background-color:#eef;}
+.last-update{font-family:monospace;}
+a{color:#00f;text-decoration: none;}
+a:hover{color:#00f;border-bottom:2px solid #00f;}
+.alert{color:#f00;}
+.go-top{float:right;}
+.go-top a{text-decoration:none;}
+.comment{color:#aaa;}
+summary{cursor:pointer;}
+
+</style>
+
+<div id="content">
+
+<h1>Catalog of CHM</h1>
+<h2><a href="../CHM_CATALOG_appendix.html">Appendix</a> C: Symmetric and Hermitian CHM</h2>
+<p class="last-update">created: 2023-01-14</p>
+<p class="last-update">updated: 2024-07-14 by <a href="https://chaos.if.uj.edu.pl/~wojtek">W. Bruzda</a></p>
+
+<hr>
+
+<p>Slightly modified <a href="../CHM_SINKHORN/index.html">Sinkhorn's algorithm</a> can be used to explore <b>symmetric</b> or <b>Hermitian</b> CHM providing new results almost immediately.
+It is enough to require that during the iterative procedure one additional step takes the form: X &rarr; (X + X<sup>&xi;</sup>)/2, where &xi; = T or &xi; = &dagger;
+for the symmetric or Hermitian case, respectively.</p>
+
+<p>Outputs from the Sinkhorn procedure were examined for simple dependencies between
+entries like in <b><a href="../CHM_SINKHORN/index.html">Appendix B</a></b>, from which
+we also adapted the system of names reflecting the matrix type.</p>
+<details>
+<summary>brief remainder</summary>
+<p>Symbol Y<sub>N,d,L</sub> denotes a matrix of order N with defect = <b><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">d</a></b>
+and L being cardinality of <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">Haagerup invariants</a>.
+In particular
+ Y = SH denotes <a href="#Symmetric_CHM">symmetric</a>,
+ and Y = HH &ndash; <a href="#Hermitian_CHM">Hermitian</a> Hadamard matrices.</p>
+</details>
+<p>Once a matrix is roughly described symbolically, it is subjected to a <i>random walk</i> procedure to restore the original numerical values, or
+&ndash; as it is in many cases &ndash; to discover other independent solutions provided by the particular pattern.
+So, it looks like having a numerical matrix representation, we are
+trying a different method on gently improved internal structure to confirm the result... and... it works perfectly!
+Here, we decided not to use pure algebra to
+solve the matrix elements via unitarity constraints (still too few information about the matrix),
+rather, we rely only on the numerical optimizing a certain objective function, which proved to be a moderately
+good method for such an elementary research, and even this allows us to present many examples analytically.</p>
+
+<p>Obviously, the convergence deteriorates with increasing dimension N, and the average time of obtaining a solution takes longer and longer.
+Some matrices or families might be parts of more general objects. Still, many new solutions can be obtained by fixing particular entries.
+Also, many different patterns might share the same set of solutions, and surely not all possible solutions have been encountered,
+so the work is actually under construction.
+The list shall be updated constantly until a tool appears that solves the classification problem definitely (which means, we have a lot of time...).</p>
+
+<hr>
+
+
+
+<h2 id="Symmetric_CHM">Symmetric CHM (including families)<span class="go-top"><a href="#top">&uarr;</a></span></h2>
+<p>Symmetric CHM exist in any N and the canonical example is the <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/fourier-matrix.html">Fourier</a> matrix.
+However, given N, not every equivalence class contains a symmetrizable matrix.
+In contrast with <a href="#Hermitian_CHM">Hermitian</a> examples, many of them are
+<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/isolated-matrix.html">isolated</a>.
+Maximal possible number of #<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a>(SH<sub>N,d,#&Lambda;</sub>) = 1 + &tau;(N) + &tau;<sup>2</sup>(N),
+where &tau;(N) = N*(N - 1)/2, is denoted in bold and, as shown below,
+this limit was not achieved (yet?) in every dimension.</p>
+
+
+<h3>N = 6</h3>
+
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td></td><td>0</td><td>3</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0603B.html">BH(6,&nbsp;3)</a></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0603B.html">S<sub>6</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_6_4_4.m">BH<sub>6,4,4</sub></a></td><td>4</td><td>4</td><td>BH(6,&nbsp;4)</td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_6_4_6.m">BH<sub>6,4,6</sub></a></td><td>4</td><td>6</td><td>BH(6,&nbsp;6)</td><td>&cong;<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0601.html">F<sub>6</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_6_4_16.m">BH<sub>6,4,16</sub></a></td><td>4</td><td>16</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_6_general.m">SH<sub>6,general</sub></a></td><td>4</td><td><b>241</b></td><td></td><td>general symmetric form</td></tr>
+</tbody>
+</table>
+
+<h3>N = 7</h3>
+
+<p><b>All</b> (known) CHM of order N = 7 are <b>symmetrizable</b>. Moreover,
+some of them can have their <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/core.html">core</a>s be written in a <b>doubly symmetric</b> form:</p>
+<p>
+<details>
+<summary>click to show details:</summary>
+<pre>
+P<sub>7</sub> in BH(7, 6) =           F<sub>7</sub> in BH(7, 7) =
+   . . . . . . .              . . . . . . .
+   . 5 2 3 5 3 1              . 2 6 3 4 1 5
+   . 2 5 3 5 1 3              . 6 4 2 5 3 1
+   . 3 3 2 1 5 5              . 3 2 1 6 5 4
+   . 5 5 1 2 3 3              . 4 5 6 1 2 3
+   . 3 1 5 3 5 2              . 1 3 5 2 4 6
+   . 1 3 5 3 2 5              . 5 1 4 3 6 2
+
+Q<sub>7</sub> = 
+   . . . . . . .
+   . a b c d e f with a = 0.888409423250061
+   . b c f a d e      b = 0.409693609117209
+   . c f e b a d      c = 0.357945512003075
+   . d a b e f c      d = 0.805644956713980
+   . e d a f c b      e = 0.242507857976937
+   . f e d c b a      f = 0.630339632445252
+
+C<sub>7C</sub> = 
+   . . . . . . .
+   . a b c d e f with a = 0.627180715553348 (some phases depend on the others)
+   . b g h j k e      b = 0.097739974494601
+   . c h m n j d      c = 0.011089605651288
+   . d j n m h c      d = 0.313590357776674
+   . e k j h g b      e = 0.616091109902060
+   . f e d c b a      f = 0.529440741058746
+                      g = 0.195479948989203
+                      h = 0.579388839087143
+                      j = 0.795239222369215
+                      k = 0.400240726619988
+                      m = 0.590478444738430
+                      n = 0.276888086961757
+
+C<sub>7D</sub> = 
+   . . . . . . .
+   . a b c d e f with a = 0.372819284446652 (some phases depend on the others)
+   . b g h j k e      b = 0.902260025505399
+   . c h m n j d      c = 0.988910394348712
+   . d j n m h c      d = 0.686409642223326
+   . e k j h g b      e = 0.383908890097940
+   . f e d c b a      f = 0.470559258941254
+                      g = 0.804520051010797
+                      h = 0.420611160912857
+                      j = 0.204760777630785
+                      k = 0.599759273380013
+                      m = 0.409521555261570
+                      n = 0.723111913038243
+</pre>
+</details>
+</p>
+
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_7_0_5.m">SH<sub>7,0,5</sub></a></td><td>0</td><td>5</td><td></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0703.html">C<sub>7A</sub></a>, C<sub>7B</sub></td></tr>
+<tr><td></td><td>0</td><td>7</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0707B.html">BH(7,&nbsp;7)</a></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0701.html">F<sub>7</sub></a></td></tr>
+<tr><td></td><td>0</td><td>43</td><td></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0703.html">C<sub>7C</sub></a>, C<sub>7D</sub></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_7_0_97.m">SH<sub>7,0,97</sub></a></td><td>0</td><td>97</td><td></td><td><a href="">SH<sub>7,0,97</sub></a> includes <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0701.html">F<sub>7</sub></a>, <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0702.html">P<sub>7</sub></a> &in; BH(7,&nbsp;6) and <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0704.html">Q<sub>7</sub></a></td></tr>
+<tr><td></td><td>3</td><td>6</td><td></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0702.html">P<sub>7</sub></a></td></tr>
+</tbody>
+</table>
+
+<h3>N = 8</h3>
+
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_0_10.m">SH<sub>8,0,10</sub></a></td><td>0</td><td>10</td><td></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0805.html">A<sub>8</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_0_70.m">SH<sub>8,0,70</sub></a></td><td>0</td><td>70</td><td></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0804.html">V<sub>8</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_46.m">SH<sub>8,3,46</sub></a>(p<sub>1</sub>,&nbsp;p<sub>2</sub>)</td><td>3</td><td>46</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_142.m">SH<sub>8,3,142</sub></a><br>2-parameter family stemming from BH(8,&nbsp;2)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_50.m">SH<sub>8,3,50</sub></a></td><td>3</td><td>50</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_76.m">SH<sub>8,3,76</sub></a></td><td>3</td><td>76</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_88A.m">SH<sub>8,3,88A</sub></a></td><td>3</td><td>88</td><td></td><td>contains <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_11_6A.m">SH<sub>8,11,6A</sub></a>(p<sub>1</sub>)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_88B.m">SH<sub>8,3,88B</sub></a></td><td>3</td><td>88</td><td></td><td>contains <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_11_6B.m">SH<sub>8,11,6B</sub></a>(p<sub>1</sub>), <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_8_11_4.m">BH<sub>8,11,4</sub></a> and some other (not described) solutions...</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_142.m">SH<sub>8,3,142</sub></a></td><td>3</td><td>142</td><td></td><td>contains several families: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_46.m">SH<sub>8,3,46</sub></a>(p<sub>1</sub>,&nbsp;p<sub>2</sub>), <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_5_26.m">SH<sub>8,5,26</sub></a>(p<sub>1</sub>,&nbsp;p<sub>2</sub>), <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_9_10.m">SH<sub>8,9,10</sub></a>(p<sub>1</sub>), <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_13_6A.m">SH<sub>8,13,6A</sub></a>(p<sub>1</sub>), <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_13_6B.m">SH<sub>8,13,6B</sub></a>(p<sub>1</sub>)</td></tr>
+<tr><td>F<sub>8</sub></td><td>5</td><td>8</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0808B.html">BH(8,&nbsp;8)</a></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_5_26.m">SH<sub>8,5,26</sub></a>(p<sub>1</sub>,&nbsp;p<sub>2</sub>)</td><td>5</td><td>26</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_142.m">SH<sub>8,3,142</sub></a><br>2-parameter family stemming from BH(8,&nbsp;2)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_5_46.m">SH<sub>8,5,46</sub></a></td><td>5</td><td>46</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_general.m">SH<sub>8,general</sub></a></td><td>5</td><td><b>813</b></td><td></td><td>general symmetric form</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_9_10.m">SH<sub>8,9,10</sub></a>(p<sub>1</sub>)</td><td>9</td><td>10</td><td></td><td>1-parameter family stemming form BH(8,&nbsp;2)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_8_11_4.m">BH<sub>8,11,4</sub></a></td><td>11</td><td>4</td><td>BH(8,&nbsp;4)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_88B.m">SH<sub>8,3,88B</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_11_6A.m">SH<sub>8,11,6A</sub></a>(p<sub>1</sub>)</td><td>11</td><td>6</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_88A.m">SH<sub>8,3,88A</sub></a><br>1-parameter family stemming form BH(8,&nbsp;2)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_11_6B.m">SH<sub>8,11,6B</sub></a>(p<sub>1</sub>)</td><td>11</td><td>6</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_88B.m">SH<sub>8,3,88B</sub></a><br>1-parameter family stemming form BH(8,&nbsp;2)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_13_6A.m">SH<sub>8,13,6A</sub></a>(p<sub>1</sub>)</td><td>13</td><td>6</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_142.m">SH<sub>8,3,142</sub></a><br>1-parameter family stemming form BH(8,&nbsp;2)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_13_6B.m">SH<sub>8,13,6B</sub></a>(p<sub>1</sub>)</td><td>13</td><td>6</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_8_3_142.m">SH<sub>8,3,142</sub></a><br>1-parameter family stemming form BH(8,&nbsp;2)</td></tr>
+</tbody>
+</table>
+
+<h3>N = 9</h3>
+
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_76.m">SH<sub>9,0,76</sub></a></td><td>0</td><td>76</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_89.m">SH<sub>9,0,89</sub></a></td><td>0</td><td>89</td><td></td><td>contains <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_4_15.m">SH<sub>9,4,15</sub></a>(p<sub>1</sub>)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_105.m">SH<sub>9,0,105</sub></a></td><td>0</td><td>105</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_201.m">SH<sub>9,0,201</sub></a></td><td>0</td><td>201</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_625.m">SH<sub>9,0,625</sub></a></td><td>0</td><td>625</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_2_41.m">SH<sub>9,2,41</sub></a></td><td>2</td><td>41</td><td></td><td></td></tr>
+<tr><td>F<sub>9</sub></td><td>4</td><td>9</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0909B.html">BH(9,&nbsp;9)</a></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_9_4_9.m">BH<sub>9,4,9</sub></a></td><td>4</td><td>9</td><td>BH(9,&nbsp;12)</td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_4_15.m">SH<sub>9,4,15</sub></a>(p<sub>1</sub>)</td><td>4</td><td>15</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_89.m">SH<sub>9,0,89</sub></a><br>1-parameter family stemming from BH(9,&nbsp;3)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_4_30.m">SH<sub>9,4,30</sub></a>(p<sub>1</sub>)</td><td>4</td><td>30</td><td></td><td>1-parameter family stemming from BH(9,&nbsp;6)</td></tr>
+</tbody>
+</table>
+
+<h3>N = 10</h3>
+
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_9A.m">SH<sub>10,0,9A</sub></a></td><td>0</td><td>9</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349A.m">SH<sub>10,0,349A</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_9B.m">SH<sub>10,0,9B</sub></a></td><td>0</td><td>9</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349B.m">SH<sub>10,0,349B</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_134.m">SH<sub>10,0,134</sub></a></td><td>0</td><td>134</td><td></td><td>contains: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_8_58.m">SH<sub>10,8,58</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_143.m">SH<sub>10,0,143</sub></a></td><td>0</td><td>134</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349A.m">SH<sub>10,0,349A</sub></a><br>contains: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_16_4.m">BH<sub>10,16,4</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349A.m">SH<sub>10,0,349A</sub></a></td><td>0</td><td>349</td><td></td><td>contains: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_9A.m">SH<sub>10,0,9A</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_143.m">SH<sub>10,0,143</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_8_12.m">BH<sub>10,8,12</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_9_12A.m">BH<sub>10,9,12A</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_11_4.m">BH<sub>10,11,4</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349B.m">SH<sub>10,0,349B</sub></a></td><td>0</td><td>349</td><td></td><td>contains: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_9B.m">SH<sub>10,0,9B</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_9_12B.m">BH<sub>10,9,12B</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_9_20.m">SH<sub>10,9,20</sub></a>(p<sub>1</sub>)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_1007.m">SH<sub>10,0,1007</sub></a></td><td>0</td><td>1007</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_1071.m">SH<sub>10,0,1071</sub></a></td><td>0</td><td>1071</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_2071.m">SH<sub>10,0,2071</sub></a></td><td>0</td><td><b>2071</b></td><td></td><td>general symmetric form</td></tr>
+<tr><td><td>2</td><td>289</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_2_577.m">SH<sub>10,2,577</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_2_577.m">SH<sub>10,2,577</sub></a></td><td>2</td><td>577</td><td></td><td>contains at least 2 solutions...</td></tr>
+<tr><td></td><td>4</td><td>216</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_4_490.m">SH<sub>10,4,490</sub></a></td></tr>
+<tr><td></td><td>4</td><td>220</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_4_490.m">SH<sub>10,4,490</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_4_490.m">SH<sub>10,4,490</sub></a></td><td>4</td><td>490</td><td></td><td>contains at least 4 solutions, including: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_8_8.m">BH<sub>10,8,8</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_8_8.m">BH<sub>10,8,8</sub></a></td><td>8</td><td>8</td><td>BH(10,&nbsp;8)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_4_490.m">SH<sub>10,4,490</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_8_10.m">BH<sub>10,8,10</sub></a></td><td>8</td><td>10</td><td>BH(10,&nbsp;10)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_134.m">SH<sub>10,0,134</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_8_12.m">BH<sub>10,8,12</sub></a></td><td>8</td><td>12</td><td>BH(10,&nbsp;12)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349A.m">SH<sub>10,0,349A</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_8_58.m">SH<sub>10,8,58</sub></a></td><td>8</td><td>58</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_134.m">SH<sub>10,0,134</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_9_12A.m">BH<sub>10,9,12A</sub></a></td><td>9</td><td>12</td><td>BH(10,&nbsp;12)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349A.m">SH<sub>10,0,349A</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_9_12B.m">BH<sub>10,9,12B</sub></a></td><td>9</td><td>12</td><td>BH(10,&nbsp;12)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349B.m">SH<sub>10,0,349B</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_9_20.m">SH<sub>10,9,20</sub></a>(p<sub>1</sub>)</td><td>9</td><td>20</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349B.m">SH<sub>10,0,349B</sub></a><br>1-parameter family stemming from BH(10,&nbsp;4)</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_11_4.m">BH<sub>10,11,4</sub></a></td><td>11</td><td>4</td><td>BH(10,&nbsp;4)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349A.m">SH<sub>10,0,349A</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_16_4.m">BH<sub>10,16,4</sub></a></td><td>16</td><td>4</td><td>BH(10,&nbsp;4)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_143.m">SH<sub>10,0,143</sub></a></td></tr>
+</tbody>
+</table>
+
+<h3 id="SN11">N = 11</h3>
+
+<p><b>All</b> (known) CHM of order N = 11 are <b>symmetrizable</b> and <b><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/isolated-matrix.html">isolated</a></b>.</p>
+
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1102.html">C<sub>11&Sigma;</sub></a></td><td>0</td><td>5</td><td></td><td></td></tr>
+<tr><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1103.html">N<sub>11A</sub></a>, <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1104.html">N<sub>11B</sub></a></td><td>0</td><td>10</td><td></td><td></td></tr>
+<tr><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1101.html">F<sub>11</sub></a></td><td>0</td><td>11</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1111B.html">BH(11,&nbsp;11)</a></td><td></td></tr>
+<tr><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1105.html">Q<sub>11&Sigma;</sub></a></td><td>0</td><td>63</td><td></td><td>special solution of <a href="">SH<sub>11,general</sub></a></td></tr>
+<tr><td></td><td>0</td><td>191</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr><td></td><td>0</td><td>323</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr><td></td><td>0</td><td>425</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr><td></td><td>0</td><td>751</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr><td></td><td>0</td><td>1457</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr><td></td><td>0</td><td>1561</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td><td>0</td><td><b>3081</b></td><td></td><td>general symmetric form; it is conjectured that it contains all other 11-dim. solutions</td></tr>
+</tbody>
+</table>
+
+<h3>N &gt; 11</h3>
+
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td>F<sub>12</sub></td><td>17</td><td>12</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1212B.html">BH(12,&nbsp;12)</a></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/RH_12_55_2.m">RH<sub>12,55,2</sub></a></td><td>55</td><td>2</td><td></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1202B.html">H<sub>12</sub></a></td></tr>
+<tr><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1301.html">F<sub>13</sub></a></td><td>0</td><td>13</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1313B.html">BH(13,&nbsp;13)</a></td><td></td></tr>
+<tr><td>F<sub>14</sub></td><td>12</td><td>14</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1414B.html">BH(14,&nbsp;14)</a></td><td></td></tr>
+<tr><td>F<sub>15</sub></td><td>16</td><td>15</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1515B.html">BH(15,&nbsp;15)</a></td><td></td></tr>
+<tr><td>F<sub>16</sub></td><td>17</td><td>16</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1616B.html">BH(16,&nbsp;16)</a></td><td></td></tr>
+<tr><td>F<sub>17</sub></td><td>0</td><td>17</td><td>BH(17,&nbsp;17)</td><td></td></tr>
+<tr><td>F<sub>18</sub></td><td>28</td><td>18</td><td>BH(18,&nbsp;18)</td><td></td></tr>
+<tr><td>F<sub>19</sub></td><td>0</td><td>19</td><td>BH(19,&nbsp;19)</td><td></td></tr>
+<tr><td>F<sub>20</sub></td><td>33</td><td>12</td><td>BH(20,&nbsp;20)</td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/RH_20_171_2.m">RH<sub>20,171,2</sub></a></td><td>171</td><td>2</td><td></td><td>H<sub>20</sub></td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+</tbody>
+</table>
+
+
+<hr>
+
+<h2 id="Hermitian_CHM">Hermitian CHM (including families)<span class="go-top"><a href="#top">&uarr;</a></span></h2>
+<p>One can easily prove that Hermitian CHM can exist only in even dimensions N &in; 2<b>N</b>.
+No explicitly <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/isolated-matrix.html">isolated</a> example was found so far...</p>
+
+<h3>N = 6</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_6_4_4.m">HH<sub>6,4,4</sub></a></td><td>4</td><td>4</td><td>BH(6,&nbsp;4)</td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0604B.html">D<sub>6</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_6_4_34.m">HH<sub>6,4,34</sub></a></td><td>4</td><td>34</td><td></td><td>looks like a general Hermitian case: <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_6_general.m">HH<sub>6,general</sub></a></td></tr>
+</tbody>
+</table>
+
+
+
+<h3>N = 8</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_8_5_54.m">HH<sub>8,5,54</sub></a></td><td>5</td><td>54</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_8_5_102.m">HH<sub>8,5,102</sub></a></td><td>5</td><td>102</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_8_7_18.m">HH<sub>8,7,18</sub></a>(p<sub>1</sub>,&nbsp;p<sub>2</sub>)</td><td>7</td><td>18</td><td></td><td>2-parameter <b>family</b> of Hermitian CHM stemming from <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0802B.html">BH(8,&nbsp;2)</a></td></tr>
+</tbody>
+</table>
+
+
+
+<h3>N = 10</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_10_6_106.m">HH<sub>10,6,106</sub></a></td><td>6</td><td>106</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_10_6_134.m">HH<sub>10,6,134</sub></a></td><td>6</td><td>134</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/BH_10_6_6.m">BH<sub>10,6,6</sub></a></td><td>8</td><td>6</td><td>BH(10,&nbsp;6)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_10_12_1002.m">HH<sub>10,12,1002</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_10_8_160.m">HH<sub>10,8,160</sub></a></td><td>8</td><td>160</td><td></td><td></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_10_12_1002.m">HH<sub>10,12,1002</sub></a></td><td>12</td><td>1002</td><td></td><td>contains at least 2 solutions, including <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/BH_10_6_6.m">BH<sub>10,6,6</sub></a></td></tr>
+</tbody>
+</table>
+
+
+<h3>N = 12</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td><td>5</td><td>1902</td><td></td><td>contains all other symmetric solutions</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_9_272.m">HH<sub>12,9,272</sub></a></td><td>9</td><td>272</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_9_294.m">HH<sub>12,9,294</sub></a></td><td>9</td><td>294</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_9_314.m">HH<sub>12,9,314</sub></a></td><td>9</td><td>314</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_9_328.m">HH<sub>12,9,328</sub></a></td><td>9</td><td>328</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_9_622.m">HH<sub>12,9,622</sub></a></td><td>9</td><td>622</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_11_6.m">HH<sub>12,11,6</sub></a></td><td>11</td><td>6</td><td>BH(12,&nbsp;6)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_13_18.m">HH<sub>12,13,18</sub></a>(p<sub>1</sub>,&nbsp;p<sub>2</sub>)</td><td>13</td><td>18</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a><br>2-parameter <b>family</b> of Hermitian CHM stemming from <a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1202B.html">BH(12,&nbsp;2)</a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/RH_12_55_2.m">RH<sub>12,55,2</sub></a></td><td>55</td><td>2</td><td></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1202B.html">H<sub>12</sub></a></td></tr>
+</tbody>
+</table>
+
+
+<h3>N &gt; 12</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/defect.html">defect</a></th><th>#<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/haagerup-set.html">&Lambda;</a></th><th><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/RH_16_105_2.m">RH<sub>16,105,2</sub></a></td><td>105</td><td>2</td><td></td><td><a href="https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/1602B.html">H<sub>16A</sub></a></td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/RH_20_171_2.m">RH<sub>20,171,2</sub></a></td><td>171</td><td>2</td><td></td><td>H<sub>20</sub></td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+</tbody>
+</table>
+
+
+<hr>
+
+
+<h2>Unresolved Cases<span class="go-top"><a href="#top">&uarr;</a></span></h2>
+<p>Not every (complex) Hadamard matrix can be (easily) brought to its symmetric equivalent.
+Soon, the list of such matrices will be printed here... If anybody knows such <b>complex</b> Hadamard examples, please
+<a href="https://chaos.if.uj.edu.pl/~karol/hadamard/contact">contact us</a>.</p>
+
+
+</div>
+
