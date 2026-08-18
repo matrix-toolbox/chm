@@ -1915,11 +1915,7 @@ records are related to or they stem from a <a href="../d/butson-class.html">BH</
 <a href="../catalogue/1608_2B.html">S<sub>16</sub></a>,
 <a href="../catalogue/1616B.html">F<sub>16</sub></a>.
 </p>
-<p>For more, check <a href="" target="_blank">Butson Home</a> (maintained by P. Lampio) which provides the catalog of all BH matrices in dimensions: 2 &ndash; 21.
-Almost all of these matrices can be extended to multi-parametric (affine) families. Further detailed classification
-of all of them is currently questionable, and anyway, it requires a lot of time and resources. 
-Some preliminary attempt is presented <a href="../CHM_BH_0/index.html"><b>here</b></a>, where we print the defects of all
-Butsons from <a href="https://wiki.aalto.fi/display/Butson/Matrices+up+to+monomial+equivalence" target="_blank">Butson Home</a>, focusing the attention on the isolated cases.</p>
+<p>For more, check <a href="" target="_blank">Butson Home</a> (maintained by P. Lampio) which provides the catalog of all BH matrices in dimensions: 2 &ndash; 21. Almost all of these matrices can be extended to multi-parametric (affine) families. Further detailed classification of all of them is currently questionable, and anyway, it requires a lot of time and resources. Some preliminary attempt is presented <a href="#BH_0"><b>here</b></a>, where we print the defects of all Butsons from <a href="https://wiki.aalto.fi/display/Butson/Matrices+up+to+monomial+equivalence" target="_blank">Butson Home</a>, focusing the attention on the isolated cases.</p>
 <p>Below we present some particular BH examples from the <b><a href="../index.html">Catalog</a></b>.</p>
 
 <hr>
@@ -3508,7 +3504,7 @@ gdN10B_3 =    7    8   10   11
 <hr>
 
 <h1 id="BH_0">4. Defect of <a href="https://matrix-toolbox.github.io/chm/d/butson-class.html">BH</a> Matrices from <a href="https://wiki.aalto.fi/display/Butson/Matrices+up+to+monomial+equivalence" target="_blank">Butson Home</a></h1>
-    
+
 <!--p class="last-update">created: 2022-07-28</p-->
 <!--p class="last-update">updated: 2023-02-22 by <a href="https://chaos.if.uj.edu.pl/~wojtek">W. Bruzda</a></p-->
 
@@ -3546,7 +3542,7 @@ SPLIT_FILEab<br>
 ...<br>
 SPLIT_FILEar</code></li>
 <li><code>./get_SL.sh SPLIT_FILEax SL_BH_NN_qq_ax.txt</code><br>
-<span class="comment">script <code><a href="get_SL.sh">get_SL.sh</a></code> uses another one: <code><a href="b2m.sh">b2m.sh</a></code> which extracts n-th line from a raw BH-file: <code>$ ./b2m.sh BH-16-14.txt 4 123</code></span></li>
+<span class="comment">script <code><a href="../CHM_BH_0/get_SL.sh">get_SL.sh</a></code> uses another one: <code><a href="../CHM_BH_0/b2m.sh">b2m.sh</a></code> which extracts n-th line from a raw BH-file: <code>$ ./b2m.sh BH-16-14.txt 4 123</code></span></li>
 <li>check:<br><code>$ wc -l SL_BH_NN_qq_ax.txt</code><br>should yield 100000 (lines)<br>
 or RT inspection:<br>
 <code>$ tail -F FILE</code></li>
@@ -3555,7 +3551,7 @@ or RT inspection:<br>
 <p><b>alternative and much faster method:</b></p>
 
 <ol>
-<li>prepare M-file (using chunks of&nbsp;&nbsp;&approx;10000 lines) with a simple C-script:<br><code class="important">&gt; cc <a href="BHrc.c">BHrc.c</a> -lm -o BHrc.ELF</code></li>
+<li>prepare M-file (using chunks of&nbsp;&nbsp;&approx;10000 lines) with a simple C-script:<br><code class="important">&gt; cc <a href="../CHM_BH_0/BHrc.c">BHrc.c</a> -lm -o BHrc.ELF</code></li>
 <li><code class="important">&gt; BHrc.ELF SPLIT_FILEax <b class="alert">4</b> CHUNK_SIZE <span class="comment"># watch 4 = q = BUTSON parameter!</span></code></li>
 </ol>
 
@@ -3583,7 +3579,7 @@ or RT inspection:<br>
 <li>download BH-NN-qq.txt</li>
 <li><code class="important">$ ./BHrc BB-NN-qq.txt q BH_CARDINAILTY</code></li>
 <li><code class="important">$ octave get_defect.m &gt; BB-NN-qq.txt</code></li>
-<li><code class="important">$ ./<a href="count_isolated.sh">count_isolated.sh</a> defect_BH_NN_qq.txt <span class="comment"># this number goes to the table in <a href="BH_defect.html">results</a></span></code></li>
+<li><code class="important">$ ./<a href="../CHM_BH_0/count_isolated.sh">count_isolated.sh</a> defect_BH_NN_qq.txt <span class="comment"># this number goes to the table</span></code></li>
 </ol>
 <p> while, for big files, apply the two-step mechanism:</p>
 <ol>
@@ -3599,8 +3595,8 @@ or RT inspection:<br>
 
 <p>Finally, perform some random tests (independently calculated values of defect must match!)</p>
 <ol start=4>
-<li><code class="important">$ ./<a href="check_defect.sh">check_defect.sh</a> BH-14-4.txt 4 123 defect_BH_14_4.txt <span class="comment"># manual check</span></code></li>
-<li><code class="important">$ ./<a href="test_defect.sh">test_defect.sh</a> BH-12-12.txt defect_12_12.txt 12 100000 <span class="comment"># run overnight...</span></code></li>
+<li><code class="important">$ ./<a href="../CHM_BH_0/check_defect.sh">check_defect.sh</a> BH-14-4.txt 4 123 defect_BH_14_4.txt <span class="comment"># manual check</span></code></li>
+<li><code class="important">$ ./<a href="../CHM_BH_0/test_defect.sh">test_defect.sh</a> BH-12-12.txt defect_12_12.txt 12 100000 <span class="comment"># run overnight...</span></code></li>
 </ol>
 
 <hr>
@@ -3610,7 +3606,7 @@ or RT inspection:<br>
 <p>Entries in the table below correspond to the content of Lampio-Sz&#246;ll&#337;si table from <a href="https://wiki.aalto.fi/display/Butson/Matrices+up+to+monomial+equivalence">Butson Home</a>. Among the total number of <b>6'815'601</b> matrices, at least <b>9'026</b> of them are explicitly <a href="https://matrix-toolbox.github.io/chm/d/isolated-matrix.html">isolated</a>. There are possibly more isolated matrices, but currently there is no way to check it (quickly), hence we restrict the attention only to those with vanishing defect.</p>
 
 <figure>
-    <img src="BH_table.png" alt="" style="max-width:100%;">
+    <img src="../CHM_BH_0/BH_table.png" alt="" style="max-width:100%;">
     <figcaption>Table 1 - Number of Butson Hadamard matrices with vanishing value of defect. Particular zero-defect matrices are available on demand or please use the scripts above.</figcaption>
 </figure>
 
@@ -4050,7 +4046,7 @@ const BH_array = [
 
 
 <hr>
-<p>Zipped packages with results: <a href="defect_BH.zip">defect_BH.zip</a> and <a href="SL_BH_16_4.txt.zip">SL_BH_16_4.txt.zip</a>.</p>
+<p>Zipped packages with results: <a href="../CHM_BH_0/defect_BH.zip">defect_BH.zip</a> and <a href="../CHM_BH_0/SL_BH_16_4.txt.zip">SL_BH_16_4.txt.zip</a>.</p>
 
 <div class="comment">
 <hr>
