@@ -16,16 +16,17 @@ a:hover{color:#00f;border-bottom:2px solid #00f;}
 .go-top{float:right;}
 .go-top a{text-decoration:none;}
 .comment{color:#aaa;}
+.observed{color:#aaa;}
 summary{cursor:pointer;}
 
 </style>
 
 <div id="content">
 
-<h1>Catalog of CHM</h1>
+<h1 id="top">Catalog of CHM</h1>
 <h2><a href="../CHM_CATALOG_appendix.html">Appendix</a> C: Symmetric and Hermitian CHM</h2>
 <p class="last-update">created: 2023-01-14</p>
-<p class="last-update">updated: 2024-07-14 by <a href="https://chaos.if.uj.edu.pl/~wojtek">W. Bruzda</a></p>
+<p class="last-update">updated: 2026-09-11 by <a href="https://chaos.if.uj.edu.pl/~wojtek">W. Bruzda</a></p>
 
 <hr>
 
@@ -37,7 +38,7 @@ summary{cursor:pointer;}
 <p>Symbol Y<sub>N,d,L</sub> denotes a matrix of order N with defect = <b><a href="../d/defect.html">d</a></b> and L being cardinality of <a href="../d/haagerup-set.html">Haagerup invariants</a>. In particular Y = SH denotes <a href="#Symmetric_CHM">symmetric</a> and Y = HH &ndash; <a href="#Hermitian_CHM">Hermitian</a> Hadamard matrices.</p>
 </details>
 
-<p></p>Once a matrix is symbolically characterized, a random walk procedure is applied to recover its original numerical values, or, in many cases, to discover other independent solutions consistent with the given pattern. In other words, starting from a numerical matrix representation, we explore an alternative, slightly refined approach to the internal structure in order to confirm the result. It works!</p>
+<p>Once a matrix is symbolically characterized, a random walk procedure is applied to recover its original numerical values, or, in many cases, to discover other independent solutions consistent with the given pattern. In other words, starting from a numerical matrix representation, we explore an alternative, slightly refined approach to the internal structure in order to confirm the result. It works!</p>
 
 <p>We do not rely on pure algebra to determine the matrix elements via unitarity constraints (the available information about the matrix is still insufficient). Instead, we depend on numerical optimization of a suitable objective function, which proved to be a quite effective method for such a preliminary investigation. It even allows to present several examples analytically.</p>
 
@@ -130,7 +131,7 @@ C<sub>7D</sub> =
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_7_0_5.m">SH<sub>7,0,5</sub></a></td><td>0</td><td>5</td><td></td><td><a href="../catalogue/0703.html">C<sub>7A</sub></a>, C<sub>7B</sub></td></tr>
 <tr><td></td><td>0</td><td>7</td><td><a href="../catalogue/0707B.html">BH(7,&nbsp;7)</a></td><td><a href="../catalogue/0701.html">F<sub>7</sub></a></td></tr>
 <tr><td></td><td>0</td><td>43</td><td></td><td><a href="../catalogue/0703.html">C<sub>7C</sub></a>, C<sub>7D</sub></td></tr>
-<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_7_0_97.m">SH<sub>7,0,97</sub></a></td><td>0</td><td>97</td><td></td><td><a href="">SH<sub>7,0,97</sub></a> includes <a href="../catalogue/0701.html">F<sub>7</sub></a>, <a href="../catalogue/0702.html">P<sub>7</sub></a> &in; BH(7,&nbsp;6) and <a href="../catalogue/0704.html">Q<sub>7</sub></a></td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_7_0_97.m">SH<sub>7,0,97</sub></a></td><td>0</td><td>97</td><td></td><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_7_0_97.m">SH<sub>7,0,97</sub></a> includes <a href="../catalogue/0701.html">F<sub>7</sub></a>, <a href="../catalogue/0702.html">P<sub>7</sub></a> &in; BH(7,&nbsp;6) and <a href="../catalogue/0704.html">Q<sub>7</sub></a></td></tr>
 <tr><td></td><td>3</td><td>6</td><td></td><td><a href="../catalogue/0702.html">P<sub>7</sub></a></td></tr>
 </tbody>
 </table>
@@ -175,7 +176,9 @@ C<sub>7D</sub> =
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_105.m">SH<sub>9,0,105</sub></a></td><td>0</td><td>105</td><td></td><td></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_201.m">SH<sub>9,0,201</sub></a></td><td>0</td><td>201</td><td></td><td></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_625.m">SH<sub>9,0,625</sub></a></td><td>0</td><td>625</td><td></td><td></td></tr>
+<tr class="observed"><td></td><td>0</td><td>681</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_2_41.m">SH<sub>9,2,41</sub></a></td><td>2</td><td>41</td><td></td><td></td></tr>
+<tr class="observed"><td></td><td>2</td><td>89</td><td></td><td>observed numerically</td></tr>
 <tr><td>F<sub>9</sub></td><td>4</td><td>9</td><td><a href="../catalogue/0909B.html">BH(9,&nbsp;9)</a></td><td></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_9_4_9.m">BH<sub>9,4,9</sub></a></td><td>4</td><td>9</td><td>BH(9,&nbsp;12)</td><td></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_4_15.m">SH<sub>9,4,15</sub></a>(p<sub>1</sub>)</td><td>4</td><td>15</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_9_0_89.m">SH<sub>9,0,89</sub></a><br>1-parameter family stemming from BH(9,&nbsp;3)</td></tr>
@@ -190,17 +193,39 @@ C<sub>7D</sub> =
 <tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
 </thead>
 <tbody>
+<tr class="observed"><td></td><td>0</td><td>5</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>6</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_9A.m">SH<sub>10,0,9A</sub></a></td><td>0</td><td>9</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349A.m">SH<sub>10,0,349A</sub></a></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_9B.m">SH<sub>10,0,9B</sub></a></td><td>0</td><td>9</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349B.m">SH<sub>10,0,349B</sub></a></td></tr>
+<tr class="observed"><td></td><td>0</td><td>10</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>11</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>20</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>99</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_134.m">SH<sub>10,0,134</sub></a></td><td>0</td><td>134</td><td></td><td>contains: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_8_58.m">SH<sub>10,8,58</sub></a></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_143.m">SH<sub>10,0,143</sub></a></td><td>0</td><td>134</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349A.m">SH<sub>10,0,349A</sub></a><br>contains: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_16_4.m">BH<sub>10,16,4</sub></a></td></tr>
+<tr class="observed"><td></td><td>0</td><td>143</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>175</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>251</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>271</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>283</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>293</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349A.m">SH<sub>10,0,349A</sub></a></td><td>0</td><td>349</td><td></td><td>contains: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_9A.m">SH<sub>10,0,9A</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_143.m">SH<sub>10,0,143</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_8_12.m">BH<sub>10,8,12</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_9_12A.m">BH<sub>10,9,12A</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_11_4.m">BH<sub>10,11,4</sub></a></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_349B.m">SH<sub>10,0,349B</sub></a></td><td>0</td><td>349</td><td></td><td>contains: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_9B.m">SH<sub>10,0,9B</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_9_12B.m">BH<sub>10,9,12B</sub></a>, <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_9_20.m">SH<sub>10,9,20</sub></a>(p<sub>1</sub>)</td></tr>
+<tr class="observed"><td></td><td>0</td><td>499</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>500</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>526</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>527</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>533</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>583</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>703</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>967</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_1007.m">SH<sub>10,0,1007</sub></a></td><td>0</td><td>1007</td><td></td><td></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_1071.m">SH<sub>10,0,1071</sub></a></td><td>0</td><td>1071</td><td></td><td></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_0_2071.m">SH<sub>10,0,2071</sub></a></td><td>0</td><td><b>2071</b></td><td></td><td>general symmetric form</td></tr>
-<tr><td><td>2</td><td>289</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_2_577.m">SH<sub>10,2,577</sub></a></td></tr>
+<tr><td></td><td>2</td><td>289</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_2_577.m">SH<sub>10,2,577</sub></a></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_2_577.m">SH<sub>10,2,577</sub></a></td><td>2</td><td>577</td><td></td><td>contains at least 2 solutions...</td></tr>
+<tr class="observed"><td></td><td>4</td><td>108</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>4</td><td>146</td><td></td><td>observed numerically</td></tr>
 <tr><td></td><td>4</td><td>216</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_4_490.m">SH<sub>10,4,490</sub></a></td></tr>
 <tr><td></td><td>4</td><td>220</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_4_490.m">SH<sub>10,4,490</sub></a></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_10_4_490.m">SH<sub>10,4,490</sub></a></td><td>4</td><td>490</td><td></td><td>contains at least 4 solutions, including: <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/BH_10_8_8.m">BH<sub>10,8,8</sub></a></td></tr>
@@ -228,19 +253,29 @@ C<sub>7D</sub> =
 <tr><td><a href="../catalogue/1102.html">C<sub>11&Sigma;</sub></a></td><td>0</td><td>5</td><td></td><td></td></tr>
 <tr><td><a href="../catalogue/1103.html">N<sub>11A</sub></a>, <a href="../catalogue/1104.html">N<sub>11B</sub></a></td><td>0</td><td>10</td><td></td><td></td></tr>
 <tr><td><a href="../catalogue/1101.html">F<sub>11</sub></a></td><td>0</td><td>11</td><td><a href="../catalogue/1111B.html">BH(11,&nbsp;11)</a></td><td></td></tr>
-<tr><td><a href="../catalogue/1105.html">Q<sub>11&Sigma;</sub></a></td><td>0</td><td>63</td><td></td><td>special solution of <a href="">SH<sub>11,general</sub></a></td></tr>
+<tr><td><a href="../catalogue/1105.html">Q<sub>11&Sigma;</sub></a></td><td>0</td><td>63</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
 <tr><td></td><td>0</td><td>191</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr class="observed"><td></td><td>0</td><td>229</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>319</td><td></td><td>observed numerically</td></tr>
 <tr><td></td><td>0</td><td>323</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr class="observed"><td></td><td>0</td><td>361</td><td></td><td>observed numerically</td></tr>
 <tr><td></td><td>0</td><td>425</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr class="observed"><td></td><td>0</td><td>499</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>713</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>745</td><td></td><td>observed numerically</td></tr>
 <tr><td></td><td>0</td><td>751</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr class="observed"><td></td><td>0</td><td>807</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>911</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>975</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>1455</td><td></td><td>observed numerically</td></tr>
 <tr><td></td><td>0</td><td>1457</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
 <tr><td></td><td>0</td><td>1561</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td></tr>
+<tr class="observed"><td></td><td>0</td><td>3079</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/SH_11_general.m">SH<sub>11,general</sub></a></td><td>0</td><td><b>3081</b></td><td></td><td>general symmetric form; it is conjectured that it contains all other 11-dim. solutions</td></tr>
 </tbody>
 </table>
 
-<h3>N &gt; 11</h3>
-
+<h3>N = 12</h3>
 <table>
 <thead>
 <tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
@@ -248,15 +283,100 @@ C<sub>7D</sub> =
 <tbody>
 <tr><td>F<sub>12</sub></td><td>17</td><td>12</td><td><a href="../catalogue/1212B.html">BH(12,&nbsp;12)</a></td><td></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/RH_12_55_2.m">RH<sub>12,55,2</sub></a></td><td>55</td><td>2</td><td></td><td><a href="../catalogue/1202B.html">H<sub>12</sub></a></td></tr>
+</tbody>
+</table>
+
+<h3>N = 13</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td><a href="../catalogue/1301.html">F<sub>13</sub></a></td><td>0</td><td>13</td><td><a href="../catalogue/1313B.html">BH(13,&nbsp;13)</a></td><td></td></tr>
+<tr class="observed"><td></td><td>0</td><td>2943</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>3109</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>0</td><td>6163</td><td></td><td>observed numerically</td></tr>
+</tbody>
+</table>
+
+<h3>N = 14</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
+<tr class="observed"><td></td><td>0</td><td>8373</td><td></td><td>observed numerically</td></tr>
 <tr><td>F<sub>14</sub></td><td>12</td><td>14</td><td><a href="../catalogue/1414B.html">BH(14,&nbsp;14)</a></td><td></td></tr>
+</tbody>
+</table>
+
+<h3>N = 15</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td>F<sub>15</sub></td><td>16</td><td>15</td><td><a href="../catalogue/1515B.html">BH(15,&nbsp;15)</a></td><td></td></tr>
+</tbody>
+</table>
+
+<h3>N = 16</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td>F<sub>16</sub></td><td>17</td><td>16</td><td><a href="../catalogue/1616B.html">BH(16,&nbsp;16)</a></td><td></td></tr>
+</tbody>
+</table>
+
+<h3>N = 17</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td>F<sub>17</sub></td><td>0</td><td>17</td><td>BH(17,&nbsp;17)</td><td></td></tr>
+</tbody>
+</table>
+
+<h3>N = 18</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td>F<sub>18</sub></td><td>28</td><td>18</td><td>BH(18,&nbsp;18)</td><td></td></tr>
+</tbody>
+</table>
+
+<h3>N = 19</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td>F<sub>19</sub></td><td>0</td><td>19</td><td>BH(19,&nbsp;19)</td><td></td></tr>
+</tbody>
+</table>
+
+<h3>N = 20</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td>F<sub>20</sub></td><td>33</td><td>12</td><td>BH(20,&nbsp;20)</td><td></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_CATALOG/blob/master/CHM_SH/RH_20_171_2.m">RH<sub>20,171,2</sub></a></td><td>171</td><td>2</td><td></td><td>H<sub>20</sub></td></tr>
+</tbody>
+</table>
+
+<h3>N &gt; 20</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
 </tbody>
 </table>
@@ -293,7 +413,10 @@ C<sub>7D</sub> =
 <tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
 </thead>
 <tbody>
+<tr class="observed"><td></td><td>4</td><td>108</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_10_6_106.m">HH<sub>10,6,106</sub></a></td><td>6</td><td>106</td><td></td><td></td></tr>
+<tr class="observed"><td></td><td>6</td><td>126</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>6</td><td>130</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_10_6_134.m">HH<sub>10,6,134</sub></a></td><td>6</td><td>134</td><td></td><td></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/BH_10_6_6.m">BH<sub>10,6,6</sub></a></td><td>8</td><td>6</td><td>BH(10,&nbsp;6)</td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_10_12_1002.m">HH<sub>10,12,1002</sub></a></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_10_8_160.m">HH<sub>10,8,160</sub></a></td><td>8</td><td>160</td><td></td><td></td></tr>
@@ -307,7 +430,10 @@ C<sub>7D</sub> =
 <tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
 </thead>
 <tbody>
+<tr class="observed"><td></td><td>5</td><td>1294</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td><td>5</td><td>1902</td><td></td><td>contains all other symmetric solutions</td></tr>
+<tr class="observed"><td></td><td>7</td><td>502</td><td></td><td>observed numerically</td></tr>
+<tr class="observed"><td></td><td>9</td><td>32</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_9_272.m">HH<sub>12,9,272</sub></a></td><td>9</td><td>272</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_9_294.m">HH<sub>12,9,294</sub></a></td><td>9</td><td>294</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_9_314.m">HH<sub>12,9,314</sub></a></td><td>9</td><td>314</td><td></td><td>special solution of <a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/HH_12_5_1902.m">HH<sub>12,5,1902</sub></a></td></tr>
@@ -319,15 +445,33 @@ C<sub>7D</sub> =
 </tbody>
 </table>
 
-<h3>N &gt; 12</h3>
+<h3>N = 16</h3>
 <table>
 <thead>
 <tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
 </thead>
 <tbody>
+<tr class="observed"><td></td><td>7</td><td>6498</td><td></td><td>observed numerically</td></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/RH_16_105_2.m">RH<sub>16,105,2</sub></a></td><td>105</td><td>2</td><td></td><td><a href="../catalogue/1602B.html">H<sub>16A</sub></a></td></tr>
-<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+</tbody>
+</table>
+
+<h3>N = 20</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td><a href="https://github.com/matrix-toolbox/CHM_scripts/blob/master/CHM_SH/RH_20_171_2.m">RH<sub>20,171,2</sub></a></td><td>171</td><td>2</td><td></td><td>H<sub>20</sub></td></tr>
+</tbody>
+</table>
+
+<h3>N &gt; 20</h3>
+<table>
+<thead>
+<tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th><a href="../d/butson-class.html">BH</a> class</th><th>comment</th></tr>
+</thead>
+<tbody>
 <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
 </tbody>
 </table>
@@ -335,3 +479,4 @@ C<sub>7D</sub> =
 <hr>
 
 </div>
+</html>
