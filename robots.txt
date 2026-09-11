@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matrix-toolbox.github.io/chm/sitemap.xml
