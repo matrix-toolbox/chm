@@ -34,10 +34,31 @@
 .gen{font-weight:bold;}
 .flag{font-size:12px;color:#406;}
 .hint{color:#888;font-size:12px;}
+.small-only{display:none;}
+
+/* Below 640px the eight columns cannot fit, so each record becomes a card:
+   the name on its own line, then the numbers, each labelled by data-l.    */
 @media (max-width:640px){
-  #results{font-size:12px;}
-  #results td,#results th{padding:2px 4px;}
   #filters label{margin-right:6px;}
+  #filters input[type=text],#filters input[type=text].wide{width:100%;max-width:100%;}
+  #filters label.num-f{display:block;margin-bottom:4px;}
+  #filters fieldset > .hint{display:none;}
+  .small-only{display:block;margin:6px 0 0;}
+  .scroll{overflow-x:visible;}
+  #results,#results tbody{display:block;width:100%;}
+  #results thead{display:none;}
+  #results tr{display:flex;flex-wrap:wrap;align-items:baseline;
+              gap:0 12px;margin:0 0 6px;padding:6px 8px;
+              border:1px solid #ccc;border-radius:4px;}
+  #results tr:nth-child(even){background:#f6f6f6;}
+  #results tr:nth-child(even) td{background:none;}
+  #results td{display:block;border:0;padding:1px 0;
+              white-space:normal;text-align:left;font-size:13px;}
+  #results td::before{content:attr(data-l) " ";color:#888;font-size:11px;}
+  #results td.name{order:-1;flex-basis:100%;font-size:15px;}
+  #results td.name::before{content:"";}
+  #results td.where,#results td.param{flex-basis:100%;}
+  #results td.none{display:none;}
 }
 </style>
 
@@ -72,12 +93,23 @@ searchable table. Follow the link in the last column for the authoritative entry
 <form id="filters" onsubmit="return false;">
 <fieldset>
 <legend>numbers</legend>
-<label>N <input type="text" id="fN" placeholder="6, 6-9, &gt;10"></label>
-<label><b>d</b> <input type="text" id="fd" placeholder="0, 4-8, &lt;5"></label>
-<label>#&Lambda; <input type="text" id="fl" placeholder="e.g. &lt;100"></label>
-<label>q <input type="text" id="fq" placeholder="Butson q"></label>
-<label>name <input type="text" id="fnm" class="wide" placeholder="substring, e.g. S1"></label>
+<label class="num-f">N <input type="text" id="fN" placeholder="6, 6-9, &gt;10"></label>
+<label class="num-f"><b>d</b> <input type="text" id="fd" placeholder="0, 4-8, &lt;5"></label>
+<label class="num-f">#&Lambda; <input type="text" id="fl" placeholder="e.g. &lt;100"></label>
+<label class="num-f">q <input type="text" id="fq" placeholder="Butson q"></label>
+<label class="num-f">name <input type="text" id="fnm" class="wide" placeholder="substring, e.g. S1"></label>
 <span class="hint">a number, a range <code>a-b</code>, <code>&lt;a</code>, <code>&gt;a</code>, or a list <code>a,b,c</code></span>
+<label class="small-only">sort by
+  <select id="fsort">
+    <option value="">&ndash;</option>
+    <option value="n">N</option>
+    <option value="d">defect</option>
+    <option value="l">#&Lambda;</option>
+    <option value="q">q</option>
+    <option value="nm">name</option>
+    <option value="a">listed in</option>
+  </select>
+</label>
 </fieldset>
 
 <fieldset>
@@ -213,6 +245,7 @@ appear here in <span class="gen">bold</span>.</p>
       if (ss.length && ss.indexOf(source(r)) < 0) return false;
       return true;
     });
+    if (sortKey) order(sortKey);
     shown = PAGE;
     render();
     writeURL();
@@ -267,9 +300,15 @@ appear here in <span class="gen">bold</span>.</p>
     return esc(s).replace(/([A-Z][A-Za-z]?)(\d+(?:,\d+)*[A-Za-z]?(?:,general)?)/g,
                           function (m, a, b) { return a + "<sub>" + b + "</sub>"; });
   }
-  function num(v, bold) {
-    if (v === undefined || v === null) return '<td class="num">&ndash;</td>';
-    return '<td class="num' + (bold ? " gen" : "") + '">' + v + "</td>";
+  function cell(html, cls, label) {
+    return '<td class="' + cls + (html === "" ? " none" : "") +
+           '" data-l="' + label + '">' + html + "</td>";
+  }
+  function num(v, label, bold) {
+    if (v === undefined || v === null)
+      return '<td class="num none" data-l="' + label + '">&ndash;</td>';
+    return '<td class="num' + (bold ? " gen" : "") + '" data-l="' + label + '">' +
+           v + "</td>";
   }
   function row(r) {
     var flags = (r.t || "").split("").map(function (ch) {
@@ -281,29 +320,40 @@ appear here in <span class="gen">bold</span>.</p>
     var where = SRC[source(r)] || "";
     if (r.u) where = '<a href="' + esc(r.u) + '">' + where + "</a>";
     if (r.k) where += ' &bull; <a href="' + esc(r.k) + '">' +
-                     (r.k.indexOf("catalogue/") === 0 ? "catalogue" : "Appendix A") + "</a>";
+                     (r.k.indexOf("catalogue/") === 0 ? "catalog" : "Appendix A") + "</a>";
     if (r.c) where += ' <span class="hint">' + fmtText(r.c) + "</span>";
-    return "<tr>" + num(r.n) + num(r.d, r.g) + num(r.l) + num(r.q) +
-      '<td class="flag">' + flags + "</td><td>" + name + '</td><td class="param">' +
-      (r.p ? esc(r.p.join(", ")) : "") + "</td><td>" + where + "</td></tr>";
+    return "<tr>" +
+      num(r.n, "N") + num(r.d, "d", r.g) + num(r.l, "#\u039B") + num(r.q, "q") +
+      cell(flags, "flag", "type") +
+      cell(name, "name", "name") +
+      cell(r.p ? esc(r.p.join(", ")) : "", "param", "parameters") +
+      cell(where, "where", "listed in") + "</tr>";
   }
 
   // ---- sorting --------------------------------------------------------
   var sortKey = null, sortDir = 1;
+  function order(k) {
+    view.sort(function (a, b) {
+      var x = a[k], y = b[k];
+      if (x === undefined || x === null) x = (typeof y === "number") ? -1 : "";
+      if (y === undefined || y === null) y = (typeof x === "number") ? -1 : "";
+      if (Array.isArray(x)) x = x.join(",");
+      if (Array.isArray(y)) y = y.join(",");
+      return (x < y ? -1 : x > y ? 1 : 0) * sortDir;
+    });
+  }
+  function sortBy(k, toggle) {
+    if (!k) { sortKey = null; return; }
+    sortDir = (toggle && sortKey === k) ? -sortDir : 1;
+    sortKey = k;
+    order(k);
+  }
   var ths = document.querySelectorAll("#results th");
   for (var i = 0; i < ths.length; i++) {
     ths[i].onclick = (function (k) {
       return function () {
-        sortDir = (sortKey === k) ? -sortDir : 1;
-        sortKey = k;
-        view.sort(function (a, b) {
-          var x = a[k], y = b[k];
-          if (x === undefined || x === null) x = (typeof y === "number") ? -1 : "";
-          if (y === undefined || y === null) y = (typeof x === "number") ? -1 : "";
-          if (Array.isArray(x)) x = x.join(",");
-          if (Array.isArray(y)) y = y.join(",");
-          return (x < y ? -1 : x > y ? 1 : 0) * sortDir;
-        });
+        sortBy(k, true);
+        if ($("fsort")) $("fsort").value = k;
         render();
       };
     })(ths[i].getAttribute("data-k"));
@@ -348,11 +398,17 @@ appear here in <span class="gen">bold</span>.</p>
       inputs[n].oninput = apply;
       inputs[n].onchange = apply;
     }
+    $("fsort").onchange = function () {
+      if (!this.value) { sortKey = null; apply(); }      // back to natural order
+      else { sortBy(this.value, false); render(); }
+    };
     $("reset").onclick = function () {
       for (var j = 0; j < inputs.length; j++) {
         if (inputs[j].type === "checkbox") inputs[j].checked = false;
         else inputs[j].value = "";
       }
+      $("fsort").value = "";
+      sortKey = null;
       apply();
     };
   }

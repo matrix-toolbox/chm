@@ -33,10 +33,13 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 BLOB = "https://github.com/matrix-toolbox/chm/blob/main/"
 
-# <br> separates two statements in one cell -- keep them apart
-detag = lambda t: html.unescape(
-    re.sub(r"\s+", " ",
-           re.sub(r"<[^>]+>", "", re.sub(r"<br\s*/?>", "; ", t, flags=re.I)))).strip()
+def detag(t):
+    """Cell text without markup.  <br> separates two statements inside one
+    cell, so it becomes "; " -- unless the text already punctuates itself."""
+    t = re.sub(r"<br\s*/?>", "; ", t, flags=re.I)
+    t = html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t)))
+    t = re.sub(r"\s*([;.:,])\s*;\s*", r"\1 ", t)      # "...;" + <br>  ->  "...; "
+    return t.strip().strip(";").strip()
 
 
 def rec(**kw):
