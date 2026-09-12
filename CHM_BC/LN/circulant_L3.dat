@@ -1,0 +1,54 @@
+# Created by Octave 5.2.0, Sat Sep 18 21:19:07 2021 CEST <ania@ania-bania>
+# name: F_norm
+# type: scalar
+1.1254325633931467e-11
+
+
+# name: H
+# type: complex matrix
+# rows: 3
+# columns: 3
+ (1,0) (1,0) (1,0)
+ (1,0) (-0.49999999999829997,-0.86602540378528248) (-0.49999999999829997,0.86602540378528248)
+ (1,0) (-0.49999999999829997,0.86602540378528248) (-0.49999999999829997,-0.86602540378528248)
+
+
+# name: argn
+# type: sq_string
+# elements: 1
+# length: 27
+exp (2j * pi * rand (1, 1))
+
+
+# name: info
+# type: complex matrix
+# rows: 1
+# columns: 2
+ (3.2807645489185688e-12,2.0650148258027912e-13) (-6.5617511424420627e-12,-4.1311398746302075e-13)
+
+
+# name: is_convergent
+# type: scalar
+9.8619997196353367e-12
+
+
+# name: is_unimodular
+# type: scalar
+0.99999999999988076
+
+
+# name: spectrum
+# type: scalar
+1.7320508075695962
+
+
+# name: x
+# type: complex scalar
+(-0.49999999999829997,-0.86602540378528248)
+
+
+# name: x0
+# type: complex scalar
+(-0.93283465878329486,-0.36030473126598528)
+
+
