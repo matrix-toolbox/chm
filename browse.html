@@ -130,7 +130,7 @@ appear here in <span class="gen">bold</span>.</p>
 <script>
 (function () {
   "use strict";
-  var PAGE = 400, shown = PAGE, view = [];
+  var PAGE = 256, shown = PAGE, view = [];
   var TYPE = {B:"Butson", S:"symmetric", H:"Hermitian", R:"real",
               F:"family", I:"isolated", U:"multiunitary"};
   var SRC  = {cat:"Catalog", A:"Appendix A", B:"Appendix B", C:"Appendix C",
@@ -243,6 +243,30 @@ appear here in <span class="gen">bold</span>.</p>
   function esc(s) {
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
+
+  // ---- the Catalog writes indices as subscripts: SH_9_0_76 = SH(9,0,76) --
+  function sub(seg) {
+    var m = seg.match(/^([A-Za-z]*)(.*)$/), base = m[1], rest = m[2], idx = "", tail = "";
+    var u = rest.match(/^_(\d+(?:_\d+)*[A-Za-z]*)(.*)$/);   // SH_9_0_76B
+    if (u) { idx = u[1].replace(/_/g, ","); tail = u[2]; }
+    else {                                                   // SH8,11,6A(p1)
+      var k = rest.indexOf("(");
+      if (k < 0) idx = rest; else { idx = rest.slice(0, k); tail = rest.slice(k); }
+    }
+    if (!idx) return esc(seg);
+    return esc(base) + "<sub>" + esc(idx) + "</sub>" + esc(tail);
+  }
+  function fmtName(s) {
+    if (!s) return "";
+    // split tensor products only between a digit and a capital: D6xF2, not xH_7_0_43
+    return s.replace(/([0-9])x([A-Z])/g, "$1\u0001$2").split("\u0001").map(sub).join("x");
+  }
+  // in prose, subscript a bare name; a Butson class BH(6, 3) has no digit next
+  // to the letters, so it is left alone
+  function fmtText(s) {
+    return esc(s).replace(/([A-Z][A-Za-z]?)(\d+(?:,\d+)*[A-Za-z]?(?:,general)?)/g,
+                          function (m, a, b) { return a + "<sub>" + b + "</sub>"; });
+  }
   function num(v, bold) {
     if (v === undefined || v === null) return '<td class="num">&ndash;</td>';
     return '<td class="num' + (bold ? " gen" : "") + '">' + v + "</td>";
@@ -251,13 +275,14 @@ appear here in <span class="gen">bold</span>.</p>
     var flags = (r.t || "").split("").map(function (ch) {
       return TYPE[ch] || ch;
     }).join(", ");
-    var name = esc(r.nm || "");
+    var name = fmtName(r.nm || "");
     if (r.f) name = '<a href="' + BLOB + esc(r.f) +
                     '" title="' + esc(r.f) + '">' + name + "</a>";
     var where = SRC[source(r)] || "";
     if (r.u) where = '<a href="' + esc(r.u) + '">' + where + "</a>";
-    if (r.k) where += ' &bull; <a href="' + esc(r.k) + '">catalogue</a>';
-    if (r.c) where += ' <span class="hint">' + esc(r.c) + "</span>";
+    if (r.k) where += ' &bull; <a href="' + esc(r.k) + '">' +
+                     (r.k.indexOf("catalogue/") === 0 ? "catalogue" : "Appendix A") + "</a>";
+    if (r.c) where += ' <span class="hint">' + fmtText(r.c) + "</span>";
     return "<tr>" + num(r.n) + num(r.d, r.g) + num(r.l) + num(r.q) +
       '<td class="flag">' + flags + "</td><td>" + name + '</td><td class="param">' +
       (r.p ? esc(r.p.join(", ")) : "") + "</td><td>" + where + "</td></tr>";

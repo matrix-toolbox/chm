@@ -20,7 +20,7 @@ Record keys are kept short because there are a few thousand of them:
   n  N            l  #Lambda       t  type flags   p  parameter vector
   d  defect       q  Butson q      nm name         f  .m file (repo path)
   s  source       u  page URL      c  comment      g  generic/underlined
-  k  catalogue page
+  k  a related page (the catalogue entry, or the Appendix A section)
   a  appendix
 """
 import argparse
@@ -33,7 +33,10 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 BLOB = "https://github.com/matrix-toolbox/chm/blob/main/"
 
-detag = lambda t: html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t))).strip()
+# <br> separates two statements in one cell -- keep them apart
+detag = lambda t: html.unescape(
+    re.sub(r"\s+", " ",
+           re.sub(r"<[^>]+>", "", re.sub(r"<br\s*/?>", "; ", t, flags=re.I)))).strip()
 
 
 def rec(**kw):
@@ -130,8 +133,6 @@ def catalog(path):
                 note = []
                 if fd:
                     note.append("family of dimension %d" % fd)
-                if dl:
-                    note.append("see " + dl.group(1))
                 # the defect set annotates the leading entry of the line
                 mine = ds if i == 0 else []
                 for L in letters:
@@ -139,6 +140,7 @@ def catalog(path):
                     f = mfile(nm, "%s_%s" % (nm, fd) if fd else None)
                     common = dict(n=N, t=t, nm=nm, s="cat", a="", f=f,
                                   u="catalogue/%s.html" % page, c="; ".join(note),
+                                  k=dl.group(1) if dl else "",
                                   q=int(page[2:4]) if butson and page[2:4].isdigit() else None)
                     if not mine:
                         out.append(rec(**common))
