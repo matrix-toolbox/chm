@@ -1,8 +1,6 @@
 function H = S9
 % ------------------------------------------------------------------------------
-% 2016-04-04 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2016-04-04 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % An isolated BH(9, 6) found by D. McNulty and S. Weigert;
 % https://arxiv.org/abs/1208.1057

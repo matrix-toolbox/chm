@@ -1,8 +1,6 @@
 function H = BH10_6(p)
 % ------------------------------------------------------------------------------
-% 2008-05-26 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2008-05-26 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % An example of 1-parametric affine family stemming from BH(10, 6).
 % More Butson-type matrices can be found in the "Butson Home" at:

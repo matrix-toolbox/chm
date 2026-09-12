@@ -1,8 +1,6 @@
 function Y = Y8_3_28
 % ------------------------------------------------------------------------------
-% 2008-05-26 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2008-05-26 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Butson type matrix BH(9, 30) with d = 3 and #L = 28.
 % ------------------------------------------------------------------------------

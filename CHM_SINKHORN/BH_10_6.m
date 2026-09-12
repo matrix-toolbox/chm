@@ -1,8 +1,6 @@
 function Y = BH_10_6()
 % ------------------------------------------------------------------------------
-% 2023-02-22 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-02-22 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Hermitian BH(10, 6) with generic d = 8 and #L = 6.
 % Found as a solution of "HH_10_12_1002.m" and defined as a separate pattern.

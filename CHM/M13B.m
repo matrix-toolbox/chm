@@ -1,8 +1,6 @@
 function H = M13B(p)
 % ------------------------------------------------------------------------------
-% 2017-03-30 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2017-03-30 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Example of BH(13, 6) found by A. LaClair et al. extended to a 1-parameter affine family;
 %

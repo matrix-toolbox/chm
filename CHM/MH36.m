@@ -1,9 +1,7 @@
 function H=MH36
 % ------------------------------------------------------------------------------
 % 2022-07-10 Padraig O' Cathain
-% 2023-02-04 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-02-04 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Menon-Hadamard with cyclic property.
 %

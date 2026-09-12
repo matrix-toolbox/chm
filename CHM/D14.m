@@ -1,8 +1,6 @@
 function H = D14(p)
 % ------------------------------------------------------------------------------
-% 2006-12-04 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2006-12-04 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % CHM stemming form BH(14, 4) depending on 5 parameters;
 %

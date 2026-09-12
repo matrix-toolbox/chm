@@ -1,8 +1,6 @@
 function Y = SH_8_13_6A(p)
 % ------------------------------------------------------------------------------
-% 2023-02-24 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-02-24 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric 1-parameter family of CHM of order N = 8
 % with generic d = 13 and #L = 6.

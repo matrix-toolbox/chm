@@ -1,8 +1,6 @@
 function H = C6
 % ------------------------------------------------------------------------------
-% 2006-12-05 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2006-12-05 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % C-6-R CHM of order N = 6 with defect = 3;
 % No affine family stems from C6, however it belongs to --> B6.m;

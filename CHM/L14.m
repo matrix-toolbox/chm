@@ -1,8 +1,6 @@
 function H = L14(p)
 % ------------------------------------------------------------------------------
-% 2017-10-01 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2017-10-01 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 2-parametric family of CHM of order N = 14, stemming from BH(14, 10).
 % Taken from Example 2.1 of https://arxiv.org/pdf/1707.02287.pdf by P. Lampio et al.

@@ -1,8 +1,6 @@
 function H = CC14X(p)
 % ------------------------------------------------------------------------------
-% 2006-12-26 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2006-12-26 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Much work to be done here... It's been waiting since 2006...
 % [1] https://arxiv.org/abs/quant-ph/0512154

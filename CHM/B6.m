@@ -1,8 +1,6 @@
 function H = B6(p)
 % ------------------------------------------------------------------------------
-% 2006-12-05 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2006-12-05 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % First non-affine family of CHM of order N = 6 found by K. Beauchamp and R. Nicoara;
 % [1] https://arxiv.org/abs/math/0609076

@@ -1,8 +1,6 @@
 function H = S10
 % ------------------------------------------------------------------------------
-% 2016-06-12 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2016-06-12 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % An isolated BH(10, 5) of order N = 10 found by D. McNulty and S. Weigert;
 % [1] https://arxiv.org/abs/1208.1057

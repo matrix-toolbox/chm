@@ -1,8 +1,6 @@
 function H = M6(p)
 % ------------------------------------------------------------------------------
-% 2006-12-05 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2006-12-05 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric (by construction) CHM found by M. Matolcsi and F. Szollosi (2006);
 %

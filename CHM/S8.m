@@ -1,8 +1,6 @@
 function H = S8(p)
 % ------------------------------------------------------------------------------
-% 2006-12-05 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2006-12-05 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 4-parametric family of CHM stemming from BH(8, 4) found by M. Matolcsi et al.
 % https://arxiv.org/abs/quant-ph/0607073

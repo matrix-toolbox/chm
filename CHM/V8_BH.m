@@ -1,8 +1,6 @@
 function H = V8_BH(k)
 % ------------------------------------------------------------------------------
-% 2017-03-31 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2017-03-31 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % BH(8, q) matrices connected with V8X...
 % Courtesy of Veit Elser. Unpublished notes, 2011.

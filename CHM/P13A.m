@@ -1,8 +1,6 @@
 function H = P13A(p)
 % ------------------------------------------------------------------------------
-% 2017-07-10 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2017-07-10 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Petrescu matrix extended by F. Szollosi to 4-parametric family stemming from BH(13, 30);
 % [1] https://arxiv.org/pdf/1110.5590.pdf

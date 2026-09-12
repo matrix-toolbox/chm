@@ -1,9 +1,7 @@
 function Y = T8A
 % ------------------------------------------------------------------------------
 % 2017-12-19 WB
-% 2018-01-01 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2018-01-01 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % First attempt to T8(p) -- it is not a family yet...
 %

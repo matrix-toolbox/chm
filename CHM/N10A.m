@@ -1,8 +1,6 @@
 function H = N10A
 % ------------------------------------------------------------------------------
-% 2006-12-05 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2006-12-05 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Isolated CHM found by K. Beauchamp and R. Nicoara;
 % [1] https://arxiv.org/abs/math/0609076

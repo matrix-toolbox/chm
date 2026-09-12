@@ -1,8 +1,6 @@
 function H = D8s
 % ------------------------------------------------------------------------------
-% 2022-04-28 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-04-28 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric matrix from BH(8, 4) with defect = 9 and #L = 4.
 %

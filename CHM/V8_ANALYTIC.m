@@ -1,8 +1,6 @@
 function V8_ANALYTIC
 % ------------------------------------------------------------------------------
-% 2021-09-11 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2021-09-11 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % One possible configuration for analytic values of parameters a, b and c
 % from V_8^{(0)}.

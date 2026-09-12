@@ -1,9 +1,7 @@
 function H = A15X(k)
 % ------------------------------------------------------------------------------
 % 2011-02-28 Ada Chan
-% 2023-02-04 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-02-04 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Isolated CHM of order N = 15 found by A. Chan and A. Munemasa;
 % [1] https://arxiv.org/abs/1102.5601

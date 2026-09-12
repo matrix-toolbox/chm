@@ -1,8 +1,6 @@
 function H = D10B(p)
 % ------------------------------------------------------------------------------
-% 2017-03-08 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2017-03-08 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % CHM stemming form BH(10, 6) depending on 7 parameters;
 %

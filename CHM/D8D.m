@@ -1,8 +1,6 @@
 function H = D8D(p)
 % ------------------------------------------------------------------------------
-% 2016-06-12 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2016-06-12 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % CHM stemming form BH(8, 2) depending on 6 parameters;
 %

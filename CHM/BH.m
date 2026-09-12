@@ -1,9 +1,7 @@
 function H = BH(M, Q, V)
 % ------------------------------------------------------------------------------
 % 2016-11-29 Srdjan Budishin
-% 2023-02-03 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-02-03 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Script generates a unitary unimodular matrix H of Butson type.
 % M is the matrix size and Q is the number of phases.

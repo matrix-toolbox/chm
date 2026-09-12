@@ -1,8 +1,6 @@
 function H = P8(p)
 % ------------------------------------------------------------------------------
-% 2017-12-17 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2017-12-17 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 3-parametric CHM of order N = 8, stemming from BH(8, 2);
 % [1] F. Szollosi

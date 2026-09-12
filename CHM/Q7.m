@@ -1,8 +1,6 @@
 function H = Q7
 % ------------------------------------------------------------------------------
-% 2017-03-08 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2017-03-08 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Isolated matrix Q7 taken from the doctoral thesis of F. Szollosi;
 % Example 3.3.25 in https://arxiv.org/pdf/1110.5590.pdf

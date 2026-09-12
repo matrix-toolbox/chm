@@ -1,8 +1,6 @@
 function H = S14
 % ------------------------------------------------------------------------------
-% 2016-06-12 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2016-06-12 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % An isolated BH(14, 7) found by D. McNulty and S. Weigert;
 % https://arxiv.org/abs/1208.1057

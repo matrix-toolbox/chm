@@ -1,8 +1,6 @@
 function H = N10_BH10_4(p)
 % ------------------------------------------------------------------------------
-% 2008-05-26 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2008-05-26 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 1-parameter affine family of order N = 10, stemming from BH(10, 4);
 %

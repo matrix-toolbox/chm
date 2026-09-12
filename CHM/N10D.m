@@ -1,8 +1,6 @@
 function H = N10D
 % ------------------------------------------------------------------------------
-% 2008-05-28 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2008-05-28 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Isolated CHM of order N = 10;
 %

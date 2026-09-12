@@ -1,8 +1,6 @@
 function H = K9_2(zeta)
 % ------------------------------------------------------------------------------
-% 2017-03-09 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2017-03-09 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Matrix K9_2 originally denoted as BC_9^{(2)} - Block Circulant with Circulant Blocks
 % taken from the paper of Bengt R. Karlsson;

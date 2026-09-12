@@ -1,8 +1,6 @@
 function H = K6_2(p)
 % ------------------------------------------------------------------------------
-% 2009-08-22 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2009-08-22 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Family of CHM depending on 2 parameters found by B. Karlsson;
 % [1] https://arxiv.org/abs/0908.2555

@@ -1,8 +1,6 @@
 function M = weave(Aj, Bk)
 % ------------------------------------------------------------------------------
-% 2022-07-04 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-07-04 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Weaving Hadamard matrices - a construction by Robert Craigen from 1988.
 % Yes: it was in nineteen eighty eight...

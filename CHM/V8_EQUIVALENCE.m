@@ -1,8 +1,6 @@
 function V8_EQUIVALENCE
 % ------------------------------------------------------------------------------
-% 2021-09-19 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2021-09-19 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Proof that original matrix of Veit V_8^{(0)} % is equivalent
 % to the one obtained from the sequence of V8 of isolated non-Butson CHM.

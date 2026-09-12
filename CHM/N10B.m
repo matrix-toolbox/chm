@@ -1,8 +1,6 @@
 function H = N10B(p)
 % ------------------------------------------------------------------------------
-% 2016-06-12 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2016-06-12 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Extension of 1-parameter family found by K. Beauchamp and R. Nicoara
 % to a 3-parameter family by P. Lampio et al.;

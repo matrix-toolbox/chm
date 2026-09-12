@@ -1,8 +1,6 @@
 function H = A8
 % ------------------------------------------------------------------------------
-% 2016-05-31 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2016-05-31 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric isolated CHM of order N = 8 found by WB;
 % [1] https://link.springer.com/article/10.1007/s11786-018-0379-8

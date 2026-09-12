@@ -1,8 +1,6 @@
 function H = D6(p)
 % ------------------------------------------------------------------------------
-% 2006-12-04 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2006-12-04 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Example of an affine family depending on 1 parameter, stemming from BH(6, 4);
 %

@@ -1,8 +1,6 @@
 function H = H16C
 % ------------------------------------------------------------------------------
-% 2019-11-16 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2019-11-16 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Real HM of order N = 16 from BH(16, 2);
 %

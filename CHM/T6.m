@@ -1,9 +1,7 @@
 function Y = T6(p)
 % ------------------------------------------------------------------------------
 % 2008-10-20 WB
-% 2021-05-15 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2021-05-15 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Non-affine family of CHM of order N = 6.
 %

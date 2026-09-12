@@ -1,8 +1,6 @@
 function H = V8X(k)
 % ------------------------------------------------------------------------------
-% 2016-06-06 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2016-06-06 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Eight numerical solutions of non-Butson type.
 % Each row of the V_ARRAY has [a, b, c] structure.

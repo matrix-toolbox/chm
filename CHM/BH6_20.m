@@ -1,8 +1,6 @@
 function H = BH6_20
 % ------------------------------------------------------------------------------
-% 2021-04-28 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2021-04-28 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Example of B(6, 20) with defect = 4 and #L = 12.
 %

@@ -1,8 +1,6 @@
 function H = P16_BH16_4 
 % ------------------------------------------------------------------------------
-% 2023-02-04 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-02-04 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Butson type matrix, BH(16, 4), of Petrescu type.
 % [1] https://arxiv.org/abs/1110.5590
