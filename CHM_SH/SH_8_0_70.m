@@ -1,8 +1,6 @@
 function [iiMax, nP, ZTolerance, YPattern, muFactor] = SH_8_0_70
 % ------------------------------------------------------------------------------
-% 2023-01-16 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-16 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric CHM of size N = 8 with d = 0 and #L = 70.
 % ------------------------------------------------------------------------------

@@ -1,8 +1,6 @@
 function Y = RH_16_105_2
 % ------------------------------------------------------------------------------
-% 2023-01-13 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-13 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric (Hermitian) BH(16, 2) with d = 105, #L = 2.
 % ------------------------------------------------------------------------------

@@ -1,8 +1,6 @@
 function Y = TU_16_17_20(p)
 % ------------------------------------------------------------------------------
-% 2022-12-29 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-12-29 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 1-parameter 2-unitary CHM family.
 % Looks like it cannot serve as self-dual.

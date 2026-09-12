@@ -1,8 +1,6 @@
 function Y = Y_8_0_10
 % ------------------------------------------------------------------------------
-% 2022-08-26 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-08-26 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % An isolated matrix with #L = 10 found by the Sinkhorn algorithm.
 % ------------------------------------------------------------------------------

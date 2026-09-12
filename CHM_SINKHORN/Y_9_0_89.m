@@ -1,8 +1,6 @@
 function Y = Y_9_0_89
 % ------------------------------------------------------------------------------
-% 2022-12-06 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-12-06 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % An Isolated and symmetric CHM matrix of order 9 with #L(Y) = 89
 % found by the Sinkhorn algorithm.

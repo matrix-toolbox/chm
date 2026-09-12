@@ -1,8 +1,6 @@
 function Y = sinkhorn2u(N, kMax)
 % ------------------------------------------------------------------------------
-% 2022-11-15 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-11-15 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Modified Sinkhorn algorithm to search for 2-unitary Hadamards.
 %

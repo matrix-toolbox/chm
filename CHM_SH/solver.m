@@ -1,8 +1,6 @@
 function Y = solver(MetaData)
 % ------------------------------------------------------------------------------
-% 2023-01-22 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-22 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Input data:
 %    MetaData{1} = max. number of iterations

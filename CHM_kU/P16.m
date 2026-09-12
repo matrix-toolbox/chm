@@ -1,8 +1,6 @@
 function P = P16
 % ------------------------------------------------------------------------------
-% 2022-06-13 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-06-13 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Matrix representation of AME(4, 4) state in the form of a permutation matrix
 % P in P(16).

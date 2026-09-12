@@ -1,8 +1,6 @@
 function [iiMax, nP, ZTolerance, YPattern, muFactor] = HH_10_12_1002()
 % ------------------------------------------------------------------------------
-% 2023-01-23 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-23 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Hermitian CHM of size N = 10 with generic d = 12 and #L = 1002.
 % Convergence is quite fast and it seems not to depend on initial conditions.

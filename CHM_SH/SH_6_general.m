@@ -1,8 +1,6 @@
 function [iiMax, nP, ZTolerance, YPattern, muFactor] = SH_6_general()
 % ------------------------------------------------------------------------------
-% 2023-02-02 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-02-02 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % The most general pattern for a symmetric CHM of size N = 6
 % with d = 4 and max. possible #L = 241.

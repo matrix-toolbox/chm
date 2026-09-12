@@ -1,8 +1,6 @@
 function Y = Y_10_3_278(p)
 % -----------------------------------------------------------------------------
-% 2022-08-06 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-08-06 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % -----------------------------------------------------------------------------
 % A 3-parametric non-affine family of CHM of order N = 10 found by the Sinkhorn algorithm.
 % It has generic defect = 3 and #L = 278.

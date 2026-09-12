@@ -1,8 +1,6 @@
 function B = B16q4(j)
 % ------------------------------------------------------------------------------
-% 2022-12-26 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-12-26 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % First 64 matrices from Butson Home;
 % https://wiki.aalto.fi/display/Butson/Matrices+up+to+monomial+equivalence

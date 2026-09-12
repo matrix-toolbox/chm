@@ -1,8 +1,6 @@
 function Y = BH_16_105_2
 % ------------------------------------------------------------------------------
-% 2023-05-05 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-05-05 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % BH matrix BH(16, 2) from Butson Home;
 % https://wiki.aalto.fi/display/Butson/Matrices+up+to+monomial+equivalence

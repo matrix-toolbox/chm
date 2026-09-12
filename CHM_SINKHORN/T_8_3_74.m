@@ -1,8 +1,6 @@
 function Y=T_8_3_74(p)
 % ------------------------------------------------------------------------------
-% 2022-08-26 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-08-26 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 3-parameter family obtained from a random seed applied to the Sinkhorn algorithm.
 % Generic values: d(Y) = 3, #L(Y) = 74.

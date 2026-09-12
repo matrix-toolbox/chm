@@ -1,8 +1,6 @@
 function H = HH_8_7_18(p)
 % ------------------------------------------------------------------------------
-% 2023-01-14 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-14 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 2-parametric Hermitian family of CHM of order N = 8 stemming from BH(8, 2).
 % Generic defect = 7, #L = 18.

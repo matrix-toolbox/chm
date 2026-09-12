@@ -1,8 +1,6 @@
 function B = B9q12(j)
 % ------------------------------------------------------------------------------
-% 2022-11-05 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-11-05 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Taken from Butson Home;
 % https://wiki.aalto.fi/display/Butson/Matrices+up+to+monomial+equivalence

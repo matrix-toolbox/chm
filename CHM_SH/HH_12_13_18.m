@@ -1,8 +1,6 @@
 function Y = HH_12_13_18(p)
 % ------------------------------------------------------------------------------
-% 2023-01-25 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-25 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 2-parametric Hermitian affine family of CHM stemming from BH(12, 2) (d = 55)
 % with generic d = 13 and #L = 18.

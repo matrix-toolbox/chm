@@ -1,8 +1,6 @@
 function [iiMax, nP, ZTolerance, YPattern, muFactor] = SH_7_general()
 % ------------------------------------------------------------------------------
-% 2023-01-31 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-31 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % General pattern for symmetric CHM of size N = 7.
 % It should reproduce all other cases.

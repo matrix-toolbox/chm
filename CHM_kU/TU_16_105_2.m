@@ -1,8 +1,6 @@
 function Y = TU_16_105_2
 % ------------------------------------------------------------------------------
-% 2023-01-27 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-27 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % 2-unitary BH(16, 2) being a result of B[1]16 x P16;
 %

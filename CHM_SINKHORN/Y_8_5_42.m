@@ -1,8 +1,6 @@
 function Y=Y_8_5_42(p)
 % ------------------------------------------------------------------------------
-% 2022-12-10 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-12-10 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 3-parametric output from the Sinkhorn algorithm
 % with generic values: d = 5, #L = 42.

@@ -1,8 +1,6 @@
 function Y = Y_10_0_9B
 % -----------------------------------------------------------------------------
-% 2023-01-07 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-07 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % -----------------------------------------------------------------------------
 % An isolated matrix found by the Sinkhorn algorithm.
 % It is N9...

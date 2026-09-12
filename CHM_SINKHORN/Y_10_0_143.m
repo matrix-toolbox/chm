@@ -1,8 +1,6 @@
 function Y = Y_10_0_143
 % -----------------------------------------------------------------------------
-% 2023-01-09 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-09 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % -----------------------------------------------------------------------------
 % An isolated CHM found by the Sinkhorn algorithm.
 %

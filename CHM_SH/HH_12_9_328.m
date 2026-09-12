@@ -1,8 +1,6 @@
 function [iiMax, nP, ZTolerance, YPattern, muFactor] = HH_12_9_328()
 % ------------------------------------------------------------------------------
-% 2023-01-15 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-15 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Hermitian CHM of size N = 12 with generic d = 9 and #L = 328.
 % Found as a solution of "HH_12_5_1902.m" and defined as a separate pattern.

@@ -1,8 +1,6 @@
 function cat_svd(d, a, b, c)
 % ------------------------------------------------------------------------------
-% 2022-12-27 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-12-27 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Quantized cat map - Singular Value Decomposition.
 % ------------------------------------------------------------------------------

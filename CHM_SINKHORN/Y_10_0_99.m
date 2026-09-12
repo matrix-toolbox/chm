@@ -1,8 +1,6 @@
 function Y = Y_10_0_99
 % -----------------------------------------------------------------------------
-% 2023-01-06 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-06 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % -----------------------------------------------------------------------------
 % An isolated and symmetric CHM of order 10, with #L = 99
 % found by the Sinkhorn algorithm @20220826T092852.

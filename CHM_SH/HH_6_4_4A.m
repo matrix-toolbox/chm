@@ -1,8 +1,6 @@
 function Y = HH_6_4_4A
 % ------------------------------------------------------------------------------
-% 2023-01-15 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-15 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Hermitian BH(6, 4) of size N = 6 with d = 4 and #L = 4.
 % This is a solution of "HH_6_4_34" with a = -1. It might be ~ D6.

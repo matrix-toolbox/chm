@@ -1,12 +1,10 @@
 function Y = Y_8_0_70
 % ------------------------------------------------------------------------------
-% 2022-08-26 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-08-26 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % An isolated matrix found by the Sinkhorn algorithm.
 % After permuting it is EQUAL to V_8^0;
-% https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0804.html
+% https://matrix-toolbox.github.io/chm/catalogue/0804.html
 % ------------------------------------------------------------------------------
 
     a = -0.7799568409992219 + 0.6258333054244768 * I;

@@ -1,8 +1,6 @@
 function [iiMax, nP, ZTolerance, YPattern, muFactor] = SH_8_3_88B()
 % ------------------------------------------------------------------------------
-% 2023-01-17 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-17 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric CHM of order N = 8 with generic d = 3 and #L = 88.
 % Compare with "SH_8_3_50.m" and "SH_8_3_88A.m".

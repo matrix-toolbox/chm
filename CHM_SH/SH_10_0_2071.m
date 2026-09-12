@@ -1,8 +1,6 @@
 function [iiMax, nP, ZTolerance, YPattern, muFactor] = SH_10_0_2071()
 % -----------------------------------------------------------------------------
-% 2023-01-21 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-21 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % -----------------------------------------------------------------------------
 % General form of symmetric CHM of order N = 10 with generic d = 0
 % and max. possible #L = 2071.

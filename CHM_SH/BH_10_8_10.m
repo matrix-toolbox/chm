@@ -1,8 +1,6 @@
 function Y = BH_10_8_10
 % ------------------------------------------------------------------------------
-% 2023-01-21 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-21 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric BH(10, 10) with d = 8 and #L = 10.
 % It is a special solution of "SH_10_0_134.m" and also ~ F10. :)

@@ -1,8 +1,6 @@
 function Y = TU_16_17_146B(p)
 % ------------------------------------------------------------------------------
-% 2022-12-30 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-12-30 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A 4-parametric 2-unitary CHM(16)... Probably equivalent to TU_16_17_146A(p).
 % ------------------------------------------------------------------------------

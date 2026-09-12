@@ -1,8 +1,6 @@
 function Y = Y_9_0_105
 % ------------------------------------------------------------------------------
-% 2018-05-06 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2018-05-06 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Output from the Sinkhorn algorithm:
 %    a = -0.3396214473934099 + 0.9405622108454099*1j;

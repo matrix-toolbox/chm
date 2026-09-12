@@ -1,8 +1,6 @@
 function Y = TU_9_4_57B(p)
 % ------------------------------------------------------------------------------
-% 2022-01-01 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-01-01 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Extension of T9_2(p1, p2) to 4-parametric affine family with one extra
 % parameter!

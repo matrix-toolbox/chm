@@ -1,10 +1,7 @@
 function d = ud(U, METHOD, SV_TOLERANCE)
 % 20080301 KZ, WT
 % 20160408 WB
-% 20180824 W. Bruzda, name[at]uj.edu.pl : name = w.bruzda
-%
-% http://chaos.if.uj.edu.pl/~karol/hadamard/
-% https://github.com/matrix-toolbox/
+% 20180824 W. Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 %
 % Dephased defect of a unitary (Hadamard) matrix U.
 %

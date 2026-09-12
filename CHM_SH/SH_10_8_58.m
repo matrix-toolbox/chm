@@ -1,8 +1,6 @@
 function Y = SH_10_8_58()
 % ------------------------------------------------------------------------------
-% 2023-02-25 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-02-25 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric CHM of order N = 10 with d = 5 and #L = 58.
 % It is a special solution of "SH_10_0_134.m".

@@ -1,8 +1,6 @@
 function Y = TU_16_12_90(p)
 % ------------------------------------------------------------------------------
-% 2022-12-30 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-12-30 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % When matrix, being an output from >> sfc(exp(2j*pi*A), "VERBOSE");
 % is given in the "symbolic" from with variables from a to (say) q,

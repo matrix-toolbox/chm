@@ -1,8 +1,6 @@
 function Y = Y_10_2_76(p)
 % -----------------------------------------------------------------------------
-% 2022-08-08 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-08-08 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % -----------------------------------------------------------------------------
 % A 2-parameter affine family stemming from BH(10, 12) with generic defect = 2 and #L = 76.
 % Found quite _accidentally_ using the Sinkhorn algorithm with a random seed.

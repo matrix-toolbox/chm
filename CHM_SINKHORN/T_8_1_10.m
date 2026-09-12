@@ -1,8 +1,6 @@
 function Y=T_8_1_10(p1)
 % ------------------------------------------------------------------------------
-% 2022-04-09 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-04-09 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % A Symmetric 1-parameter family obtained from a random seed applied to the Sinkhorn algorithm.
 % Generic values: d(Y) = 3, #L(Y) = 10.

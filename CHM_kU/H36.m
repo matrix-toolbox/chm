@@ -1,8 +1,6 @@
 function H = H36
 % ------------------------------------------------------------------------------
-% 2022-06-27 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-06-27 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Real HM taken from http://neilsloane.com/hadamard/
 % ------------------------------------------------------------------------------

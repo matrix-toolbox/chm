@@ -1,8 +1,6 @@
 function Y = BH_6_4_4
 % ------------------------------------------------------------------------------
-% 2023-02-02 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-02-02 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric BH(6, 4) with d = 4 and #L = 4.
 % ------------------------------------------------------------------------------

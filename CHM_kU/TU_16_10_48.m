@@ -1,8 +1,6 @@
 function Y = TU_16_10_48(p)
 % ------------------------------------------------------------------------------
-% 2022-12-29 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-12-29 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % p1   p2   d    #L     q : BH(16, q)
 % -----------------------------------

@@ -1,8 +1,6 @@
 function H = TU_16_31_20(p)
 % ------------------------------------------------------------------------------
-% 2022-11-22 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-11-22 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % One-parametric family which yields 2-unitary CHM for particular value of "p".
 %

@@ -1,8 +1,6 @@
 function Y = SG_9_16_3B()
 % ------------------------------------------------------------------------------
-% 2022-12-28 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-12-28 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Self G-dual matrix derived from the Karlsson's family.
 % ------------------------------------------------------------------------------

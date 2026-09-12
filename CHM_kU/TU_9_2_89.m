@@ -1,8 +1,6 @@
 function Y = TU_9_2_89(zeta)
 % ------------------------------------------------------------------------------
-% 2023-01-27 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-27 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % K=K9_2(zeta);
 % Q=K*P9;SL3(Q),nh(Q),n1(Q),defect=ud(Q,"S",1e-8),L=size(getUnique(haagerup(Q),1e-8)k,1)

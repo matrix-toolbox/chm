@@ -1,8 +1,6 @@
 function Y = Y_8_5_82
 % -----------------------------------------------------------------------------
-% 2022-08-27 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-08-27 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % -----------------------------------------------------------------------------
 % We cannot say that parameters {a,b,c,d,e} are fully independent, however...
 % Generic defect(Y) = 5 and #L(Y) = 82.

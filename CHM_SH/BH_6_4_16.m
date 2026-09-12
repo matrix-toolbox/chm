@@ -1,8 +1,6 @@
 function Y = BH_6_4_16
 % ------------------------------------------------------------------------------
-% 2022-04-10 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2022-04-10 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Symmetric CHM of size N = 6 with d = 4 and #L = 16.
 % ------------------------------------------------------------------------------

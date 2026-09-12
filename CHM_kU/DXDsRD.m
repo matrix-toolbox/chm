@@ -2,9 +2,7 @@ function Y = DXDsRD(X)
 %function Y = DXDsRD(X, p1, p2, p3, p4)
 
 % ------------------------------------------------------------------------------
-% 2023-01-02 Wojciech Bruzda; name[at]uj.edu.pl : name = w.bruzda
-%            https://chaos.if.uj.edu.pl/~karol/hadamard/
-%            https://github.com/matrix-toolbox/
+% 2023-01-02 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % DXD for self R-dual CHM: X = R(X) for X in CHM. Description in "DXDsRG.m".
 % ------------------------------------------------------------------------------
