@@ -1,0 +1,47 @@
+(* ---- cell 1 ---- *)
+unitaryDefect[X_] := Module[{d = Dimensions[X][[1]], R, T}, T = Table[0, {d}, {d}]; R = Flatten[Table[Flatten[ReplacePart[T, {i -> X[[i]]*Conjugate[X[[j]]], j -> (-X[[i]])*Conjugate[X[[j]]]}]], {i, 1, d - 1}, {j, i + 1, d}], 1]; (d - 1)^2 - MatrixRank[Join[Re[R], Im[R]]]]
+
+(* ---- cell 2 ---- *)
+complexHadamardQ[X_, tolerance_] := Module[{d, fn1, fn2}, d = Dimensions[X][[1]]; fn1 = Norm[X . ConjugateTranspose[X] - d*IdentityMatrix[d], "Frobenius"]; fn2 = Norm[Abs[X] - ConstantArray[1, {d, d}], "Frobenius"]; If[fn1 < tolerance && fn2 < tolerance, Return[True], Return[False]]; ]
+
+(* ---- cell 3 ---- *)
+[Clear[a, b, c, d, e, f]], Hold[Null], Hold[nle = {a^2 + b^2 + c^2 + d^2 + e^2 + f^2 + 1/a^2 + 1/b^2 + 1/c^2 + 1/d^2 + 1/e^2 + 1/f^2 + 1 == 0, a/c + b/a + c/b + d/f + e/d + f/e + c/a + a/b + b/c + f/d + d/e + e/f + 1 == 0, a*c + a*b + b*c + d*f + d*e + e*f + 1/(a*c) + 1/(a*b) + 1/(b*c) + 1/(d*f) + 1/(d*e) + 1/(e*f) + 1 == 0, a*e + b*f + c*d + d/a + e/b + f/c + 1/(a*e) + 1/(b*f) + 1/(c*d) + a/d + b/e + c/f + 1 == 0, a*d + b*e + c*f + a/e + b/f + c/d + 1/(a*d) + 1/(b*e) + 1/(c*f) + e/a + f/b + d/c + 1 == 0, a*f + b*d + c*e + d/b + e/c + f/a + 1/(a*f) + 1/(b*d) + 1/(c*e) + b/d + c/e + a/f + 1 == 0}; ], Hold[Null], Hold[s = NSolve[nle, {a, b, c, d, e, f}]; ]
+
+(* ---- cell 4 ---- *)
+[s1 = Abs[{a, b, c, d, e, f} /. N[s]]; ], Hold[Null], Hold[Dimensions[s1]], Hold[Null], Hold[s[[3502]]]
+
+(* ---- cell 5 ---- *)
+[Y13 = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, a, a^(-1), b, b^(-1), c, c^(-1), d, d^(-1), e, e^(-1), f, f^(-1)}, {1, a^(-1), a, b^(-1), b, c^(-1), c, d^(-1), d, e^(-1), e, f^(-1), f}, {1, b, b^(-1), c, c^(-1), a, a^(-1), e, e^(-1), f, f^(-1), d, d^(-1)}, {1, b^(-1), b, c^(-1), c, a^(-1), a, e^(-1), e, f^(-1), f, d^(-1), d}, {1, c, c^(-1), a, a^(-1), b, b^(-1), f, f^(-1), d, d^(-1), e, e^(-1)}, {1, c^(-1), c, a^(-1), a, b^(-1), b, f^(-1), f, d^(-1), d, e^(-1), e}, {1, d, d^(-1), e, e^(-1), f, f^(-1), c^(-1), c, a^(-1), a, b^(-1), b}, {1, d^(-1), d, e^(-1), e, f^(-1), f, c, c^(-1), a, a^(-1), b, b^(-1)}, {1, e, e^(-1), f, f^(-1), d, d^(-1), a^(-1), a, b^(-1), b, c^(-1), c}, {1, e^(-1), e, f^(-1), f, d^(-1), d, a, a^(-1), b, b^(-1), c, c^(-1)}, {1, f, f^(-1), d, d^(-1), e, e^(-1), b^(-1), b, c^(-1), c, a^(-1), a}, {1, f^(-1), f, d^(-1), d, e^(-1), e, b, b^(-1), c, c^(-1), a, a^(-1)}} /. s[[3635]]; ], Hold[Null], Hold[N[MatrixForm[Y13]]], Hold[Null], Hold[Chop[N[MatrixForm[Y13 . ConjugateTranspose[Y13]]]]], Hold[Null], Hold[MatrixForm[Y13^13]], Hold[Null], Hold[unitaryDefect[N[Y13]]]
+
+(* ---- cell 6 ---- *)
+(F13 = Table[Exp[2*I*Pi*j*(k/13)], {j, 0, 12}, {k, 0, 12}]; )*N[MatrixForm[F13]]*MatrixForm[F13^13]*Chop[N[MatrixForm[F13 . ConjugateTranspose[F13]]]]
+
+(* ---- cell 7 ---- *)
+nle = {a^2 + b^2 + c^2 + d^2 + e^2 + f^2 + 1/a^2 + 1/b^2 + 1/c^2 + 1/d^2 + 1/e^2 + 1/f^2 + 1 == 0, a/c + b/a + c/b + d/f + e/d + f/e + c/a + a/b + b/c + f/d + d/e + e/f + 1 == 0, a*c + a*b + b*c + d*f + d*e + e*f + 1/(a*c) + 1/(a*b) + 1/(b*c) + 1/(d*f) + 1/(d*e) + 1/(e*f) + 1 == 0, a*e + b*f + c*d + d/a + e/b + f/c + 1/(a*e) + 1/(b*f) + 1/(c*d) + a/d + b/e + c/f + 1 == 0, a*d + b*e + c*f + a/e + b/f + c/d + 1/(a*d) + 1/(b*e) + 1/(c*f) + e/a + f/b + d/c + 1 == 0, a*f + b*d + c*e + d/b + e/c + f/a + 1/(a*f) + 1/(b*d) + 1/(c*e) + b/d + c/e + a/f + 1 == 0} /. {a -> Exp[I*α], b -> Exp[I*β], c -> Exp[I*γ], d -> Exp[I*δ], e -> Exp[I*ϵ], f -> Exp[I*ϕ]}; 
+
+(* ---- cell 8 ---- *)
+FullSimplify[nle]
+
+(* ---- cell 9 ---- *)
+NSolve[{Cos[2*α] + Cos[2*β] + Cos[2*γ] + Cos[2*δ] + Cos[2*ϵ] + Cos[2*ϕ] == -(1/2), Cos[α - β] + Cos[α - γ] + Cos[β - γ] + Cos[δ - ϵ] + Cos[δ - ϕ] + Cos[ϵ - ϕ] == -(1/2), Cos[α + β] + Cos[α + γ] + Cos[β + γ] + Cos[δ + ϵ] + Cos[δ + ϕ] + Cos[ϵ + ϕ] == -(1/2), Cos[α - δ] + Cos[γ + δ] + Cos[β - ϵ] + Cos[α + ϵ] + Cos[γ - ϕ] + Cos[β + ϕ] == -(1/2), Cos[γ - δ] + Cos[α + δ] + Cos[α - ϵ] + Cos[β + ϵ] + Cos[β - ϕ] + Cos[γ + ϕ] == -(1/2), Cos[β]*Cos[δ] + Cos[γ]*Cos[ϵ] + Cos[α]*Cos[ϕ] == -(1/4)}, {α, β, γ, δ, ϵ, ϕ}]
+
+(* ---- cell 10 ---- *)
+[L7 = {{1, 1, 1, 1, 1, 1, 1}, {1, a, a^(-1), b, b^(-1), c, c^(-1)}, {1, a^(-1), a, b^(-1), b, c^(-1), c}, {1, b, b^(-1), c, c^(-1), a, a^(-1)}, {1, b^(-1), b, c^(-1), c, a^(-1), a}, {1, c, c^(-1), a, a^(-1), b, b^(-1)}, {1, c^(-1), c, a^(-1), a, b^(-1), b}}; ], Hold[Null], Hold[MatrixForm[L7 . ConjugateTranspose[L7]]]
+
+(* ---- cell 11 ---- *)
+s = Reduce[{1 + 1/a + a + 1/b + b + 1/c + c == 0, 1 + 1/a^2 + a^2 + 1/b^2 + b^2 + 1/c^2 + c^2 == 0, 1 + a/b + b/a + b/c + c/b + c/a + a/c == 0}, {a, b, c}]
+
+(* ---- cell 12 ---- *)
+Abs[{a, b, c} /. N[s]]
+
+(* ---- cell 13 ---- *)
+N[s]
+
+(* ---- cell 14 ---- *)
+pc = {1, 1, 1, 1, 1, 1, 1}
+
+(* ---- cell 15 ---- *)
+[X = L7 /. {a -> -0.9009688679024191 - 0.4338837391175581*I, b -> -0.2225209339563144 + 0.9749279121818236*I, c -> 0.6234898018587335 + 0.7818314824680298*I}; ], Hold[Null], Hold[Chop[MatrixForm[N[X . ConjugateTranspose[X]]]]]
+
+(* ---- cell 16 ---- *)
+Exp[2*I*((3*Pi)/7.)]

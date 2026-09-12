@@ -1,0 +1,95 @@
+(*
+2006-10-05
+W. Bruzda, name[at]uj.edu.pl : name = w.bruzda
+http://chaos.if.uj.edu.pl/~karol/hadamard/
+http://github.com/matrix-toolbox/
+
+see: "MUBs and Hadamards of order 6", J. Math. Phys. 48, 052106 (2007)
+
+$VersionNumber (* 10.1 *)
+*)
+
+(*****************************************************************************)
+
+DIGITS = 20;
+
+(* Fourier matrix *)
+
+RF62[a_, b_] := {
+{0, 0, 0, 0, 0, 0},
+{0, a, b, 0, a, b},
+{0, 0, 0, 0, 0, 0},
+{0, a, b, 0, a, b},
+{0, 0, 0, 0, 0, 0},
+{0, a, b, 0, a, b}};
+
+F62[a_, b_] :=
+N[Table[Exp[2*Pi*I*(j-1)*(k-1)/6], {j,1,6}, {k,1,6}] * Exp[2*Pi*I*RF62[a,b]], DIGITS];
+
+(* example:
+FM = F62[Random[], Random[]];
+FM.ConjugateTranspose[FM] // MatrixForm // Chop *)
+
+(*****************************************************************************)
+
+(* Dita's matrix *)
+
+RD61[c_] := {
+{0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0},
+{0, 0, 0, c, c, 0},
+{0, 0,-c, 0, 0,-c},
+{0, 0,-c, 0, 0,-c},
+{0, 0, 0, c, c, 0}};
+
+D61[c_] := {
+{1, 1, 1, 1, 1, 1},
+{1,-1, I,-I,-I, I},
+{1, I,-1, I,-I,-I},
+{1,-I, I,-1, I,-I},
+{1,-I,-I, I,-1, I},
+{1, I,-I,-I, I,-1}} * Exp[I*RD61[c]]; (* watch entrywise product! *)
+
+(* example:
+DM = D61[Random[]];
+DM.ConjugateTranspose[D] // MatrixForm // Chop *)
+
+(*****************************************************************************)
+
+(* MUHs for Fourier and Dita *)
+
+a = ArcCot[-1/2] - 5*Pi/4;
+b = 0;
+c = -Pi/2;
+
+PR = {
+{1, 0, 0, 0, 0, 0},
+{0, 0, 1, 0, 0, 0},
+{0, 0, 0, 0, 1, 0},
+{0, 1, 0, 0, 0, 0},
+{0, 0, 0, 1, 0, 0},
+{0, 0, 0, 0, 0, 1}}; (*RHS permutations for Fourier*)
+
+PL = {
+{1, 0, 0, 0, 0, 0},
+{0, 0, 1, 0, 0, 0},
+{0, 0, 0, 0, 1, 0},
+{0, 0, 0, 1, 0, 0},
+{0, 0, 0, 0, 0, 1},
+{0, 1, 0, 0, 0, 0}}; (*LHS permutations for Fourier*)
+
+DL = DiagonalMatrix[{
+1,
+Exp[2*Pi*I*22/24],
+Exp[2*Pi*I*8/24],
+Exp[2*Pi*I*3/24],
+Exp[2*Pi*I*7/24],
+Exp[2*Pi*I*11/24]}]; (*diagonal matrix for Fourier*)
+
+H = MatrixForm[Conjugate[Transpose[D61[c]]].DL.PL.F62[a, b].PR / Sqrt[6]];
+
+Abs[H[[1]]] // MatrixForm
+
+(*****************************************************************************)
+
+

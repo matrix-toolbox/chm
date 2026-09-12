@@ -1,4 +1,4 @@
-function H = Q11X(k)
+function H = Q11X(SIGMA)
 % ------------------------------------------------------------------------------
 % 2017-03-08 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
@@ -9,7 +9,6 @@ function H = Q11X(k)
 % There are 2 pairs of complex conjugate roots of the polynomial h(a)
 % given in approximate form... See Q7_0.m for comparison.
 %
-% >>
 % >> k = 1 % 2 3 or 4
 % >> H = Q11X_0(k);
 % ------------------------------------------------------------------------------

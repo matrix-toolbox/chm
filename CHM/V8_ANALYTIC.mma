@@ -1,0 +1,50 @@
+(* ---- cell 1 ---- *)
+(a =. ; )*(b =. ; )*(c =. ; )*(Solve[{-(1/b) - b + b/c + c/b + c/a + a/c == 0, -(1/b) - 1/c - b + b/a - c - c/a + a/b - a/c == 0, 1/c + 1/a + b/a + c + a + a/b == 0}, {a, b, c}]; )
+
+(* ---- cell 2 ---- *)
+(mps = N[Solve[1 + 16*x + 64*x^2 + 16*x^3 - 332*x^4 - 1040*x^5 - 1984*x^6 - 2832*x^7 - 3194*x^8 - 2832*x^9 - 1984*x^10 - 1040*x^11 - 332*x^12 + 16*x^13 + 64*x^14 + 16*x^15 + x^16 == 0, x]]; )*(Abs[x] /. mps)
+
+(* ---- cell 3 ---- *)
+N[mps]
+
+(* ---- cell 4 ---- *)
+Simplify[(1 + 16*x + 64*x^2 + 16*x^3 - 332*x^4 - 1040*x^5 - 1984*x^6 - 2832*x^7 - 3194*x^8 - 2832*x^9 - 1984*x^10 - 1040*x^11 - 332*x^12 + 16*x^13 + 64*x^14 + 16*x^15 + x^16)/x^8]
+
+(* ---- cell 5 ---- *)
+Expand[a0 + a1*(1/x + x) + a2*(1/x + x)^2 + a3*(1/x + x)^3 + a4*(1/x + x)^4 + a5*(1/x + x)^5 + a6*(1/x + x)^6 + a7*(1/x + x)^7 + a8*(1/x + x)^8]
+
+(* ---- cell 6 ---- *)
+Solve[{a0 + 2*a2 + 6*a4 + 20*a6 + 70*a8 == -3194, a1 + 3*a3 + 10*a5 + 35*a7 == -2832, a2 + 4*a4 + 15*a6 + 56*a8 == -1984, a3 + 5*a5 + 21*a7 == -1040, a4 + 6*a6 + 28*a8 == -332, a5 + 7*a7 == 16, a6 + 8*a8 == 64, a7 == 16, a8 == 1}, {a0, a1, a2, a3, a4, a5, a6, a7, a8}]
+
+(* ---- cell 7 ---- *)
+Factor[-16 + 256*(1/x + x) - 96*(1/x + x)^2 - 896*(1/x + x)^3 - 696*(1/x + x)^4 - 96*(1/x + x)^5 + 56*(1/x + x)^6 + 16*(1/x + x)^7 + (1/x + x)^8]
+
+(* ---- cell 8 ---- *)
+Solve[-16 + 256*x - 96*x^2 - 896*x^3 - 696*x^4 - 96*x^5 + 56*x^6 + 16*x^7 + x^8 == 0, x]
+
+(* ---- cell 9 ---- *)
+N[Solve[-16 + 256*x - 96*x^2 - 896*x^3 - 696*x^4 - 96*x^5 + 56*x^6 + 16*x^7 + x^8 == 0, x]]
+
+(* ---- cell 10 ---- *)
+({a0, a1, a2, a3, a4, a5, a6, a7} = {-16, 256, -96, -896, -696, -96, 56, 16}; )*(F2 = (4*a6 - a7^2)/8; )*(F1 = (a5 - a7*F2)/2; )*(F0 = (a4 - a7*F1 - F2^2)/2; )*(F3 = (a3 - a7*F0 - 2*F1*F2)/2; )*(F4 = a2 - F1^2 - 2*F0*F2; )*(F5 = (a1 - 2*F0*F1)/2; )*(F6 = a0 - F0^2; )*(F7 = (16*F2 - a7^2)/16; )*(F8 = (a7*F3 - 2*F4)/2; )*(F9 = (a7*F8 + 8*F5 - 4*F3*F7)/(a7*F7 - 4*F1); )*(F10 = -((a7*F3^2 + 4*F3*F8)/(a7*F7 - 4*F1)); )*(F11 = (4*F3^3)/(a7*F7 - 4*F1); )*(F12 = (4*a7^2*F0 - 16*F1^2 - 8*a7*F3)/a7^2; )*(F13 = (16*F3^2 + 64*F1*F5 - 4*a7^2*F6 - 32*a7*F0*F3)/a7^2; )*(F14 = (32*a7*F3*F6 + 64*F0*F3^2 - 64*F5^2)/a7^2; )*(F15 = -((64*F3^2*F6)/a7^2); )*(N[{F0, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15}]; )*(h0 = (F11*F12 - F15 - F9*F11)/(F10 + F9*F12 - F13 - F9^2); )*(h1 = (F11 + F10*F12 - F14 - F9*F10)/(F10 + F9*F12 - F13 - F9^2); )*(h2 = h0*h1 + F11 - F9*h0; )*(h3 = h0 + F9*h1 - F10 - h1^2; )*(g = (1/2)*(-h1 - Sqrt[-4*h0 + h1^2]); )*(c21 = F2 + Sqrt[g]; )*(c22 = F2 - Sqrt[g]; )*(c01 = F0 + g/2 + ((8*F5 - 4*F1*g)/(8*F3 - 2*a7*g))*Sqrt[g]; )*(c02 = F0 + g/2 - ((8*F5 - 4*F1*g)/(8*F3 - 2*a7*g))*Sqrt[g]; )*(c11 = F1 + (a7/4)*Sqrt[g] - F3/Sqrt[g]; )*(c12 = F1 - (a7/4)*Sqrt[g] + F3/Sqrt[g]; )*{F0, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15}*FullSimplify[{a7/2, c21, c11, c01}]*FullSimplify[{a7/2, c22, c12, c02}]
+
+(* ---- cell 11 ---- *)
+(F9*h0 - F11 - h0*h1)^2 + h1*(F9*h0 - F11 - h0*h1)*(h1^2 - F9*h1 - h0 + F10) + h0*(h1^2 - F9*h1 - h0 + F10)^2
+
+(* ---- cell 12 ---- *)
+polynomialReconstructed = N[Expand[(x^4 + (a7/2)*x^3 + c21*x^2 + c11*x + c01)*(x^4 + (a7/2)*x^3 + c22*x^2 + c12*x + c02)]]
+
+(* ---- cell 13 ---- *)
+(solutionAnalytic1 = Solve[x^4 + 8*x^3 + c21*x^2 + c11*x + c01 == 0, x]; )*(Subscript[z, 1] = x /. solutionAnalytic1[[3]]; )*(Subscript[z, 2] = x /. solutionAnalytic1[[4]]; )*(v1 = N[(-(1/2))*Subscript[z, 1] - (1/2)*Sqrt[Subscript[z, 1]^2 - 4], 32])*(v2 = N[(1/2)*Subscript[z, 2] - (1/2)*Sqrt[Subscript[z, 2]^2 - 4], 32])
+
+(* ---- cell 14 ---- *)
+[solutionAnalytic2 = Solve[x^4 + 8*x^3 + c22*x^2 + c12*x + c02 == 0, x]; ], Hold[Null], Hold[Subscript[z, 3] = x /. solutionAnalytic2[[2]]; ], Hold[Null], Hold[Subscript[z, 4] = x /. solutionAnalytic2[[3]]; ], Hold[Null], Hold[v3 = N[(-(1/2))*Subscript[z, 3] - (1/2)*Sqrt[Subscript[z, 3]^2 - 4], 32]], Hold[Null], Hold[v4 = N[(1/2)*Subscript[z, 4] - (1/2)*Sqrt[Subscript[z, 4]^2 - 4], 32]]
+
+(* ---- cell 15 ---- *)
+Abs[{v1, v2, v3, v4}]
+
+(* ---- cell 16 ---- *)
+Subscript[V, 8] = {{-1, -1, b, b, c, c, a, a}, {-1, b, -1, c, b, a, c, -a}, {b, -1, c, -1, a, b, -a, c}, {b, c, -1, a, -1, -a, b, -c}, {c, b, a, -1, -a, -1, -c, b}, {c, a, b, -a, -1, -c, -1, -b}, {a, c, -a, b, -c, -1, -b, -1}, {a, -a, c, -c, b, -b, -1, 1}}; 
+
+(* ---- cell 17 ---- *)
+({a, b, c} = {-(v1/v4), -v1, v3})*N[MatrixForm[Subscript[V, 8]]]*Chop[N[MatrixForm[Subscript[V, 8] . ConjugateTranspose[Subscript[V, 8]]]]]*UnitaryDefect[Subscript[V, 8]]

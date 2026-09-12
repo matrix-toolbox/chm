@@ -1,0 +1,32 @@
+(* ---- cell 1 ---- *)
+(BD6 = {{1, 1, 1, 1, 1, 1}, {1, -1, I, -I, -I, I}, {1, I, -1, I, -I, -I}, {1, -I, I, -1, I, -I}, {1, -I, -I, I, -1, I}, {1, I, -I, -I, I, -1}}; )*(RD6[p_] := {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, p, p, 0}, {0, 0, -p, 0, 0, -p}, {0, 0, -p, 0, 0, -p}, {0, 0, 0, p, p, 0}}; )*(D6[cc_] := BD6*Exp[I*RD6[cc]]*(1/Sqrt[6]); )
+
+(* ---- cell 2 ---- *)
+(DIGITS = 24; )*(RF6[a_, b_] := {{0, 0, 0, 0, 0, 0}, {0, a, b, 0, a, b}, {0, 0, 0, 0, 0, 0}, {0, a, b, 0, a, b}, {0, 0, 0, 0, 0, 0}, {0, a, b, 0, a, b}}; )*(F6[a_, b_] := N[Table[Exp[((2*Pi*I)/6)*(j - 1)*(k - 1)], {j, 1, 6}, {k, 1, 6}]*Exp[2*Pi*I*RF6[a, b]], DIGITS]; )*(a = ArcTan[-2]/(2*Pi) - 1/8; )*(b = 0; )*(c = -(Pi/2); )*(PR = {{1, 0, 0, 0, 0, 0}, {0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 1, 0}, {0, 1, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 0, 1}}; )*(PL = {{1, 0, 0, 0, 0, 0}, {0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 1, 0}, {0, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 0, 1}, {0, 1, 0, 0, 0, 0}}; )*(DL = DiagonalMatrix[Exp[((2*Pi*I)/24)*{0, 22, 8, 3, 7, 11}]]; )*(H = MatrixForm[ConjugateTranspose[D6[c]] . DL . PL . F6[a, b] . PR]; )*complexHadamardQ[H[[1]], 10^(-17)]
+
+(* ---- cell 3 ---- *)
+(z1[a_] := Exp[I*a]; )*(z2[b_] := Exp[I*b]; )*(Z11[a_, b_] := 1 - (1 - z1[a])*(1 - z2[b])*(1/2); )*(Z12[a_, b_] := z2[b]*(1 - (1 - z1[a])*(1 - 1/z2[b])*(1/2)); )*(Z21[a_, b_] := z1[a]*z2[b]*Conjugate[Z12[a, b]]; )*(Z22[a_, b_] := (-z1[a])*z2[b]*Conjugate[Z11[a, b]]; )*(A[a_, b_] := {{(-Z11[a, b])*(1 + I*Sqrt[4/(Z11[a, b]*Conjugate[Z11[a, b]]) - 1])*(1/2), (-Z12[a, b])*(1 + I*Sqrt[4/(Z12[a, b]*Conjugate[Z12[a, b]]) - 1])*(1/2)}, {(-Z21[a, b])*(1 - I*Sqrt[4/(Z21[a, b]*Conjugate[Z21[a, b]]) - 1])*(1/2), (-Z22[a, b])*(1 - I*Sqrt[4/(Z22[a, b]*Conjugate[Z22[a, b]]) - 1])*(1/2)}}; )*(B[a_, b_] := -A[a, b] - {{Z11[a, b], Z12[a, b]}, {Z21[a, b], Z22[a, b]}}; )*(K6[a_, b_] := {{1, 1, 1, 1, 1, 1}, {1, -1, z1[a], -z1[a], z1[a], -z1[a]}, {1, z2[b], A[a, b][[1,1]], A[a, b][[1,2]], B[a, b][[1,1]], B[a, b][[1,2]]}, {1, -z2[b], A[a, b][[2,1]], A[a, b][[2,2]], B[a, b][[2,1]], B[a, b][[2,2]]}, {1, z2[b], B[a, b][[1,1]], B[a, b][[1,2]], A[a, b][[1,1]], A[a, b][[1,2]]}, {1, -z2[b], B[a, b][[2,1]], B[a, b][[2,2]], A[a, b][[2,1]], A[a, b][[2,2]]}}*(1/Sqrt[6]); )
+
+(* ---- cell 4 ---- *)
+(P1 = (IdentityMatrix[6][[#1]] & ) /@ PermutationList[{4, 5, 2, 3, 6, 1}, 6]; )*(P2 = (IdentityMatrix[6][[#1]] & ) /@ PermutationList[{5, 4, 2, 1, 6, 3}, 6]; )*(ϕ2 = (1/Pi)*ArcCos[Sqrt[1/2 + (1/3)*Sqrt[2]]]; )*(DL = DiagonalMatrix[Exp[I*2*Pi*{0, ϕ2, 3/8, ϕ2 - 1/8, 1/8, ϕ2 - 3/8}]]; )*(a = ArcSin[-Sqrt[3]^(-1)]; )*(b = 0; )*(c = (7*Pi)/4; )*(H1 = IdentityMatrix[6]; )*(H2 = D6[c]; )*(H3 = DL . P1 . K6[a, b] . P2; )*complexHadamardQ[Sqrt[6]*H2, 10^(-24)]*complexHadamardQ[Sqrt[6]*H3, 10^(-24)]
+
+(* ---- cell 5 ---- *)
+Solve[Sin[x]^2 == 1/3, x]
+
+(* ---- cell 6 ---- *)
+(ϕ1 =. ; )*(ϕ2 =. ; )*(ϕ3 =. ; )*(ϕ5 =. ; )*(X = ConjugateTranspose[D6[c]] . DiagonalMatrix[Exp[I*2*Pi*{ϕ1, ϕ2, ϕ3, ϕ2 - 1/8, ϕ5, ϕ2 - 3/8}]] . P1 . K6[a, b] . P2 /. {ϕ1 -> 0, ϕ3 -> 3/8, ϕ5 -> 1/8}; )*MatrixForm[Simplify[X[[All,4]]]]*X[[1,4]]
+
+(* ---- cell 7 ---- *)
+ExpToTrig[Expand[X[[1,4]]]]
+
+(* ---- cell 8 ---- *)
+(ϕ2 =. ; )*Solve[{Sqrt[6]*Sqrt[(-(1/6) + (1/6)*Cos[2*ϕ2*Pi] + (1/6)*Cos[Pi/4 - 2*ϕ2*Pi] - (1/6)*Cos[Pi/4 + 2*ϕ2*Pi])^2 + (-(1/(3*Sqrt[2])) + (1/6)*Sin[2*ϕ2*Pi] - (1/6)*Sin[Pi/4 - 2*ϕ2*Pi] - (1/6)*Sin[Pi/4 + 2*ϕ2*Pi])^2] == 1}, {ϕ2}]
+
+(* ---- cell 9 ---- *)
+(M1 = ConjugateTranspose[H1] . H2; )*{MatrixForm[Sqrt[6]*Abs[M1]], Chop[MatrixForm[M1 . ConjugateTranspose[M1]]]}*(M2 = ConjugateTranspose[H1] . H3; )*{N[MatrixForm[N[Sqrt[6]*Abs[M2]]]], Chop[MatrixForm[N[M2 . ConjugateTranspose[M2]]]]}*(M3 = ConjugateTranspose[H2] . H3; )*{MatrixForm[N[Sqrt[6]*Abs[M3]]], Chop[MatrixForm[N[M3 . ConjugateTranspose[M3]]]]}
+
+(* ---- cell 10 ---- *)
+[X = DL . P1 . K6[a, b] . P2; ], Hold[Null], Hold[FullSimplify[MatrixForm[X]]], Hold[Null], Hold[Y = dephase[X]; ], Hold[Null], Hold[FullSimplify[MatrixForm[Y]]], Hold[Null], Hold[complexHadmaradQ[Y, 10^(-24)]]
+
+(* ---- cell 11 ---- *)
+(Lambda = haagerup[Y]; )*MatrixForm[Lambda]*Dimensions[Lambda]

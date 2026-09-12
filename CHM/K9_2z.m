@@ -1,9 +1,10 @@
-function H = K9_2(zeta)
+function H = K9_2z(zeta)
 % ------------------------------------------------------------------------------
 % 2017-03-09 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
 % Matrix K9_2 originally denoted as BC_9^{(2)} - Block Circulant with Circulant Blocks
 % taken from the paper of Bengt R. Karlsson;
+% Here, there is only only one particular realization, more details in
 % [1] https://arxiv.org/pdf/1604.03770.pdf
 %
 % Watch the scope of (complex) paramater!
@@ -15,8 +16,10 @@ function H = K9_2(zeta)
 % ------------------------------------------------------------------------------
 
     if ~(abs(1 - zeta) <= 4 && abs(1 + zeta) <= 4) || zeta == 1 || zeta == -1
-        warning("No valid ZETA parameter provided! Continue with default zero value!");
-        zeta = 0;
+        %error("No valid ZETA parameter provided! Continue with default zero value!");
+        H = -1;
+        return;
+        %zeta = 0;
     end
 
     x = 0.25 * (1 + zeta) * (1 + i * sqrt((16 / abs(1 + zeta)^2) - 1));

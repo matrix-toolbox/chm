@@ -1,0 +1,57 @@
+(* 2016-06-04, 06 *)
+
+(* isolated matrix A8 *)
+(* found numerically with assumption of symmetry, A8 = A8^T *)
+
+(* a = (1 + i * sqrt(8)) / 3; *)
+(* arg(a) = atan(sqrt(8)) is irrational number incommensurate with 2*pi thus it cannot be of the BH(8, ...) form *)
+
+(* number of Haagerup LAMBDA invariants for A8: 10 *)
+(* number of Haagerup LAMBDA invariants for V8: 70 unique elements out of 8^4 = 4096 invariants -- to be confirmed! *)
+
+(*****************************************************************************)
+
+(* isolated matrix Subscript[A, 8]^(0) *)
+Clear[a]
+av=Solve[3a^2-2a+3==0,a];
+Set @@@ av[[2]]
+{1/3 (1+2 I Sqrt[2])}
+A8={
+{1,1,1,1,1,1,1,1},
+{1,-a^2,-1, a^2, a,-a,-a, a },
+{1,-1,-1,-a, 1/a, 1,-1/a, a },
+{1, a^2,-a, a,-1, a,-a,-a^2 },
+{1, a, 1/a,-1, 1,-1,-1/a,-a },
+{1,-a, 1, a,-1, 1/a,-1/a,-1 },
+{1,-a,-1/a,-a,-1/a,-1/a, 1,-a },
+{1, a, a,-a^2,-a,-1,-a,a^2}
+};
+A8.ConjugateTranspose[A8]//MatrixForm//N//Chop
+(8.	0	0	0	0	0	0	0
+0	8.	0	0	0	0	0	0
+0	0	8.	0	0	0	0	0
+0	0	0	8.	0	0	0	0
+0	0	0	0	8.	0	0	0
+0	0	0	0	0	8.	0	0
+0	0	0	0	0	0	8.	0
+0	0	0	0	0	0	0	8.)
+
+(* defect of a unitary matrix *)
+(* it is recommended to call it with Numerical values: UnitaryDefect[N[...]] *)
+UnitaryDefect[M_]:=Module[{d=Dimensions[M][[1]],R,T},
+T=Table[0,{d},{d}];
+R=Flatten[Table[Flatten[ReplacePart[T,{i->M[[i]] Conjugate[M[[j]]],j->-M[[i]] Conjugate[M[[j]]]}]],{i,1,d-1},{j,i+1,d}],1];
+(d-1)^2-MatrixRank[Join[Re[R],Im[R]]]]
+
+UnitaryDefect[N[A8]] (* =0 *)
+
+(* check if matrix belongs to the BH(d=8, q) class *)
+isBH[M_,q_]:=Module[{d=Dimensions[M][[1]],AllOnes},
+AllOnes=ConstantArray[1,{d,d}];
+B = M;
+For[j=1,j< q,j++,B=B*M] ;(* entrywise power *)
+If[SameQ[Floor@@Chop[N[MatrixForm[B]]],AllOnes],Print["BH-type matrix!"], Print["NOT BH-type matrix..."]];
+];
+For[q=2,q<100,q++,isBH[A8,q]] (* Subscript[A, 8]^(0) is not of the Butson type *)
+
+(*****************************************************************************)
