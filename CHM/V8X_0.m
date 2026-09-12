@@ -1,4 +1,4 @@
-function H = V8X(k)
+function H = V8X_0(k)
 % ------------------------------------------------------------------------------
 % 2016-06-06 Wojciech Bruzda, name[at]uj.edu.pl : name = w.bruzda, https://matrix-toolbox.github.io/chm
 % ------------------------------------------------------------------------------
