@@ -434,7 +434,7 @@ var literature = [
     "pdf":"",
     "year":2004
 },{
-    "anchor":"7",
+    "anchor":7,
     "authors":"Boykin P. O., Sitharam M., Tiep P. H., Wocjan P.",
     "title":"MUBs and Orthogonal Decompositions of Lie Algebras",
     "arxiv":"https://arxiv.org/abs/quant-ph/0506089",

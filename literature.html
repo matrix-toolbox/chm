@@ -20,6 +20,10 @@
 <h1>literature</h1>
 <hr>
 
+<p class="note">This bibliography is reasonably complete up to about <b>2016</b>.<br>
+Later years are covered only occasionally, so many recent preprints and publications are <strong>missing</strong>.
+<br>Pointers to omitted works are welcome &ndash; see <a href="contact.html">contact</a>.</p>
+
 <p id="ref-header">sort by :
 first author <a href="?sort=aa">&uarr;</a> <a href="?sort=ad">&darr;</a> &bull; 
 title <a href="?sort=ta">&uarr;</a> <a href="?sort=td">&darr;</a> &bull;
@@ -34,7 +38,7 @@ year <a href="?sort=ya">&uarr;</a> <a href="?sort=yd">&darr;</a></p>
 <script>
   function getRow(i) {
     var t="";
-    t+="<li><b>";
+    t+="<li id=\""+literature[i].anchor+"\"><b>";
 
      if (literature[i].anchor == 153)  // "hacks" for anchor = 130 and 153 be sorted properly...
          t += "&#211; Cath&#225;in P., Wanless I. M.";
@@ -91,6 +95,14 @@ year <a href="?sort=ya">&uarr;</a> <a href="?sort=yd">&darr;</a></p>
       var t = getRow(i);
       document.getElementById("ref-table").innerHTML += t;
     }
+  }
+
+  // literature.html#161 : the list is built by the script above, so the entry
+  // does not exist yet when the browser first handles the fragment -- scroll
+  // to it here instead.
+  if (location.hash.length > 1) {
+    var target = document.getElementById(location.hash.substring(1));
+    if (target) target.scrollIntoView();
   }
 </script>
 
