@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Hadamard Matrices - browse</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2026 Wojciech Bruzda IF UJ">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson, defect, filter">
+<meta name="description" content="Filter the Catalog of Complex Hadamard Matrices by dimension, defect, #Lambda and type">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+
+<link rel="stylesheet" href="cdn/bootstrap_CHM.min.css">
+<link rel="stylesheet" href="cdn/chm.css">
+<link rel="icon" type="image/png" href="cdn/icon.png">
+
+<style>
+#filters{margin:12px 0;}
+#filters fieldset{border:1px solid #bbb;border-radius:4px;padding:6px 10px;margin:0 0 8px 0;}
+#filters legend{font-size:13px;font-weight:bold;width:auto;margin:0;padding:0 4px;border:0;color:#448;}
+#filters label{font-weight:normal;margin:0 10px 0 0;white-space:nowrap;display:inline-block;}
+#filters input[type=text]{width:7em;padding:2px 4px;border:1px solid #999;border-radius:3px;}
+#filters input[type=text].wide{width:12em;}
+#summary{margin:8px 0;}
+#summary b{color:#118;}
+.scroll{overflow-x:auto;}
+#results{width:100%;border-collapse:collapse;font-size:14px;}
+#results th{padding:4px 8px;cursor:pointer;white-space:nowrap;}
+#results td{padding:3px 8px;border:1px solid #ccc;border-radius:0;white-space:nowrap;}
+#results td.param{white-space:normal;font-family:monospace;font-size:12px;color:#555;}
+#results tr:nth-child(even) td{background:#f6f6f6;}
+#results td.num{text-align:right;}
+.gen{font-weight:bold;}
+.flag{font-size:12px;color:#406;}
+.hint{color:#888;font-size:12px;}
+@media (max-width:640px){
+  #results{font-size:12px;}
+  #results td,#results th{padding:2px 4px;}
+  #filters label{margin-right:6px;}
+}
+</style>
+
+<div class="container">
+
+<p id="menu">
+  <a href="index.html">CATALOG</a> &bull;
+  <a href="news.html"><b>news</b></a> &bull;
+  <a href="definitions.html">definitions</a> &bull;
+  <a href="theory.html">theory</a> &bull;
+  <a href="scripts.html">scripts</a> &bull;
+  <a href="game.html" class="game">game</a> &bull;
+  <a href="literature.html">literature</a> &bull;
+  <a href="links.html">links</a> &bull;
+  <a href="acknowledgements.html">acknowledgements</a>
+ </p>
+
+<hr id="menu-separator">
+
+<h1>Browse the Catalog</h1>
+
+<p>Every matrix and every recorded probe of a continuous family, filtered by
+dimension N, <a href="d/defect.html">defect</a> <b>d</b>, the number of
+<a href="d/haagerup-set.html">Haagerup invariants</a> #&Lambda; and type.
+This page <b>supplements</b> the
+<a href="index.html">Catalog</a> and its <a href="chm_appendix.html">appendices</a>
+&ndash; it adds no new matrices, it only collects what they already list into one
+searchable table. Follow the link in the last column for the authoritative entry.</p>
+
+<hr>
+
+<form id="filters" onsubmit="return false;">
+<fieldset>
+<legend>numbers</legend>
+<label>N <input type="text" id="fN" placeholder="6, 6-9, &gt;10"></label>
+<label><b>d</b> <input type="text" id="fd" placeholder="0, 4-8, &lt;5"></label>
+<label>#&Lambda; <input type="text" id="fl" placeholder="e.g. &lt;100"></label>
+<label>q <input type="text" id="fq" placeholder="Butson q"></label>
+<label>name <input type="text" id="fnm" class="wide" placeholder="substring, e.g. S1"></label>
+<span class="hint">a number, a range <code>a-b</code>, <code>&lt;a</code>, <code>&gt;a</code>, or a list <code>a,b,c</code></span>
+</fieldset>
+
+<fieldset>
+<legend>type</legend>
+<span id="typebox"></span>
+<span class="hint">nothing ticked = every type</span>
+</fieldset>
+
+<fieldset>
+<legend>source</legend>
+<span id="srcbox"></span>
+&nbsp;&nbsp;<label><input type="checkbox" id="fmfile"> only with an Octave file</label>
+&nbsp;&nbsp;<button type="button" id="reset">reset</button>
+</fieldset>
+</form>
+
+<p id="summary"></p>
+
+<div class="scroll">
+<table id="results">
+<thead><tr>
+  <th data-k="n">N</th>
+  <th data-k="d">d</th>
+  <th data-k="l">#&Lambda;</th>
+  <th data-k="q">q</th>
+  <th data-k="t">type</th>
+  <th data-k="nm">name</th>
+  <th data-k="p">parameters</th>
+  <th data-k="a">listed in</th>
+</tr></thead>
+<tbody></tbody>
+</table>
+</div>
+
+<p id="more"></p>
+
+<hr>
+<p class="hint">Generated from
+<code>index.html</code>, <code>CHM_dL/index.html</code>, <code>CHM_SH/index.html</code>
+and the repository file names by <code>./update_browse.sh</code>
+<span id="built"></span> &ndash; rerun it whenever the Catalog or an appendix gains an entry.
+Two rows with different names may still describe the same matrix up to
+<a href="d/equivalence-relation.html">monomial equivalence</a>; the Catalog does not
+claim otherwise. Underlined values in the appendices &ndash; the generic ones &ndash;
+appear here in <span class="gen">bold</span>.</p>
+
+</div>
+
+<script src="matrices.js"></script>
+<script>
+(function () {
+  "use strict";
+  var PAGE = 400, shown = PAGE, view = [];
+  var TYPE = {B:"Butson", S:"symmetric", H:"Hermitian", R:"real",
+              F:"family", I:"isolated", U:"multiunitary"};
+  var SRC  = {cat:"Catalog", A:"Appendix A", B:"Appendix B", C:"Appendix C",
+              D:"Appendix D", E:"Appendix E", num:"numerical survey"};
+  var BLOB = "https://github.com/matrix-toolbox/chm/blob/main/";
+  var $ = function (id) { return document.getElementById(id); };
+  var tbody = document.querySelector("#results tbody");
+
+  // ---- only offer the flags and the sources that actually occur -------
+  function boxes(id, cls, order, label, key) {
+    var have = {}, html = [];
+    for (var i = 0; i < matrices.length; i++) {
+      var v = key(matrices[i]);
+      for (var j = 0; j < v.length; j++) have[v[j]] = (have[v[j]] || 0) + 1;
+    }
+    for (var k = 0; k < order.length; k++) {
+      var o = order[k];
+      if (!have[o]) continue;
+      html.push('<label><input type="checkbox" class="' + cls + '" value="' + o +
+                '"> ' + label[o] + ' <span class="hint">' + have[o] + "</span></label>");
+    }
+    $(id).innerHTML = html.join("");
+  }
+
+  // ---- "6", "6-9", "<10", ">=4", "6,8,10" ----------------------------
+  function parseRange(s) {
+    s = (s || "").replace(/\s+/g, "");
+    if (!s) return null;
+    var parts = s.split(","), tests = [];
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i], m;
+      if ((m = p.match(/^(-?\d+)-(-?\d+)$/)))
+        tests.push(mk(+m[1], +m[2]));
+      else if ((m = p.match(/^(<=?|>=?)(-?\d+)$/)))
+        tests.push(cmp(m[1], +m[2]));
+      else if ((m = p.match(/^(-?\d+)$/)))
+        tests.push(mk(+m[1], +m[1]));
+    }
+    if (!tests.length) return null;
+    return function (v) {
+      if (v === undefined || v === null) return false;
+      for (var i = 0; i < tests.length; i++) if (tests[i](v)) return true;
+      return false;
+    };
+    function mk(a, b) { return function (v) { return v >= a && v <= b; }; }
+    function cmp(op, a) {
+      return function (v) {
+        return op === "<" ? v < a : op === "<=" ? v <= a
+             : op === ">" ? v > a : v >= a;
+      };
+    }
+  }
+
+  function ticked(cls) {
+    var out = [], all = document.querySelectorAll("." + cls);
+    for (var i = 0; i < all.length; i++) if (all[i].checked) out.push(all[i].value);
+    return out;
+  }
+
+  function source(r) { return r.s === "cat" ? "cat" : r.s === "num" ? "num" : (r.a || r.s); }
+
+  function apply() {
+    var fN = parseRange($("fN").value), fd = parseRange($("fd").value),
+        fl = parseRange($("fl").value), fq = parseRange($("fq").value),
+        nm = $("fnm").value.trim().toLowerCase(),
+        ts = ticked("ft"), ss = ticked("fs"), onlyfile = $("fmfile").checked;
+
+    view = matrices.filter(function (r) {
+      if (fN && !fN(r.n)) return false;
+      if (fd && !fd(r.d)) return false;
+      if (fl && !fl(r.l)) return false;
+      if (fq && !fq(r.q)) return false;
+      if (nm && (r.nm || "").toLowerCase().indexOf(nm) < 0) return false;
+      if (onlyfile && !r.f) return false;
+      if (ts.length) {
+        var t = r.t || "", ok = false;
+        for (var i = 0; i < ts.length; i++) if (t.indexOf(ts[i]) >= 0) ok = true;
+        if (!ok) return false;
+      }
+      if (ss.length && ss.indexOf(source(r)) < 0) return false;
+      return true;
+    });
+    shown = PAGE;
+    render();
+    writeURL();
+  }
+
+  function render() {
+    var pairs = {}, names = {}, rows = [];
+    for (var i = 0; i < view.length; i++) {
+      var r = view[i];
+      pairs[r.n + "/" + r.d + "/" + r.l] = 1;
+      if (r.nm) names[r.nm] = 1;
+    }
+    $("summary").innerHTML =
+      "<b>" + view.length + "</b> of " + matrices.length + " records &bull; " +
+      "<b>" + Object.keys(pairs).length + "</b> distinct (N, d, #&Lambda;) &bull; " +
+      "<b>" + Object.keys(names).length + "</b> distinct names";
+
+    var lim = Math.min(shown, view.length);
+    for (var j = 0; j < lim; j++) rows.push(row(view[j]));
+    tbody.innerHTML = rows.join("");
+    $("more").innerHTML = view.length > lim
+      ? '<button type="button" id="btnmore">show ' +
+        Math.min(PAGE, view.length - lim) + " more of " + (view.length - lim) + "</button>"
+      : "";
+    if ($("btnmore")) $("btnmore").onclick = function () { shown += PAGE; render(); };
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function num(v, bold) {
+    if (v === undefined || v === null) return '<td class="num">&ndash;</td>';
+    return '<td class="num' + (bold ? " gen" : "") + '">' + v + "</td>";
+  }
+  function row(r) {
+    var flags = (r.t || "").split("").map(function (ch) {
+      return TYPE[ch] || ch;
+    }).join(", ");
+    var name = esc(r.nm || "");
+    if (r.f) name = '<a href="' + BLOB + esc(r.f) +
+                    '" title="' + esc(r.f) + '">' + name + "</a>";
+    var where = SRC[source(r)] || "";
+    if (r.u) where = '<a href="' + esc(r.u) + '">' + where + "</a>";
+    if (r.k) where += ' &bull; <a href="' + esc(r.k) + '">catalogue</a>';
+    if (r.c) where += ' <span class="hint">' + esc(r.c) + "</span>";
+    return "<tr>" + num(r.n) + num(r.d, r.g) + num(r.l) + num(r.q) +
+      '<td class="flag">' + flags + "</td><td>" + name + '</td><td class="param">' +
+      (r.p ? esc(r.p.join(", ")) : "") + "</td><td>" + where + "</td></tr>";
+  }
+
+  // ---- sorting --------------------------------------------------------
+  var sortKey = null, sortDir = 1;
+  var ths = document.querySelectorAll("#results th");
+  for (var i = 0; i < ths.length; i++) {
+    ths[i].onclick = (function (k) {
+      return function () {
+        sortDir = (sortKey === k) ? -sortDir : 1;
+        sortKey = k;
+        view.sort(function (a, b) {
+          var x = a[k], y = b[k];
+          if (x === undefined || x === null) x = (typeof y === "number") ? -1 : "";
+          if (y === undefined || y === null) y = (typeof x === "number") ? -1 : "";
+          if (Array.isArray(x)) x = x.join(",");
+          if (Array.isArray(y)) y = y.join(",");
+          return (x < y ? -1 : x > y ? 1 : 0) * sortDir;
+        });
+        render();
+      };
+    })(ths[i].getAttribute("data-k"));
+  }
+
+  // ---- the query string ----------------------------------------------
+  var FIELDS = {N: "fN", d: "fd", L: "fl", q: "fq", name: "fnm"};
+  function writeURL() {
+    var q = [];
+    for (var k in FIELDS) if ($(FIELDS[k]).value.trim())
+      q.push(k + "=" + encodeURIComponent($(FIELDS[k]).value.trim()));
+    var t = ticked("ft"), s = ticked("fs");
+    if (t.length) q.push("type=" + t.join(""));
+    if (s.length) q.push("in=" + s.join(","));
+    if ($("fmfile").checked) q.push("file=1");
+    try {                       // file:// refuses replaceState in some browsers
+      if (history.replaceState)
+        history.replaceState(null, "",
+          location.pathname + (q.length ? "?" + q.join("&") : ""));
+    } catch (e) { /* the filters still work, the URL simply does not follow */ }
+  }
+  function readURL() {
+    var q = location.search.replace(/^\?/, "").split("&");
+    for (var i = 0; i < q.length; i++) {
+      var kv = q[i].split("="), k = decodeURIComponent(kv[0]),
+          v = decodeURIComponent((kv[1] || "").replace(/\+/g, " "));
+      if (FIELDS[k]) $(FIELDS[k]).value = v;
+      else if (k === "type") tick("ft", v.split(""));
+      else if (k === "in") tick("fs", v.split(","));
+      else if (k === "file" && v === "1") $("fmfile").checked = true;
+    }
+    function tick(cls, vals) {
+      var all = document.querySelectorAll("." + cls);
+      for (var j = 0; j < all.length; j++)
+        if (vals.indexOf(all[j].value) >= 0) all[j].checked = true;
+    }
+  }
+
+  function wire() {
+    var inputs = document.querySelectorAll("#filters input");
+    for (var n = 0; n < inputs.length; n++) {
+      inputs[n].oninput = apply;
+      inputs[n].onchange = apply;
+    }
+    $("reset").onclick = function () {
+      for (var j = 0; j < inputs.length; j++) {
+        if (inputs[j].type === "checkbox") inputs[j].checked = false;
+        else inputs[j].value = "";
+      }
+      apply();
+    };
+  }
+
+  if (typeof matrices_built === "string")
+    $("built").innerHTML = "(data rebuilt " + matrices_built + ")";
+
+  boxes("typebox", "ft", ["B", "S", "H", "R", "F", "I", "U"], TYPE,
+        function (r) { return (r.t || "").split(""); });
+  boxes("srcbox", "fs", ["cat", "A", "B", "C", "D", "E", "num"], SRC,
+        function (r) { return [source(r)]; });
+  wire();
+  readURL();
+  apply();
+})();
+</script>
