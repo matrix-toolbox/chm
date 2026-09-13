@@ -132,7 +132,7 @@ def catalog(path):
                 base_name = plain(tex)
                 letters = sigma_letters(tex) or [""]
                 t = ("B" if butson else "") + \
-                    ("F" if fd else ("I" if fd == 0 or not butson else ""))
+                    ("F" if fd else ("I" if fd == 0 else ""))
                 note = []
                 if fd:
                     note.append("family of dimension %d" % fd)
@@ -332,6 +332,17 @@ def main():
     for r in recs:                       # BH(N, 2) is a real Hadamard matrix
         if r["q"] == 2 and "R" not in r["t"]:
             r["t"] += "R"
+
+    # d(H) = 0 implies H is isolated (Tadej-Zyczkowski).  The flag used to be
+    # read off the catalogue superscript alone, so everything typed from a file
+    # name -- the appendices and the orphans -- never got it.
+    #
+    # Only ever added, never removed: the converse does not hold.  A matrix can
+    # be isolated with a non-zero defect -- the superscript (0) on C_6 and on
+    # B_9 says exactly that, while their defects are 3 and 2.
+    for r in recs:
+        if r["d"] == 0 and "I" not in r["t"]:
+            r["t"] += "I"
 
     blank = rec()
     slim = [{k: v for k, v in r.items() if v != blank[k]} for r in recs]

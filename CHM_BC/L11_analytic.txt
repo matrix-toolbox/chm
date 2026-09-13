@@ -1,0 +1,50 @@
+(* 2022-04-25 *)
+
+(* Analytic Solution for (doubly circulant core) N = 11 *)
+
+(* it is possible to solve it analytically, however it is impossible
+   to present it in any compact form ... *)
+
+
+a1 =.;
+a2 =.;
+a3 =.;
+a4 =.;
+a5 =.;
+LPhases = Normal@Solve[{
+    Cos[a1] + Cos[a2] + Cos[a3] + Cos[a4] + Cos[a5] == -1/2,
+    Cos[2*a1] + Cos[2*a2] + Cos[2*a3] + Cos[2*a4] + Cos[2*a5] == -1/2,
+    Cos[a1 + a2] + Cos[a2 + a3] + Cos[a3 + a4] + Cos[a1 + a5] + Cos[a4 + a5] == -1/2,
+    Cos[a1 + a3] + Cos[a1 + a4] + Cos[a2 + a4] + Cos[a2 + a5] + Cos[a3 + a5] == -1/2,
+    Cos[a1 - a2] + Cos[a2 - a3] + Cos[a3 - a4] + Cos[a1 - a5] + Cos[a4 - a5] == -1/2,
+    Cos[a1 - a3] + Cos[a1 - a4] + Cos[a2 - a4] + Cos[a2 - a5] + Cos[a3 - a5] == -1/2
+  },
+  {a1, a2, a3, a4, a5}]
+
+
+aj = {a1, a2, a3, a4, a5} /. LPhases
+
+
+Dimensions@aj (* {400, 5} *)
+
+
+(* example of solution (get rid of "conditional" constants) *)
+a1 = aj[[111]][[1]] /. C[1] -> 0 // N;
+a2 = aj[[111]][[2]] /. C[2] -> 0 // N;
+a3 = aj[[111]][[3]] /. C[3] -> 0 // N;
+a4 = aj[[111]][[4]] /. C[4] -> 0 // N;
+a5 = aj[[111]][[5]] /. C[5] -> 0 // N;
+
+
+(* numerical confirmation *)
+Cos[a1] + Cos[a2] + Cos[a3] + Cos[a4] + Cos[a5]
+Cos[2*a1] + Cos[2*a2] + Cos[2*a3] + Cos[2*a4] + Cos[2*a5]
+Cos[a1 + a2] + Cos[a2 + a3] + Cos[a3 + a4] + Cos[a1 + a5] + Cos[a4 + a5]
+Cos[a1 + a3] + Cos[a1 + a4] + Cos[a2 + a4] + Cos[a2 + a5] + Cos[a3 + a5]
+Cos[a1 - a2] + Cos[a2 - a3] + Cos[a3 - a4] + Cos[a1 - a5] + Cos[a4 - a5]
+Cos[a1 - a3] + Cos[a1 - a4] + Cos[a2 - a4] + Cos[a2 - a5] + Cos[a3 - a5]
+
+
+(* output is: "all -1/2" *)
+
+
