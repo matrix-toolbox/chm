@@ -18,7 +18,8 @@ script is safe to re-run after adding one:
 
     python3 link_sources.py [--dry]
 
-It is idempotent: a heading that is already linked is skipped.
+It is idempotent: a heading that is already linked is skipped, unless --force
+is given, which relinks from scratch.
 """
 import argparse
 import os
@@ -28,6 +29,7 @@ import build_matrices as bm
 
 BLOB = "https://github.com/matrix-toolbox/chm/blob/main/"
 MATH = re.compile(r"\$[^$]+\$")
+UNLINK = re.compile(r'<a href="%s[^"]*"[^>]*>(.*?)</a>' % re.escape(BLOB), re.S)
 
 # Names the rule cannot derive, each confirmed from the file's own header:
 #   K9_2z.m  "Matrix K9_2 originally denoted as BC_9^{(2)}"
@@ -40,7 +42,8 @@ ALIAS = {"K9": "CHM/K9_2z.m", "BC9": "CHM/K9_2z.m",
          "A15": "CHM/A15X.m",
          "V8A": "CHM/V8_ANALYTIC.m", "V8B": "CHM/V8_ANALYTIC.m",
          "V8C": "CHM/V8_ANALYTIC.m", "V8D": "CHM/V8_ANALYTIC.m",
-         "Y9": "CHM_SINKHORN/Y_9_0_105.m"}
+         "Y9": "CHM_SINKHORN/Y_9_0_105.m",
+         "H2": "CHM/F2.m", "H8": "CHM/F8.m"}
 
 
 def source_of(seg):
@@ -90,6 +93,9 @@ def relink(head):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry", action="store_true", help="report, change nothing")
+    ap.add_argument("--force", action="store_true",
+                    help="re-link headings that are already linked "
+                         "(use after changing ALIAS or adding a file)")
     a = ap.parse_args()
 
     linked = plain = already = 0
@@ -101,10 +107,13 @@ def main():
         m = re.search(r"(<h1[^>]*>)(.*?)(</h1>)", src, re.S)
         if not m:
             continue
-        if BLOB in m.group(2):
-            already += 1
-            continue
-        head, used = relink(m.group(2))
+        body = m.group(2)
+        if BLOB in body:
+            if not a.force:
+                already += 1
+                continue
+            body = UNLINK.sub(r"\1", body)      # strip, so ALIAS changes take
+        head, used = relink(body)
         if not used:
             plain += 1
             continue
