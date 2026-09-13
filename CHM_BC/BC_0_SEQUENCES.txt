@@ -1,0 +1,81 @@
+BLOCK CIRCULANT ISOLATED SEQUENCES OF CHM
+=========================================
+
+
+We have solved several non-linear systems of equations corresponding to unitarity constraints
+for two sequences:
+	L_N -- only for N=3+4k : k=0,1,2,3,...
+	V_N -- can be solved for any N=6,7,8,9,...
+
+We have checked dimensions ranging roughly from 6 to 99.
+
+In each case we see isolated and non-Butson CHM.
+
+
+***	FOR INITIAL DIMENSIONS: 11--16 EACH RUN GIVES DIFFERENT VALUES OF PARAMETERS.
+	NOT KNOWN IF THEY ARE (IN)EQUIVALENT.
+
+***	FOR L_N ONE GETS ONLY ISOLATED SOLUTION, WHILE FOR V_N THERE ARE DIFFERENT DEFECTS.
+
+
+
+-------------------------------------------------------------------------------
+1. SEQUENCE $L_N$
+
+[BASH]
+script BC_L.sh is responsible for a number of things:
+
+a) create circulant template (can be viewed in BC_L_DEBUG.txt file)
+it usually looks like: (watch capitals!)
+
+    1 1 1 1 1 1 1
+    1 c1 C1 c2 C2 c3 C3
+    1 C1 c1 C2 c2 C3 c3
+    1 c3 C3 c1 C1 c2 C2
+    1 C3 c3 C1 c1 C2 c2
+    1 c2 C2 c3 C3 c1 C1
+    1 C2 c2 C3 c3 C1 c1
+
+b) create unitarity constraints out of the circulant template and remove redundancies
+
+c) prepare ready-to-use M-file for Octave, BC_L{N}.m
+   for {N} being an appropriate numeral indicator (~ dimension)
+
+   results are automatically written to BC_L{N}.dat
+
+For higher orders it gets harder to find unimodular solution.
+
+        Remember that this solution works only for odd dimension N of the form: N = 3 + 4*k : k = 0,1,2,3,4,...
+        Hence, the number of parameters (in exp) is (N-1)/2.
+        These two numbers must coincide!
+
+It is also good to remove defect and #Lambda calculations, for N>55, as it takes too long.
+-------------------------------------------------------------------------------
+1. SEQUENCE $V_N$
+
+[BASH]
+... BC_V.sh ...
+
+... see the "instruction" for $L_N$ :)
+
+    >>  for k=1:10000, [H x u]=circulant_V80(exp(2j*pi*randn(1,80))); if abs(mean(u)-u(1))<0.0001,break,end; end
+
+
+-------------------------------------------------------------------------------
+
+V8 is treated individually as the first interesting case:
+
+script V8.m solves undephased circulant LS pattern for $V_N$
+
+        output is saved to V8_*.dat
+script V8_0.m solves original Veit's unitarity constraints (with three parameters and three non-linear equations)
+        output is savet to V8_0_*.dat
+
+Both solutions (sometimes) coincide, because they provide one of many possible configurations for a, b, and c parameters.
+
+One such possibility is confirmed in V8_EQUIVALENCE, when we show that both matrices are EQUIVALENT!
+This means that the sequence V_N is more general.
+
+
+-------------------------------------------------------------------------------
+

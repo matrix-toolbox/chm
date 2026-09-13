@@ -235,7 +235,9 @@ PREFIX = {"Y": "", "T": "", "xH": "", "BH": "B", "RH": "BR", "FH": "B",
           "RD": "U", "GD": "U", "DS": "S", "YH": "H"}
 KIND = {"TU": "2-unitary", "SR": "self R-dual", "SG": "self \u0393-dual",
         "RD": "R-dual", "GD": "\u0393-dual", "FH": "Fourier",
-        "RH": "real Hadamard"}
+        "RH": "real Hadamard",
+        "LH": "block-circulant, sequence L",
+        "VH": "block-circulant, sequence V"}
 DIR_APP = {"CHM_dL": "A", "CHM_SINKHORN": "B", "CHM_SH": "C",
            "CHM_kU": "D", "CHM_BC": "E", "CHM_BH_0": "A", "CHM": ""}
 
@@ -255,6 +257,21 @@ def from_files():
                        f=str(f.relative_to(ROOT)),
                        u=(d0 + "/index.html") if (ROOT / d0 / "index.html").exists() else "",
                        c=KIND.get(pre, "")))
+
+    # Appendix E keeps its matrices as .dat.  The names there are generated, so
+    # a strict match is safe; elsewhere .dat names carry timestamps that would
+    # be misread as invariants (Y_11_0_7xx_20221115...).
+    for f in sorted((ROOT / "CHM_BC").glob("*.dat")):
+        m = re.fullmatch(r"(LH|VH)_(\d+)_(\d+)_(\d+)([A-Z])?(_[a-z_0-9]+)?", f.stem)
+        if not m:
+            continue
+        pre, N, d, lam, _letter, note = m.groups()
+        c = KIND[pre]
+        if note:
+            c += "; " + note[1:].replace("_", " ")
+        out.append(rec(n=int(N), d=int(d), l=int(lam), t="C", nm=f.stem,
+                       s="file", a="E", f=str(f.relative_to(ROOT)),
+                       u="CHM_BC/index.html", c=c))
     return out
 
 
@@ -284,10 +301,12 @@ def main():
     recs += appendix_A(ROOT / "CHM_dL" / "index.html")
     recs += appendix_C(ROOT / "CHM_SH" / "index.html")
     listed = {r["f"] for r in recs if r["f"]}
-    orphans = [r for r in from_files() if r["f"] not in listed]
+    files = from_files()
+    bc = [r for r in files if r["a"] == "E"]        # Appendix E lists them all
+    orphans = [r for r in files if r["a"] != "E" and r["f"] not in listed]
     for r in orphans:
         r["c"] = (r["c"] + "; " if r["c"] else "") + "not listed in the tables"
-    recs += orphans
+    recs += orphans + bc
     if a.stats and Path(a.stats).exists():
         recs += from_stats(Path(a.stats))
 
@@ -295,6 +314,7 @@ def main():
     for r in recs:
         by[r["s"]] = by.get(r["s"], 0) + 1
     print("  orphan .m files  :", len(orphans), "(named X_N_d_L, in no index)")
+    print("  Appendix E .dat  :", len(bc))
     print("  by source        :", ", ".join("%s=%d" % kv for kv in sorted(by.items())))
     print("  total            :", len(recs))
     print("  with .m file     :", sum(1 for r in recs if r["f"]))

@@ -171,7 +171,7 @@ appear here in <span class="gen">bold</span>.</p>
   "use strict";
   var PAGE = 256, shown = PAGE, view = [];
   var TYPE = {B:"Butson", S:"symmetric", H:"Hermitian", R:"real",
-              F:"family", I:"isolated", U:"multiunitary"};
+              F:"family", I:"isolated", U:"multiunitary", C:"block-circulant"};
   var SRC  = {cat:"Catalog", A:"Appendix A", B:"Appendix B", C:"Appendix C",
               D:"Appendix D", E:"Appendix E", num:"numerical survey"};
   var BLOB = "https://github.com/matrix-toolbox/chm/blob/main/";
@@ -435,7 +435,7 @@ appear here in <span class="gen">bold</span>.</p>
   if (typeof matrices_built === "string")
     $("built").innerHTML = "(data rebuilt " + matrices_built + ")";
 
-  boxes("typebox", "ft", ["B", "S", "H", "R", "F", "I", "U"], TYPE,
+  boxes("typebox", "ft", ["B", "S", "H", "R", "F", "I", "U", "C"], TYPE,
         function (r) { return (r.t || "").split(""); });
   boxes("srcbox", "fs", ["cat", "A", "B", "C", "D", "E", "num"], SRC,
         function (r) { return [source(r)]; });
