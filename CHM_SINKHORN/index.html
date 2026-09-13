@@ -150,7 +150,7 @@ or #&Lambda;(Y) = 451. Both with <b>d</b> = 4.</p>
 <p>&bull; All CHM of order N = 7 can be recovered by the Sinkhorn algoritm and <b>no</b>
 new matrix can be found using this method.
 All such matrices are <b>symmetrizable</b> i.e. they can be brought to the symmetric form via monomial operations.
-For more details, refer to the case of <a href="#N11">N = 11</a>.</p>
+This is not the rule in every dimension &ndash; contrast the case of <a href="#N11">N = 11</a>.</p>
 <hr>
 <h1 id="N8">N = 8</h1>
 <hr>
@@ -726,8 +726,17 @@ or other known families.</p>
 <hr>
 <h1 id="N11">N = 11</h1>
 <hr>
-<p>&bull; All known matrices of order N = 11 are <b>symmetric</b>.
-Moreover, all matrices found numerically (not only by the Sinkhorn algorithm) can be brought to the symmetric form via monomial operations.
+<p>&bull; Many matrices of order N = 11 are <b>symmetric</b>, and many others can be brought to the
+symmetric form via monomial operations &ndash; but not all of them, as was believed earlier.
+In an unconstrained sample of 24 matrices of this order only 3 admitted a symmetric representative;
+the remaining 21 did not, every one of them isolated (<b>d</b> = 0).
+The answer appears to be uniform on a stratum: the #&Lambda; = 3081 matrices are symmetrizable, while
+those with #&Lambda; = 643, 6049 and 6051 are not.
+A symmetrizable matrix must be <a href="../d/equivalence-relation.html">equivalent</a> to its own
+transpose, and it is that necessary condition which fails here.
+The search over monomial operations is exhaustive, so a negative answer is a proof rather than a
+failure to find one &ndash; see <code>symmetrize</code> in
+<code><a href="https://github.com/matrix-toolbox/chm/tree/main/CHM_tool" target="_blank">CHM_tool</a></code>.
 See also the case of <a href="#N7">N = 7</a>.</p>
 <p>Symmetric matrices are presented in the
 <b>Catalog of CHM; <a href="../CHM_SH/index.html">Appendix C</a></b>.</p>
