@@ -245,8 +245,12 @@ DIR_APP = {"CHM_dL": "A", "CHM_SINKHORN": "B", "CHM_SH": "C",
 
 def from_files():
     out = []
+    # CHM_NUMERICAL/ is raw search output -- thousands of transient files that
+    # come and go with every run, and are gitignored.  They are not catalog
+    # entries; a matrix is kept by moving it into an appendix and renaming it.
+    SKIP = {".git", "CHM_NUMERICAL"}
     for f in sorted(ROOT.rglob("*.m")):
-        if ".git" in f.parts:
+        if SKIP & set(f.parts):
             continue
         m = re.fullmatch(r"([A-Za-z]+)_(\d+)_(\d+)_(\d+)(.*)", f.stem)
         if not m:
