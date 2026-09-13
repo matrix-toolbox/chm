@@ -1,8 +1,8 @@
-function Y = SH_9_d_18
+function Y = SH_9_0_18
 % ------------------------------------------------------------------------------
 % 2025-02-22
 % symmetrized N9 matrix with L = 18
-% https://chaos.if.uj.edu.pl/~karol/hadamard/catalogue/0902.html
+% https://matrix-toolbox.github.io/chm/catalogue/0902.html
 % ------------------------------------------------------------------------------
 
     s = 1j*sqrt(15);
