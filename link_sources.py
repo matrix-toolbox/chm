@@ -43,7 +43,7 @@ ALIAS = {"K9": "CHM/K9_2z.m", "BC9": "CHM/K9_2z.m",
          "V8A": "CHM/V8_ANALYTIC.m", "V8B": "CHM/V8_ANALYTIC.m",
          "V8C": "CHM/V8_ANALYTIC.m", "V8D": "CHM/V8_ANALYTIC.m",
          "Y9": "CHM_SINKHORN/Y_9_0_105.m",
-         "H2": "CHM/F2.m", "H8": "CHM/F8.m"}
+         "H2": "CHM/F2.m", "H4": "CHM/F4.m", "H8": "CHM/F8.m"}
 
 
 def source_of(seg):
