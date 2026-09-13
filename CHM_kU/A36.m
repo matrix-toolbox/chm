@@ -131,8 +131,6 @@ end
 
 
 
-%    hint for a future:
-%
 %    domain = 2*pi;  % for a certain reason it is better to work in [0..2pi) interval, not [0..1)
 %                    % in that case "mu" can be as large as 0.01 and convergence is much faster
 %                    % however, one must remember about rescaling phases "a" when being passed to A36!

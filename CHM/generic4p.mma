@@ -1,0 +1,32 @@
+(* ---- cell 1 ---- *)
+Hyperlink["http://arxiv.org/abs/1008.0632"]
+
+(* ---- cell 2 ---- *)
+Quit[]
+
+(* ---- cell 3 ---- *)
+{F1, F2, F3} = CoefficientList[a^2*b*c*d*e + a*b^2*c*d*e + b*c^2*d*e + b^2*c^2*d*e + a*c*d^2*e + a^2*c*d^2*e - a*c*d*e^2 - b*c*d*e^2 - a*c^2*d*e^2 - a*b*c^2*d*e^2 - b*c*d^2*e^2 - a*b*c*d^2*e^2 - a*b^2*c*f - a*b^2*c^2*f - a^2*b*d*f - a*b*c^2*d*f - a^2*b*d^2*f - a*b*c*d^2*f + a^2*b*c*e*f - b^2*c*e*f + b*c^2*e*f - a*b^2*c^2*e*f - a^2*d*e*f + a*b^2*d*e*f - a*c^2*d*e*f + b^2*c^2*d*e*f + a*d^2*e*f - a^2*b*d^2*e*f + a^2*c*d^2*e*f - b*c*d^2*e*f + a*b*c*e^2*f + b*c^2*e^2*f + a*b*d*e^2*f + b*c^2*d*e^2*f + a*d^2*e^2*f + a*c*d^2*e^2*f + a*b*c*f^2 + a^2*b*c*f^2 + a*b*d*f^2 + a*b^2*d*f^2 + a^2*b*c*d*f^2 + a*b^2*c*d*f^2 - b^2*c*e*f^2 - a*b^2*c*e*f^2 - a^2*d*e*f^2 - a^2*b*d*e*f^2 - a*c*d*e*f^2 - b*c*d*e*f^2, f]; 
+
+(* ---- cell 4 ---- *)
+{G1, G2, G3} = CoefficientList[2*a*b*c*d*e + a^2*b*c*d*e + a*b^2*c*d*e + b*c^2*d*e + 2*a*b*c^2*d*e + b^2*c^2*d*e + a*c*d^2*e + a^2*c*d^2*e + 2*a*b*c*d^2*e + 2*a*b*c*d*e^2 + 2*b*c^2*d*e^2 + 2*a*c*d^2*e^2 + 2*a*b*c*d*f + 2*a^2*b*c*d*f + 2*a*b^2*c*d*f + 2*a*b*c*e*f + a^2*b*c*e*f + 2*a*b^2*c*e*f + b*c^2*e*f + 2*a*b*c^2*e*f + 2*b^2*c^2*e*f + 2*a*b*d*e*f + 2*a^2*b*d*e*f + a*b^2*d*e*f + 2*a*c*d*e*f + 2*a^2*c*d*e*f + 2*b*c*d*e*f + 12*a*b*c*d*e*f + 2*a^2*b*c*d*e*f + 2*b^2*c*d*e*f + 2*a*b^2*c*d*e*f + 2*b*c^2*d*e*f + 2*a*b*c^2*d*e*f + b^2*c^2*d*e*f + a*d^2*e*f + 2*a^2*d^2*e*f + 2*a*b*d^2*e*f + 2*a*c*d^2*e*f + a^2*c*d^2*e*f + 2*a*b*c*d^2*e*f + a*b*c*e^2*f + b*c^2*e^2*f + a*b*d*e^2*f + 2*a*c*d*e^2*f + 2*b*c*d*e^2*f + 2*a*b*c*d*e^2*f + b*c^2*d*e^2*f + a*d^2*e^2*f + a*c*d^2*e^2*f + a*b*c*f^2 + a^2*b*c*f^2 + 2*a*b^2*c*f^2 + a*b*d*f^2 + 2*a^2*b*d*f^2 + a*b^2*d*f^2 + 2*a*b*c*d*f^2 + a^2*b*c*d*f^2 + a*b^2*c*d*f^2 + 2*a*b*c*e*f^2 + 2*a*b*d*e*f^2 + 2*a*b*c*d*e*f^2, f]; 
+
+(* ---- cell 5 ---- *)
+fGen[a_, b_, c_, d_, e_] := Evaluate[-(F3*G1 - F1*G3)/(F3*G2 - F2*G3)]; 
+
+(* ---- cell 6 ---- *)
+eGen[a_, b_, c_, d_] := Evaluate[Numerator[Together[fGen[a, b, c, d, e]*fGen[1/a, 1/b, 1/c, 1/d, 1/e] - 1]]]; 
+
+(* ---- cell 7 ---- *)
+r := RandomReal[{0, 1}, WorkingPrecision -> 200]; 
+
+(* ---- cell 8 ---- *)
+[Options[MakeH] = {err -> True}; ], Hold[Null], Hold[MakeH[a_, b_, c_, d_, OptionsPattern[]] := Module[{EE, rootsP, SOLB, rootsP2, SOLC, ee, ff, gg, hh, s11, s22, s33, s44, t11, t22, t33, t44, Inv, H, AA, BB, CC, i2, i1}, Q = {}; EE = {{1, 1, 1}, {1, a, b}, {1, c, d}}; If[(b - 1)*(c - 1)*(b - d^2)*(c - d^2)*(b - c)*(b*c - d)*(b + d + b^2 + d^2 + b*d^2 + b^2*d)*(c + d + c^2 + d^2 + c*d^2 + c^2*d) != 0, If[Max[Re[Eigenvalues[Transpose[1/EE] . EE]]] <= 6, rootsP = Select[(#1[[1,2]] & ) /@ NSolve[eGen[a, b, c, d] == 0, e, WorkingPrecision -> 100], Abs[Abs[#1] - 1] < 0.00001 & ]; If[Length[rootsP] >= 3, SOLB = Select[Subsets[rootsP, {3}], Abs[1 + a + b + Plus @@ #1] < 0.00001 & ]; rootsP2 = Select[(#1[[1,2]] & ) /@ NSolve[eGen[a, c, b, d] == 0, e, WorkingPrecision -> 100], Abs[Abs[#1] - 1] < 0.00001 & ]; If[Length[rootsP2] >= 3, SOLC = Select[Subsets[rootsP2, {3}], Abs[1 + a + c + Plus @@ #1] < 0.00001 & ]; For[i1 = 1, i1 <= Length[SOLB], For[i2 = 1, i2 <= Length[SOLC], {ee, s11, s22} = SOLB[[i1]]; ff = fGen[a, b, c, d, ee]; s33 = fGen[a, b, c, d, s11]; s44 = fGen[a, b, c, d, s22]; {gg, t11, t22} = SOLC[[i2]]; hh = fGen[a, c, b, d, gg]; t33 = fGen[a, c, b, d, t11]; t44 = fGen[a, c, b, d, t22]; AA = {{1, 1, 1}, {1, a, b}, {1, c, d}}; BB = {{1, 1, 1}, {ee, s11, s22}, {ff, s33, s44}}; CC = {{1, gg, hh}, {1, t11, t33}, {1, t22, t44}}; Inv = -Transpose[Conjugate[Inverse[BB] . AA . Transpose[Conjugate[CC]]]]; H = {{1, 1, 1, 1, 1, 1}, {1, a, b, ee, s11, s22}, {1, c, d, ff, s33, s44}, {1, gg, hh, Inv[[1,1]], Inv[[1,2]], Inv[[1,3]]}, {1, t11, t33, Inv[[2,1]], Inv[[2,2]], Inv[[2,3]]}, {1, t22, t44, Inv[[3,1]], Inv[[3,2]], Inv[[3,3]]}}; If[Max[Abs /@ H] < 1.000001, If[Min[Abs /@ H] > 0.99999, Q = Join[Q, {H}]]]; i2++]; i1++], If[OptionValue[err] === True, Print["SOL_C is empty :: The fundamental polynomial P2 has less than 3 unimodular roots."]]], If[OptionValue[err] === True, Print["SOL_B is empty :: The fundamental polynomial P has less than 3 unimodular roots."]]], If[OptionValue[err] === True, Print["Violation of Corollary 2.18 :: The spectral matrix E*E has an eigenvalue larger than 6"]]], If[OptionValue[err] === True, Print["Violation of the Canonical transformation :: See Proposition 2.16"]]]; MatrixForm /@ N[Q]]]
+
+(* ---- cell 9 ---- *)
+[{a, b, c, d} = Exp[2*Pi*I*{r, r, r, r}]; ], Hold[Null], Hold[MakeH[a, b, c, d]]
+
+(* ---- cell 10 ---- *)
+MatrixForm[Chop[N[Q[[2]]] . Transpose[1/N[Q[[2]]]]]]
+
+(* ---- cell 11 ---- *)
+[ok = 0; ], Hold[Null], Hold[Dynamic[{i, ok, N[ok/i]}]], Hold[Null], Hold[For[i = 1, i <= 100, {a, b, c, d} = Exp[2*Pi*I*{r, r, r, r}]; MakeH[a, b, c, d, err -> False]; If[Length[Q] > 1, ok++]; i++]]

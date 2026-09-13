@@ -4,8 +4,6 @@ function A36_LU_BD
 %
 % Prepare two figures: scattered and block-3x12x12 diagonal of AME/CHM(36).
 % Cf. "block944.m".
-%
-% Problem: is this matrix block-diagonalizable? H = P.B.P^T (with single P)
 % ------------------------------------------------------------------------------
     addpath ../matrix_tool
     a = sqrt(3);
