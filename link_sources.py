@@ -12,8 +12,9 @@ which CHM/<name>.m exists, wraps that name in a link to the file on GitHub:
     <h1><a href=".../blob/main/CHM/F3.m" ...>$F_3^{(0)}$</a></h1>
 
 A heading may name several matrices ($C_{7A}$, $C_{7B}$, ...); each gets its
-own link.  Headings whose matrix has no file are left alone, so the script is
-safe to re-run after adding one:
+own link, and a Kronecker product links its factors ($F_2 \\otimes F_4$ leads to
+F2.m and F4.m).  Headings whose matrix has no file are left alone, so the
+script is safe to re-run after adding one:
 
     python3 link_sources.py [--dry]
 
@@ -32,9 +33,14 @@ MATH = re.compile(r"\$[^$]+\$")
 #   K9_2z.m  "Matrix K9_2 originally denoted as BC_9^{(2)}"
 #   Q11X.m   "Symmetric isolated matrix Q11 ... d = 0 and #L = 63"
 #   A15X.m   "Isolated CHM of order N = 15 found by A. Chan and A. Munemasa"
+# and two given by W. Bruzda: V8A..V8D are solved in V8_ANALYTIC.m (V8X_0.m is
+# marked obsolete there), and Y9 is the matrix stored as Y9,0,105.
 ALIAS = {"K9": "CHM/K9_2z.m", "BC9": "CHM/K9_2z.m",
          "Q11A": "CHM/Q11X.m", "Q11B": "CHM/Q11X.m",
-         "A15": "CHM/A15X.m"}
+         "A15": "CHM/A15X.m",
+         "V8A": "CHM/V8_ANALYTIC.m", "V8B": "CHM/V8_ANALYTIC.m",
+         "V8C": "CHM/V8_ANALYTIC.m", "V8D": "CHM/V8_ANALYTIC.m",
+         "Y9": "CHM_SINKHORN/Y_9_0_105.m"}
 
 
 def source_of(seg):
@@ -45,16 +51,38 @@ def source_of(seg):
         (ALIAS[name] if name in ALIAS and os.path.exists(ALIAS[name]) else "")
 
 
+def anchor(f, math):
+    return '<a href="%s%s" title="%s">%s</a>' % (BLOB, f, f, math)
+
+
 def relink(head):
-    """Wrap every named matrix in the heading; returns (html, [files])."""
+    """Wrap every named matrix in the heading; returns (html, [files]).
+
+    A link may not sit inside $...$ -- it would break the typesetting -- so a
+    Kronecker product is split into one math group per factor and the linked
+    factors are joined by a bare $\\otimes$."""
     used = []
 
     def one(m):
-        f = source_of(m.group(0))
-        if not f:
-            return m.group(0)
-        used.append(f)
-        return '<a href="%s%s" title="%s">%s</a>' % (BLOB, f, f, m.group(0))
+        seg = m.group(0)
+        f = source_of(seg)
+        if f:
+            used.append(f)
+            return anchor(f, seg)
+        if "\\otimes" not in seg:
+            return seg
+        out, hit = [], False
+        for part in seg[1:-1].split("\\otimes"):
+            math = "$" + part.strip() + "$"
+            pf = source_of(math)
+            if pf:
+                used.append(pf)
+                hit = True
+                out.append(anchor(pf, math))
+            else:
+                out.append(math)
+        # spaces matter: "$\\otimes$$H_2$" would read as a $$ display delimiter
+        return " $\\otimes$ ".join(out) if hit else seg
 
     return MATH.sub(one, head), used
 
