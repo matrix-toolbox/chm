@@ -82,7 +82,7 @@ def plain(tex):
     s = tex.strip("$ ")
     s = re.sub(r"\^\{?\((\d+)\)\}?", "", s)               # drop the superscript
     s = re.sub(r"\\Sigma.*", "", s)                        # C_{7\\Sigma : ...} -> C_{7
-    s = s.replace(r"\otimes", "x")
+    s = s.replace(r"\otimes", "x")          # browse.html prints it back as \u2297
     s = re.sub(r"\\[a-zA-Z]+", "", s)
     return re.sub(r"[_{}()\\$\s:,]", "", s)
 

@@ -36,6 +36,7 @@
 #results td.num{text-align:right;}
 .gen{font-weight:bold;}
 .flag{font-size:12px;color:#406;}
+.ox{padding:0 .18em;color:#444;}
 .hint{color:#888;font-size:12px;}
 #filters label.small-only{display:none;}
 
@@ -233,7 +234,7 @@ appear here in <span class="gen">bold</span>.</p>
   function apply() {
     var fN = parseRange($("fN").value), fd = parseRange($("fd").value),
         fl = parseRange($("fl").value), fq = parseRange($("fq").value),
-        nm = $("fnm").value.trim().toLowerCase(),
+        nm = $("fnm").value.trim().toLowerCase().replace(/\u2297/g, "x"),
         ts = ticked("ft"), ss = ticked("fs"), onlyfile = $("fmfile").checked;
 
     view = matrices.filter(function (r) {
@@ -299,7 +300,8 @@ appear here in <span class="gen">bold</span>.</p>
   function fmtName(s) {
     if (!s) return "";
     // split tensor products only between a digit and a capital: D6xF2, not xH_7_0_43
-    return s.replace(/([0-9])x([A-Z])/g, "$1\u0001$2").split("\u0001").map(sub).join("x");
+    return s.replace(/([0-9])x([A-Z])/g, "$1\u0001$2").split("\u0001").map(sub)
+            .join('<span class="ox">\u2297</span>');   // F2 (x) F4
   }
   // in prose, subscript a bare name; a Butson class BH(6, 3) has no digit next
   // to the letters, so it is left alone
