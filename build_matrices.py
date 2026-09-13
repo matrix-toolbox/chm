@@ -24,6 +24,7 @@ Record keys are kept short because there are a few thousand of them:
   a  appendix
 """
 import argparse
+import collections
 import datetime
 import html
 import json
@@ -321,7 +322,7 @@ def main():
     print("  Appendix E .data :", len(bc))
     print("  by source        :", ", ".join("%s=%d" % kv for kv in sorted(by.items())))
     print("  total            :", len(recs))
-    print("  with .m file     :", sum(1 for r in recs if r["f"]))
+
     print("  with parameters  :", sum(1 for r in recs if r["p"]))
     print("  d known          :", sum(1 for r in recs if r["d"] is not None))
     print("  #L known         :", sum(1 for r in recs if r["l"] is not None))
@@ -343,6 +344,23 @@ def main():
     for r in recs:
         if r["d"] == 0 and "I" not in r["t"]:
             r["t"] += "I"
+
+    # A name that resolves to a script in one place resolves to it everywhere.
+    # The Catalog links A8 to CHM/A8.m; Appendix A lists the same matrix with no
+    # link at all, so the row came out dead.  Only names with a single candidate
+    # are filled in -- K6 points at both K6_2.m and K6_3.m and stays alone.
+    cand = collections.defaultdict(set)
+    for r in recs:
+        if r["nm"] and r["f"]:
+            cand[r["nm"]].add(r["f"])
+    known = {n: v.pop() for n, v in cand.items() if len(v) == 1}
+    filled = 0
+    for r in recs:
+        if r["nm"] and not r["f"] and r["nm"] in known:
+            r["f"] = known[r["nm"]]
+            filled += 1
+    print("  links filled in  :", filled, "(name already resolved elsewhere)")
+    print("  with .m file     :", sum(1 for r in recs if r["f"]))
 
     blank = rec()
     slim = [{k: v for k, v in r.items() if v != blank[k]} for r in recs]
