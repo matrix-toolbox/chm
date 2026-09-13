@@ -33,6 +33,7 @@ img{max-width:100%;}
 .rd6{font-weight:bold;color:#f00;}
 .H-solution{background-color:#ff0;}
 details{cursor:pointer;}
+.note{background-color:#ffd;border:1px solid #ddb;padding:8px;}
 </style>
 
 <div id="content">
@@ -728,12 +729,6 @@ or other known families.</p>
 <hr>
 <p>&bull; Many matrices of order N = 11 are <b>symmetric</b>, and many others can be brought to the
 symmetric form via monomial operations &ndash; but not all of them, as was believed earlier.
-In an unconstrained sample of 24 matrices of this order only 3 admitted a symmetric representative;
-the remaining 21 did not, every one of them isolated (<b>d</b> = 0).
-The answer appears to be uniform on a stratum: the #&Lambda; = 3081 matrices are symmetrizable, while
-those with #&Lambda; = 643, 6049 and 6051 are not.
-A symmetrizable matrix must be <a href="../d/equivalence-relation.html">equivalent</a> to its own
-transpose, and it is that necessary condition which fails here.
 The search over monomial operations is exhaustive, so a negative answer is a proof rather than a
 failure to find one &ndash; see <code>symmetrize</code> in
 <code><a href="https://github.com/matrix-toolbox/chm/tree/main/CHM_tool" target="_blank">CHM_tool</a></code>.
