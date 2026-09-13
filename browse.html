@@ -20,7 +20,7 @@
 #filters fieldset{border:1px solid #bbb;border-radius:4px;padding:6px 10px;margin:0 0 8px 0;}
 #filters legend{font-size:13px;font-weight:bold;width:auto;margin:0;padding:0 4px;border:0;color:#448;}
 #filters label{font-weight:normal;margin:0 10px 0 0;white-space:nowrap;display:inline-block;}
-#filters input[type=text]{width:7em;padding:2px 4px;border:1px solid #999;border-radius:3px;}
+#filters input[type=text]{width:7em;padding:2px 4px;border:1px solid #999;border-radius:3px;box-sizing:border-box;}
 #filters input[type=text].wide{width:12em;}
 #summary{margin:8px 0;}
 #summary b{color:#118;}
@@ -34,16 +34,19 @@
 .gen{font-weight:bold;}
 .flag{font-size:12px;color:#406;}
 .hint{color:#888;font-size:12px;}
-.small-only{display:none;}
+#filters label.small-only{display:none;}
 
 /* Below 640px the eight columns cannot fit, so each record becomes a card:
    the name on its own line, then the numbers, each labelled by data-l.    */
 @media (max-width:640px){
   #filters label{margin-right:6px;}
-  #filters input[type=text],#filters input[type=text].wide{width:100%;max-width:100%;}
-  #filters label.num-f{display:block;margin-bottom:4px;}
+  /* label above the field, so width:100% is exactly the fieldset width */
+  #filters label.num-f{display:block;margin:0 0 6px;}
+  #filters label.num-f input[type=text],
+  #filters label.num-f input[type=text].wide{display:block;width:100%;}
+  #filters label.small-only select{display:block;width:100%;}
   #filters fieldset > .hint{display:none;}
-  .small-only{display:block;margin:6px 0 0;}
+  #filters label.small-only{display:block;margin:6px 0 0;}
   .scroll{overflow-x:visible;}
   #results,#results tbody{display:block;width:100%;}
   #results thead{display:none;}
@@ -86,7 +89,7 @@ dimension N, <a href="d/defect.html">defect</a> <b>d</b>, the number of
 This page <b>supplements</b> the
 <a href="index.html">Catalog</a> and its <a href="chm_appendix.html">appendices</a>
 &ndash; it adds no new matrices, it only collects what they already list into one
-searchable table. Follow the link in the last column for the authoritative entry.</p>
+searchable table. Follow the <i>listed in</i> link for the authoritative entry.</p>
 
 <hr>
 
