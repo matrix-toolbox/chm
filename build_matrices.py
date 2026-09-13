@@ -262,14 +262,18 @@ def from_files():
     # a strict match is safe; elsewhere .dat names carry timestamps that would
     # be misread as invariants (Y_11_0_7xx_20221115...).
     for f in sorted((ROOT / "CHM_BC").glob("*.dat")):
-        m = re.fullmatch(r"(LH|VH)_(\d+)_(\d+)_(\d+)([A-Z])?(_[a-z_0-9]+)?", f.stem)
+        m = re.fullmatch(r"(LH|VH)_(\d+)_(\d+)_(\d+)([A-Z])?(_[A-Za-z0-9_]+)?", f.stem)
         if not m:
             continue
         pre, N, d, lam, _letter, note = m.groups()
         c = KIND[pre]
+        t = "C"
         if note:
-            c += "; " + note[1:].replace("_", " ")
-        out.append(rec(n=int(N), d=int(d), l=int(lam), t="C", nm=f.stem,
+            note = note[1:]
+            c += "; " + note.replace("_", " ")
+            if note.startswith("BH"):
+                t += "B"
+        out.append(rec(n=int(N), d=int(d), l=int(lam), t=t, nm=f.stem,
                        s="file", a="E", f=str(f.relative_to(ROOT)),
                        u="CHM_BC/index.html", c=c))
     return out
