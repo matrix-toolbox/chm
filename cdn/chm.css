@@ -1,4 +1,7 @@
-body{overflow-y:scroll;}
+/* Bootstrap's body metrics, repeated here because the appendix pages do not
+   load Bootstrap; without them their text and menu come out at the browser
+   default 16px while every other page is at 14px */
+body{overflow-y:scroll;font-size:14px;line-height:1.42857143;color:#333;}
 .container{margin-bottom:32px;}
 a{text-decoration:none;color:#00a;border-bottom:1px solid transparent;}
 a:hover,a:focus{border-bottom-color:#00a;color:#00a;text-decoration:none;}
@@ -26,8 +29,21 @@ code{all:unset;font-family:monospace;background-color:#f1f1f1;padding:4px;}
 #menu{padding-top:4px;-font-size:20px;margin-top:8px;}
 #Hadamard-2025{font-size:25px;text-align: center;border:4px #aaf solid;padding:8px;background-color:#ffa;}
 
+/* the appendix pages load no Bootstrap, so their <h1> would fall back to the
+   browser default (2em, bold); these are Bootstrap's own h1 metrics, kept
+   here so the title looks the same on every page of the site */
+h1{font-size:36px;font-weight:500;line-height:1.1;margin:20px 0 10px;}
+
 /* ---- the appendix pages ------------------------------------------------ */
-#content{max-width:1024px;margin:0 auto;padding:0 8px;}
+/* same widths as Bootstrap's .container, so the appendices line up with the
+   pages that do load Bootstrap */
+#content{margin:0 auto;padding:0 15px;box-sizing:border-box;}
+@media (min-width:768px){#content{width:750px;}}
+@media (min-width:992px){#content{width:970px;}}
+@media (min-width:1200px){#content{width:1170px;}}
+/* Bootstrap justifies the body text on the other pages; kept to paragraphs
+   and list items so that table cells are not stretched */
+#content p,#content li{text-align:justify;}
 pre{margin-left:8px;background-color:#eee;padding:4px;overflow-x:auto;}
 img{max-width:100%;}
 summary{cursor:pointer;}
