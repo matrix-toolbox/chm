@@ -40,8 +40,8 @@ solution of the unitarity constraints imposed on a block-circulant pattern, foun
 
 <p>Two sequences are solved here:</p>
 <ul>
-<li><b>L<sub>N</sub></b> &ndash; only for N = 3 + 4k, k = 0, 1, 2, ...</li>
-<li><b>V<sub>N</sub></b> &ndash; for any N = 6, 7, 8, ...</li>
+<li><b><a href="#sequence_LN">L<sub>N</sub></a></b> &ndash; only for N = 3 + 4k, k = 0, 1, 2, ...</li>
+<li><b><a href="#sequence_VN">V<sub>N</sub></a></b> &ndash; for any N = 6, 7, 8, ...</li>
 </ul>
 
 <p>Their interest is that almost every solution turns out to be <b>isolated</b>
@@ -113,7 +113,7 @@ for the defect.</p>
 automatically.</p>
 
 <hr>
-<h2 id="LN">Sequence L<sub>N</sub><span class="go-top"><a href="#top">&uarr;</a></span></h2>
+<h2 id="sequence_LN">Sequence L<sub>N</sub><span class="go-top"><a href="#top">&uarr;</a></span></h2>
 <p>Solvable for N = 3 + 4k only. Every converged solution found so far is isolated.</p>
 <p class="note">Both invariants below are computed numerically, from a floating-point representation of H. The Haagerup set is obtained by forming all N<sup>4</sup> products H<sub>ij</sub>H<sub>kl</sub><span style="text-decoration:overline">H<sub>il</sub></span><span style="text-decoration:overline">H<sub>kj</sub></span> and counting two of them as equal when they agree to 10<sup>&minus;6</sup>. That threshold is arbitrary: a genuine coincidence below it inflates the count, a genuine difference below it deflates it, so the figures given for #&Lambda; are approximations and may err in either direction. They are least reliable for large N, where the set is large and its elements lie close together, and for any matrix whose residual is not at machine precision. Read them as characteristics useful for telling these matrices apart, not as exact invariants. The <a href="../d/defect.html">defect</a>, being the rank of a real matrix, is markedly more stable, but it rests on a singular-value threshold of the same kind.</p>
 <div class="scroll"><table>
@@ -159,7 +159,7 @@ automatically.</p>
 <tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BC/LH_123.data">LH<sub>123</sub></a></td><td>&ndash;</td><td>&ndash;</td><td></td></tr>
 </table></div>
 <hr>
-<h2 id="VN">Sequence V<sub>N</sub><span class="go-top"><a href="#top">&uarr;</a></span></h2>
+<h2 id="sequence_VN">Sequence V<sub>N</sub><span class="go-top"><a href="#top">&uarr;</a></span></h2>
 <p>Solvable in any dimension N &ge; 6. Defects other than zero do occur.</p>
 <div class="scroll"><table>
 <tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th>comment</th></tr>
