@@ -27,6 +27,9 @@
 .scroll{overflow-x:auto;}
 #results{width:100%;border-collapse:collapse;font-size:14px;}
 #results th{padding:4px 8px;cursor:pointer;white-space:nowrap;}
+#results th.num{text-align:right;}
+#results th .arr{margin-left:4px;font-size:10px;font-weight:normal;color:#aab;}
+#results th .arr.on{color:#118;}
 #results td{padding:3px 8px;border:1px solid #ccc;border-radius:0;white-space:nowrap;}
 #results td.param{white-space:normal;font-family:monospace;font-size:12px;color:#555;}
 #results tr:nth-child(even) td{background:#f6f6f6;}
@@ -134,10 +137,10 @@ searchable table. Follow the <i>listed in</i> link for the authoritative entry.<
 <div class="scroll">
 <table id="results">
 <thead><tr>
-  <th data-k="n">N</th>
-  <th data-k="d">d</th>
-  <th data-k="l">#&Lambda;</th>
-  <th data-k="q">q</th>
+  <th data-k="n" class="num">N</th>
+  <th data-k="d" class="num">d</th>
+  <th data-k="l" class="num">#&Lambda;</th>
+  <th data-k="q" class="num">q</th>
   <th data-k="t">type</th>
   <th data-k="nm">name</th>
   <th data-k="p">parameters</th>
@@ -266,6 +269,7 @@ appear here in <span class="gen">bold</span>.</p>
       "<b>" + Object.keys(pairs).length + "</b> distinct (N, d, #&Lambda;) &bull; " +
       "<b>" + Object.keys(names).length + "</b> distinct names";
 
+    marks();
     var lim = Math.min(shown, view.length);
     for (var j = 0; j < lim; j++) rows.push(row(view[j]));
     tbody.innerHTML = rows.join("");
@@ -351,8 +355,10 @@ appear here in <span class="gen">bold</span>.</p>
     sortKey = k;
     order(k);
   }
-  var ths = document.querySelectorAll("#results th");
+  var ths = document.querySelectorAll("#results th"), heads = [];
   for (var i = 0; i < ths.length; i++) {
+    heads.push(ths[i].innerHTML);
+    ths[i].title = "click to sort";
     ths[i].onclick = (function (k) {
       return function () {
         sortBy(k, true);
@@ -360,6 +366,14 @@ appear here in <span class="gen">bold</span>.</p>
         render();
       };
     })(ths[i].getAttribute("data-k"));
+  }
+  // \u21C5 = sortable, \u25B2 / \u25BC = the column in use
+  function marks() {
+    for (var i = 0; i < ths.length; i++) {
+      var k = ths[i].getAttribute("data-k"), on = (sortKey === k);
+      ths[i].innerHTML = heads[i] + '<span class="arr' + (on ? " on" : "") + '">' +
+        (on ? (sortDir > 0 ? "\u25B2" : "\u25BC") : "\u21C5") + "</span>";
+    }
   }
 
   // ---- the query string ----------------------------------------------
