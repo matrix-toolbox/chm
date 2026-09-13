@@ -18,7 +18,7 @@ A short working manual for <https://matrix-toolbox.github.io/chm>.
 | `index.html` | the Catalog itself — the list of named matrices |
 | `catalogue/NNxx.html` | one page per entry, 118 of them |
 | `CHM/` | the Octave scripts those entries refer to |
-| `chm_appendix.html` | the front page of the appendices |
+| `appendix.html` | the front page of the appendices |
 | `CHM_dL/` | **Appendix A** — defect and #Λ |
 | `CHM_SINKHORN/` | **Appendix B** — matrices found by Sinkhorn |
 | `CHM_SH/` | **Appendix C** — symmetric and Hermitian |

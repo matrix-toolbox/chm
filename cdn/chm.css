@@ -1,6 +1,11 @@
 body{overflow-y:scroll;}
 .container{margin-bottom:32px;}
-a{text-decoration:underline !important;color:#00a;}
+a{text-decoration:none;color:#00a;border-bottom:1px solid transparent;}
+a:hover,a:focus{border-bottom-color:#00a;color:#00a;text-decoration:none;}
+/* MathJax and KaTeX render into these; a line under a formula strikes
+   through its subscripts, so links that wrap one stay clean */
+a:has(.MathJax):hover,a:has(.MathJax_Preview):hover,
+a:has(mjx-container):hover,a:has(.katex):hover{border-bottom-color:transparent;}
 .no-underline{text-decoration:none !important;}
 ul{list-style-type:square;}
 li{margin-bottom:8px !important;}
@@ -20,3 +25,38 @@ code{all:unset;font-family:monospace;background-color:#f1f1f1;padding:4px;}
 #menu-separator{border:2px solid #aaf;}
 #menu{padding-top:4px;-font-size:20px;margin-top:8px;}
 #Hadamard-2025{font-size:25px;text-align: center;border:4px #aaf solid;padding:8px;background-color:#ffa;}
+
+/* ---- the appendix pages ------------------------------------------------ */
+#content{max-width:1024px;margin:0 auto;padding:0 8px;}
+pre{margin-left:8px;background-color:#eee;padding:4px;overflow-x:auto;}
+img{max-width:100%;}
+summary{cursor:pointer;}
+details{cursor:pointer;}
+.scroll{overflow-x:auto;}
+.last-update,#last-update{font-family:monospace;}
+.comment{color:#aaa;}
+.go-top{float:right;}
+.go-top a{text-decoration:none !important;}
+.pure-href{text-decoration:none !important;}
+.alert{color:#f00;}
+.alert-text{color:#f00;}
+.xi-alert{color:#f00;font-weight:bold;}
+.pending{color:#f00;font-weight:bold;}
+.rd6{font-weight:bold;color:#f00;}
+.important{font-weight:bold;}
+.observed{color:#aaa;}
+.raw td{color:#777;}
+.highlight td{background-color:#eee;}
+.strong-td{background-color:#ddf;}
+.h1{background-color:#eef;}
+.header{font-size:12px;font-family:monospace;}
+.obstruction{background-color:#fff;}
+.inner-group{border:2px solid #aaa;}
+.outer-group{border:2px solid #00f;}
+.hr-thick{border:8px solid #999;}
+.H-solution{background-color:#ff0;}
+.y{background-color:#ff0;}
+.v,.v1{background-color:#0f0;}
+.v2{background-color:#ff0;}
+.v3{background-color:#fa0;}
+.v4{background-color:#0ff;}
