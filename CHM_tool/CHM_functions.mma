@@ -1,0 +1,23 @@
+(* ---- cell 1 ---- *)
+unitaryDefect[X_] := Module[{d = Dimensions[X][[1]], R, T}, T = Table[0, {d}, {d}]; R = Flatten[Table[Flatten[ReplacePart[T, {i -> X[[i]]*Conjugate[X[[j]]], j -> (-X[[i]])*Conjugate[X[[j]]]}]], {i, 1, d - 1}, {j, i + 1, d}], 1]; (d - 1)^2 - MatrixRank[Join[Re[R], Im[R]]]]
+
+(* ---- cell 2 ---- *)
+dephase[X_] := Module[{d, Y, Z}, d = Dimensions[X][[1]]; Y = X; Y = X . DiagonalMatrix[Table[1/X[[1,k]], {k, 1, d}]]; Z = DiagonalMatrix[Flatten[{1, Table[1/Y[[k,1]], {k, 2, d}]}]] . Y; Return[Z]; ]
+
+(* ---- cell 3 ---- *)
+haagerup[X_] := Module[{Λ, d, j, k, l, m}, d = Dimensions[X][[1]]; Λ = {}; For[j = 1, j <= d, j++, For[k = 1, k <= d, k++, For[l = 1, l <= d, l++, For[m = 1, m <= d, m++, AppendTo[Λ, X[[j,k]]*X[[l,m]]*Conjugate[X[[j,m]]]*Conjugate[X[[l,k]]]]; ]]]]; Return[DeleteDuplicates[Λ]]; ]
+
+(* ---- cell 4 ---- *)
+complexHadamardQ[X_, tolerance_] := Module[{d, fn1, fn2}, d = Dimensions[X][[1]]; fn1 = Norm[X . ConjugateTranspose[X] - d*IdentityMatrix[d], "Frobenius"]; fn2 = Norm[Abs[X] - ConstantArray[1, {d, d}], "Frobenius"]; If[fn1 < tolerance && fn2 < tolerance, Return[True], Return[False]]; ]
+
+(* ---- cell 5 ---- *)
+polarDecomposition[X_] := ({#1 . ConjugateTranspose[#3], #3 . #2 . ConjugateTranspose[#3]} & ) @@ SingularValueDecomposition[X]; 
+
+(* ---- cell 6 ---- *)
+sinkhorn[S_, maxI_] := Module[{j, d, X, h}, d = Dimensions[S][[1]]; X = S; For[j = 1, j < maxI, j++, X = X/Abs[X]; {X, h} = polarDecomposition[X]; ]; Return[X*Sqrt[d]]; ]
+
+(* ---- cell 7 ---- *)
+restoreFullCyclicForm7[X_] := Module[{Γ, w1, w2, w3, w4, w5, w6, w7, DL, DR, CF}, Γ = 1/(X[[2,2]]*X[[2,3]]*X[[2,4]]*X[[2,5]]*X[[2,6]]*X[[2,7]])^(1/7); w1 = Exp[I*2*Pi*RandomReal[]]; w7 = Γ*w1; w6 = X[[2,7]]*Γ*w7; w5 = X[[2,6]]*Γ*w6; w4 = X[[2,5]]*Γ*w5; w3 = X[[2,4]]*Γ*w4; w2 = X[[2,3]]*Γ*w3; DL = Γ*DiagonalMatrix[{1/Γ, 1, (w1/w2)*(1/X[[3,2]]), (w1/w2)^2*(1/X[[3,2]])*(1/X[[4,2]]), (w1/w2)^3*(1/X[[3,2]])*(1/X[[4,2]])*(1/X[[5,2]]), (w1/w2)^4*(1/X[[3,2]])*(1/X[[4,2]])*(1/X[[5,2]])*(1/X[[6,2]]), (w1/w2)^5*(1/X[[3,2]])*(1/X[[4,2]])*(1/X[[5,2]])*(1/X[[6,2]])*(1/X[[7,2]])}]; DR = DiagonalMatrix[{w1, w2, w3, w4, w5, w6, w7}]; CF = DL . X . DR; Return[CF]; ]; 
+
+(* ---- cell 8 ---- *)
+isBH[M_, q_] := Module[{d = Dimensions[M][[1]], AllOnes}, AllOnes = ConstantArray[1, {d, d}]; B = M; For[j = 1, j < q, j++, B = B*M]; If[Round @@ Chop[N[MatrixForm[Re[B]]]] === AllOnes, Print["BH-type matrix!"], Print["NOT BH-type matrix..."]]; ]; 

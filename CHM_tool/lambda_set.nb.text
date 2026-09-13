@@ -1,0 +1,51 @@
+
+(* Lambda Set *)
+X = H;
+d = Dimensions[H][[1]];
+LambdaSet = 
+  Flatten@Table[
+    X[[j1]][[j2]]/X[[j1]][[j3]] X[[j3]][[j4]]/X[[j4]][[j2]], {j1, 1, d}, {j2, 1, d}, {j3, 1, d}, {j4, 1, d}];
+Dimensions@LambdaSet
+LambdaSetUnique = DeleteDuplicates@LambdaSet;
+Dimensions@LambdaSetUnique
+LambdaSetFS = DeleteDuplicates[FullSimplify[LambdaSet]];
+Dimensions@LambdaSetFS
+
+
+(* 2023-02-27 *)
+
+(* symmetric matrix *)
+
+symmetricMatrix[n_Integer, m_Integer] := 
+  Table[Subscript[a, Sequence @@ Sort[{i, j}]], {i, n}, {j, m}];
+
+
+
+d = 10;
+X = symmetricMatrix[d, d];
+LambdaSet = Flatten@
+   Table[X[[j1]][[j2]]/X[[j1]][[j3]] X[[j3]][[j4]]/X[[j4]][[j2]],
+      {j1, 1, d}, {j2, 1, d}, {j3, 1, d}, {j4, 1, d}];
+
+
+Dimensions@LambdaSet
+
+
+LambdaSetUnique = DeleteDuplicates@LambdaSet;
+Dimensions@LambdaSetUnique
+tauLambda1 = 1 + ((d^2 - d)/2)^2 + (d^2 - d)/2
+tauLambda2 = 1 + Binomial[d, 2]^2 + Binomial[d, 2]
+
+
+(* matrix with double symmetric core *)
+
+X = {
+   {1, 1, 1, 1, 1, 1, 1},
+   {1, p1, p2, p3, p4, p5, p6},
+   {1, p2, p7, p8, p9, p10, p5},
+   {1, p3, p8, p11, p12, p9, p4},
+   {1, p4, p9, p12, p11, p8, p3},
+   {1, p5, p10, p9, p8, p7, p2},
+   {1, p6, p5, p4, p3, p2, p1}
+   };
+
