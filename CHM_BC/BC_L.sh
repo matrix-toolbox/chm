@@ -3,7 +3,7 @@
 # 2021-09-14
 # 2022-04-18 full automation
 # 2023-01-07 improved functionality
-# 2026-09-13 output is named by the catalog convention: LH_N_d_L.dat
+# 2026-09-13 output is named by the catalog convention: LH_N_d_L.data
 #
 # ************************************************************************
 # *                                                                      *
@@ -25,7 +25,7 @@
 # octave >> H = LH_11;
 #
 # The generated M-file solves the system, then saves the phase matrix under
-# the name the Catalog uses:  LH_<N>_<d>_<#Lambda>.dat
+# the name the Catalog uses:  LH_<N>_<d>_<#Lambda>.data
 
 N=$1
 # WATCH OUT! For big N there might be a problem with leading zeros, however...

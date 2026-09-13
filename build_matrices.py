@@ -258,10 +258,10 @@ def from_files():
                        u=(d0 + "/index.html") if (ROOT / d0 / "index.html").exists() else "",
                        c=KIND.get(pre, "")))
 
-    # Appendix E keeps its matrices as .dat.  The names there are generated, so
-    # a strict match is safe; elsewhere .dat names carry timestamps that would
-    # be misread as invariants (Y_11_0_7xx_20221115...).
-    for f in sorted((ROOT / "CHM_BC").glob("*.dat")):
+    # Appendix E keeps its matrices as .data.  The names there are generated, so
+    # a strict match is safe; a .dat elsewhere carries a timestamp that would
+    # be misread as an invariant (Y_11_0_7xx_20221115...).
+    for f in sorted((ROOT / "CHM_BC").glob("*.data")):
         m = re.fullmatch(r"(LH|VH)_(\d+)_(\d+)_(\d+)([A-Z])?(_[A-Za-z0-9_]+)?", f.stem)
         if not m:
             continue
@@ -318,7 +318,7 @@ def main():
     for r in recs:
         by[r["s"]] = by.get(r["s"], 0) + 1
     print("  orphan .m files  :", len(orphans), "(named X_N_d_L, in no index)")
-    print("  Appendix E .dat  :", len(bc))
+    print("  Appendix E .data :", len(bc))
     print("  by source        :", ", ".join("%s=%d" % kv for kv in sorted(by.items())))
     print("  total            :", len(recs))
     print("  with .m file     :", sum(1 for r in recs if r["f"]))

@@ -2,7 +2,7 @@
 # 2021-05-17
 # 2022-04-17
 # 2023-01-07 improved functionality
-# 2026-09-13 output is named by the catalog convention: VH_N_d_L.dat
+# 2026-09-13 output is named by the catalog convention: VH_N_d_L.data
 #
 # ***************************************************
 # *                                                 *
@@ -16,7 +16,7 @@
 # octave >> H = VH_6;
 #
 # The generated M-file solves the system, then saves the phase matrix under
-# the name the Catalog uses:  VH_<N>_<d>_<#Lambda>.dat
+# the name the Catalog uses:  VH_<N>_<d>_<#Lambda>.data
 
 
 N=$1
