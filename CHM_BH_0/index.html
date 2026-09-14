@@ -11,6 +11,24 @@
 <meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../cdn/chm.css">
+<style>
+/* Table 1, in place of the screenshot it used to be: the colour code is the one
+   the old tc_style carried -- grey headers, a faint symbol where the pair (N,q)
+   is excluded, black where the zero-defect matrices have been counted.  The
+   borders chm.css gives every table are cleared, as the figure had none. */
+#BH_table{border-collapse:separate;border-spacing:3px;margin:8px 0;}
+/* the line box is as tall as the circle below, so that the rows carrying a
+   '?' are no taller than the rest */
+#BH_table th,#BH_table td{border:0;padding:2px 7px;text-align:center;
+                          white-space:nowrap;line-height:1.6em;}
+#BH_table th{background-color:#ddd;color:#000;font-weight:bold;border-radius:0;}
+#BH_table td.num{color:#000;}
+#BH_table td.zero{color:#aaa;}
+#BH_table td.non{color:#ccc;}
+#BH_table td.ex{color:#f00;}
+#BH_table .unk{display:inline-block;width:1.6em;line-height:1.6em;border-radius:50%;
+               background-color:#fcc;color:#000;}
+</style>
 
 <div id="content">
 
@@ -138,442 +156,34 @@ There are possibly more isolated matrices, but currently there is no way to chec
 the attention only to those with vanishing defect.</p>
 
 <figure>
-    <img src="BH_table.png" alt="" style="max-width:100%;">
-    <figcaption>Table 1 - Number of Butson Hadamard matrices with vanishing value of defect.
-        Particular zero-defect matrices are available on demand or please use the scripts above.</figcaption>
+<div class="scroll">
+<table id="BH_table">
+<tr><th>N\q</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th></tr>
+<tr><th>2</th><td class="num">1</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td></tr>
+<tr><th>3</th><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="non">&empty;</td></tr>
+<tr><th>4</th><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td></tr>
+<tr><th>5</th><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="num">1</td><td class="zero">0</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="non">&empty;</td></tr>
+<tr><th>6</th><td class="zero">0</td><td class="num">1</td><td class="zero">0</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="zero">0</td><td class="num">1</td><td class="zero">0</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="zero">0</td><td class="num">1</td><td class="zero">0</td><td class="non">&empty;</td></tr>
+<tr><th>7</th><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="num">1</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td></tr>
+<tr><th>8</th><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td><td class="non">&empty;</td></tr>
+<tr><th>9</th><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="num">2</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="zero">0</td><td class="non">&empty;</td><td class="num">2</td><td class="non">&empty;</td><td class="zero">0</td><td class="zero">0</td><td class="non">&empty;</td><td class="non">&empty;</td></tr>
+<tr><th>10</th><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="num">1</td><td class="num">1</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="num">1</td><td class="non">&empty;</td><td class="zero">0</td><td class="num">1</td><td class="zero">0</td><td class="non">&empty;</td></tr>
+<tr><th>11</th><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="num">1</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="zero">0</td><td class="non">&empty;</td><td class="non">&empty;</td></tr>
+<tr><th>12</th><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td><td class="non">&empty;</td><td class="num">26</td><td class="non">&empty;</td><td class="num">6</td><td class="zero">0</td><td class="zero">0</td><td class="non">&empty;</td><td class="num">50</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="ex">&exist;</td><td class="ex">&exist;</td><td class="non">&empty;</td></tr>
+<tr><th>13</th><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="num">218</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="num">1</td><td class="zero">0</td><td class="zero">0</td><td class="non">&empty;</td><td class="non">&empty;</td></tr>
+<tr><th>14</th><td class="zero">0</td><td class="non">&empty;</td><td class="num">8</td><td class="non">&empty;</td><td class="num">690</td><td class="num">3</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="zero">0</td><td class="ex">&exist;</td><td class="non">&empty;</td></tr>
+<tr><th>15</th><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="zero">0</td><td class="zero">0</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="zero">0</td><td class="non">&empty;</td><td><span class="unk">?</span></td><td class="non">&empty;</td><td class="zero">0</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="non">&empty;</td></tr>
+<tr><th>16</th><td class="zero">0</td><td class="non">&empty;</td><td class="num">7978</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td><span class="unk">?</span></td><td class="ex">&exist;</td><td class="non">&empty;</td></tr>
+<tr><th>17</th><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td><span class="unk">?</span></td><td class="non">&empty;</td><td class="zero">0</td><td><span class="unk">?</span></td><td class="non">&empty;</td><td class="num">1</td></tr>
+<tr><th>18</th><td class="zero">0</td><td class="zero">0</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="ex">&exist;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td><span class="unk">?</span></td><td class="ex">&exist;</td><td class="ex">&exist;</td><td class="non">&empty;</td></tr>
+<tr><th>19</th><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="zero">0</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="zero">0</td><td><span class="unk">?</span></td><td class="non">&empty;</td><td class="non">&empty;</td></tr>
+<tr><th>20</th><td class="zero">0</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="ex">&exist;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="ex">&exist;</td><td class="ex">&exist;</td><td class="non">&empty;</td></tr>
+<tr><th>21</th><td class="non">&empty;</td><td class="num">12</td><td class="non">&empty;</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="zero">0</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="zero">0</td><td class="non">&empty;</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="zero">0</td><td class="ex">&exist;</td><td class="non">&empty;</td><td class="non">&empty;</td></tr>
+</table>
+</div>
+<figcaption>Table 1 - Number of Butson Hadamard matrices with vanishing value of defect. Particular zero-defect matrices are available on demand or please use the scripts above.</figcaption>
 </figure>
 
-<!--div style="position:relative;">
-<script>
-const BH_array = [
-    [
-        ["N\\q"], ["2"], ["3"], ["4"], ["5"], ["6"], ["7"], ["8"], ["9"], ["10"], ["11"], ["12"], ["13"], ["14"], ["15"], ["16"], ["17"]
-    ],
-    [
-        ["2"],
-        ["1"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"]
-    ],
-    [
-        ["3"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["&empty;"],
-    ],
-    [
-        ["4"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"]
-    ],
-    [
-        ["5"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["1"],
-        ["0"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["&empty;"]
-    ],
-    [
-        ["6"],
-        ["0"],
-        ["1"],
-        ["0"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["0"],
-        ["1"],
-        ["0"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["0"],
-        ["1"],
-        ["0"],
-        ["&empty;"]
-    ],
-    [
-        ["7"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["1"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"]
-    ],
-    [
-        ["8"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["0"],
-        ["0"],
-        ["&empty;"]
-    ],
-    [
-        ["9"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["&empty;"],
-        ["2"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["0"],
-        ["&empty;"],
-        ["2"],
-        ["&empty;"],
-        ["0"],
-        ["0"],
-        ["&empty;"],
-        ["&empty;"]
-    ],
-    [
-        ["10"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["1"],
-        ["1"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["1"],
-        ["&empty;"],
-        ["0"],
-        ["1"],
-        ["0"],
-        ["&empty;"]
-    ],
-    [
-        ["11"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["1"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["0"],
-        ["&empty;"],
-        ["&empty;"]
-    ],
-    [
-        ["12"],
-        ["0"],
-        ["0"],
-        ["0"],
-        ["&empty;"],
-        ["26"],
-        ["&empty;"],
-        ["6"],
-        ["0"],
-        ["0"],
-        ["&empty;"],
-        ["50"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&exist;"],
-        ["&exist;"],
-        ["&empty;"]
-    ],
-    [
-        ["13"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["218"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["&exist;"],
-        ["1"],
-        ["0"],
-        ["0"],
-        ["&empty;"],
-        ["&empty;"]
-    ],
-    [
-        ["14"],
-        ["0"],
-        ["&empty;"],
-        ["8"],
-        ["&empty;"],
-        ["690"],
-        ["3"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["0"],
-        ["&exist;"],
-        ["&empty;"]
-    ],
-    [
-        ["15"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["0"],
-        ["0"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["0"],
-        ["&empty;"],
-        ["?"],
-        ["&empty;"],
-        ["0"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&empty;"]
-    ],
-    [
-        ["16"],
-        ["0"],
-        ["&empty;"],
-        ["7978"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["?"],
-        ["&exist;"],
-        ["&empty;"]
-    ],
-    [
-        ["17"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["?"],
-        ["&empty;"],
-        ["0"],
-        ["?"],
-        ["&empty;"],
-        ["1"]
-    ],
-    [
-        ["18"],
-        ["0"],
-        ["0"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&exist;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["?"],
-        ["&exist;"],
-        ["&exist;"],
-        ["&empty;"]
-    ],
-    [
-        ["19"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&empty;"],
-        ["0"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["0"],
-        ["?"],
-        ["&empty;"],
-        ["&empty;"]
-    ],
-    [
-        ["20"],
-        ["0"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&exist;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&exist;"],
-        ["&exist;"],
-        ["&empty;"]
-    ],
-    [
-        ["21"],
-        ["&empty;"],
-        ["12"],
-        ["&empty;"],
-        ["&empty;"],
-        ["&exist;"],
-        ["0"],
-        ["&empty;"],
-        ["&exist;"],
-        ["0"],
-        ["&empty;"],
-        ["&exist;"],
-        ["&empty;"],
-        ["0"],
-        ["&exist;"],
-        ["&empty;"],
-        ["&empty;"]
-    ],
-    [
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"],
-        ["&nbsp;"]
-    ]
-];
-
-    var tc_style = {
-            "&empty;": "color:#ccc",
-            "0": "color:#aaa",
-            "":"color:#000",
-            "&exist;":"color:#f00",
-            "?":"border-radius:100px;padding:8px 8px 0px 8px;background-color:#fcc;color:#000",
-            "...":"background-color:#ff0;color:#f00" };
-
-    for (let N=2; N<=23; N++)
-    {
-        for (let q=2; q<=18; q++)
-        {
-            //document.write("<div style='"+tc_style[BH_array[N-2][q-2]]+";position:absolute;top:"+(40+N*40)+"px;left:"+(50+q*50)+"px;'>"+BH_array[N-2][q-2]+"</div>");
-            document.write("<div style='"+tc_style[BH_array[N-2][q-2]]+";position:absolute;top:"+(40+N*40)+"px;left:"+(50+q*50)+"px;'>");
-                if (N==2 || (q==2 && N<23)) document.write("<b style='background-color:#ddd;padding:4px;'>");
-            document.write(BH_array[N-2][q-2]);
-                if (N==2 || (q==2 && N<23)) document.write("</b>");
-            document.write("</div>");
-        }
-    }
-
-</script>
-
-</div-->
 
 
 
