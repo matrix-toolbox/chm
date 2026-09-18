@@ -1,7 +1,13 @@
 function [H, info] = BH36_NAF(t)
 % ------------------------------------------------------------------------------
 % 2026-08-24
-% analytic non-affine deformation of the two-unitary BH(36, 6)
+% Wojciech Bruzda | name@cft.edu.pl : name = w.bruzda
+%
+% analytic non-affine family (NAF) of the two-unitary BH(36, 6)
+% this is the 2nd attempt to the analytic non-linear deformation stemming from 2-unitary BH(36, 6)
+% based on previous notes (2024)
+%
+% the final version of this code was formatted with assistance from an Claude Opus 5
 % ------------------------------------------------------------------------------
 % >>  H = BH36_NAF(t);
 % >>  [H info] = BH36_NAF(t)
