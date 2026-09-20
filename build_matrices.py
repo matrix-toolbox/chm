@@ -343,7 +343,7 @@ def from_files():
         out.append(rec(n=int(N), d=int(d), l=int(lam), t=t, nm=f.stem,
                        s="file", a="F", f=str(f.relative_to(ROOT)),
                        u="CHM_GH/index.html",
-                       c="bordered group-developed over " + grp.replace("_", " ")))
+                       c="bordered group-developed over " + grp))
     return out
 
 

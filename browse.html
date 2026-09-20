@@ -293,9 +293,39 @@ appear here in <span class="gen">bold</span>.</p>
     if (!idx) return esc(seg);
     return esc(base) + "<sub>" + esc(idx) + "</sub>" + esc(tail);
   }
+  // A group name as the file names sanitise it: x is a direct product, s a
+  // semidirect one, neither of them a Kronecker product of matrices.
+  function fmtGroup(g) {
+    var m = /^SL2_3$/.exec(g);
+    if (m) return "SL(2,3)";
+    m = /^G(\d+)_(\d+)$/.exec(g);
+    if (m) return "G(" + m[1] + "," + m[2] + ")";
+    m = /^Dih(.+)$/.exec(g);
+    if (m) return "Dih(" + fmtGroup(m[1]) + ")";
+    var tail = "";
+    m = /^(.+)_(\d+)$/.exec(g);            // Z8sZ4_2: the second group of that shape
+    if (m) { g = m[1]; tail = ' <span class="hint">(' + m[2] + ")</span>"; }
+    return g.split(/([xso])/).map(function (p) {
+      if (p === "x") return "&times;";
+      if (p === "s") return "\u22CA";
+      if (p === "o") return "\u2218";
+      return sub(p);
+    }).join("") + tail;
+  }
+  // the Appendix F comment names a group, not prose
+  function fmtComment(s) {
+    var m = /^(bordered group-developed over )(\S+)$/.exec(s);
+    return m ? esc(m[1]) + fmtGroup(m[2]) : fmtText(s);
+  }
   function fmtName(s) {
     if (!s) return "";
-    // split tensor products only between a digit and a capital: D6xF2, not xH_7_0_43
+    // GH_N_d_L_group: the tail names the group the core is developed over, so
+    // its x is a direct product of groups and must not become a tensor sign.
+    // GH_N_d_L_group[__k]: __k only disambiguates the file, so it is kept
+    // literal and never read as part of the group name.
+    var gh = /^(GH_\d+_\d+_\d+_)(.+?)(__\d+)?$/.exec(s);
+    if (gh) return esc(gh[1]) + fmtGroup(gh[2]) + (gh[3] ? esc(gh[3]) : "");
+    // elsewhere a digit-x-capital really is a Kronecker product: D6xF2, F2xF4
     return s.replace(/([0-9])x([A-Z])/g, "$1\u0001$2").split("\u0001").map(sub)
             .join('<span class="ox">\u2297</span>');   // F2 (x) F4
   }
@@ -326,7 +356,7 @@ appear here in <span class="gen">bold</span>.</p>
     if (r.u) where = '<a href="' + esc(r.u) + '">' + where + "</a>";
     if (r.k) where += ' &bull; <a href="' + esc(r.k) + '">' +
                      (r.k.indexOf("catalogue/") === 0 ? "catalog" : "App. A") + "</a>";
-    if (r.c) where += ' <span class="hint">' + fmtText(r.c) + "</span>";
+    if (r.c) where += ' <span class="hint">' + fmtComment(r.c) + "</span>";
     return "<tr>" +
       num(r.n, "N") + num(r.d, "d", r.g) + num(r.l, "#\u039B") + num(r.q, "q") +
       cell(flags, "flag", "type") +
