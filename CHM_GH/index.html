@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>CHM Catalog &bull; Appendix F: Bordered Group-Developed CHM</title>
+<meta name="author" content="Wojciech Bruzda">
+<meta name="copyright" content="Copyright (c) 2006-2026 Wojciech Bruzda">
+<meta name="keywords" content="complex, hadamard, matrices, matrix, catalog, catalogue, butson">
+<meta name="description" content="Catalog of Complex Hadamard Matrices">
+<meta name="robots" content="index, nofollow">
+<meta name="googlebot" content="index, nofollow, noimageindex">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../cdn/chm.css">
+<script src="../cdn/math.js"></script>
+<style>
+/* the group column is one symbol per row: keep each on a single line */
+#dims td:nth-child(3) { white-space: nowrap; }
+</style>
+
+<div id="content">
+
+<p id="menu"><a href="../index.html">CATALOG</a> ...</p>
+<hr id="menu-separator">
+
+<h1 id="top"><a href="../appendix.html">Appendix</a> F: Bordered Group-Developed CHM</h1>
+<p class="last-update">created: 2026-09-18</p>
+<p class="last-update">updated: 2026-09-20 by W. Bruzda</p>
+<hr>
+
+<p class="note">Not every file in the repository is listed on this page. The collection grows faster than these tables &ndash; for the complete set, browse <a href="https://github.com/matrix-toolbox/chm/tree/main/CHM_GH" target="_blank">the repository</a> directly.</p>
+
+<p>This appendix records the <b>defect</b> and the <b>Haagerup set</b> of 1118 complex Hadamard matrices that are developed over a finite group. The construction is not new &ndash; it is the classical group-developed family [<a href="../literature.html#178">178</a>,&nbsp;<a href="../literature.html#150">150</a>,&nbsp;<a href="../literature.html#183">183</a>], studied since the 1990s. What has not been recorded is what these matrices look like from the point of view of this Catalog: their defect d and #&Lambda;. Every one of the 1118 below has d = 0, so this extends the number of <a href="../CHM_BC/index.html">isolated</a> cases.</p>
+
+<h2>construction</h2>
+
+<p>Take a finite group G of order N - 1 and a unimodular F : G &rarr; U(1). Border the array [F(hg<sup>-1</sup>)]<sub>g,h&isin;G</sub> with a row and a column of ones. The result is a complex Hadamard matrix of order N exactly when</p>
+$$
+\sum_g F(g)=-1\quad\text{and}\quad \sum_g F(g) \overline{F(gu)}=-1 : u \neq e.
+$$
+<p>That system is square for every finite group: |G| real unknowns against |G| real conditions, with no arithmetic condition on N and no ansatz to guess. That is what makes an exhaustive sweep possible. The solver was run over every one of the 144 groups of order 4 to 34, from a group library built here and verified against <a href="https://oeis.org/A000001" target="_blank">A000001</a>, so the list below is complete over its index groups rather than being a collection of whatever a search happened to find.</p>
+
+<p>For G cyclic these are the <b>circulant core</b> matrices of Nicoar&#259; and Worley [<a href="../literature.html#182">182</a>], the one case of the construction that has been studied before. Nothing forces G to be cyclic, or abelian, hence of the 130 groups that carry a matrix here only 25 are cyclic, so <b>105</b> lie outside that case and 948 of the 1118 matrices below are developed over non-abelian groups.</p>
+
+<p>The sequence L<sub>N</sub> from <a href="../CHM_BC/index.html">Appendix E</a> meets this condition. It is the case G cyclic with an extra conjugate symmetry &ndash; and its V<sub>N</sub> sequence does not. Neither is listed here. L<sub>N</sub> came first and the classes this sweep rediscovered are among the 23 it excludes as already catalogued. <!--The relationship is set out, with the evidence, on <a href="../CHM_BC/index.html">Appendix E</a>'s own page.--></p>
+
+<hr>
+
+<p class="note">Everything here is numerical. The generators are solutions of the system above, found by Newton from random starts and exact only to floating point, so what is collected below is a sample of the solution set rather than a classification of it. That is also why so much of the description concerns tolerances, rank thresholds and residuals rather than the construction itself. An invariant is only as sharp as the accuracy behind it and the easiest error to make is to read rounding as structure.</p>
+
+<p>A bordered group-developed matrix is determined by the group and by the single unimodular function F, that is by N - 1 phases, not by the N<sup>2</sup> entries of H. Each file therefore stores the <b>generator</b>, i.e., one row holding the phases of F in the order of the group elements, so that F = exp(2&pi;i&middot;a) as usual.</p>
+
+<pre>
+GH_N_d_L_group.gen
+GH_N_d_L_group__k.gen
+
+        N     = size(H)
+        d     = defect(H) = 0 (here it always vanishes)
+        L     = #&Lambda;(H) = cardinality of the Haagerup set
+        group = the group of order N - 1 the core is developed over
+        __k   = only when several inequivalent classes share all four
+                <span class="comment">it labels the file and it is not part of the group name</span>
+</pre>
+
+<p>The matrix is recovered by reading F through the index table I(i,&nbsp;j) = position of g<sub>j</sub>g<sub>i</sub><sup>-1</sup> which <code><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_groups.tsv">GH_groups.tsv</a></code> tabulates for each of the 130 groups used here:</p>
+$$
+H(*,*) = H(*,h) = H(g,*) = 1,\qquad      H(g,h) = F(h g^{-1}) = F(I(g,h))
+$$
+<p>Two readers are provided and either returns H:</p>
+
+<pre>
+octave:1&gt; H = GH_expand("GH_13_0_89_A4.gen");
+
+$ python3 gh_expand.py GH_13_0_89_A4.gen <span class="comment"># prints the N &times; N phase array</span>
+</pre>
+
+<p>Group names follow the usual conventions: <code>Z12xZ2</code>, <code>D11</code>, <code>Q16</code>, <code>SD32</code>, <code>Dic7</code>, <code>He3</code> (Heisenberg), <code>SL2_3</code>, <code>A4</code>, <code>S4</code>, <code>Dih...</code> (generalised dihedral), <code>ZasZb</code> for a semidirect product Z<sub>a</sub>&#8906;Z<sub>b</sub> and <code>Gn_i</code> for the groups of order 32 that have no short standard name.</p>
+
+<p>The core of a group-developed matrix is a Cayley table with its symbols relabelled by F, so its pattern is always a Latin square. Its values form one as well exactly when F is injective (no entry repeats in a row or in a column). 588 of the 1118 matrices have that property (the smallest is at N = 12) and carry the flag <code>L</code> in <a href="../browse.html">browse</a>. The flag records a property of the generator. It is not a separate construction and nothing below depends on it.</p>
+
+<hr>
+<p>The system was solved over every one of the 144 groups of order 4 to 34, that is for every N from 5 to 35 and every group of order N - 1, from 400 to 5000 random starts each. Of the 144 groups, 140 yielded a solution. No solution was found in these runs for the other four, all 2-groups of order at most 16, namely Z<sub>2</sub><sup>2</sup>, Z<sub>2</sub><sup>3</sup>, Z<sub>2</sub>&times;Z<sub>4</sub> and Z<sub>2</sub><sup>4</sup>. Every group of order 32 succeeds, including Z<sub>2</sub><sup>5</sup>.</p>
+
+<p>The yield tracks the group theory, not the arithmetic of N. Order 32 has 51 groups, dimension N = 33 accounts for 627 of the 1141 classes and 11 of the 31 dimensions have only one group. The single dimension producing no isolated matrix is N = 8 where the only group of order 7 is Z<sub>7</sub> and every converged solution is a real Paley matrix with d = 21. This is (so far) consistent with <a href="../CHM_dL/index.html">Appendix A</a> where no isolated BH(8, q) occurs for any q &leqslant; 16 among 5472 matrices.</p>
+
+<div class="scroll"><table>
+<tr><th>N</th><th>groups of order N - 1 (solvable)</th><th>isolated classes</th></tr>
+<tr><td>5</td><td>2 (1)</td><td>1</td></tr>
+<tr><td>6</td><td>1 (1)</td><td>1</td></tr>
+<tr><td>7</td><td>2 (2)</td><td>2</td></tr>
+<tr><td>8</td><td>1 (1)</td><td>0</td></tr>
+<tr><td>9</td><td>5 (3)</td><td>4</td></tr>
+<tr><td>10</td><td>2 (2)</td><td>3</td></tr>
+<tr><td>11</td><td>2 (2)</td><td>7</td></tr>
+<tr><td>12</td><td>1 (1)</td><td>1</td></tr>
+<tr><td>13</td><td>5 (5)</td><td>18</td></tr>
+<tr><td>14</td><td>1 (1)</td><td>4</td></tr>
+<tr><td>15</td><td>2 (2)</td><td>5</td></tr>
+<tr><td>16</td><td>1 (1)</td><td>3</td></tr>
+<tr><td>17</td><td>14 (13)</td><td>60</td></tr>
+<tr><td>18</td><td>1 (1)</td><td>6</td></tr>
+<tr><td>19</td><td>5 (5)</td><td>24</td></tr>
+<tr><td>20</td><td>1 (1)</td><td>4</td></tr>
+<tr><td>21</td><td>5 (5)</td><td>34</td></tr>
+<tr><td>22</td><td>2 (2)</td><td>8</td></tr>
+<tr><td>23</td><td>2 (2)</td><td>10</td></tr>
+<tr><td>24</td><td>1 (1)</td><td>4</td></tr>
+<tr><td>25</td><td>15 (15)</td><td>162</td></tr>
+<tr><td>26</td><td>2 (2)</td><td>10</td></tr>
+<tr><td>27</td><td>2 (2)</td><td>16</td></tr>
+<tr><td>28</td><td>5 (5)</td><td>34</td></tr>
+<tr><td>29</td><td>4 (4)</td><td>30</td></tr>
+<tr><td>30</td><td>1 (1)</td><td>4</td></tr>
+<tr><td>31</td><td>4 (4)</td><td>31</td></tr>
+<tr><td>32</td><td>1 (1)</td><td>3</td></tr>
+<tr><td>33</td><td>51 (51)</td><td>627</td></tr>
+<tr><td>34</td><td>1 (1)</td><td>5</td></tr>
+<tr><td>35</td><td>2 (2)</td><td>20</td></tr>
+<tr><td><b>total</b></td><td><b>144 (140)</b></td><td><b>1141</b></td></tr>
+</table></div>
+
+<p>The 1118 matrices below are pairwise inequivalent, by exhaustive monomial search. The count of 1141 classes includes 23 further ones that the sweep found but that the Catalog already holds. They carry no generator here and were not re-measured in this release, so their #&Lambda; still comes from the superseded routine. The 1118 carry a triple (N, d, #&Lambda;) that (so far) occurs nowhere else in the rest of the Catalog. Within this appendix the triple is <b>not</b> a complete invariant because, among the 1118 matrices below, 185 triples are shared by two or more of the classes, most often by a group and one of its non-abelian partners of the same order, such as Z<sub>2</sub>&times;Z<sub>5</sub> and D<sub>5</sub> at N = 11. They are too many to list here and the full list of invariants is <a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_classes.tsv"><code>GH_classes.tsv</code></a> and the generators themselves are the <code>GH_*.gen</code> files. Below is the smallest #&Lambda; in each dimension. None is of <a href="../d/butson-class.html">Butson</a> type for q &leqslant; 10<sup>4</sup>.</p>
+
+<div class="scroll"><table id="dims">
+<tr><th>matrix</th><th>N</th><th>group</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th>symmetric</th></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_11_0_139_Z2xZ5.gen">GH<sub>11,0,139</sub></a></td><td>11</td><td>Z<sub>2</sub>&times;Z<sub>5</sub></td><td>0</td><td>139</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_12_0_463_Z11.gen">GH<sub>12,0,463</sub></a></td><td>12</td><td>Z<sub>11</sub></td><td>0</td><td>463</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_13_0_89_A4.gen">GH<sub>13,0,89</sub></a></td><td>13</td><td>A<sub>4</sub></td><td>0</td><td>89</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_14_0_103_Z13.gen">GH<sub>14,0,103</sub></a></td><td>14</td><td>Z<sub>13</sub></td><td>0</td><td>103</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_15_0_345_Z2xZ7.gen">GH<sub>15,0,345</sub></a></td><td>15</td><td>Z<sub>2</sub>&times;Z<sub>7</sub></td><td>0</td><td>345</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_16_0_415_Z3xZ5.gen">GH<sub>16,0,415</sub></a></td><td>16</td><td>Z<sub>3</sub>&times;Z<sub>5</sub></td><td>0</td><td>415</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_17_0_121_M16.gen">GH<sub>17,0,121</sub></a></td><td>17</td><td>M<sub>16</sub></td><td>0</td><td>121</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_18_0_18_Z17.gen">GH<sub>18,0,18</sub></a></td><td>18</td><td>Z<sub>17</sub></td><td>0</td><td>18</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_19_0_263_Z2xZ3xZ3.gen">GH<sub>19,0,263</sub></a></td><td>19</td><td>Z<sub>2</sub>&times;Z<sub>3</sub>&times;Z<sub>3</sub></td><td>0</td><td>263</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_20_0_849_Z19.gen">GH<sub>20,0,849</sub></a></td><td>20</td><td>Z<sub>19</sub></td><td>0</td><td>849</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_21_0_189_Z5sZ4.gen">GH<sub>21,0,189</sub></a></td><td>21</td><td>Z<sub>5</sub>&#8906;Z<sub>4</sub></td><td>0</td><td>189</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_22_0_561_Z7sZ3.gen">GH<sub>22,0,561</sub></a></td><td>22</td><td>Z<sub>7</sub>&#8906;Z<sub>3</sub></td><td>0</td><td>561</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_23_0_1279_D11.gen">GH<sub>23,0,1279</sub></a></td><td>23</td><td>D<sub>11</sub></td><td>0</td><td>1279</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_24_0_3587_Z23.gen">GH<sub>24,0,3587</sub></a></td><td>24</td><td>Z<sub>23</sub></td><td>0</td><td>3587</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_25_0_403_SL2_3.gen">GH<sub>25,0,403</sub></a></td><td>25</td><td>SL(2,3)</td><td>0</td><td>403</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_26_0_1801_Z5xZ5.gen">GH<sub>26,0,1801</sub></a></td><td>26</td><td>Z<sub>5</sub>&times;Z<sub>5</sub></td><td>0</td><td>1801</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_27_0_775_D13.gen">GH<sub>27,0,775</sub></a></td><td>27</td><td>D<sub>13</sub></td><td>0</td><td>775</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_28_0_1207_He3.gen">GH<sub>28,0,1207</sub></a></td><td>28</td><td>He<sub>3</sub></td><td>0</td><td>1207</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_29_0_2521_Dic7.gen">GH<sub>29,0,2521</sub></a></td><td>29</td><td>Dic<sub>7</sub></td><td>0</td><td>2521</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_30_0_6961_Z29__1.gen">GH<sub>30,0,6961</sub></a></td><td>30</td><td>Z<sub>29</sub></td><td>0</td><td>6961</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_31_0_3229_D15.gen">GH<sub>31,0,3229</sub></a></td><td>31</td><td>D<sub>15</sub></td><td>0</td><td>3229</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_32_0_8431_Z31.gen">GH<sub>32,0,8431</sub></a></td><td>32</td><td>Z<sub>31</sub></td><td>0</td><td>8431</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_33_0_338_SD32.gen">GH<sub>33,0,338</sub></a></td><td>33</td><td>SD<sub>32</sub></td><td>0</td><td>338</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_34_0_10097_Z3xZ11.gen">GH<sub>34,0,10097</sub></a></td><td>34</td><td>Z<sub>3</sub>&times;Z<sub>11</sub></td><td>0</td><td>10097</td><td>&ndash;</td></tr>
+<tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_35_0_4705_D17.gen">GH<sub>35,0,4705</sub></a></td><td>35</td><td>D<sub>17</sub></td><td>0</td><td>4705</td><td>&ndash;</td></tr>
+</table></div>
+
+<hr>
+
+<p>These scripts (made with help of Claude) rebuild the group library, the search and the invariants from scratch<!-- so GAP is not required-->. Two things they <strong>do not</strong> reproduce: 1. the stored generators carry 60 significant digits, obtained by a separate high-precision refinement, while <code>gh_report.py</code> writes 17, and 2. the random search is not deterministic across library versions. The search is a capped sample of the solution set, not an enumeration of it so a re-run may rediscover some of these classes, miss others and find classes not listed here.</p>
+
+<pre>
+gh_groups.py   all 147 groups of order &leqslant; 34, built from scratch
+gh_names.py    readable names for them
+gh_sweep.py    solves the system over every group, in parallel
+gh_report.py   invariants, equivalence classes, comparison with the catalog
+gh_expand.py   rebuilds H from a generator (python)
+GH_expand.m    rebuilds H from a generator (octave)
+gh_check.py    is a given matrix group-developed and over which group?
+
+$ python3 gh_groups.py 34 <span class="comment"># builds and verifies the library</span>
+$ python3 gh_sweep.py --orders 4-34 --out GH_sweep.json --tmp /tmp
+$ python3 gh_report.py GH_sweep.json out /tmp <span class="comment"># writes the generators</span>
+</pre>
+
+<p>Every group of order below 60 is solvable, so it has a normal subgroup of prime index, hence enumerating the extensions H.&lang;t&rang; over all H of order n/p is complete. The resulting counts agree with the known number of groups of each order (<a href="https://oeis.org/A000001" target="_blank">A000001</a>) at every order up to 34, which certifies both completeness and the absence of duplicates.</p>
+
+<hr>
+<h2 id="accuracy">warning about defect<span class="go-top"><a href="#top">&uarr;</a></span></h2>
+
+<p>Deciding d numerically means deciding the rank of a real linear system  and two different things can go wrong. A rank threshold set too high counts a small non-zero singular value as zero, which only raises the computed defect and since d &geqslant; 0 that can never identify an isolated matrix. The other direction is the dangerous one. At a solution where the Jacobian of the system above is singular, Newton converges only linearly, F stalls at accuracy &radic;&epsilon; &asymp; 10<sup>-8</sup> and the residual does not reveal it &ndash; being quadratic in the error, it still reads 10<sup>-16</sup>. The singular values that ought to vanish are then lifted to 10<sup>-8</sup> and counted as non-zero and the defect is reported far too small. At N = 8 this returns d = 0 for a Paley matrix whose true defect is 21.</p>
+
+<p>Accordingly every solution was screened on the smallest singular value of the Jacobian of the system above, relative to the largest. This is numerical evidence, not a certificate: a single error law does not describe every singular Newton convergence. What is recorded in <a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_GH/GH_census.tsv"><code>GH_census.tsv</code></a> is the per-group <code>degenerate</code> tally, not a per-matrix value. Solutions failing it are excluded and 21 of the 1179 representatives did, ten of which would otherwise have been listed as isolated. The defects of the 1118 matrices published here were computed twice &ndash; from the singular values of the first-order system and with the catalog tools &ndash; agreeing in every case. The 23 further classes counted in the 1141 have no generator here and were not re-measured. The same caution applies to any defect in this catalog obtained from a numerically found matrix.</p>
+
+<p class="note">#&Lambda; here is taken with <code>CHM_tool/lambda</code> at its default &epsilon; = 10<sup>&minus;8</sup>, which counts two invariants equal when the distance between them falls below &epsilon;. These counts are resolved at that tolerance, not exact cardinalities: <b>131</b> of the 1118 change again at 10<sup>&minus;9</sup> and a further 11 at 10<sup>&minus;10</sup>. Nor is 10<sup>&minus;8</sup> uniform across the Catalog &ndash; <a href="../CHM_BC/index.html">Appendix E</a> states 10<sup>&minus;6</sup> for its own figures. So #&Lambda; may be compared across appendices only after re-measuring both sides at one tolerance, and a match or a mismatch of (N,&nbsp;d,&nbsp;#&Lambda;) is evidence about equivalence, never a decision. That is what <code>check_me</code> is for.</p>
+
+</div>
+
+<!--
+
+L_N vs. Niocară-Worley
+======================
+
+the class is the same but the content is not
+the L_N cores are literally circulant after relabelling so L_N sits inside the circulant-core class
+
+1. Nicoară–Worley is not a construction
+   it is a theorem about the class: for p prime, there are finitely many CHM of order p+1 with circulant core
+
+2. NW theorem does not cover a single L_N
+   it assumes the core has prime size while L_N's core has size N−1 = 2n with n odd
+   ==> composite for every N > 6
+   ==> NW applies to none of L_N
+
+3. L_N is a proper sub-class with the extra structure
+   circulant-core is one condition and L_N additionally imposes F(m, 1) = conj(F(m, 0))
+   that halves the free phases and it is precisely what makes the system square
+   when N === 3 (mod 4) and overdetermined by one equation otherwise
+   that dimensional restriction is a fact about L_N and it says nothing about circulant-core matrices in general
+
+-->

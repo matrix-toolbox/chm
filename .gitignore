@@ -1,2 +1,6 @@
 __pycache__/
 CHM_NUMERICAL/
+
+# research in progress -- not for the repository until an arXiv submission
+CHM_WIP/
+CHM_GH/gh_lib.json

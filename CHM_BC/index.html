@@ -19,16 +19,12 @@
 
 <h1 id="top"><a href="../appendix.html">Appendix</a> E: Block-Circulant CHM</h1>
 <p class="last-update">created: 2026-09-13</p>
-<p class="last-update">updated: 2026-09-13 by W. Bruzda</p>
+<p class="last-update">updated: 2026-09-20 by W. Bruzda</p>
 <hr>
 
 <p class="note">Not every file in the repository is listed on this page. The collection grows faster than these tables &ndash; for the complete set, browse <a href="https://github.com/matrix-toolbox/chm/tree/main/CHM_BC" target="_blank">the repository</a> directly.</p>
 
-<p>The matrices collected here come from
-&quot;<a href="https://arxiv.org/abs/2204.11727" target="_blank">Block-Circulant Complex Hadamard Matrices</a>&quot;
-[<a href="../literature.html#175">175</a>]. They are numerical, not analytic: each one is a
-solution of the unitarity constraints imposed on a block-circulant pattern, found with
-<code>fsolve</code> and refined until the residual reaches machine precision.</p>
+<p>The matrices collected here come from &quot;<a href="https://arxiv.org/abs/2204.11727" target="_blank">Block-Circulant Complex Hadamard Matrices</a>&quot; [<a href="../literature.html#175">175</a>]. They are numerical, not analytic and each one is a solution of the unitarity constraints imposed on a block-circulant pattern, found with <code>fsolve</code> and refined until the residual reaches machine precision.</p>
 
 <p>Two sequences are solved here:</p>
 <ul>
@@ -36,24 +32,16 @@ solution of the unitarity constraints imposed on a block-circulant pattern, foun
 <li><b><a href="#sequence_VN">V<sub>N</sub></a></b> &ndash; for any N = 6, 7, 8, ...</li>
 </ul>
 
-<p>Their interest is that almost every solution turns out to be <b>isolated</b>
-(<a href="../d/defect.html">defect</a> <b>d</b> = 0) and <b>not</b> of
-<a href="../d/butson-class.html">Butson</a> type. For L<sub>N</sub> one obtains isolated
-solutions only; for V<sub>N</sub> other defects occur as well. Since the sequences can be
-run in essentially any dimension, they provide numerical support for the conjecture that
-<a href="../d/isolated-matrix.html">isolated</a> complex Hadamard matrices exist in every
-dimension &ndash; a question left open by the analytic constructions, which supply isolated
-examples only in special dimensions (Fourier F<sub>p</sub> for prime p, S<sub>6</sub>, and
-a handful of others).</p>
+<p>The two sequences are structurally different, which is easy to miss because they are solved the same way. L<sub>N</sub> is <b>bordered group-developed</b> meaning its core is H(g, h) = F(h - g) over the cyclic group of order N - 1, written Z<sub>n</sub> &times; Z<sub>2</sub> with n = (N - 1)/2 odd and with F(m, 1) = conj(F(m, 0)). Hence, it is a circulant-core matrix in the sense of Nicoar&#259; and Worley [<a href="../literature.html#182">182</a>], although their finiteness theorem concerns a core of prime size and the core here has order N - 1 = 2n with n odd, composite for every N &geqslant; 7. The group is recovered from every L<sub>N</sub> here by <code>CHM_GH/gh_check.py</code>. <a href="../CHM_GH/index.html">Appendix F</a> sweeps the same construction over arbitrary groups and these matrices came first and are not listed there. V<sub>N</sub> is <b>not</b> of that form as it starts from an unbordered circulant matrix of order N and 83 of its 85 matrices of order at most 40 fail a necessary condition for group development that does not depend on how the group is labelled. The two that do not fail are V<sub>7,0,7</sub> and V<sub>11,0,11</sub>, the entries marked below as F<sub>7</sub> and F<sub>11</sub> in disguise and for those a bordered group-developed representative does exist. The matrices below are not duplicated in <a href="../CHM_GH/index.html">Appendix F</a> and the ones its sweep rediscovered (for N = 11, 15, 19) are recorded there as already catalogued and the classes it lists over the same cyclic groups at N = 23 and 27 were checked to be monomially inequivalent to these.</p>
 
-<p class="comment">For the initial dimensions 11&ndash;16 each run returns different values of
-the parameters; whether the resulting matrices are inequivalent is not known.</p>
+<p>Their interest is that almost every solution turns out to be <b>isolated</b> (<a href="../d/defect.html">defect</a> <b>d</b> = 0) and <b>not</b> of <a href="../d/butson-class.html">Butson</a> type. For L<sub>N</sub> one obtains isolated solutions only while for V<sub>N</sub> other defects occur as well. Since the sequences can be run in essentially any dimension, they provide numerical support for the conjecture that <a href="../d/isolated-matrix.html">isolated</a> complex Hadamard matrices exist in every dimension &ndash; a question left open by the analytic constructions, which supply isolated examples only in special dimensions (Fourier F<sub>p</sub> for prime p, S<sub>6</sub> and not many others).</p>
+
+<p class="comment">For the initial dimensions 11&ndash;16 each run returns different values of the parameters and whether the resulting matrices are inequivalent is not known.</p>
 
 <hr>
-<h2 id="scheme">Filename scheme<span class="go-top"><a href="#top">&uarr;</a></span></h2>
+<h2 id="scheme">filename scheme<span class="go-top"><a href="#top">&uarr;</a></span></h2>
 
-<p>Every file stores the <b>phase</b> matrix <code>A</code>, so that
-H = exp(2&pi;i&middot;A) is the complex Hadamard matrix itself:</p>
+<p>Every file stores the <b>phase</b> matrix <code>A</code>, so that H = exp(2&pi;i&middot;A) is the complex Hadamard matrix itself:</p>
 
 <pre>
 LH_N_d_L.data   block-circulant, sequence L
@@ -64,50 +52,40 @@ VH_N_d_L.data   block-circulant, sequence V
         L = #&Lambda;(H), cardinality of the Haagerup set
 </pre>
 
-<p>Both invariants are expensive, so they are recorded only while that is affordable, and
-the name degrades in a fixed way:</p>
+<p>Both invariants are expensive, so they are recorded only while that is affordable and the name degrades in a fixed way:</p>
 
 <pre>
-N &le;  40      LH_N_d_L.data     both invariants
-N &le;  60      LH_N_d.data       #&Lambda; too slow to compute
+N &leqslant;  40      LH_N_d_L.data     both invariants
+N &leqslant;  60      LH_N_d.data       #&Lambda; too slow to compute
 N &gt;  60      LH_N.data         both too slow to compute
 </pre>
 
-<p>A trailing letter distinguishes different solutions that share the same invariants
-(<code>VH_14_0_687A</code>, <code>...B</code>, ...); a trailing word records a property worth
-keeping (<code>_persymmetric</code>, <code>_BH</code>).</p>
+<p>A trailing letter distinguishes different solutions that share the same invariants (<code>VH_14_0_687A</code>, <code>...B</code>, ...) and a trailing word records a property worth keeping (<code>_persymmetric</code>, <code>_BH</code>).</p>
 
-<p class="comment">Files taken over from the earlier <code>LN/</code> and <code>VN/</code>
-directories keep the whole Octave workspace they were saved with
-(<code>H</code>, <code>defect</code>, <code>F_norm</code>, <code>is_convergent</code>, ...)
-in addition to the matrix; the newer ones store <code>A</code> alone.</p>
+<!--p class="comment">Files taken over from the earlier <code>LN/</code> and <code>VN/</code> directories keep the whole Octave workspace they were saved with (<code>H</code>, <code>defect</code>, <code>F_norm</code>, <code>is_convergent</code>, ...) in addition to the matrix; the newer ones store <code>A</code> alone.</p-->
 
 <hr>
-<h2 id="scripts">Scripts<span class="go-top"><a href="#top">&uarr;</a></span></h2>
+<h2 id="scripts">scripts<span class="go-top"><a href="#top">&uarr;</a></span></h2>
 
-<p>The two generators write a ready-to-run Octave M-file for a given dimension; running it
-solves the system and saves the solution under the name above.</p>
+<p>The two generators write a ready-to-run Octave M-file for a given dimension. Running it solves the system and saves the solution under the name above.</p>
 
 <pre>
-$ ./BC_L.sh 11          # writes LH_11.m
-$ ./C_V.sh 10           # writes VH_10.m
+$ ./BC_L.sh 11          <span class="comment"># writes LH_11.m</span>
+$ ./C_V.sh 10           <span class="comment"># writes VH_10.m</span>
 
-octave:1&gt; H = LH_11;    # solves, then saves LH_11_0_191.data
+octave:1&gt; H = LH_11;    <span class="comment"># solves, then saves LH_11_0_191.data</span>
 </pre>
 
-<p><code><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BC/bc_name.m">bc_name.m</a></code>
-builds the file name and is the only helper the generated M-files need; it calls
-<code><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BH_0/ud.m">ud.m</a></code>
-for the defect.</p>
+<p><code><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BC/bc_name.m">bc_name.m</a></code> builds the file name and is the only helper the generated M-files need. It also calls <code><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BH_0/ud.m">ud.m</a></code> for the defect.</p>
 
 <p class="comment">L<sub>N</sub> works only for N = 3 + 4k; the number of parameters is
-(N&minus;1)/2. For N &gt; 55 the invariants take too long and the name is shortened
+(N - 1)/2. For N &gt; 55 the invariants take too long and the name is shortened
 automatically.</p>
 
 <hr>
-<h2 id="sequence_LN">Sequence L<sub>N</sub><span class="go-top"><a href="#top">&uarr;</a></span></h2>
+<h2 id="sequence_LN">sequence L<sub>N</sub><span class="go-top"><a href="#top">&uarr;</a></span></h2>
 <p>Solvable for N = 3 + 4k only. Every converged solution found so far is isolated.</p>
-<p class="note">Both invariants below are computed numerically, from a floating-point representation of H. The Haagerup set is obtained by forming all N<sup>4</sup> products H<sub>ij</sub>H<sub>kl</sub><span style="text-decoration:overline">H<sub>il</sub></span><span style="text-decoration:overline">H<sub>kj</sub></span> and counting two of them as equal when they agree to 10<sup>&minus;6</sup>. That threshold is arbitrary: a genuine coincidence below it inflates the count, a genuine difference below it deflates it, so the figures given for #&Lambda; are approximations and may err in either direction. They are least reliable for large N, where the set is large and its elements lie close together, and for any matrix whose residual is not at machine precision. Read them as characteristics useful for telling these matrices apart, not as exact invariants. The <a href="../d/defect.html">defect</a>, being the rank of a real matrix, is markedly more stable, but it rests on a singular-value threshold of the same kind.</p>
+<p class="comment">Both invariants below are computed numerically, from a floating-point representation of H. The Haagerup set is obtained by forming all N<sup>4</sup> products H<sub>ij</sub>H<sub>kl</sub><span style="text-decoration:overline">H<sub>il</sub></span><span style="text-decoration:overline">H<sub>kj</sub></span> and counting how many distinct values remain. The count recorded here is the one produced by <code>bc_name.m</code>, which rounds the real and imaginary parts onto a grid of step 10<sup>-6</sup> and counts the occupied cells. That is a quantisation, not a test of distance so two values closer than the step are still counted twice when they fall either side of a cell boundary and two values further apart than the step can share a cell. It is also not the convention used by <code>CHM_tool/lambda</code>, which compares distances and defaults to 10<sup>-8</sup>. Re-measured with that tool, 16 of the 102 labelled matrices below come out differently at 10<sup>-6</sup> and 19 at 10<sup>-8</sup> &ndash; VH<sub>40</sub> reads 15985 here and 16001 there. So the figures for #&Lambda; are labels at a stated resolution, not exact invariants and they may not be compared with another appendix without re-measuring both sides the same way. They are least reliable for large N, where the set is large and its elements lie close together and for any matrix whose residual is not at machine precision &ndash; <code>VH_9_0_89C</code> and <code>VH_9_0_89D</code> are stored with a Gram residual near 10<sup>-9</sup> rather than 10<sup>-15</sup>, so their finer counts in particular carry no weight. Read them as characteristics useful for telling these matrices apart, not as exact invariants. The <a href="../d/defect.html">defect</a>, being the rank of a real matrix, is markedly more stable, but it rests on a singular-value threshold of the same kind.</p>
 <div class="scroll"><table>
 <tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th>comment</th></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BC/LH_3_0_3.data">LH<sub>3,0,3</sub></a></td><td>0</td><td>3</td><td>&cong; <a href="../catalogue/0301.html">F<sub>3</sub></a> &isin; <a href="../d/butson-class.html">BH</a>(3,&nbsp;3)</td></tr>
@@ -151,8 +129,8 @@ automatically.</p>
 <tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BC/LH_123.data">LH<sub>123</sub></a></td><td>&ndash;</td><td>&ndash;</td><td></td></tr>
 </table></div>
 <hr>
-<h2 id="sequence_VN">Sequence V<sub>N</sub><span class="go-top"><a href="#top">&uarr;</a></span></h2>
-<p>Solvable in any dimension N &ge; 6. Defects other than zero do occur.</p>
+<h2 id="sequence_VN">sequence V<sub>N</sub><span class="go-top"><a href="#top">&uarr;</a></span></h2>
+<p>Solvable in any dimension N &geqslant; 6. Defects other than zero do occur.</p>
 <div class="scroll"><table>
 <tr><th>matrix</th><th><a href="../d/defect.html">defect</a></th><th>#<a href="../d/haagerup-set.html">&Lambda;</a></th><th>comment</th></tr>
 <tr><td><a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BC/VH_6_4_16.data">VH<sub>6,4,16</sub></a></td><td>4</td><td>16</td><td></td></tr>
@@ -295,7 +273,5 @@ automatically.</p>
 </table></div>
 <hr>
 <p class="comment">The two random-walk files, <a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BC/rw_L11_1000.data">rw_L11_1000.data</a> and <a href="https://github.com/matrix-toolbox/chm/blob/main/CHM_BC/rw_L13_1000.data">rw_L13_1000.data</a>, hold a thousand-step walk around L<sub>11</sub> and L<sub>13</sub>, not single matrices.</p>
-<p class="comment">The <code>circulant_*.m</code> files are the earlier generation of solver that produced the raw runs above; they take a starting point and save the whole workspace. The current generators are <code>BC_L.sh</code> and <code>C_V.sh</code>.</p>
-<hr>
-<p class="last-update">153 matrices &bull; 17 raw runs</p>
+<!--p class="comment">The <code>circulant_*.m</code> files are the earlier generation of solver that produced the raw runs above; they take a starting point and save the whole workspace. The current generators are <code>BC_L.sh</code> and <code>C_V.sh</code>.</p-->
 </div>

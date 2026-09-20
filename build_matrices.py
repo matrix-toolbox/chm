@@ -157,36 +157,62 @@ def catalog(path):
 # ---------------------------------------------------------------- Appendix A
 def appendix_A(path):
     src = path.read_text(encoding="utf-8", errors="replace")
+    # The BH(N, q) defect table is a grid of counts, not a list of matrices;
+    # its rows would otherwise be read as entries named "2", "3", ...
+    src = re.sub(r'<table id="BH_table">.*?</table>', "", src, flags=re.S)
     out = []
     heads = [(m.start(), detag(m.group(1)))
              for m in re.finditer(r"<h2[^>]*>(.*?)</h2>", src, re.S)]
-    ids = [(m.start(), m.group(1))
-           for m in re.finditer(r'<h2[^>]*id="([^"]+)"', src)]
+    # An id belongs to the heading it sits in.  Keying by the heading's own
+    # offset stops a section without an id from inheriting the previous one's
+    # and pointing the reader at the wrong place.
+    ids = {m.start(): m.group(1)
+           for m in re.finditer(r'<h2[^>]*id="([^"]+)"', src)}
 
     for m in re.finditer(r"<pre[^>]*>(.*?)</pre>", src, re.S):
         title = next((t for p, t in reversed(heads) if p < m.start()), "")
         title = re.sub(r"[\u2191\u2193]\s*$", "", title).strip()
         fam = re.split(r"[(\s]", title, 1)[0] or title
-        N = int(re.search(r"\d+", fam).group()) if re.search(r"\d+", fam) else None
+        # Usually the dimension sits in the family name (F4, D8B, ...).  A few
+        # headings carry it only in the argument -- "BH(10, 6)(p1)" -- so fall
+        # back to the first number anywhere in the heading.
+        mN = re.search(r"\d+", fam)
+        if not mN:                      # "BH(10, 6)(p1)": keep the whole name
+            mN = re.search(r"\d+", title)
+            fam = re.sub(r"\s+", "", re.split(r"\)\(", title)[0] + ")") if "(" in title else title
+        N = int(mN.group()) if mN else None
         if N is None:
             continue
-        anchor = next((i for p, i in reversed(ids) if p < m.start()), "")
+        hp = next((p for p, _ in reversed(heads) if p < m.start()), None)
+        anchor = ids.get(hp, "")
         url = "CHM_dL/index.html" + ("#" + anchor if anchor else "")
+        # Most blocks end  ... d  #L, but a few carry a trailing q column, so
+        # the last two numbers are not the invariants.  Read the header and use
+        # the column positions it gives.
+        col_d = col_l = None
         for raw in html.unescape(m.group(1)).splitlines():
             line = raw.strip()
             if not line or set(line) <= set("-| ") or "<" in line:
                 continue
             f = line.split()
             if "d" in f and any(x.startswith("#") for x in f):
+                col_d = f.index("d")
+                col_l = next(i for i, x in enumerate(f) if x.startswith("#"))
                 continue
             note, nm = "", re.search(r"\b(?:observed but )?not recorded\b", line)
             if nm:
                 note, line = "not recorded", line[: nm.start()].strip()
                 f = line.split()
-            ints = [x for x in f if x.rstrip("*").lstrip("-").isdigit()]
+            num = lambda x: x.rstrip("*").lstrip("-").isdigit()
+            if (col_d is not None and not note and len(f) > col_l
+                    and num(f[col_d]) and num(f[col_l])):
+                ints = [f[col_d], f[col_l]]
+                par = f[:col_d]
+            else:
+                ints = [x for x in f if num(x)]
+                par = [] if note else f[: len(f) - 2]
             if len(ints) < 2:
                 continue
-            par = [] if note else f[: len(f) - 2]
             out.append(rec(n=N, d=int(ints[-2].rstrip("*")), l=int(ints[-1].rstrip("*")),
                            t="F", nm=fam, s="A", a="A", p=par or None, u=url, c=note,
                            g=("*" in line) or any(x.startswith("r") for x in par)))
@@ -197,7 +223,10 @@ def appendix_A(path):
             continue
         f, u = row_links(row)
         q = re.search(r"BH\(\s*(\d+),\s*(\d+)\s*\)", c[3] if len(c) > 3 else "")
-        out.append(rec(n=int(re.search(r"\d+", c[0]).group()), d=int(c[1]),
+        mn = re.search(r"\d+", c[0])
+        if not mn:
+            continue
+        out.append(rec(n=int(mn.group()), d=int(c[1]),
                        l=int(c[2]) if c[2].isdigit() else None,
                        q=int(q.group(2)) if q else None, t="B" if q else "I",
                        nm=c[0], s="A", a="A", f=f, u="CHM_dL/index.html", k=u,
@@ -240,7 +269,8 @@ KIND = {"TU": "2-unitary", "SR": "self R-dual", "SG": "self \u0393-dual",
         "LH": "block-circulant, sequence L",
         "VH": "block-circulant, sequence V"}
 DIR_APP = {"CHM_dL": "A", "CHM_SINKHORN": "B", "CHM_SH": "C",
-           "CHM_kU": "D", "CHM_BC": "E", "CHM_BH_0": "A", "CHM": ""}
+           "CHM_kU": "D", "CHM_BC": "E", "CHM_BH_0": "A", "CHM": "",
+           "CHM_GH": "F"}
 
 
 def from_files():
@@ -267,7 +297,10 @@ def from_files():
     # a strict match is safe; a .dat elsewhere carries a timestamp that would
     # be misread as an invariant (Y_11_0_7xx_20221115...).
     for f in sorted((ROOT / "CHM_BC").glob("*.data")):
-        m = re.fullmatch(r"(LH|VH)_(\d+)_(\d+)_(\d+)([A-Z])?(_[A-Za-z0-9_]+)?", f.stem)
+        # Appendix E's names degrade as the invariants get too slow to compute:
+        #   LH_N_d_L   both known      LH_N_d   #L unknown      LH_N   both unknown
+        m = re.fullmatch(
+            r"(LH|VH)_(\d+)(?:_(\d+)(?:_(\d+))?)?([A-Z])?(_[A-Za-z0-9_]+)?", f.stem)
         if not m:
             continue
         pre, N, d, lam, _letter, note = m.groups()
@@ -278,9 +311,39 @@ def from_files():
             c += "; " + note.replace("_", " ")
             if note.startswith("BH"):
                 t += "B"
-        out.append(rec(n=int(N), d=int(d), l=int(lam), t=t, nm=f.stem,
+        out.append(rec(n=int(N), d=int(d) if d is not None else None,
+                       l=int(lam) if lam is not None else None, t=t, nm=f.stem,
                        s="file", a="E", f=str(f.relative_to(ROOT)),
                        u="CHM_BC/index.html", c=c))
+
+    # Appendix F keeps its matrices as .data too, named GH_N_d_L_group.  The
+    # symmetry flag is not in the name, so it is read from GH_classes.tsv,
+    # which gh_report.py writes alongside them.
+    sym = {}
+    tsv = ROOT / "CHM_GH" / "GH_classes.tsv"
+    if tsv.exists():
+        for line in tsv.read_text(encoding="utf-8").splitlines()[1:]:
+            c_ = line.split("\t")
+            if len(c_) >= 9 and c_[8]:
+                sym[c_[8].rsplit(".", 1)[0]] = (c_[5] == "yes", c_[6] == "yes")
+    # Appendix F stores generators, not matrices: one .gen row fixes H once the
+    # group is known (see CHM_GH/GH_expand.m).
+    for f in sorted((ROOT / "CHM_GH").glob("*.gen")):
+        m = re.fullmatch(r"GH_(\d+)_(\d+)_(\d+)_(.+)", f.stem)
+        if not m:
+            continue
+        N, d, lam, grp = m.groups()
+        # GH_N_d_L_group__k when two classes share the whole label; the
+        # trailing __k disambiguates the file, it is not part of the group.
+        grp = re.sub(r"__\d+$", "", grp)
+        sy, lat = sym.get(f.stem, (False, False))
+        # L: the core is a Latin square of values, i.e. the generator is
+        # injective -- no value repeats in any row or column of the core.
+        t = "GI" + ("S" if sy else "") + ("L" if lat else "")
+        out.append(rec(n=int(N), d=int(d), l=int(lam), t=t, nm=f.stem,
+                       s="file", a="F", f=str(f.relative_to(ROOT)),
+                       u="CHM_GH/index.html",
+                       c="bordered group-developed over " + grp.replace("_", " ")))
     return out
 
 
@@ -311,8 +374,9 @@ def main():
     recs += appendix_C(ROOT / "CHM_SH" / "index.html")
     listed = {r["f"] for r in recs if r["f"]}
     files = from_files()
-    bc = [r for r in files if r["a"] == "E"]        # Appendix E lists them all
-    orphans = [r for r in files if r["a"] != "E" and r["f"] not in listed]
+    bc = [r for r in files if r["a"] in ("E", "F")]  # E and F list them all
+    orphans = [r for r in files if r["a"] not in ("E", "F")
+               and r["f"] not in listed]
     for r in orphans:
         r["c"] = (r["c"] + "; " if r["c"] else "") + "not listed in the tables"
     recs += orphans + bc
@@ -323,7 +387,8 @@ def main():
     for r in recs:
         by[r["s"]] = by.get(r["s"], 0) + 1
     print("  orphan .m files  :", len(orphans), "(named X_N_d_L, in no index)")
-    print("  Appendix E .data :", len(bc))
+    print("  Appendix E .data :", sum(1 for r in bc if r["a"] == "E"))
+    print("  Appendix F .data :", sum(1 for r in bc if r["a"] == "F"))
     print("  by source        :", ", ".join("%s=%d" % kv for kv in sorted(by.items())))
     print("  total            :", len(recs))
 

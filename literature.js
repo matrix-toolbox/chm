@@ -1368,6 +1368,22 @@ var literature = [
     "title":"Non-affine Families of 8 &times; 8 Complex Hadamard Matrices",
     "arxiv":"https://arxiv.org/pdf/2505.22947",
     "year":2025
+},{
+    "anchor":182,
+    "authors":"Nicoar&#259; R., Worley C.",
+    "title":"A finiteness result for circulant core complex Hadamard matrices",
+    "arxiv":"",
+    "journal":"<a href='https://doi.org/10.1016/j.laa.2019.02.016' target='_blank'>Linear Algebra and its Applications</a> <b>571</b>, pp. 143-153",
+    "pdf":"https://web.math.utk.edu/~rnicoara/circulant.pdf",
+    "year":2019
+},{
+    "anchor":183,
+    "authors":"Barrera Acevedo S., &#211; Cath&#225;in P., Dietrich H., Egan R.",
+    "title":"Centraliser algebras of monomial representations and applications in combinatorics",
+    "arxiv":"https://arxiv.org/abs/2409.14352",
+    "journal":"<a href='https://doi.org/10.5802/alco.426' target='_blank'>Algebraic Combinatorics</a> <b>8</b>(3), pp. 687-710",
+    "pdf":"",
+    "year":2025
 }
 
 

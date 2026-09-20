@@ -186,8 +186,12 @@ echo "function L=LH_"$N2"()
             [x info]=fsolve(@uc, x);
         end
         s = norm(abs(x) - 1, 'fro');
+        % unit modulus alone is not a Hadamard test -- the all-ones vector
+        % passes it exactly and builds the all-ones matrix -- so the residual
+        % of the orthogonality constraints has to be small as well
+        r = norm(uc(x), 'fro');
         printf('.');
-    until s < 1e-13
+    until s < 1e-13 && r < 1e-13
     printf(' Solved!\n');
     L=[" > $M_FILE
 cat xxx2.txt >> $M_FILE

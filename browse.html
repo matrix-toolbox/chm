@@ -39,6 +39,10 @@
 .ox{padding:0 .18em;color:#444;}
 .hint{color:#888;font-size:12px;}
 #filters label.small-only{display:none;}
+#more{margin:16px 0 4px;}
+#more button{padding:5px 14px;border:1px solid #aaa;border-radius:4px;
+             background:#f6f6f6;font-size:13px;cursor:pointer;}
+#more button:hover{background:#ececec;border-color:#888;}
 
 /* Below 640px the eight columns cannot fit, so each record becomes a card:
    the name on its own line, then the numbers, each labelled by data-l.    */
@@ -145,9 +149,9 @@ searchable table. Follow the <i>listed in</i> link for the authoritative entry.<
 
 <hr>
 <p class="hint">Generated from
-<code>index.html</code>, <code>CHM_dL/index.html</code>, <code>CHM_SH/index.html</code>
-and the repository file names by <code>./update_browse.sh</code>
-<span id="built"></span> &ndash; rerun it whenever the Catalog or an appendix gains an entry.
+<code>index.html</code>, <code>CHM_dL/index.html</code>, <code>CHM_SH/index.html</code>,
+<code>CHM_GH/GH_classes.tsv</code> and the repository file names by <code>./update_browse.sh</code>
+<span id="built"></span>.
 Two rows with different names may still describe the same matrix up to
 <a href="d/equivalence-relation.html">monomial equivalence</a>; the Catalog does not
 claim otherwise. Underlined values in the appendices &ndash; the generic ones &ndash;
@@ -161,9 +165,11 @@ appear here in <span class="gen">bold</span>.</p>
   "use strict";
   var PAGE = 256, shown = PAGE, view = [];
   var TYPE = {B:"Butson", S:"symmetric", H:"Hermitian", R:"real",
-              F:"family", I:"isolated", U:"multiunitary", C:"block-circulant"};
-  var SRC  = {cat:"Catalog", A:"Appendix A", B:"Appendix B", C:"Appendix C",
-              D:"Appendix D", E:"Appendix E", num:"numerical survey"};
+              F:"family", I:"isolated", U:"multiunitary", C:"block-circulant",
+              G:"group-developed", L:"Latin-square core"};
+  var SRC  = {cat:"Catalog", A:"App. A", B:"App. B", C:"App. C",
+              D:"App. D", E:"App. E", F:"App. F",
+              num:"numerical survey"};
   var BLOB = "https://github.com/matrix-toolbox/chm/blob/main/";
   var $ = function (id) { return document.getElementById(id); };
   var tbody = document.querySelector("#results tbody");
@@ -319,7 +325,7 @@ appear here in <span class="gen">bold</span>.</p>
     var where = SRC[source(r)] || "";
     if (r.u) where = '<a href="' + esc(r.u) + '">' + where + "</a>";
     if (r.k) where += ' &bull; <a href="' + esc(r.k) + '">' +
-                     (r.k.indexOf("catalogue/") === 0 ? "catalog" : "Appendix A") + "</a>";
+                     (r.k.indexOf("catalogue/") === 0 ? "catalog" : "App. A") + "</a>";
     if (r.c) where += ' <span class="hint">' + fmtText(r.c) + "</span>";
     return "<tr>" +
       num(r.n, "N") + num(r.d, "d", r.g) + num(r.l, "#\u039B") + num(r.q, "q") +
@@ -425,9 +431,9 @@ appear here in <span class="gen">bold</span>.</p>
   if (typeof matrices_built === "string")
     $("built").innerHTML = "(data rebuilt " + matrices_built + ")";
 
-  boxes("typebox", "ft", ["B", "S", "H", "R", "F", "I", "U", "C"], TYPE,
+  boxes("typebox", "ft", ["B", "S", "H", "R", "F", "I", "U", "C", "G", "L"], TYPE,
         function (r) { return (r.t || "").split(""); });
-  boxes("srcbox", "fs", ["cat", "A", "B", "C", "D", "E", "num"], SRC,
+  boxes("srcbox", "fs", ["cat", "A", "B", "C", "D", "E", "F", "num"], SRC,
         function (r) { return [source(r)]; });
   wire();
   readURL();
