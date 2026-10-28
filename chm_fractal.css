@@ -1,0 +1,374 @@
+/* chm_fractal.css -- layout and theme for chm_fractal.html */
+
+:root {
+    --bg: #f3f3ef;
+    --surface: #ffffff;
+    --field: #ffffff;
+    --text: #1c1e23;
+    --muted: #5e6371;
+    --border: #d8d8d1;
+    --accent: #2a788e;
+    --accent-text: #ffffff;
+    --warn: #a95c0b;
+    --stage: #16171b;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .05), 0 6px 18px rgba(0, 0, 0, .05);
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #111216;
+        --surface: #1a1c21;
+        --field: #14161a;
+        --text: #e7e8eb;
+        --muted: #9ba1ad;
+        --border: #2d3038;
+        --accent: #5ec962;
+        --accent-text: #0e1a0f;
+        --warn: #f0a640;
+        --stage: #0b0c0e;
+        --shadow: none;
+        color-scheme: dark;
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg: #111216;
+    --surface: #1a1c21;
+    --field: #14161a;
+    --text: #e7e8eb;
+    --muted: #9ba1ad;
+    --border: #2d3038;
+    --accent: #5ec962;
+    --accent-text: #0e1a0f;
+    --warn: #f0a640;
+    --stage: #0b0c0e;
+    --shadow: none;
+    color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+}
+
+code, kbd, .num { font-family: var(--mono); }
+
+/* ------------------------------------------------------------- header --- */
+.masthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 6px 24px;
+    padding: 14px 20px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.masthead h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 650;
+    letter-spacing: -.01em;
+}
+
+.masthead .sub {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hint {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hint span { margin: 0 4px; }
+
+kbd {
+    display: inline-block;
+    padding: 0 5px;
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 11.5px;
+    line-height: 1.6;
+}
+
+/* ------------------------------------------------------------- layout --- */
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 20px;
+    padding: 16px 20px 24px;
+    align-items: start;
+}
+
+.viewer { min-width: 0; }
+
+/* the image is always square; the selection square follows it */
+.stage {
+    position: relative;
+    width: min(100%, max(320px, calc(100vh - 190px)));
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    background: var(--stage);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: crosshair;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.stage canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, .12);
+    pointer-events: none;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: #fde725;
+    transition: width .12s linear;
+}
+
+.toast {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    max-width: calc(100% - 28px);
+    padding: 7px 12px;
+    border-radius: 8px;
+    background: rgba(18, 19, 23, .9);
+    color: #f2f2f2;
+    font-size: 13px;
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+}
+
+.toast[data-kind="warn"] { border-left: 3px solid #f0a640; }
+
+.readout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 22px;
+    width: min(100%, max(320px, calc(100vh - 190px)));
+    margin: 8px auto 0;
+    font-size: 12.5px;
+}
+
+.readout .k {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-right: 4px;
+}
+
+.readout .num { font-size: 12.5px; }
+
+.depth { display: flex; align-items: center; gap: 6px; }
+
+.meter {
+    display: inline-block;
+    width: 90px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+    overflow: hidden;
+}
+
+.meter span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--accent);
+}
+
+.meter.full span { background: var(--warn); }
+
+.muted { color: var(--muted); }
+
+/* -------------------------------------------------------------- panel --- */
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+.panel form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Map and Image: label, control, label, control; the fixed label columns
+   line both up. The palette fieldset holds its own swatch grid. */
+fieldset {
+    margin: 0;
+    padding: 10px 12px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr) 40px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+}
+
+legend {
+    padding: 0 4px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 650;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+}
+
+fieldset label {
+    min-width: 0;
+    color: var(--muted);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* the second label of a row keeps clear of the control before it */
+fieldset label:nth-of-type(even) { padding-left: 6px; }
+
+fieldset label .muted { font-family: var(--mono); font-size: 11px; }
+
+input, select, button.toggle { height: 30px; }
+
+input, select {
+    width: 100%;
+    min-width: 0;
+    padding: 0 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--field);
+    color: var(--text);
+    font: 13px var(--mono);
+}
+
+select { font-family: inherit; }
+
+input:focus-visible, select:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+button {
+    padding: 7px 11px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--surface);
+    color: var(--text);
+    font: 600 13px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    cursor: pointer;
+}
+
+button:hover { border-color: var(--muted); }
+
+button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-text);
+}
+
+button.primary.dirty::after { content: " \25CF"; }
+
+/* the grid toggle takes the last label and control cells of its row */
+button.toggle { grid-column: span 2; padding-top: 0; padding-bottom: 0; }
+
+button.toggle[aria-pressed="true"],
+.swatch[aria-pressed="true"] {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+    color: var(--text);
+}
+
+/* ----------------------------------------------------------- palettes --- */
+fieldset.palette-set { display: block; }
+
+.palettes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 2px 3px 0;
+    border-radius: 6px;
+    font: 500 10.5px/13px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--muted);
+    text-align: center;
+}
+
+.swatch .bar {
+    display: block;
+    height: 8px;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px rgba(127, 127, 127, .25);
+}
+
+.swatch .name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.credit {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.noscript { padding: 20px; }
+
+/* ------------------------------------------------------------- narrow --- */
+@media (max-width: 920px) {
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 12px 16px 20px;
+    }
+    .masthead { padding: 12px 16px 10px; }
+    .stage, .readout { width: 100%; }
+}

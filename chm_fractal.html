@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CHM Basin Explorer</title>
+<meta name="description" content="Interactive finite-time basin sections of the CHM return map Q = Phi^2 on CP^2, ported from chm_fractal_fast.cpp.">
+<link rel="stylesheet" href="chm_fractal.css">
+<!-- MathJax 2.7.5 with the AME_4_6 configuration; $...$ is inline TeX -->
+<script src="https://cdn.jsdelivr.net/gh/matrix-toolbox/AME_4_6@main/AME_4_6.js"></script>
+</head>
+<body>
+<header class="masthead">
+  <div>
+    <h1>CHM basin explorer</h1>
+    <p class="sub">finite-time basins of $Q=\Phi^2$ for initial states $[z:1:\kappa]$</p>
+  </div>
+  <p class="hint"><kbd>drag</kbd> select a square to zoom <span>&middot;</span> <kbd>right-click</kbd> step back</p>
+</header>
+
+<main class="layout">
+  <section class="viewer" aria-label="Basin image">
+    <div class="stage" id="stage">
+      <canvas id="image" width="1300" height="1300" aria-label="Basin section; drag to zoom, right-click to step back"></canvas>
+      <canvas id="overlay" aria-hidden="true"></canvas>
+      <div class="progress" id="progress" hidden><span></span></div>
+      <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    </div>
+    <div class="readout">
+      <div><span class="k">cursor</span> <span id="cursor" class="num">&mdash;</span></div>
+      <div><span class="k">window</span> <span id="window" class="num">&mdash;</span></div>
+      <div class="depth">
+        <span class="k">zoom</span> <span id="zoom" class="num">&times;1</span>
+        <span class="meter" title="zoom depth, logarithmic, up to the limit"><span id="meter"></span></span>
+        <span id="limit" class="num muted"></span>
+      </div>
+    </div>
+  </section>
+
+  <aside class="panel">
+    <fieldset class="palette-set">
+      <legend>Palette</legend>
+      <div class="palettes" id="palettes"></div>
+    </fieldset>
+
+    <form id="controls" autocomplete="off" novalidate>
+      <!-- label, control, label, control on each row -->
+      <fieldset>
+        <legend>Map</legend>
+        <label for="f-m">$m$ <span id="nval" class="muted">$N{=}11$</span></label>
+        <input id="f-m" name="m" type="number" min="1" step="1" value="5" inputmode="numeric">
+        <label for="f-map">map</label>
+        <select id="f-map" name="map">
+          <option value="q" selected>Q = &Phi;&sup2;</option>
+          <option value="phi">&Phi;, even</option>
+        </select>
+        <label for="f-kre">$\operatorname{Re}\kappa$</label>
+        <input id="f-kre" name="kre" value="0" inputmode="decimal" spellcheck="false">
+        <label for="f-kim">$\operatorname{Im}\kappa$</label>
+        <input id="f-kim" name="kim" value="0" inputmode="decimal" spellcheck="false">
+        <label for="f-iter" title="maximum number of map steps">$n_{\max}$</label>
+        <input id="f-iter" name="iter" title="maximum number of map steps" type="number" min="0" step="1" value="100" inputmode="numeric">
+        <label for="f-tol" title="tolerance: chordal distance to e or u">$\varepsilon$</label>
+        <input id="f-tol" name="tol" value="1e-9" title="tolerance: chordal distance to e or u" inputmode="decimal" spellcheck="false">
+      </fieldset>
+
+      <fieldset>
+        <legend>Image</legend>
+        <label for="f-size">size</label>
+        <select id="f-size" name="size">
+          <option>512</option>
+          <option>800</option>
+          <option>1024</option>
+          <option selected>1300</option>
+          <option>1600</option>
+          <option>2048</option>
+        </select>
+        <label for="f-ss" title="supersampling">ss</label>
+        <select id="f-ss" name="ss" title="supersampling">
+          <option value="1" selected>1 &times; 1</option>
+          <option value="2">2 &times; 2</option>
+          <option value="3">3 &times; 3</option>
+          <option value="4">4 &times; 4</option>
+        </select>
+        <label for="f-sample">sampling</label>
+        <select id="f-sample" name="sample">
+          <option value="endpoint" selected>endpoint</option>
+          <option value="center">center</option>
+        </select>
+        <button type="button" id="grid" class="toggle" aria-pressed="false">grid</button>
+      </fieldset>
+
+      <div class="buttons">
+        <button type="submit" id="apply" class="primary">apply</button>
+        <button type="button" id="reset">reset view</button>
+        <button type="button" id="save">save PNG</button>
+      </div>
+    </form>
+
+    <p class="credit">made by Claude under the supervision of W.&nbsp;Bruzda</p>
+  </aside>
+</main>
+<noscript><p class="noscript">This explorer needs JavaScript.</p></noscript>
+<script src="chm_fractal.js"></script>
+</body>
+</html>
